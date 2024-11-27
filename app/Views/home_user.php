@@ -38,7 +38,7 @@
                     <img src="logo.png" alt="Logo" width="50">
                 </div>
                 <div class="col-md-10">
-                    <h1 class="mb-0">Pelayanan Statistik Terpadu BPS Provinsi DKI Jakarta</h1>
+                    <h1 class="mb-0">Pelayanan Statistik Terpadu BPS Provinsi DKI Jakarta Aku</h1>
                 </div>
             </div>
         </div>
