@@ -62,7 +62,7 @@
             <h2>Bagaimana anda ingin berkonsultasi bersama kami?</h2>
             <div class="d-flex justify-content-center">
                 <a href="https://silastik.bps.go.id" class="consultation-button">Melalui Chat</a>
-                <a href="/konsultasi/reservasi" class="consultation-button">Melalui Pertemuan Virtual</a>
+                <a href="/consultation/reserve" class="consultation-button">Melalui Pertemuan Virtual</a>
             </div>
         </div>
         <div class="contact-details">

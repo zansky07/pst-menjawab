@@ -52,7 +52,7 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <form action="/admin/simpan" method="post">
+        <form action="/admin/manage/store" method="post">
             <?= csrf_field() ?>
             <div class="form-group">
                 <label>Username</label>
@@ -83,7 +83,7 @@
             </div>
             <button type="submit">Simpan</button>
         </form>
-        <a href="/admin" style="display: block; text-align: center; margin-top: 10px;">Kembali</a>
+        <a href="/admin/settings" style="display: block; text-align: center; margin-top: 10px;">Kembali</a>
     </div>
 </body>
 </html>

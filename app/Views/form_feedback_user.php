@@ -19,7 +19,7 @@
 <body>
     <div class="container">
         <h2>Formulir Umpan Balik</h2>
-        <form action="/konsultasi/reservasi/feedback/submit" method="post">
+        <form action="/consultation/feedback/submit" method="post">
             <div class="form-group">
                 <label for="token">Token</label>
                 <input type="text" id="token" name="token" value="<?= esc($token) ?>" readonly>

@@ -18,7 +18,7 @@
 <body>
     <div class="container">
         <h2>Status Reservasi</h2>
-        <form action="/konsultasi/checkStatus" method="post">
+        <form action="/consultation/status" method="post">
             <div class="form-group">
                 <label for="token">Masukkan Token Anda</label>
                 <input type="text" id="token" name="token" required>

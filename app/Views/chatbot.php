@@ -97,13 +97,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/konsultasi">Konsultasi</a>
+                        <a class="nav-link" href="/consultation">Konsultasi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/chatbot">Chatbot</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/cek-reservasi">Cek Reservasi</a>
+                        <a class="nav-link" href="/consultation/checkReservation">Cek Reservasi</a>
                     </li>
                 </ul>
             </div>

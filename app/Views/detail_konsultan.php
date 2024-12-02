@@ -57,7 +57,7 @@
             <label>WhatsApp</label>
             <input type="text" value="<?= esc($konsultan['whatsapp']) ?>" readonly>
         </div>
-        <a href="/pengaturan" style="display: block; text-align: center; margin-top: 10px;">Kembali</a>
+        <a href="/admin/settings" style="display: block; text-align: center; margin-top: 10px;">Kembali</a>
     </div>
 </body>
 </html>

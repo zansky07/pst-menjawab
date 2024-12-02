@@ -25,7 +25,7 @@
                 
                 <!-- Formulir untuk mengirim token -->
                 <div class="button-container">
-                    <form action="/konsultasi/reservasi/feedback" method="post">
+                    <form action="/consultation/feedback" method="post">
                         <input type="hidden" name="token" value="<?= esc($token) ?>">
                         <button type="submit" class="btn">Beri Feedback</button>
                     </form>

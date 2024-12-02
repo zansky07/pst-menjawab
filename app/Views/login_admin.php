@@ -53,7 +53,7 @@
         <?php if (session()->getFlashdata('error')): ?>
             <p style="color: red;"><?= session()->getFlashdata('error') ?></p>
         <?php endif; ?>
-        <form action="/staff/masuk" method="post">
+        <form action="/admin/login/submit" method="post">
             <?= csrf_field() ?>
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>

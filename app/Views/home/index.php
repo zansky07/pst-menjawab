@@ -51,13 +51,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/konsultasi">Konsultasi</a>
+                        <a class="nav-link" href="/consultation">Konsultasi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/chatbot">Chatbot</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/konsultasi/cekReservasi">Cek Reservasi</a>
+                        <a class="nav-link" href="/consultation/checkReservation">Cek Reservasi</a>
                     </li>
                 </ul>
             </div>
@@ -93,7 +93,7 @@
                 </a>
             </div>
             <div class="col-md-4 mb-4">
-                <a href="/konsultasi" class="text-decoration-none text-dark">
+                <a href="/consultation" class="text-decoration-none text-dark">
                     <div class="service bg-light p-3 text-center h-100">
                         <img src="icon3.png" alt="Konsultasi via Pertemuan Daring">
                         <h3>Konsultasi via Pertemuan Daring</h3>

@@ -66,16 +66,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin">Dashboard</a>
+                            <a class="nav-link" href="/admin/dashboard">Dashboard</a>
                         </li>    
                         <li class="nav-item">
-                            <a class="nav-link" href="/statistik">Statistik</a>
+                            <a class="nav-link" href="/admin/statistics">Statistik</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/pengaturan">Pengaturan</a>
+                            <a class="nav-link" href="/admin/settings">Pengaturan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">Logout</a>
+                            <a class="nav-link" href="/admin/logout">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -102,8 +102,8 @@
                             <td><?= esc($request['topik']) ?></td>
                             <td><?= esc($request['status_konsultasi']) ?></td>
                             <td>
-                            <a href="/dashboard/detail/<?= $request['id'] ?>" class="btn btn-detail">Detail</a>
-                                <a href="/dashboard/delete/<?= $request['id'] ?>" class="btn btn-delete">Hapus</a>
+                            <a href="/admin/consultation/detail/<?= $request['id'] ?>" class="btn btn-detail">Detail</a>
+                                <a href="/admin/consultation/delete/<?= $request['id'] ?>" class="btn btn-delete">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -72,16 +72,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin">Dashboard</a>
+                            <a class="nav-link" href="/admin/dashboard">Dashboard</a>
                         </li>    
                         <li class="nav-item">
-                            <a class="nav-link" href="/statistik">Statistik</a>
+                            <a class="nav-link" href="/admin/statistics">Statistik</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/pengaturan">Pengaturan</a>
+                            <a class="nav-link" href="/admin/settings">Pengaturan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">Logout</a>
+                            <a class="nav-link" href="/admin/logout">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -91,7 +91,7 @@
                 <p style="color: green;"><?= session()->getFlashdata('message') ?></p>
         <?php endif; ?>
         <h1 class="header">Daftar Admin</h1>
-        <a href="/admin/tambah" class="btn btn-add">Tambah Admin</a>
+        <a href="/admin/manage/add" class="btn btn-add">Tambah Admin</a>
         <table>
             <thead>
                 <tr>
@@ -105,8 +105,8 @@
                         <tr>
                             <td><?= esc($admin['nama']) ?></td>
                             <td>
-                                <a href="/admin/detail/<?= $admin['id'] ?>" class="btn btn-detail">Detail</a>
-                                <a href="/admin/delete/<?= $admin['id'] ?>" class="btn btn-delete">Hapus</a>
+                                <a href="/admin/manage/detail/<?= $admin['id'] ?>" class="btn btn-detail">Detail</a>
+                                <a href="/admin/manage/delete/<?= $admin['id'] ?>" class="btn btn-delete">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -120,7 +120,7 @@
         
         <div class="section">
             <h1 class="header">Daftar Konsultan</h1>
-            <a href="/konsultan/tambah" class="btn btn-add">Tambah Konsultan</a>
+            <a href="/admin/consultant/add" class="btn btn-add">Tambah Konsultan</a>
             <table>
                 <thead>
                     <tr>
@@ -134,8 +134,8 @@
                             <tr>
                                 <td><?= esc($konsultan['nama']) ?></td>
                                 <td>
-                                    <a href="/konsultan/detail/<?= $konsultan['id'] ?>" class="btn btn-detail">Detail</a>
-                                    <a href="/konsultan/delete/<?= $konsultan['id'] ?>" class="btn btn-delete">Hapus</a>
+                                    <a href="/admin/consultant/detail/<?= $konsultan['id'] ?>" class="btn btn-detail">Detail</a>
+                                    <a href="/admin/consultant/delete/<?= $konsultan['id'] ?>" class="btn btn-delete">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

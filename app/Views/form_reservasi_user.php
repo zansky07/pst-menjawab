@@ -57,7 +57,7 @@
 <body>
     <div class="container">
         <h2>Form Konsultasi</h2>
-        <form action="/konsultasi/reservasi/submit" method="post">
+        <form action="/consultation/reserve/submit" method="post">
             <div class="form-group">
                 <label for="nama">Nama Konsumen</label>
                 <input type="text" id="nama" name="nama" required>

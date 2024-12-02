@@ -45,7 +45,7 @@
 <body>
     <div class="container">
         <h1>Detail Konsultasi</h1>
-        <form action="/dashboard/detail/update/<?= $konsultasi['id'] ?>" method="post">
+        <form action="/admin/consultation/detail/update/<?= $konsultasi['id'] ?>" method="post">
             <?= csrf_field() ?>
             <div class="form-group">
                 <label>Nama Konsumen</label>
@@ -80,7 +80,7 @@
                 </select>
             </div>
             <button type="submit">Simpan</button>
-            <a href="/dashboard" style="display: block; text-align: center; margin-top: 10px;">Kembali</a>
+            <a href="/admin/dashboard" style="display: block; text-align: center; margin-top: 10px;">Kembali</a>
         </form>
     </div>
 </body>
