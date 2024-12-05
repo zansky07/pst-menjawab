@@ -1,0 +1,24 @@
+form input, 
+form textarea, 
+form select {
+    background-color: #FFFAF0; /* Warna oranye muda (Tailwind: bg-orange-200) */
+}
+
+/* Warna saat fokus */
+form input:focus, 
+form textarea:focus, 
+form select:focus {
+    background-color: #FBD38D; /* Warna oranye lebih terang (Tailwind: bg-orange-300) */
+    outline: none;
+    border-color: #f97316; /* Warna border oranye (Tailwind: border-orange-500) */
+}
+
+/* Tombol Submit */
+.btn-orange {
+    background-color: #f97316; /* Tailwind: bg-orange-500 */
+    color: white;
+}
+
+.btn-orange:hover {
+    background-color: #ea580c; /* Tailwind: bg-orange-600 */
+}

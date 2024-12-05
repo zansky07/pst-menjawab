@@ -28,9 +28,30 @@ class KonsultasiController extends BaseController
         $lingkup = $this->request->getPost('lingkup');
         $deskripsi = $this->request->getPost('deskripsi');
 
+        // Validasi data menggunakan regex
+        $namaPattern = "/^[a-zA-Z\s]{1,50}$/";
+        $emailPattern = "/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/";
+        $whatsappPattern = "/^08[1-9][0-9]{6,10}$/";
+        $topikPattern = "/^[\w\s]{3,100}$/";
+        $kategoriPattern = "/^[\w\s]{3,50}$/";
+        $lingkupPattern = "/^[\w\s]{3,50}$/";
+        $deskripsiPattern = "/^[\w\s\.\,]{3,500}$/";
+
+        if (!preg_match($namaPattern, $nama) || 
+            !preg_match($emailPattern, $email) || 
+            !preg_match($whatsappPattern, $whatsapp) || 
+            !preg_match($topikPattern, $topik) || 
+            !preg_match($kategoriPattern, $kategori) || 
+            !preg_match($lingkupPattern, $lingkup) || 
+            !preg_match($deskripsiPattern, $deskripsi)) 
+        {
+            session()->setFlashdata('error', 'Data yang Anda masukkan tidak valid. Silakan coba lagi.');
+            return redirect()->to('/consultation/reserve')->withInput();
+        }
+
         // Buat token unik untuk reservasi
         $token = strtoupper(uniqid('PST'));
-
+        
         // Data yang akan disimpan
         $data = [
             'nama_konsumen' => $nama,
@@ -42,6 +63,7 @@ class KonsultasiController extends BaseController
             'deskripsi' => $deskripsi,
             'token_konsultasi' => $token,
             'status_konsultasi' => 'Pending', // Status default
+            'tanggal_reservasi' => date('Y-m-d H:i:s'), // Tanggal reservasi saat submit
         ];
 
         // Simpan data ke database menggunakan KonsultasiModel
@@ -56,30 +78,53 @@ class KonsultasiController extends BaseController
     {
         // Load model
         $konsultasiModel = new \App\Models\KonsultasiModel();
-
+    
         // Ambil token dari input form
         $token = $this->request->getPost('token');
-
+    
         // Cari data reservasi berdasarkan token
         $reservation = $konsultasiModel->where('token_konsultasi', $token)->first();
-
+    
+        // Buat array data kosong
         $data = [];
-
+    
         if ($reservation) {
+            // Setel locale ke bahasa Indonesia
+            setlocale(LC_TIME, 'id_ID.UTF-8');
+    
+            // Ambil tanggal reservasi dari database
+            $tanggal_reservasi = $reservation['tanggal_reservasi'];
+            $jadwal_konsultasi = $reservation['jadwal_konsultasi'];
+    
+            // Format tanggal menjadi bahasa Indonesia
+            $tanggal_reservasi_indo = strftime('%d %B %Y', strtotime($tanggal_reservasi));
+            $jadwal_konsultasi_indo = strftime('%d %B %Y', strtotime($jadwal_konsultasi));
+    
             // Jika token ditemukan, kirimkan data ke view
             $data['reservation'] = [
-                'date' => $reservation['jadwal_konsultasi'],  // Tanggal konsultasi
-                'status' => $reservation['status_konsultasi'] // Status konsultasi
+                'tanggal_reservasi' => $tanggal_reservasi_indo,
+                'status' => $reservation['status_konsultasi'],
+                // disetujui
+                'zoom' => $reservation['link_zoom'],
+                'waktu_pertemuan' => $jadwal_konsultasi_indo,
+                // ditolak
+                'alasan' => $reservation['alasan_penolakan'],
+                // selesai
+                'kehadiran' => $reservation['kehadiran'],
+                'notula' => $reservation['notula'],
+                'dokumentasi' => $reservation['dokumentasi']
             ];
             $data['token'] = $token;
         } else {
-            // Jika token tidak ditemukan
-            $data['error'] = "Token tidak valid atau tidak ditemukan.";
+            // Redirect dengan flashdata berisi pesan error dan token
+            return redirect()
+                ->to('/consultation/checkReservation')
+                ->with('error', "Token '$token' tidak valid atau tidak ditemukan.")
+                ->withInput();
         }
-
+    
         return view('reservation_status_user', $data);
     }
-
     
 
     public function detail($id)
