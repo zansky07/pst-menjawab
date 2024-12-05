@@ -15,6 +15,8 @@ module.exports = {
         'merah-1': '#FF6262',
         'hijau-2': '#34AE00',
         'merah-2': '#F41717',
+        'biru-3' : '#D7E3FF',
+        'biru-4' : '#CDDBDC',
       },
       borderRadius: {
         'custom': '50px',

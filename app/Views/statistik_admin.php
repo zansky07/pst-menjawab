@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistik Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    `<script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">`
 </head>
 <body>
     <div class="flex overflow-hidden flex-col pt-8 bg-oranye-1">
         <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
             <nav class="flex flex-wrap gap-5 justify-between py-2 pr-20 pl-9 max-w-full text-xl bg-white bg-opacity-80 rounded-[50px] w-[1358px] max-md:px-5 max-md:mr-0.5" role="navigation" aria-label="Main Navigation">
                 <div class="flex gap-5 text-black">
-                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/2344f725acd655dbe5c90e2469529ddf36b3b5c0118ff7172fdf70d33f6b3960?apiKey=e9ddb2361bfb44708a9699ec1fe1fd57&" class="object-contain shrink-0 aspect-[0.8] w-[43px]" alt="BPS Logo" />
+                    <img src="/assets/logo-pst.png" class="object-contain shrink-0 aspect-[0.8] w-[43px]" alt="BPS Logo" />
                     <div class="flex-auto my-auto">PST Menjawab BPS Provinsi DKI Jakarta</div>
                 </div>
                 <div class="flex gap-10 my-auto whitespace-nowrap">
-                    <a href="/admin/dashboardd" class="text-black hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md" tabindex="0">Dashboard</a>
+                    <a href="/admin/dashboard" class="text-black hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md" tabindex="0">Dashboard</a>
                     <a href="/admin/statistics" class="text-red-400 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md" tabindex="0">Statistik</a>
                     <a href="/admin/settings" class="text-stone-900 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md" tabindex="0">Pengaturan</a>
                 </div>
@@ -43,7 +43,7 @@
                             <div class="shrink-0 my-auto w-0.5 border border-black border-solid h-[282px]" role="presentation"></div>
                             <div class="flex flex-col max-md:max-w-full">
                                 <h2 id="statistics-title" class="self-center text-xl">Statistik Jumlah Permintaan</h2>
-                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/7277c30e68c9fff3ab31bf51371958f87b034e71c5ee5d59377ac5ed0af70863?apiKey=e9ddb2361bfb44708a9699ec1fe1fd57&" class="object-contain mt-16 w-full rounded-none aspect-[2.35] max-md:mt-10 max-md:max-w-full" alt="Grafik statistik jumlah permintaan dari Januari 2024 hingga September 2024" />
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7277c30e68c9fff3ab31bf51371958f87b034e71c5ee5d59377ac5ed0af70863?apiKey=e9ddb2361bfb44708a9699ec1fe1fd57&" class="object-contain mt-16 w-full rounded-none aspect-[2.35] max-md:mt-10 max-md:max-w-full" alt="Grafik statistik jumlah permintaan dari Januari 2024 hingga September 2024" />
                                 <div class="flex flex-wrap gap-5 justify-between ml-3 text-xs max-md:mr-1.5 max-md:max-w-full">
                                     <div>Januari<br />2024</div>
                                     <div>September 2024</div>
@@ -109,6 +109,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </body>
 </html>
