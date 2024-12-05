@@ -6,6 +6,10 @@ use CodeIgniter\Controller;
 
 class UserContentController extends Controller
 {
+    public function __construct()
+    {
+        helper('url');
+    }
     public function index()
     {
         // Menampilkan halaman beranda
