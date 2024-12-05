@@ -19,10 +19,27 @@ class FeedbackController extends BaseController
     {
         // Ambil token dari POST
         $token = $this->request->getPost('token');
-
-        // Kirim token ke view
+    
+        // Periksa apakah token ada di KonsultasiModel
+        $konsultasiModel = new \App\Models\KonsultasiModel();
+        $konsultasi = $konsultasiModel->where('token_konsultasi', $token)->first();
+    
+        // Ambil ID konsultasi
+        $konsultasiId = $konsultasi['id'];
+    
+        // Periksa apakah konsultasi_id ada di LaporanModel dan feedback1 sudah terisi
+        $laporanModel = new \App\Models\LaporanModel();
+        $laporan = $laporanModel->where('konsultasi_id', $konsultasiId)->first();
+    
+        if ($laporan && !empty($laporan['feedback1'])) {
+            // Jika feedback1 sudah terisi, set flash data error dan redirect
+            session()->setFlashdata('error', "Survei kepuasan konsumen sudah pernah diisi untuk token '$token' .");
+            return redirect()->to('/consultation/checkReservation')->withInput();
+        }
+    
+        // Kirim token ke view jika laporan ditemukan dan feedback1 belum terisi
         return view('form_feedback_user', ['token' => $token]);
-    }
+    }    
 
     public function submit()
     {
