@@ -41,7 +41,6 @@
             /* Ukuran berdasarkan lebar viewport */
             color: white;
             text-align: center;
-            font-family: Georgia, 'Times New Roman', Times, serif;
             font-weight: bold;
             padding: 10px;
         }
@@ -51,7 +50,6 @@
             font-size: 1.5vw;
             color: white;
             text-align: center;
-            font-family: Georgia, 'Times New Roman', Times, serif;
             padding: 10px;
         }
 
@@ -89,15 +87,14 @@
     </style>
 </head>
 
-<body style="margin: 0;">
-    <main class="container mx-auto mt-0" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 50vh;">
+<body style="margin: 0;" class="bg-oranye-1">
+    <main class="container mx-auto mt-0 bg-oranye-1" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 70vh;">
         <!-- Video Thumbnail -->
         <div class="text-center mb-8">
             <h1 class="welcome">SELAMAT DATANG DI PST MENJAWAB</h1>
-            <h2 class="welcome2">PELAYANAN STATUSTIK TERPADU</h2>
+            <h2 class="welcome2">PELAYANAN STATISTIK TERPADU</h2>
             <h2 class="welcome2">BPS PROVINSI DKI JAKARTA</h2>
             <img src="<?= base_url('assets/images/vid.jpg') ?>" alt="Panduan" class="mx-auto">
-            <p class="text-gray-600 mt-2">Panduan User Video</p>
         </div>
 
         <!-- Konsultasi Statistik -->
@@ -105,7 +102,7 @@
             <h2 class="text-2xl font-bold">Konsultasi Statistik</h2>
         </section>
 
-        <div class="fitur grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto place-items-center">
+        <div class="fitur grid grid-cols-1 md:grid-cols-3 mx-auto place-items-center space-y-1">
             <!-- Service 1 -->
             <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition max-w-sm">
                 <img src="<?= base_url('assets/images/konsultasi-langsung.png') ?>" alt="Konsultasi Langsung" class="mx-auto w-12 mb-4">
@@ -135,26 +132,26 @@
             <!-- Service 4 -->
             <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition">
                 <img src="<?= base_url('assets/images/cart.png') ?>" alt="Pengajuan Permintaan Data" class="mx-auto w-12 mb-4">
-                <h3 class="text-lg font-semibold">Pengajuan Permintaan Data</h3>
-                <p class="text-gray-600">Deskripsi layanan pengajuan permintaan data.</p>
+                <h3 class="text-lg font-semibold bg-biru-4 text-oranye-2">Penjualan Produk Statistik</h3>
+                <p class="text-gray-600">Deskripsi layanan penjualan produk statistik.</p>
             </div>
             <!-- Service 5 -->
             <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition">
                 <img src="<?= base_url('assets/images/buku.png') ?>" alt="Publikasi" class="mx-auto w-12 mb-4">
-                <h3 class="text-lg font-semibold">Publikasi</h3>
-                <p class="text-gray-600">Deskripsi layanan publikasi.</p>
+                <h3 class="text-lg font-semibold">Perpustakaan</h3>
+                <p class="text-gray-600">Deskripsi layanan perpustakaan.</p>
             </div>
             <!-- Service 6 -->
             <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition">
                 <img src="<?= base_url('assets/images/SILATIPA.png') ?>" alt="Survei" class="mx-auto w-12 mb-4">
-                <h3 class="text-lg font-semibold">Survei</h3>
-                <p class="text-gray-600">Deskripsi layanan survei.</p>
+                <h3 class="text-lg font-semibold">SILATIPA</h3>
+                <p class="text-gray-600">Deskripsi layanan SILATIPA.</p>
             </div>
             <!-- Service 7 -->
             <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition">
                 <img src="<?= base_url('assets/images/papan.png') ?>" alt="Informasi Terkini" class="mx-auto w-12 mb-4">
-                <h3 class="text-lg font-semibold">Informasi Terkini</h3>
-                <p class="text-gray-600">Deskripsi layanan informasi terkini.</p>
+                <h3 class="text-lg font-semibold">Rekomendasi Kegiatan Statistik</h3>
+                <p class="text-gray-600">Deskripsi layanan rekomendasi kegiatan statistik.</p>
             </div>
         </div>
     </main>
