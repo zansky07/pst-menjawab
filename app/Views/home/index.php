@@ -12,137 +12,155 @@
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pelayanan Statistik Terpadu BPS Provinsi DKI Jakarta</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+
     <style>
         .service img {
             width: 50px;
             margin-bottom: 10px;
         }
+
         .service {
             transition: transform 0.2s;
         }
+
         .service:hover {
             transform: scale(1.05);
         }
+
+        .welcome {
+            font-size: 2.5vw;
+            /* Ukuran berdasarkan lebar viewport */
+            color: white;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        /* Gaya dasar untuk h2 */
+        .welcome2 {
+            font-size: 1.5vw;
+            color: white;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding: 10px;
+        }
+
+        .fitur {
+            min-height: 20rem;
+            /* Set minimum height */
+        }
+
+        /* Responsif dengan media query */
+        @media (max-width: 768px) {
+            .welcome {
+                font-size: 3.5vw;
+                /* Teks lebih besar untuk layar kecil */
+            }
+
+            .welcome2 {
+                font-size: 2.5vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome {
+                font-size: 3vw;
+                /* Teks lebih besar untuk layar yang lebih kecil */
+            }
+
+            .welcome2 {
+                font-size: 2vw;
+            }
+        }
+
+        section {
+            border-radius: 40px;
+        }
     </style>
 </head>
-<body>
-    <header class="bg-warning text-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-2 text-center">
-                    <img src="logo.png" alt="Logo" width="50">
-                </div>
-                <div class="col-md-10">
-                    <h1 class="mb-0">Pelayanan Statistik Terpadu BPS Provinsi DKI Jakarta</h1>
-                </div>
+
+<body style="margin: 0;">
+    <main class="container mx-auto mt-0" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 50vh;">
+        <!-- Video Thumbnail -->
+        <div class="text-center mb-8">
+            <h1 class="welcome">SELAMAT DATANG DI PST MENJAWAB</h1>
+            <h2 class="welcome2">PELAYANAN STATUSTIK TERPADU</h2>
+            <h2 class="welcome2">BPS PROVINSI DKI JAKARTA</h2>
+            <img src="<?= base_url('assets/images/vid.jpg') ?>" alt="Panduan" class="mx-auto">
+            <p class="text-gray-600 mt-2">Panduan User Video</p>
+        </div>
+
+        <!-- Konsultasi Statistik -->
+        <section class="text-center bg-biru-4 text-oranye-2 py-2 mb-8 w-1/2 mx-auto">
+            <h2 class="text-2xl font-bold">Konsultasi Statistik</h2>
+        </section>
+
+        <div class="fitur grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto place-items-center">
+            <!-- Service 1 -->
+            <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition max-w-sm">
+                <img src="<?= base_url('assets/images/konsultasi-langsung.png') ?>" alt="Konsultasi Langsung" class="mx-auto w-12 mb-4">
+                <h3 class="text-xl font-semibold">Konsultasi Langsung</h3>
+                <p class="text-gray-600">Deskripsi layanan konsultasi langsung.</p>
+            </div>
+            <!-- Service 2 -->
+            <a href="/chatbot" class="fitur text-center block bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition max-w-sm">
+                <img src="<?= base_url('assets/images/chatbot.png') ?>" alt="Tanya-Jawab via Chat Bot" class="mx-auto w-12 mb-4">
+                <h3 class="text-xl font-semibold">Tanya-Jawab via Chat Bot</h3>
+                <p class="text-gray-600">Deskripsi layanan tanya-jawab via chat bot.</p>
+            </a>
+            <!-- Service 3 -->
+            <a href="/consultation" class="fitur text-center block bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition max-w-sm">
+                <img src="<?= base_url('assets/images/meeting.png') ?>" alt="Konsultasi via Pertemuan Daring" class="mx-auto w-12 mb-4">
+                <h3 class="text-xl font-semibold">Konsultasi via Pertemuan Daring</h3>
+                <p class="text-gray-600">Deskripsi layanan konsultasi via pertemuan daring.</p>
+            </a>
+        </div>
+
+        <!-- Layanan Lainnya -->
+        <section class="text-center bg-biru-4 text-oranye-2 py-2 mt-16 w-1/2 mx-auto">
+            <h2 class="text-2xl font-bold">Layanan Lainnya</h2>
+        </section>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8">
+            <!-- Service 4 -->
+            <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition">
+                <img src="<?= base_url('assets/images/cart.png') ?>" alt="Pengajuan Permintaan Data" class="mx-auto w-12 mb-4">
+                <h3 class="text-lg font-semibold">Pengajuan Permintaan Data</h3>
+                <p class="text-gray-600">Deskripsi layanan pengajuan permintaan data.</p>
+            </div>
+            <!-- Service 5 -->
+            <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition">
+                <img src="<?= base_url('assets/images/buku.png') ?>" alt="Publikasi" class="mx-auto w-12 mb-4">
+                <h3 class="text-lg font-semibold">Publikasi</h3>
+                <p class="text-gray-600">Deskripsi layanan publikasi.</p>
+            </div>
+            <!-- Service 6 -->
+            <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition">
+                <img src="<?= base_url('assets/images/SILATIPA.png') ?>" alt="Survei" class="mx-auto w-12 mb-4">
+                <h3 class="text-lg font-semibold">Survei</h3>
+                <p class="text-gray-600">Deskripsi layanan survei.</p>
+            </div>
+            <!-- Service 7 -->
+            <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition">
+                <img src="<?= base_url('assets/images/papan.png') ?>" alt="Informasi Terkini" class="mx-auto w-12 mb-4">
+                <h3 class="text-lg font-semibold">Informasi Terkini</h3>
+                <p class="text-gray-600">Deskripsi layanan informasi terkini.</p>
             </div>
         </div>
-    </header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/consultation">Konsultasi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/chatbot">Chatbot</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/consultation/checkReservation">Cek Reservasi</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container my-4">
-        <div class="row">
-            <div class="col-12 text-center mb-4">
-                <img src="video-thumbnail.png" alt="Panduan User Video" class="img-fluid">
-                <p>Panduan User Video</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center bg-warning text-white py-2 mb-4">
-                <h2>Konsultasi Statistik</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="service bg-light p-3 text-center h-100">
-                    <img src="icon1.png" alt="Konsultasi Langsung">
-                    <h3>Konsultasi Langsung</h3>
-                    <p>Deskripsi layanan konsultasi langsung.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <a href="/chatbot" class="text-decoration-none text-dark">
-                    <div class="service bg-light p-3 text-center h-100">
-                        <img src="icon2.png" alt="Tanya-Jawab via Chat Bot">
-                        <h3>Tanya-Jawab via Chat Bot</h3>
-                        <p>Deskripsi layanan tanya-jawab via chat bot.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-4">
-                <a href="/consultation" class="text-decoration-none text-dark">
-                    <div class="service bg-light p-3 text-center h-100">
-                        <img src="icon3.png" alt="Konsultasi via Pertemuan Daring">
-                        <h3>Konsultasi via Pertemuan Daring</h3>
-                        <p>Deskripsi layanan konsultasi via pertemuan daring.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center bg-warning text-white py-2 mb-4">
-                <h2>Layanan Lainnya</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 mb-4">
-                <div class="service bg-light p-3 text-center h-100">
-                    <img src="icon4.png" alt="Pengajuan Permintaan Data">
-                    <h3>Pengajuan Permintaan Data</h3>
-                    <p>Deskripsi layanan pengajuan permintaan data.</p>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <div class="service bg-light p-3 text-center h-100">
-                    <img src="icon5.png" alt="Publikasi">
-                    <h3>Publikasi</h3>
-                    <p>Deskripsi layanan publikasi.</p>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <div class="service bg-light p-3 text-center h-100">
-                    <img src="icon6.png" alt="Survei">
-                    <h3>Survei</h3>
-                    <p>Deskripsi layanan survei.</p>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <div class="service bg-light p-3 text-center h-100">
-                    <img src="icon7.png" alt="Informasi Terkini">
-                    <h3>Informasi Terkini</h3>
-                    <p>Deskripsi layanan informasi terkini.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-warning text-white text-center py-3">
-        <p>&copy; 2024 BPS Provinsi DKI Jakarta</p>
-    </div>
+    </main>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
