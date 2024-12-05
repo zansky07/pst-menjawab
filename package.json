@@ -14,5 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.4.15"
+  },
+  "dependencies": {
+    "pst-menjawab": "file:"
   }
 }
