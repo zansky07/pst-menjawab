@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,9 @@
         }
     </style>
 </head>
-<body class="bg-orange-100">
+<!-- class="bg-orange-100" -->
+
+<body style="background-image: url('<?= base_url('assets/images/bg-consultation.png') ?>');">
     <div class="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg text-orange-500">
         <div class="text-center mb-12">
             <h2 class="text-2xl font-semibold mb-4">Bagaimana anda ingin berkonsultasi bersama kami?</h2>
@@ -22,4 +25,5 @@
         </div>
     </div>
 </body>
+
 </html>
