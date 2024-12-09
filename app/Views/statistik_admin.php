@@ -10,18 +10,16 @@
 			<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
 				<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 					<div class="flex items-center space-x-4">
-						<!-- Logo -->
 						<img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
-						<!-- Teks -->
 						<span class="text-gray-800 font-semibold text-sm md:text-base"> PST Menjawab BPS Provinsi DKI Jakarta </span>
 					</div>
 					<div class="text-gray-500 order-3 w-full md:w-auto md:order-2">
 						<ul class="flex font-semibold items-center justify-between space-x-4">
 							<li class="hover:text-indigo-400">
-								<a href="admin/dashboard">Dashboard</a>
+								<a href="/admin/dashboard">Dashboard</a>
 							</li>
 							<li class="hover:text-indigo-400">
-								<a href="admin/statistics">Statistik</a>
+								<a href="/admin/statistics">Statistik</a>
 							</li>
 							<li class="relative">
 								<button id="dropdownNavbarLink" class="text-gray-700 hover:bg-gray-50 md:hover:bg-transparent py-2 md:hover:text-blue-700 flex items-center"> Pengaturan <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -43,40 +41,43 @@
 					</div>
 					<div class="order-2 md:order-3">
 						<button class="px-4 py-2 bg-oranye-3 hover:bg-oranye-4 text-white rounded-xl flex items-center gap-2">
-							<span>Keluar</span>
+							<span><a href="/admin/logout">Keluar</a> </span>
 						</button>
 					</div>
 				</div>
 			</nav>
 			<div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
 				<button id="openModalButton" class="self-start px-6 py-2.5 mt-5 ml-14 text-base font-bold text-center text-white bg-oranye-3 rounded-3xl hover:bg-oranye-4 focus:outline-none focus:ring-2 focus:ring-orange-500 max-md:px-5 max-md:ml-2.5" aria-label="Filter"> Filter </button>
+				<form action="<?= base_url('/admin/statistics') ?>" method="get">
 				<div id="filterModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 hidden justify-center items-center z-50">
 					<div class="bg-white p-6 rounded-lg w-96 transform translate-x-[-50%] translate-y-[-50%] absolute top-1/2 left-1/2">
 						<h3 class="text-2xl font-bold mb-4">Filter Berdasarkan</h3>
 						<!-- Filter Status -->
 						<div class="mb-4">
 							<label for="status" class="block text-sm font-semibold mb-2">Status:</label>
-							<select id="status" class="w-full px-4 py-2 border border-gray-300 rounded-md">
-								<option value="selesai">Selesai</option>
-								<option value="disetujui">Disetujui</option>
-								<option value="ditolak">Ditolak</option>
-								<option value="sedang_diproses">Sedang Diproses</option>
-								<option value="semua">Semua</option>
+							<select id="status" name="status" class="w-full px-4 py-2 border border-gray-300 rounded-md">
+								<option value="selesai<?= $status === 'selesai' ? 'selected' : '' ?>">Selesai</option>
+								<option value="disetujui"<?= $status === 'disetujui' ? 'selected' : '' ?>>Disetujui</option>
+								<option value="ditolak"<?= $status === 'ditolak' ? 'selected' : '' ?>>Ditolak</option>
+								<option value="sedang_diproses"<?= $status === 'sedang diproses' ? 'selected' : '' ?>>Sedang Diproses</option>
+								<option value="semua"<?= $status === 'semua' ? 'selected' : '' ?>>Semua</option>
 							</select>
-							<label for="sort" class="block text-sm font-semibold mb-2">Tampilkan Berdasarkan:</label>
-							<select id="sort" class="w-full px-4 py-2 border border-gray-300 rounded-md">
-								<option value="1bulan">1 Bulan</option>
-								<option value="3bulan">3 Bulan</option>
-								<option value="6bulan">6 Bulan</option>
-								<option value="12bulan">12 Bulan</option>
+							<label for="periode" class="block text-sm font-semibold mb-2">Tampilkan Berdasarkan:</label>
+							<select id="periode" name="periode" class="w-full px-4 py-2 border border-gray-300 rounded-md">
+								<option value="semua" <?= $periode === 'semua' ? 'selected' : '' ?>>Semua</option>
+								<option value="1bulan" <?= $periode === '1bulan' ? 'selected' : '' ?>>1 Bulan</option>
+								<option value="3bulan" <?= $periode === '3bulan' ? 'selected' : '' ?>>3 Bulan</option>
+								<option value="6bulan" <?= $periode === '6bulan' ? 'selected' : '' ?>>6 Bulan</option>
+								<option value="12bulan" <?= $periode === '12bulan' ? 'selected' : '' ?>>12 Bulan</option>
 							</select>
 						</div>
 						<div class="flex justify-between mt-4">
 							<button id="closeModalButton" class="px-6 py-2 text-white bg-merah-1 rounded-md hover:bg-merah-2">Tutup</button>
-							<button id="applyFilterButton" class="px-6 py-2 text-white bg-hijau-1 rounded-md hover:bg-hijau-2">Terapkan</button>
+							<button type="submit" id="applyFilterButton" class="px-6 py-2 text-white bg-hijau-1 rounded-md hover:bg-hijau-2">Terapkan</button>
 						</div>
 					</div>
 				</div>
+				</form>
 				<div class="self-end mt-5 w-full max-w-[1315px] max-md:max-w-full">
 					<div class="flex gap-5 max-md:flex-col">
 						<section class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full" aria-labelledby="statistics-title">
@@ -131,12 +132,36 @@
 						</section>
 					</div>
 				</div>
-				<button class="self-start px-5 py-2.5 mt-8 ml-11 text-base font-bold text-center text-white bg-green-500 rounded-2xl hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-700 max-md:ml-2.5" aria-label="Export data"> Export </button>
+
+				<!-- Tombol Ekspor -->
+				<button class="self-start px-5 py-2.5 mt-8 ml-11 text-base font-bold text-center text-white bg-green-500 rounded-2xl hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-700" data-toggle="modal" data-target="#exportModal">
+					Ekspor
+				</button>
+
+				<!-- Modal -->
+				<div id="exportModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+					<div class="bg-white p-6 rounded-lg shadow-lg w-96">
+						<h3 class="text-xl font-semibold">Pilih Format Ekspor</h3>
+						<div class="mt-4">
+							<a href="/admin/statistics/export?status=<?= $status ?>&periode=<?= $periode ?>&format=csv" class="block py-2 px-4 bg-blue-500 text-white rounded-md mb-2 hover:bg-blue-600">
+								CSV
+							</a>
+							<a href="/admin/statistics/export?status=<?= $status ?>&periode=<?= $periode ?>&format=xlsx" class="block py-2 px-4 bg-blue-500 text-white rounded-md mb-2 hover:bg-blue-600">
+								Excel (XLSX)
+							</a>
+							<a href="/admin/statistics/export?status=<?= $status ?>&periode=<?= $periode ?>&format=word" class="block py-2 px-4 bg-blue-500 text-white rounded-md mb-2 hover:bg-blue-600">
+								Word (DOCX)
+							</a>
+							<button onclick="closeExportModal()" class="block py-2 px-4 bg-gray-500 text-white rounded-md hover:bg-gray-600 mt-4 w-full">Tutup</button>
+						</div>
+					</div>
+				</div>
+
 				<div class="flex flex-col self-end mt-4 w-full text-sm leading-none rounded border-2 border-solid border-zinc-100 max-w-[1310px] min-h-[368px] text-zinc-900 max-md:mr-1.5 max-md:max-w-full" role="table" aria-label="Daftar Permintaan"> <?php if (session()->getFlashdata('message')): ?> <p style="color: green;"> <?= session()->getFlashdata('message') ?> </p> <?php endif; ?>
                     <div class="flex flex-col mt-10 overflow-hidden rounded-lg shadow-md">
                         <table class="min-w-full border border-gray-200 bg-white">
                             <thead>
-                            <tr class="bg-oranye-3 text-white text-sm font-bold uppercase">
+                            <tr class="bg-oranye-2 text-white text-sm font-bold uppercase">
                                 <th class="px-6 py-3 text-left">Token</th>
                                 <th class="px-6 py-3 text-left">Topik</th>
                                 <th class="px-6 py-3 text-center">Status</th>
@@ -178,47 +203,58 @@
                             </tbody>
                         </table>
                         </div>
-					<div class="overflow-x-auto max-w-full">
-						<div class="flex flex-col text-center gap-5 py-5 text-sm leading-6 max-md:mr-1.5" role="rowgroup">
-							<!-- Dynamic content rows -->
-						</div>
-					</div>
+						<div class="p-4 bg-white border-t flex justify-center items-center">
+							<div class="flex justify-center items-center space-x-2">
+							<?php if (isset($pager)): ?>
+								<div class="pagination">
+									<?= $pager->links() ?>
+								</div>
+							<?php endif; ?>
+							</div>
+            			</div>
 				</div>
 			</div>
-            <div class="relative">
-                <!-- Gambar footer -->
-                <img src="/assets/images/footer.png" alt="footer" class="w-full">
 
-                <!-- Teks yang menimpa gambar di bagian bawah -->
-                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-white text-center p-5 w-full">
-                    <div class="flex justify-between px-10">
-                        <!-- Kolom 1: BPS Provinsi DKI Jakarta & Alamat -->
-                        <div class="w-1/3 text-left">
-                            <h3 class="text-lg font-semibold">BPS Provinsi DKI Jakarta</h3>
-                            <p class="mt-2">Alamat: <span class="block">Jl. Contoh Alamat, Jakarta</span></p>
-                        </div>
-                        
-                        <!-- Kolom 2: Website Lainnya -->
-                        <div class="w-1/3 text-left">
-                            <h4 class="font-semibold">Website Lainnya:</h4>
-                            <ul class="list-none">
-                                <li>- <a href="#" class="underline">Website 1</a></li>
-                                <li>- <a href="#" class="underline">Website 2</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Kolom 3: Sosial Media -->
-                        <div class="w-1/3 text-left">
-                            <h4 class="font-semibold">Sosial Media:</h4>
-                            <ul class="list-none">
-                                <li>- <a href="#" class="underline">Facebook</a></li>
-                                <li>- <a href="#" class="underline">Twitter</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+			<div class="relative">
+			<img src="/assets/images/footer.png" alt="footer" class="w-full">
+			<div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
+				<div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">>
+					<div class="w-1/3 text-left">
+						<div class="flex items-center space-x-4">
+							<img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
+							<h3 class="text-xl font-semibold">Badan Pusat Statistik Provinsi DKI Jakarta</h3>
+						</div>
+						<p class="mt-4 text-base">
+							Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat<br>
+							<span>Phone (021) 31928493</span><br>
+							<span>Fax. (021) 3152004</span><br>
+							<span>E-mail: bps3100@bps.go.id</span>
+						</p>
+					</div>
+					<div class="w-1/3 text-left">
+						<h4 class="text-xl font-semibold">Website Lainnya:</h4>
+						<ul class="list-none text-base">
+							<li><a href="https://www.bps.go.id" class="underline">Website BPS Indonesia</a></li>
+							<li><a href="https://jakarta.bps.go.id" class="underline">Website BPS Provinsi DKI Jakarta</a></li>
+							<li><a href="https://pst.bps.go.id" class="underline">Website Pelayanan Statistik Terpadu</a></li>
+							<li><a href="https://silastik.bps.go.id" class="underline">Website SILASTIK</a></li>
+						</ul>
+					</div>
+					<div class="w-1/3 text-left">
+						<h4 class="text-xl font-semibold">Sosial Media:</h4>
+						<ul class="list-none text-base">
+							<li><a href="https://www.facebook.com/bpsdkijakarta/" class="underline">Facebook</a></li>
+							<li><a href="https://x.com/bpsdkijakarta/" class="underline">Twitter</a></li>
+							<li><a href="https://www.instagram.com/bpsdkijakarta/" class="underline">Instagram</a></li>
+							<li><a href="https://www.youtube.com/c/BPSDKI" class="underline">YouTube</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="mt-6 text-sm">
+					&copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved.
+				</div>
+			</div>
+		</div>
         <script>
 			document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
 				const dropdown = document.getElementById('dropdownNavbar');
@@ -242,6 +278,18 @@
 				// You can add your filter logic to update the content dynamically here
 				document.getElementById('filterModal').classList.add('hidden');
 			});
+			 // Function to show the modal
+			function openModal() {
+				document.getElementById("exportModal").classList.remove("hidden");
+			}
+
+			// Function to hide the modal
+			function closeModal() {
+				document.getElementById("exportModal").classList.add("hidden");
+			}
+
+			// Add event listener to open modal
+			document.querySelector('[data-toggle="modal"]').addEventListener('click', openModal);
 		</script>
 	</body>
 </html>
