@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INFO - 2024-12-09 05:11:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-09 05:11:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-09 05:11:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
@@ -23,10 +24,110 @@ in APPPATH\Views\konsultasi_detail_admin.php on line 84.
  5 APPPATH\Controllers\KonsultasiController.php(159): view('konsultasi_detail_admin', [...])
  6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->detail('5')
  7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+=======
+INFO - 2024-12-09 02:19:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:19:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:19:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:19:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:19:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:21:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:21:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:38:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:41:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:50:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 02:54:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 03:17:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 03:18:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 03:21:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 03:28:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 03:34:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 03:38:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 03:41:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 03:42:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 03:48:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:12:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:16:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:16:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:18:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:26:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:26:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:27:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:34:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:47:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:52:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:53:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:54:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:56:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:58:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 04:59:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 05:00:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 05:00:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:56:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:56:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:56:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:56:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:56:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:57:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:57:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:57:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:57:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:58:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:58:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:58:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:59:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:59:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:59:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:59:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 07:59:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:01:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:01:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:01:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:02:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:04:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:04:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:04:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:06:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:32:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:33:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:34:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:38:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:40:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:45:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:48:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:53:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:53:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:53:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:53:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:59:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:59:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 08:59:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 09:06:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:06:44 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+>>>>>>> 8ce1aa059af6b6ab7e890f191ef18fb8ac98d18b
  8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+<<<<<<< HEAD
 12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Project rpl\\public\\index.php')
 INFO - 2024-12-09 06:59:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-09 07:03:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
@@ -139,3 +240,472 @@ INFO - 2024-12-09 12:33:21 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-12-09 12:34:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-09 12:35:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-09 12:35:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+=======
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:13:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:13:31 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:13:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:13:31 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:13:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:13:32 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:13:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:13:33 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:13:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:13:33 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:17:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:17:01 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:17:01 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:17:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:17:02 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:17:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:17:02 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:17:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:17:03 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:17:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:17:03 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:17:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:17:03 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:17:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 09:19:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 09:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:22:17 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:29:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:29:41 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:29:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:29:42 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:29:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:29:42 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:29:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:29:42 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:29:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:29:43 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:32:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:32:31 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:32:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:32:31 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:32:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:32:32 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 183.
+ 1 APPPATH\Views\statistik_admin.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 183)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:41:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:41:59 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 185.
+ 1 APPPATH\Views\statistik_admin.php(185): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 185)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:42:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:42:00 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 185.
+ 1 APPPATH\Views\statistik_admin.php(185): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 185)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:42:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:42:01 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 185.
+ 1 APPPATH\Views\statistik_admin.php(185): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 185)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(55): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 09:45:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 09:45:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 09:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 09:45:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 09:59:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 09:59:39 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 137.
+ 1 APPPATH\Views\statistik_admin.php(137): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 137)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(92): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 10:08:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 10:08:02 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 138.
+ 1 APPPATH\Views\statistik_admin.php(138): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 138)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(91): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 10:08:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-09 10:08:06 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+[Method: GET, Route: admin/statistics]
+in APPPATH\Views\statistik_admin.php on line 138.
+ 1 APPPATH\Views\statistik_admin.php(138): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php', 138)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\statistik_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('statistik_admin', [], true)
+ 5 APPPATH\Controllers\AdminContentController.php(91): view('statistik_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->statistik()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-09 10:10:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:10:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:10:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:10:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:16:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:17:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:17:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:17:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:28:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:28:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:28:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:29:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:31:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:32:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:32:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:32:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:32:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:32:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:32:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:42:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:42:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:52:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:52:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 10:59:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 11:05:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-09 11:05:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+>>>>>>> 8ce1aa059af6b6ab7e890f191ef18fb8ac98d18b

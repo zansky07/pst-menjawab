@@ -148,91 +148,112 @@
     }
 </style>
 
-
-
-<body class="bg-pink-50">
-    <!-- Header/Navbar -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <img src="/images/logo.png" alt="Logo" class="h-8 w-auto">
-                    <span class="ml-2 text-gray-900 font-medium">PST Menjawab BPS Provinsi DKI Jakarta</span>
+<body>
+    <div class="flex overflow-hidden flex-col pt-8 bg-oranye-1">
+        <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
+            <!-- Header/Navbar -->
+            <nav class="flex flex-wrap gap-5 justify-between py-2 pr-20 pl-9 max-w-full text-xl bg-white bg-opacity-80 rounded-[50px] w-[1358px] max-md:px-5 max-md:mr-0.5 max-md:flex-col max-md:items-center"
+                role="navigation" aria-label="Main Navigation">
+                <div class="flex gap-5 text-black max-md:flex-col max-md:items-center">
+                    <img src="/assets/logo-pst.png" class="object-contain shrink-0 aspect-[0.8] w-[43px]"
+                        alt="BPS Logo" />
+                    <div class="flex-auto my-auto max-md:text-center">PST Menjawab BPS Provinsi DKI Jakarta</div>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="/dashboard" class="text-gray-900">Dashboard</a>
-                    <a href="/statistik" class="text-gray-900">Statistik</a>
-                    <a href="/pengaturan" class="text-gray-900">Pengaturan</a>
+                <div
+                    class="flex gap-10 my-auto whitespace-nowrap max-md:flex-col max-md:items-center max-md:gap-4 max-md:mt-4">
+                    <a href="/admin/dashboard"
+                        class="text-black hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md"
+                        tabindex="0">Dashboard</a>
+                    <a href="/admin/statistics"
+                        class="text-black hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md"
+                        tabindex="0">Statistik</a>
+                    <a href="/admin/settings"
+                        class="text-black hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md"
+                        tabindex="0">Pengaturan</a>
                 </div>
-            </div>
-        </div>
-    </nav>
+            </nav>
 
 
-    <!-- Main Content -->
-    <main class="py-10">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-pink-50">
-            <div class="min-h-screen bg-pink-50">
-                <div class="max-w-4xl mx-auto py-12 px-4">
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h2 class="text-2xl font-bold text-center mb-8">Jadwalkan Konsultasi</h2>
-                        <form action="/admin/consultation/schedule/store" method="post" class="space-y-6">
-                            <!-- Hidden input to pass the consultation ID -->
-                            <input type="hidden" name="konsultasi_id" value="<?= $konsultasi['id'] ?>">
+            <!-- Main Content -->
+            <main class="py-10">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="min-h-screen bg-oranye-1">
+                        <div class="max-w-4xl mx-auto py-12 px-4">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h2 class="text-2xl font-bold text-center mb-8">Jadwalkan Konsultasi</h2>
+                                <form action="/admin/consultation/schedule/store" method="post" class="space-y-6">
+                                    <!-- Hidden input remains the same -->
+                                    <input type="hidden" name="konsultasi_id" value="<?= $konsultasi['id'] ?>">
 
-                            <!-- Date and Time Picker -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700">Tanggal Konsultasi</label>
-                                    <input type="text" id="datePicker" name="jadwal_konsultasi"
-                                        class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-pink-50"
-                                        readonly>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700">Waktu Konsultasi</label>
-                                    <input type="text" id="timePicker" name="waktu_konsultasi"
-                                        class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-pink-50"
-                                        readonly>
-                                </div>
+                                    <!-- Date and Time Picker -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Tanggal
+                                                Konsultasi</label>
+                                            <input type="text" id="datePicker" name="jadwal_konsultasi"
+                                                class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
+                                                readonly>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Waktu
+                                                Konsultasi</label>
+                                            <div class="flex items-center">
+                                                <input type="text" id="timePicker" name="waktu_konsultasi"
+                                                    class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
+                                                    readonly>
+                                                <span class="ml-2 mt-1 text-sm font-medium text-gray-700">WIB</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Link Zoom -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">Link Zoom</label>
+                                        <input type="text" name="link_zoom"
+                                            class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
+                                            required>
+                                    </div>
+
+                                    <!-- Petugas Dropdown -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">Petugas</label>
+                                        <div class="relative">
+                                            <select name="konsultan_id"
+                                                class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 appearance-none bg-oranye-1 pr-10 cursor-pointer"
+                                                required>
+                                                <?php foreach ($konsultan as $k): ?>
+                                                    <option value="<?= $k['id'] ?>"><?= $k['nama'] ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <div
+                                                class="absolute inset-y-0 right-0 flex items-center px-2 mt-1 pointer-events-none">
+                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-end">
+                                        <button type="submit"
+                                            class="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition-colors duration-200">
+                                            Selanjutnya
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-
-                            <!-- Link Zoom -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Link Zoom</label>
-                                <input type="text" name="link_zoom"
-                                    class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-pink-50"
-                                    required>
-                            </div>
-
-                            <!-- Petugas Dropdown -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Petugas</label>
-                                <select name="konsultan_id"
-                                    class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 appearance-none bg-pink-50">
-                                    required>
-                                    <option value="">Pilih Petugas</option>
-                                    <?php foreach ($konsultan as $k): ?>
-                                        <option value="<?= $k['id'] ?>"><?= $k['nama'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-
-                            <div class="flex justify-end">
-                                <button type="submit"
-                                    class="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition-colors duration-200">
-                                    Selanjutnya
-                                </button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
+
+    </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-pink-50">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 bg-pink-50">
+    <footer>
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 bg-oranye-1">
             <p class="text-center text-gray-500 text-sm">
                 © 2024 BPS Provinsi DKI Jakarta. All rights reserved.
             </p>
