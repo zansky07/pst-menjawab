@@ -17,9 +17,8 @@ class JadwalKonsultasiController extends BaseController
 
     public function index($id)
     {
-        helper('form'); // Load the form helper
+        helper('form');
 
-        // Cek autentikasi admin
         if (!session()->get('logged_in')) {
             return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
         }
@@ -41,18 +40,49 @@ class JadwalKonsultasiController extends BaseController
             return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
         }
 
-        $data = [
-            'jadwal_konsultasi' => $this->request->getPost('jadwal_konsultasi') . ' ' . $this->request->getPost('waktu_konsultasi'),
-            'link_zoom' => $this->request->getPost('link_zoom'),
-            'konsultan_id' => $this->request->getPost('konsultan_id'),
-            'status_konsultasi' => 'Scheduled'
+        // Validasi input
+        $rules = [
+            'konsultasi_id' => 'required|numeric',
+            'jadwal_konsultasi' => 'required',
+            'waktu_konsultasi' => 'required',
+            'link_zoom' => 'required|valid_url',
+            'konsultan_id' => 'required|numeric'
         ];
 
-        $konsultasi_id = $this->request->getPost('konsultasi_id');
-        // $this->konsultasiModel->update($konsultasi_id, $data);
+        if (!$this->validate($rules)) {
+            return redirect()->back()
+                ->with('errors', $this->validator->getErrors())
+                ->withInput();
+        }
 
-        // Redirect ke halaman notifikasi
-        return redirect()->to('/admin/consultation/notification/' . $konsultasi_id);
+        try {
+            // Gabungkan tanggal dan waktu
+            $jadwal_konsultasi = $this->request->getPost('jadwal_konsultasi') . ' ' .
+                $this->request->getPost('waktu_konsultasi');
+
+            // Data yang akan diupdate
+            $data = [
+                'jadwal_konsultasi' => date('Y-m-d H:i:s', strtotime($jadwal_konsultasi)),
+                'link_zoom' => $this->request->getPost('link_zoom'),
+                'konsultan_id' => $this->request->getPost('konsultan_id'),
+                'status_konsultasi' => 'Disetujui' // Update status konsultasi
+            ];
+
+            $konsultasi_id = $this->request->getPost('konsultasi_id');
+
+            // Update data konsultasi
+            $this->konsultasiModel->update($konsultasi_id, $data);
+
+            // Redirect ke halaman notifikasi dengan pesan sukses
+            return redirect()->to('/admin/consultation/notification/' . $konsultasi_id)
+                ->with('success', 'Jadwal konsultasi berhasil disimpan');
+
+        } catch (\Exception $e) {
+            log_message('error', '[JadwalKonsultasiController::store] Error: ' . $e->getMessage());
+            return redirect()->back()
+                ->with('error', 'Terjadi kesalahan saat menyimpan jadwal')
+                ->withInput();
+        }
     }
 
     public function notification($id)

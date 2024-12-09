@@ -27,52 +27,37 @@ class KonsultasiController extends BaseController
         $kategori = $this->request->getPost('kategori');
         $lingkup = $this->request->getPost('lingkup');
         $deskripsi = $this->request->getPost('deskripsi');
-    
+
         // Validasi data menggunakan regex
         $namaPattern = "/^[a-zA-Z\s]{1,50}$/";
-        $emailPattern = "/^[\w\.\-]+@([\w\-]+\.)+[\w\-]{2,4}$/";
+        $emailPattern = "/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/";
         $whatsappPattern = "/^08[1-9][0-9]{6,10}$/";
         $topikPattern = "/^[\w\s]{3,100}$/";
         $kategoriPattern = "/^[\w\s]{3,50}$/";
         $lingkupPattern = "/^[\w\s]{3,50}$/";
         $deskripsiPattern = "/^[\w\s\.\,]{3,500}$/";
-    
-        $errors = [];
-    
-        if (!preg_match($namaPattern, $nama)) {
-            $errors['nama'] = 'Nama tidak valid. Nama harus berisi hanya huruf dan spasi, maksimum 50 karakter.';
+
+        if (
+            !preg_match($namaPattern, $nama) ||
+            !preg_match($emailPattern, $email) ||
+            !preg_match($whatsappPattern, $whatsapp) ||
+            !preg_match($topikPattern, $topik) ||
+            !preg_match($kategoriPattern, $kategori) ||
+            !preg_match($lingkupPattern, $lingkup) ||
+            !preg_match($deskripsiPattern, $deskripsi)
+        ) {
+            session()->setFlashdata('error', 'Data yang Anda masukkan tidak valid. Silakan coba lagi.');
+            return redirect()->to('/consultation/reserve')->withInput();
         }
-        if (!preg_match($emailPattern, $email)) {
-            $errors['email'] = 'Email tidak valid. Silakan masukkan email yang valid.';
-        }
-        if (!preg_match($whatsappPattern, $whatsapp)) {
-            $errors['whatsapp'] = 'Nomor WhatsApp tidak valid. Nomor harus dimulai dengan 08 dan berisi 8 hingga 12 angka.';
-        }
-        if (!preg_match($topikPattern, $topik)) {
-            $errors['topik'] = 'Topik tidak valid. Topik harus berisi hanya huruf, angka, dan spasi, minimum 3 karakter, maksimum 100 karakter.';
-        }
-        if (!preg_match($kategoriPattern, $kategori)) {
-            $errors['kategori'] = 'Kategori tidak valid. Kategori harus berisi hanya huruf, angka, dan spasi, minimum 3 karakter, maksimum 50 karakter.';
-        }
-        if (!preg_match($lingkupPattern, $lingkup)) {
-            $errors['lingkup'] = 'Lingkup tidak valid. Lingkup harus berisi hanya huruf, angka, dan spasi, minimum 3 karakter, maksimum 50 karakter.';
-        }
-        if (!preg_match($deskripsiPattern, $deskripsi)) {
-            $errors['deskripsi'] = 'Deskripsi tidak valid. Deskripsi harus berisi hanya huruf, angka, spasi, titik, dan koma, minimum 3 karakter, maksimum 500 karakter.';
-        }
-    
-        if (!empty($errors)) {
-            return redirect()->to('/consultation/reserve')->withInput()->with('validationErrors', $errors);
-        }
-    
+
         // Buat token unik untuk reservasi
         $token = strtoupper(uniqid('PST'));
-        
+
         // Data yang akan disimpan
         $data = [
             'nama_konsumen' => $nama,
             'email_konsumen' => $email,
-            'whatsapp_konsumen' => $whatsapp,
+            'whatsapp' => $whatsapp,
             'topik' => $topik,
             'kategori' => $kategori,
             'lingkup' => $lingkup,
@@ -81,10 +66,10 @@ class KonsultasiController extends BaseController
             'status_konsultasi' => 'Pending', // Status default
             'tanggal_reservasi' => date('Y-m-d H:i:s'), // Tanggal reservasi saat submit
         ];
-    
+
         // Simpan data ke database menggunakan KonsultasiModel
         $this->konsultasiModel->insert($data);
-    
+
         // Redirect ke halaman utama setelah submit
         session()->setFlashdata('success', 'Reservasi berhasil dibuat dengan token: ' . $token);
         return redirect()->to('/');
@@ -94,28 +79,28 @@ class KonsultasiController extends BaseController
     {
         // Load model
         $konsultasiModel = new \App\Models\KonsultasiModel();
-    
+
         // Ambil token dari input form
         $token = $this->request->getPost('token');
-    
+
         // Cari data reservasi berdasarkan token
         $reservation = $konsultasiModel->where('token_konsultasi', $token)->first();
-    
+
         // Buat array data kosong
         $data = [];
-    
+
         if ($reservation) {
             // Setel locale ke bahasa Indonesia
             setlocale(LC_TIME, 'id_ID.UTF-8');
-    
+
             // Ambil tanggal reservasi dari database
             $tanggal_reservasi = $reservation['tanggal_reservasi'];
             $jadwal_konsultasi = $reservation['jadwal_konsultasi'];
-    
+
             // Format tanggal menjadi bahasa Indonesia
             $tanggal_reservasi_indo = strftime('%d %B %Y', strtotime($tanggal_reservasi));
             $jadwal_konsultasi_indo = strftime('%d %B %Y', strtotime($jadwal_konsultasi));
-    
+
             // Jika token ditemukan, kirimkan data ke view
             $data['reservation'] = [
                 'tanggal_reservasi' => $tanggal_reservasi_indo,
@@ -138,10 +123,10 @@ class KonsultasiController extends BaseController
                 ->with('error', "Token '$token' tidak valid atau tidak ditemukan.")
                 ->withInput();
         }
-    
+
         return view('reservation_status_user', $data);
     }
-    
+
 
     public function detail($id)
     {
@@ -153,7 +138,7 @@ class KonsultasiController extends BaseController
         $data['konsultasi'] = $konsultasiModel->find($id);
 
         if (!$data['konsultasi']) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Data tidak ditemukan.');
+            return redirect()->to('/dashboard')->with('error', 'Data tidak ditemukan.');
         }
 
         return view('konsultasi_detail_admin', $data);
@@ -166,6 +151,11 @@ class KonsultasiController extends BaseController
         $status_konsultasi = $this->request->getPost('status_konsultasi');
         $konsultasiModel->update($id, ['status_konsultasi' => $status_konsultasi]);
 
+        // If status is "Disetujui", redirect to scheduling page
+        if ($status_konsultasi === 'Disetujui') {
+            return redirect()->to("/admin/consultation/schedule/{$id}")->with('message', 'Status diperbarui. Silakan jadwalkan konsultasi.');
+        }
+        // Otherwise, redirect back to dashboard
         return redirect()->to('/admin/dashboard')->with('message', 'Status berhasil diperbarui.');
     }
     public function delete($id)
@@ -178,6 +168,6 @@ class KonsultasiController extends BaseController
         $konsultasiModel = new konsultasiModel();
         $konsultasiModel->delete($id);
 
-        return redirect()->to('/admin/dashboard')->with('message', 'Data berhasil dihapus');
+        return redirect()->to('/dashboard')->with('message', 'Data berhasil dihapus');
     }
 }
