@@ -42,19 +42,12 @@
 						</ul>
 					</div>
 					<div class="order-2 md:order-3">
-						<button class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl flex items-center gap-2">
+						<button class="px-4 py-2 bg-oranye-3 hover:bg-oranye-4 text-white rounded-xl flex items-center gap-2">
 							<span>Keluar</span>
 						</button>
 					</div>
 				</div>
 			</nav>
-			<script>
-				// Dropdown toggle
-				document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
-					const dropdown = document.getElementById('dropdownNavbar');
-					dropdown.classList.toggle('hidden');
-				});
-			</script>
 			<div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
 				<button id="openModalButton" class="self-start px-6 py-2.5 mt-5 ml-14 text-base font-bold text-center text-white bg-oranye-3 rounded-3xl hover:bg-oranye-4 focus:outline-none focus:ring-2 focus:ring-orange-500 max-md:px-5 max-md:ml-2.5" aria-label="Filter"> Filter </button>
 				<div id="filterModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 hidden justify-center items-center z-50">
@@ -65,7 +58,7 @@
 							<label for="status" class="block text-sm font-semibold mb-2">Status:</label>
 							<select id="status" class="w-full px-4 py-2 border border-gray-300 rounded-md">
 								<option value="selesai">Selesai</option>
-								<option value="diterima">Diterima</option>
+								<option value="disetujui">Disetujui</option>
 								<option value="ditolak">Ditolak</option>
 								<option value="sedang_diproses">Sedang Diproses</option>
 								<option value="semua">Semua</option>
@@ -139,31 +132,52 @@
 					</div>
 				</div>
 				<button class="self-start px-5 py-2.5 mt-8 ml-11 text-base font-bold text-center text-white bg-green-500 rounded-2xl hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-700 max-md:ml-2.5" aria-label="Export data"> Export </button>
-				<div class="flex flex-col self-end mt-4 w-full text-sm leading-none rounded border-2 border-solid border-zinc-100 max-w-[1310px] min-h-[368px] text-zinc-900 max-md:mr-1.5 max-md:max-w-full" role="table" aria-label="Daftar Permintaan"> <?php if (session()->getFlashdata('message')): ?> <p style="color: green;"> <?= session()->getFlashdata('message') ?> </p> <?php endif; ?> <table>
-						<thead>
-							<tr>
-								<th>Token</th>
-								<th>Topik</th>
-								<th>Status</th>
-								<th>Aksi</th>
-							</tr>
-						</thead>
-						<tbody> <?php if (!empty($requests) && is_array($requests)): ?> <?php foreach ($requests as $request): ?> <tr>
-								<td> <?= esc($request['token_konsultasi']) ?> </td>
-								<td> <?= esc($request['topik']) ?> </td>
-								<td> <?= esc($request['status_konsultasi']) ?> </td>
-								<td>
-									<a href="/admin/consultation/detail/
-													
-														<?= $request['id'] ?>" class="btn btn-detail">Detail </a>
-									<a href="/admin/consultation/delete/
-													
-														<?= $request['id'] ?>" class="btn btn-delete">Hapus </a>
-								</td>
-							</tr> <?php endforeach; ?> <?php else: ?> <tr>
-								<td colspan="4">Tidak ada data.</td>
-							</tr> <?php endif; ?> </tbody>
-					</table>
+				<div class="flex flex-col self-end mt-4 w-full text-sm leading-none rounded border-2 border-solid border-zinc-100 max-w-[1310px] min-h-[368px] text-zinc-900 max-md:mr-1.5 max-md:max-w-full" role="table" aria-label="Daftar Permintaan"> <?php if (session()->getFlashdata('message')): ?> <p style="color: green;"> <?= session()->getFlashdata('message') ?> </p> <?php endif; ?>
+                    <div class="flex flex-col mt-10 overflow-hidden rounded-lg shadow-md">
+                        <table class="min-w-full border border-gray-200 bg-white">
+                            <thead>
+                            <tr class="bg-oranye-3 text-white text-sm font-bold uppercase">
+                                <th class="px-6 py-3 text-left">Token</th>
+                                <th class="px-6 py-3 text-left">Topik</th>
+                                <th class="px-6 py-3 text-center">Status</th>
+                                <th class="px-6 py-3 text-center">Aksi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if (!empty($requests) && is_array($requests)): ?>
+                                <?php foreach ($requests as $request): ?>
+                                <tr class="odd:bg-white even:bg-biru-3 hover:bg-oranye-1">
+                                    <td class="px-6 py-4 text-gray-800"><?= esc($request['token_konsultasi']) ?></td>
+                                    <td class="px-6 py-4 text-gray-800"><?= esc($request['topik']) ?></td>
+                                    <td class="px-6 py-4 text-center">
+                                    <span class="inline-block px-3 py-1 text-sm font-semibold rounded-full 
+                                        <?php 
+                                        if ($request['status_konsultasi'] === 'Selesai') echo 'bg-hijau-1 text-white'; 
+                                        elseif ($request['status_konsultasi'] === 'Ditolak') echo 'bg-merah-1 text-white'; 
+                                        elseif ($request['status_konsultasi'] === 'Sedang Diproses') echo 'bg-oranye-2 text-white'; 
+                                        else echo 'bg-gray-300 text-gray-700'; 
+                                        ?>">
+                                        <?= esc($request['status_konsultasi']) ?>
+                                    </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-center space-x-3">
+                                    <a href="/admin/consultation/detail/<?= $request['id'] ?>" class="px-3 py-2 text-white bg-hijau-1 rounded-md hover:bg-hijau-2">
+                                        Detail
+                                    </a>
+                                    <a href="/admin/consultation/delete/<?= $request['id'] ?>" class="px-3 py-2 text-white bg-merah-1 rounded-md hover:bg-merah-2">
+                                        Hapus
+                                    </a>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                <td colspan="4" class="px-6 py-4 text-center text-gray-500">Tidak ada data.</td>
+                                </tr>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                        </div>
 					<div class="overflow-x-auto max-w-full">
 						<div class="flex flex-col text-center gap-5 py-5 text-sm leading-6 max-md:mr-1.5" role="rowgroup">
 							<!-- Dynamic content rows -->
@@ -171,12 +185,47 @@
 					</div>
 				</div>
 			</div>
-		<script>
-			const hamburgerButton = document.getElementById('hamburgerButton');
-			const navbarMenu = document.getElementById('navbarMenu');
-			hamburgerButton.addEventListener('click', () => {
-				navbarMenu.classList.toggle('hidden');
+            <div class="relative">
+                <!-- Gambar footer -->
+                <img src="/assets/images/footer.png" alt="footer" class="w-full">
+
+                <!-- Teks yang menimpa gambar di bagian bawah -->
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-white text-center p-5 w-full">
+                    <div class="flex justify-between px-10">
+                        <!-- Kolom 1: BPS Provinsi DKI Jakarta & Alamat -->
+                        <div class="w-1/3 text-left">
+                            <h3 class="text-lg font-semibold">BPS Provinsi DKI Jakarta</h3>
+                            <p class="mt-2">Alamat: <span class="block">Jl. Contoh Alamat, Jakarta</span></p>
+                        </div>
+                        
+                        <!-- Kolom 2: Website Lainnya -->
+                        <div class="w-1/3 text-left">
+                            <h4 class="font-semibold">Website Lainnya:</h4>
+                            <ul class="list-none">
+                                <li>- <a href="#" class="underline">Website 1</a></li>
+                                <li>- <a href="#" class="underline">Website 2</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Kolom 3: Sosial Media -->
+                        <div class="w-1/3 text-left">
+                            <h4 class="font-semibold">Sosial Media:</h4>
+                            <ul class="list-none">
+                                <li>- <a href="#" class="underline">Facebook</a></li>
+                                <li>- <a href="#" class="underline">Twitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <script>
+			document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
+				const dropdown = document.getElementById('dropdownNavbar');
+				dropdown.classList.toggle('hidden');
 			});
+		</script>
+        <script>
 			// Open the modal
 			document.getElementById('openModalButton').addEventListener('click', () => {
 				document.getElementById('filterModal').classList.remove('hidden');
