@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "tailwindcss": "^3.4.15"
+    "tailwindcss": "^3.4.16"
   },
   "dependencies": {
     "pst-menjawab": "file:"
