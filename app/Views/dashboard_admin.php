@@ -74,7 +74,7 @@
                         <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                         <select id="status" name="status" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:outline-none">
                             <option value="">All</option>
-                            <option value="Pending">Pending</option>
+                            <option value="Sedang diproses">Sedang diproses</option>
                             <option value="Disetujui">Disetujui</option>
                             <option value="Ditolak">Ditolak</option>
                             <option value="Selesai">Selesai</option>

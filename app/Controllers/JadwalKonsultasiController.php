@@ -27,7 +27,7 @@ class JadwalKonsultasiController extends BaseController
         $data['konsultan'] = $this->konsultanModel->findAll();
 
         if (!$data['konsultasi']) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Data konsultasi tidak ditemukan.');
+            return redirect()->to('/admin/consultation/detail/$id')->with('error', 'Data konsultasi tidak ditemukan.');
         }
 
         return view('jadwal_konsultasi', $data);
@@ -100,7 +100,7 @@ class JadwalKonsultasiController extends BaseController
 
         // Cek apakah data konsultasi ditemukan
         if (!$data['konsultasi']) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Data konsultasi tidak ditemukan.');
+            return redirect()->to('/admin/consultation/detail/$id')->with('error', 'Data konsultasi tidak ditemukan.');
         }
 
         // Setelah memastikan data konsultasi ada, baru ambil data konsultan
@@ -108,7 +108,7 @@ class JadwalKonsultasiController extends BaseController
 
         // Cek apakah data konsultan ditemukan
         if (!$data['konsultan']) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Data konsultan tidak ditemukan.');
+            return redirect()->to('/admin/consultation/detail/$id')->with('error', 'Data konsultan tidak ditemukan.');
         }
 
         return view('notifikasi_konsultasi', $data);
@@ -126,7 +126,7 @@ class JadwalKonsultasiController extends BaseController
         $konsultan = $this->konsultanModel->find($konsultasi['konsultan_id']);
 
         if (!$konsultasi || !$konsultan) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Data konsultasi atau konsultan tidak ditemukan.');
+            return redirect()->to("/admin/consultation/detail/{$id}")->with('error', 'Data konsultasi atau konsultan tidak ditemukan.');
         }
 
         // Determine notification type from form submission
@@ -180,15 +180,51 @@ class JadwalKonsultasiController extends BaseController
             $this->konsultasiModel->update($id, ['status_notifikasi' => 'Terkirim']);
 
             // Redirect to admin dashboard with success message
-            return redirect()->to('/admin/dashboard')->with('success', $message);
+            return redirect()->to("/admin/consultation/detail/{$id}")->with('success', $message);
 
         } catch (\Exception $e) {
             // Log the error
             log_message('error', 'Notification Error: ' . $e->getMessage());
 
-            return redirect()->to('/admin/dashboard')
+            return redirect()->to("/admin/consultation/detail/{$id}")
                 ->with('error', 'Gagal mengirim notifikasi: ' . $e->getMessage());
         }
     }
 
+    public function delete($id)
+    {
+        // Check admin authentication
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
+        }
+
+        // Retrieve the consultation record
+        $konsultasi = $this->konsultasiModel->find($id);
+
+        if (!$konsultasi) {
+            return redirect()->to("/admin/consultation/detail/{$id}")->with('error', 'Data konsultasi tidak ditemukan.');
+        }
+
+        try {
+            // Data to be updated with null values
+            $data = [
+                'jadwal_konsultasi' => null,
+                'link_zoom' => null,
+                'konsultan_id' => null
+            ];
+
+            // Update the consultation record
+            $this->konsultasiModel->update($id, $data);
+
+            // Redirect to admin dashboard with success message
+            return redirect()->to("/admin/consultation/detail/{$id}")->with('success', 'Jadwal konsultasi berhasil dihapus.');
+
+        } catch (\Exception $e) {
+            // Log the error
+            log_message('error', 'Delete Consultation Error: ' . $e->getMessage());
+
+            return redirect()->to("/admin/consultation/detail/{$id}")
+                ->with('error', 'Terjadi kesalahan saat menghapus jadwal konsultasi.');
+        }
+    }
 }
