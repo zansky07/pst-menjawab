@@ -109,7 +109,6 @@
                     readonly><?= esc($konsultasi['deskripsi']) ?></textarea>
             </div>
             <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-<<<<<<< HEAD
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Status</label>
                 <select name="status_konsultasi" class="w-full px-3 py-2 bg-orange-500 text-white border border-orange-300 rounded-md">
                     <?php $status_konsultasies = ['Sedang diproses','Disetujui', 'Ditolak', 'Selesai']; 
@@ -180,28 +179,3 @@
     </div>
 </body>
 </html>
-=======
-                <label
-                    class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Status</label>
-                <select name="status_konsultasi"
-                    class="w-full px-3 py-2 bg-orange-500 text-white border border-orange-300 rounded-md">
-                    <?php $status_konsultasies = ['Pending', 'Disetujui', 'Ditolak', 'Selesai'];
-                    foreach ($status_konsultasies as $status_konsultasi) {
-                        $selected = ($status_konsultasi == $konsultasi['status_konsultasi']) ? 'selected' : '';
-                        echo "<option value=\"$status_konsultasi\" $selected>$status_konsultasi</option>";
-                    } ?>
-                </select>
-            </div>
-            <button type="submit"
-                class="w-full bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600">Simpan</button>
-            <?php if ($konsultasi['status_konsultasi'] === 'Disetujui'): ?>
-                <a href="/admin/consultation/schedule/<?= $konsultasi['id'] ?>" class="schedule-button">Jadwalkan
-                    Konsultasi</a>
-            <?php endif; ?>
-            <a href="/admin/dashboard" class="block text-center mt-4 text-red-500">Kembali</a>
-        </form>
-    </div>
-</body>
-
-</html>
->>>>>>> 8ce1aa059af6b6ab7e890f191ef18fb8ac98d18b
