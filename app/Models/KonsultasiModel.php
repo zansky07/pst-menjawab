@@ -11,7 +11,7 @@ class KonsultasiModel extends Model
     protected $allowedFields = [
         'nama_konsumen',
         'email_konsumen',
-        'no_wa_konsumen',
+        'whatsapp_konsumen',
         'topik',
         'kategori',
         'lingkup',

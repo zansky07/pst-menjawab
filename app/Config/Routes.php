@@ -23,6 +23,7 @@ $routes->get('/admin/logout', 'AuthController::logout');
 
 // Admin Content Routes
 $routes->get('/admin/dashboard', 'AdminContentController::index');
+$routes->post('/admin/dashboard/filter', 'AdminContentController::filterDashboard');
 $routes->get('/admin/statistics', 'AdminContentController::statistik');
 $routes->get('/admin/settings', 'AdminContentController::pengaturan');
 $routes->get('/admin/dashboard', 'AdminController::dashboard');
