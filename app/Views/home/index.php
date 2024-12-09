@@ -118,12 +118,12 @@
         /* Responsif untuk Smartphone */
         @media (max-width: 768px) {
             .welcome {
-                font-size: 5vw;
+                font-size: 3vw;
                 /* Ukuran font lebih kecil untuk smartphone */
             }
 
             .welcome2 {
-                font-size: 4vw;
+                font-size: 2vw;
                 /* Ukuran font lebih kecil untuk smartphone */
             }
 
@@ -150,8 +150,17 @@
             }
 
             .alert {
-                font-size: 14px;
+                font-size: 12px;
                 /* Ukuran font alert lebih kecil pada smartphone */
+            }
+
+            p {
+                font-size: 11px;
+            }
+
+            h3.text-lg,
+            h3.text-xl {
+                font-size: 12px;
             }
         }
 
@@ -176,9 +185,10 @@
 </head>
 
 <body style="margin: 0; height: 240vh;" class="bg-oranye-1">
-    <main class="container mx-auto mt-0 bg-oranye-1" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 45vh;">
+    <main class="container mx-auto mt-0 bg-oranye-1" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 55vh;">
         <!-- Video Thumbnail -->
         <div class="text-center mb-8">
+            <br><br><br>
             <h1 class=" welcome">SELAMAT DATANG DI PST MENJAWAB</h1>
             <h2 class="welcome2">PELAYANAN STATISTIK TERPADU</h2>
             <h2 class="welcome2">BPS PROVINSI DKI JAKARTA</h2>
