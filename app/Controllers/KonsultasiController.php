@@ -78,7 +78,7 @@ class KonsultasiController extends BaseController
             'lingkup' => $lingkup,
             'deskripsi' => $deskripsi,
             'token_konsultasi' => $token,
-            'status_konsultasi' => 'Pending', // Status default
+            'status_konsultasi' => 'Sedang diproses', // Status default
             'tanggal_reservasi' => date('Y-m-d H:i:s'), // Tanggal reservasi saat submit
         ];
     
@@ -163,11 +163,31 @@ class KonsultasiController extends BaseController
     {
         $konsultasiModel = new KonsultasiModel();
 
+        // Retrieve the posted data
         $status_konsultasi = $this->request->getPost('status_konsultasi');
-        $konsultasiModel->update($id, ['status_konsultasi' => $status_konsultasi]);
+        $alasan_penolakan = $this->request->getPost('alasan_penolakan');
+        $kehadiran_konsumen = $this->request->getPost('kehadiran_konsumen');
+
+        // Prepare the data for updating
+        $data = [
+            'status_konsultasi' => $status_konsultasi,
+        ];
+
+        // Conditionally add other fields if they exist
+        if ($status_konsultasi === 'Ditolak') {
+            $data['alasan_penolakan'] = $alasan_penolakan;
+        }
+        
+        if ($status_konsultasi === 'Selesai') {
+            $data['kehadiran'] = $kehadiran_konsumen;
+        }
+
+        // Update the record
+        $konsultasiModel->update($id, $data);
 
         return redirect()->to('/admin/dashboard')->with('message', 'Status berhasil diperbarui.');
     }
+
     public function delete($id)
     {
         // Periksa apakah pengguna sudah login

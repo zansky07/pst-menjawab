@@ -17,9 +17,8 @@ class JadwalKonsultasiController extends BaseController
 
     public function index($id)
     {
-        helper('form'); // Load the form helper
+        helper('form');
 
-        // Cek autentikasi admin
         if (!session()->get('logged_in')) {
             return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
         }
@@ -28,7 +27,7 @@ class JadwalKonsultasiController extends BaseController
         $data['konsultan'] = $this->konsultanModel->findAll();
 
         if (!$data['konsultasi']) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Data konsultasi tidak ditemukan.');
+            return redirect()->to('/admin/consultation/detail/$id')->with('error', 'Data konsultasi tidak ditemukan.');
         }
 
         return view('jadwal_konsultasi', $data);
@@ -41,18 +40,49 @@ class JadwalKonsultasiController extends BaseController
             return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
         }
 
-        $data = [
-            'jadwal_konsultasi' => $this->request->getPost('jadwal_konsultasi') . ' ' . $this->request->getPost('waktu_konsultasi'),
-            'link_zoom' => $this->request->getPost('link_zoom'),
-            'konsultan_id' => $this->request->getPost('konsultan_id'),
-            'status_konsultasi' => 'Scheduled'
+        // Validasi input
+        $rules = [
+            'konsultasi_id' => 'required|numeric',
+            'jadwal_konsultasi' => 'required',
+            'waktu_konsultasi' => 'required',
+            'link_zoom' => 'required|valid_url',
+            'konsultan_id' => 'required|numeric'
         ];
 
-        $konsultasi_id = $this->request->getPost('konsultasi_id');
-        // $this->konsultasiModel->update($konsultasi_id, $data);
+        if (!$this->validate($rules)) {
+            return redirect()->back()
+                ->with('errors', $this->validator->getErrors())
+                ->withInput();
+        }
 
-        // Redirect ke halaman notifikasi
-        return redirect()->to('/admin/consultation/notification/' . $konsultasi_id);
+        try {
+            // Gabungkan tanggal dan waktu
+            $jadwal_konsultasi = $this->request->getPost('jadwal_konsultasi') . ' ' .
+                $this->request->getPost('waktu_konsultasi');
+
+            // Data yang akan diupdate
+            $data = [
+                'jadwal_konsultasi' => date('Y-m-d H:i:s', strtotime($jadwal_konsultasi)),
+                'link_zoom' => $this->request->getPost('link_zoom'),
+                'konsultan_id' => $this->request->getPost('konsultan_id'),
+                'status_konsultasi' => 'Disetujui' // Update status konsultasi
+            ];
+
+            $konsultasi_id = $this->request->getPost('konsultasi_id');
+
+            // Update data konsultasi
+            $this->konsultasiModel->update($konsultasi_id, $data);
+
+            // Redirect ke halaman notifikasi dengan pesan sukses
+            return redirect()->to('/admin/consultation/notification/' . $konsultasi_id)
+                ->with('success', 'Jadwal konsultasi berhasil disimpan');
+
+        } catch (\Exception $e) {
+            log_message('error', '[JadwalKonsultasiController::store] Error: ' . $e->getMessage());
+            return redirect()->back()
+                ->with('error', 'Terjadi kesalahan saat menyimpan jadwal')
+                ->withInput();
+        }
     }
 
     public function notification($id)
@@ -70,7 +100,7 @@ class JadwalKonsultasiController extends BaseController
 
         // Cek apakah data konsultasi ditemukan
         if (!$data['konsultasi']) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Data konsultasi tidak ditemukan.');
+            return redirect()->to('/admin/consultation/detail/$id')->with('error', 'Data konsultasi tidak ditemukan.');
         }
 
         // Setelah memastikan data konsultasi ada, baru ambil data konsultan
@@ -78,7 +108,7 @@ class JadwalKonsultasiController extends BaseController
 
         // Cek apakah data konsultan ditemukan
         if (!$data['konsultan']) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Data konsultan tidak ditemukan.');
+            return redirect()->to('/admin/consultation/detail/$id')->with('error', 'Data konsultan tidak ditemukan.');
         }
 
         return view('notifikasi_konsultasi', $data);
@@ -96,7 +126,7 @@ class JadwalKonsultasiController extends BaseController
         $konsultan = $this->konsultanModel->find($konsultasi['konsultan_id']);
 
         if (!$konsultasi || !$konsultan) {
-            return redirect()->to('/admin/dashboard')->with('error', 'Data konsultasi atau konsultan tidak ditemukan.');
+            return redirect()->to("/admin/consultation/detail/{$id}")->with('error', 'Data konsultasi atau konsultan tidak ditemukan.');
         }
 
         // Determine notification type from form submission
@@ -150,15 +180,51 @@ class JadwalKonsultasiController extends BaseController
             $this->konsultasiModel->update($id, ['status_notifikasi' => 'Terkirim']);
 
             // Redirect to admin dashboard with success message
-            return redirect()->to('/admin/dashboard')->with('success', $message);
+            return redirect()->to("/admin/consultation/detail/{$id}")->with('success', $message);
 
         } catch (\Exception $e) {
             // Log the error
             log_message('error', 'Notification Error: ' . $e->getMessage());
 
-            return redirect()->to('/admin/dashboard')
+            return redirect()->to("/admin/consultation/detail/{$id}")
                 ->with('error', 'Gagal mengirim notifikasi: ' . $e->getMessage());
         }
     }
 
+    public function delete($id)
+    {
+        // Check admin authentication
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
+        }
+
+        // Retrieve the consultation record
+        $konsultasi = $this->konsultasiModel->find($id);
+
+        if (!$konsultasi) {
+            return redirect()->to("/admin/consultation/detail/{$id}")->with('error', 'Data konsultasi tidak ditemukan.');
+        }
+
+        try {
+            // Data to be updated with null values
+            $data = [
+                'jadwal_konsultasi' => null,
+                'link_zoom' => null,
+                'konsultan_id' => null
+            ];
+
+            // Update the consultation record
+            $this->konsultasiModel->update($id, $data);
+
+            // Redirect to admin dashboard with success message
+            return redirect()->to("/admin/consultation/detail/{$id}")->with('success', 'Jadwal konsultasi berhasil dihapus.');
+
+        } catch (\Exception $e) {
+            // Log the error
+            log_message('error', 'Delete Consultation Error: ' . $e->getMessage());
+
+            return redirect()->to("/admin/consultation/detail/{$id}")
+                ->with('error', 'Terjadi kesalahan saat menghapus jadwal konsultasi.');
+        }
+    }
 }
