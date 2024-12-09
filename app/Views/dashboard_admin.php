@@ -3,117 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>PST Menjawab | Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f9f2f1;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-        .header {
-            text-align: center;
-            padding: 20px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f04e30;
-            color: #fff;
-        }
-        .btn {
-            padding: 5px 10px;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        .btn-detail {
-            background-color: #28a745;
-        }
-        .btn-delete {
-            background-color: #dc3545;
-        }
-        .btn:hover {
-            opacity: 0.8;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard">Dashboard</a>
-                        </li>    
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/statistics">Statistik</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/settings">Pengaturan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/logout">Logout</a>
-                        </li>
-                    </ul>
+<body class="bg-orange-100">
+    <div class="container mx-auto p-6">
+        <?php if (session()->getFlashdata('message')): ?>
+            <p class="text-green-500"><?= session()->getFlashdata('message') ?></p>
+        <?php endif; ?>
+
+        <!-- Filter Button -->
+        <div class="flex justify-end mb-4">
+            <button id="filterBtn" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">Filter</button>
+        </div>
+
+        <!-- Filter Modal -->
+        <div id="filterModal" class="fixed inset-0 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+                <h2 class="text-2xl font-bold mb-4">Filter</h2>
+                <form action="/admin/dashboard/filter" method="post" id="filterForm">
+                    <div class="mb-4">
+                        <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                        <select id="status" name="status" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                            <option value="">All</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Disetujui">Disetujui</option>
+                            <option value="Ditolak">Ditolak</option>
+                            <option value="Selesai">Selesai</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="button" id="closeModalBtn" class="bg-gray-500 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-gray-600 mr-2">Close</button>
+                        <button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-orange-600">Apply</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="table-container">
+                <table class="min-w-full bg-white">
+                    <thead class="bg-orange-600 text-white">
+                        <tr>
+                            <th class="py-3 px-5 text-lg">Token</th>
+                            <th class="py-3 px-5 text-lg">Topik</th>
+                            <th class="py-3 px-5 text-lg">Status</th>
+                            <th class="py-3 px-5 text-lg">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($requests) && is_array($requests)): ?>
+                            <?php foreach ($requests as $request): ?>
+                                <tr class="border-b">
+                                    <td class="py-2 px-4"><?= esc($request['token_konsultasi']) ?></td>
+                                    <td class="py-2 px-4"><?= esc($request['topik']) ?></td>
+                                    <td class="py-2 px-4"><?= esc($request['status_konsultasi']) ?></td>
+                                    <td class="py-2 px-4">
+                                        <div class="flex justify-around">
+                                            <a href="/admin/consultation/detail/<?= $request['id'] ?>" class="bg-green-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-green-600">Detail</a>
+                                            <a href="/admin/consultation/delete/<?= $request['id'] ?>" class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600">Hapus</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="4" class="py-2 px-4">Tidak ada data.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="p-4 bg-white border-t flex justify-center items-center">
+                <div class="flex justify-center items-center space-x-2">
+                    <?php if ($pager): ?>
+                        <?= $pager->links('default', 'tailwind_full') ?>
+                    <?php endif; ?>
                 </div>
             </div>
-        </nav>
-        <h1 class="header">Dashboard</h1>
-        <?php if (session()->getFlashdata('message')): ?>
-            <p style="color: green;"><?= session()->getFlashdata('message') ?></p>
-        <?php endif; ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Token</th>
-                    <th>Topik</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($requests) && is_array($requests)): ?>
-                    <?php foreach ($requests as $request): ?>
-                        <tr>
-                            <td><?= esc($request['token_konsultasi']) ?></td>
-                            <td><?= esc($request['topik']) ?></td>
-                            <td><?= esc($request['status_konsultasi']) ?></td>
-                            <td>
-                            <a href="/admin/consultation/detail/<?= $request['id'] ?>" class="btn btn-detail">Detail</a>
-                                <a href="/admin/consultation/delete/<?= $request['id'] ?>" class="btn btn-delete">Hapus</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="4">Tidak ada data.</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+        </div>
     </div>
+
+    <script>
+        document.getElementById('filterBtn').addEventListener('click', function() {
+            document.getElementById('filterModal').classList.remove('hidden');
+        });
+
+        document.getElementById('closeModalBtn').addEventListener('click', function() {
+            document.getElementById('filterModal').classList.add('hidden');
+        });
+    </script>
 </body>
 </html>
