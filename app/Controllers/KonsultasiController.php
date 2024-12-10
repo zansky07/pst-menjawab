@@ -162,7 +162,7 @@ class KonsultasiController extends BaseController
         if ($status_konsultasi === 'Ditolak') {
             $data['alasan_penolakan'] = $alasan_penolakan;
         }
-        
+
         if ($status_konsultasi === 'Selesai') {
             $data['kehadiran'] = $kehadiran_konsumen;
         }
@@ -170,9 +170,15 @@ class KonsultasiController extends BaseController
         // Update the record
         $konsultasiModel->update($id, $data);
 
+        $konsultasi = $konsultasiModel->find($id);
+
         // If status is "Disetujui", redirect to scheduling page
         if ($status_konsultasi === 'Disetujui') {
-            return redirect()->to("/admin/consultation/schedule/{$id}")->with('message', 'Status diperbarui. Silakan jadwalkan konsultasi.');
+            if (empty($konsultasi['jadwal_konsultasi'])) {
+                return redirect()->to("/admin/consultation/schedule/{$id}")->with('message', 'Status diperbarui. Silakan jadwalkan konsultasi.');
+            } else {
+                return redirect()->to('/admin/dashboard')->with('message', 'Status diperbarui. Jadwal konsultasi sudah tersedia.');
+            }
         }
         // Otherwise, redirect back to dashboard
         return redirect()->to('/admin/dashboard')->with('message', 'Status berhasil diperbarui.');
