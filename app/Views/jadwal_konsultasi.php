@@ -154,7 +154,7 @@
         <nav class="flex flex-wrap gap-5 justify-between py-2 pr-20 pl-9 max-w-full text-xl bg-white bg-opacity-80 rounded-[50px] w-[1358px] max-md:px-5 max-md:mr-0.5 max-md:flex-col max-md:items-center"
             role="navigation" aria-label="Main Navigation">
             <div class="flex gap-5 text-black max-md:flex-col max-md:items-center">
-                <img src="/assets/logo-pst.png" class="object-contain shrink-0 aspect-[0.8] w-[43px]" alt="BPS Logo" />
+                <img src="/assets/images/logo-pst.png" class="object-contain shrink-0 aspect-[0.8] w-[43px]" alt="BPS Logo" />
                 <div class="flex-auto my-auto max-md:text-center">PST Menjawab BPS Provinsi DKI Jakarta</div>
             </div>
             <div
