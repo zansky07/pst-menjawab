@@ -185,7 +185,6 @@
 </head>
 
 <body style="margin: 0; height: 240vh;" class="bg-oranye-1">
-<<<<<<< HEAD
     <main class="container mx-auto mt-0 bg-oranye-1" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 45vh;">
         <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
@@ -208,9 +207,6 @@
 				</div>
 			</div>
 		</nav>
-=======
-    <main class="container mx-auto mt-0 bg-oranye-1" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 55vh;">
->>>>>>> 142c80acfcf5d16721a194ce955876762b77e2bd
         <!-- Video Thumbnail -->
         <div class="text-center mb-8">
             <br><br><br>
