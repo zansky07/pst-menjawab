@@ -112,47 +112,6 @@
                             <input type="hidden" name="recipient" value="konsumen">
                             <input type="hidden" name="notification_type" value="both">
 
-                            <!-- Konsumen Section -->
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-gray-700 font-medium mb-2">Nama Konsumen</label>
-                                    <input type="text"
-                                        value="<?= isset($konsultasi['nama_konsumen']) ? esc($konsultasi['nama_konsumen']) : '' ?>"
-                                        class="w-full border border-gray-300 rounded-md px-4 py-2 bg-oranye-1" readonly>
-                                </div>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-gray-700 font-medium mb-2">Alamat Email
-                                            Konsumen</label>
-                                        <div class="flex gap-2">
-                                            <input type="email"
-                                                value="<?= isset($konsultasi['email_konsumen']) ? esc($konsultasi['email_konsumen']) : '' ?>"
-                                                class="flex-1 border border-gray-300 rounded-md px-4 py-2 bg-oranye-1"
-                                                readonly>
-                                            <button type="button"
-                                                class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">
-                                                Kirim Notifikasi Email
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-gray-700 font-medium mb-2">Nomor WA Konsumen</label>
-                                        <div class="flex gap-2">
-                                            <input type="text"
-                                                value="<?= isset($konsultasi['no_wa_konsumen']) ? esc($konsultasi['no_wa_konsumen']) : '' ?>"
-                                                class="flex-1 border border-gray-300 rounded-md px-4 py-2 bg-oranye-1"
-                                                readonly>
-                                            <button type="button"
-                                                class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">
-                                                Kirim Notifikasi WhatsApp
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- Konsultan Section -->
                             <div class="space-y-4">
                                 <div>
