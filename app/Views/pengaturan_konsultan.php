@@ -51,15 +51,15 @@
     <!-- Main Content -->
     <main class="flex-1 container mx-auto px-4 py-6">
         <div class="flex flex-wrap justify-between items-center mb-4">
-            <h1 class="text-xl md:text-2xl font-bold text-gray-700">Daftar Admin</h1>
-            <a href="/admin/manage/add" 
+            <h1 class="text-xl md:text-2xl font-bold text-gray-700">Daftar Konsultan</h1>
+            <a href="/admin/consultant/add" 
                 class="bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600 transition duration-200 text-sm md:text-base">
-                Tambah Admin
+                Tambah Konsultan
             </a>
         </div>
 
         <!-- Table -->
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="bg-white shadow-md rounded-lg overflow-x-auto">
             <table class="w-full">
                 <thead class="bg-orange-600 text-center">
                     <tr class="text-white text-sm md:text-base">
@@ -68,16 +68,16 @@
                     </tr>
                 </thead>
                 <tbody class="text-left">
-                    <?php if (!empty($admins) && is_array($admins)): ?>
-                        <?php foreach ($admins as $admin): ?>
+                    <?php if (!empty($konsultans) && is_array($konsultans)): ?>
+                        <?php foreach ($konsultans as $konsultan): ?>
                             <tr class="border-b">
-                                <td class="py-3 px-4 text-sm md:text-base"><?= esc($admin['nama']) ?></td>
+                                <td class="py-3 px-4 text-sm md:text-base"><?= esc($konsultan['nama']) ?></td>
                                 <td class="py-3 px-4 text-center">
-                                    <a href="/admin/manage/detail/<?= $admin['id'] ?>" 
+                                    <a href="/admin/consultant/detail/<?= $konsultan['id'] ?>" 
                                         class="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200 text-sm md:text-base">
                                         Detail
                                     </a>
-                                    <a onclick="confirmDelete('/admin/manage/delete/<?= $admin['id'] ?>')" 
+                                    <a onclick="confirmDelete('/admin/consultant/delete/<?= $konsultan['id'] ?>')" 
                                         class="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 transition duration-200 ml-2 text-sm md:text-base">
                                         Hapus
                                     </a>
