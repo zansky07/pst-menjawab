@@ -138,7 +138,7 @@ class KonsultasiController extends BaseController
         $data['konsultasi'] = $konsultasiModel->find($id);
 
         if (!$data['konsultasi']) {
-            return redirect()->to('/dashboard')->with('error', 'Data tidak ditemukan.');
+            return redirect()->to('/admin/dashboard')->with('error', 'Data tidak ditemukan.');
         }
 
         return view('konsultasi_detail_admin', $data);
@@ -188,6 +188,6 @@ class KonsultasiController extends BaseController
         $konsultasiModel = new konsultasiModel();
         $konsultasiModel->delete($id);
 
-        return redirect()->to('/dashboard')->with('message', 'Data berhasil dihapus');
+        return redirect()->to('/admin/dashboard')->with('message', 'Data berhasil dihapus');
     }
 }

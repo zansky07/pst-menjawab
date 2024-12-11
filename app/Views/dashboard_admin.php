@@ -107,7 +107,13 @@
                                     <td class="py-2 px-4">
                                         <div class="flex justify-around">
                                             <a href="/admin/consultation/detail/<?= $request['id'] ?>" class="bg-green-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-green-600">Detail</a>
-                                            <a href="/admin/consultation/delete/<?= $request['id'] ?>" class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600">Hapus</a>
+                                            <a href="/admin/consultation/delete/<?= $request['id'] ?>" class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600" onclick="return confirmDelete()">Hapus</a>
+                                                <script>
+                                                    function confirmDelete() {
+                                                        return confirm('Apakah Anda yakin ingin menghapus permintaan konsultasi ini?');
+                                                    }
+                                                </script>
+
                                         </div>
                                     </td>
                                 </tr>

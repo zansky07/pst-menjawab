@@ -1,0 +1,64 @@
+INFO - 2024-12-11 03:53:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:54:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:54:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:54:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 03:54:58 --> ErrorException: Undefined array key "id_konsultasi"
+[Method: GET, Route: admin/consultation/detail/3]
+in APPPATH\Views\konsultasi_detail_admin.php on line 73.
+ 1 APPPATH\Views\konsultasi_detail_admin.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_konsultasi"', 'C:\\xampp\\htdocs\\Project rpl\\app\\Views\\konsultasi_detail_admin.php', 73)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\Project rpl\\app\\Views\\konsultasi_detail_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('konsultasi_detail_admin', [], true)
+ 5 APPPATH\Controllers\KonsultasiController.php(144): view('konsultasi_detail_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->detail('3')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Project rpl\\public\\index.php')
+INFO - 2024-12-11 03:57:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:57:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:58:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:58:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 04:03:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 04:03:12 --> ErrorException: Undefined array key "id_konsultasi"
+[Method: GET, Route: admin/consultation/detail/2]
+in APPPATH\Views\konsultasi_detail_admin.php on line 73.
+ 1 APPPATH\Views\konsultasi_detail_admin.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_konsultasi"', 'C:\\xampp\\htdocs\\Project rpl\\app\\Views\\konsultasi_detail_admin.php', 73)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\Project rpl\\app\\Views\\konsultasi_detail_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('konsultasi_detail_admin', [], true)
+ 5 APPPATH\Controllers\KonsultasiController.php(144): view('konsultasi_detail_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->detail('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Project rpl\\public\\index.php')
+INFO - 2024-12-11 04:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:47:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:47:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:47:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:48:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:48:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 14:48:55 --> ErrorException: Undefined array key "id_konsultasi"
+[Method: GET, Route: admin/consultation/schedule/1]
+in APPPATH\Views\jadwal_konsultasi.php on line 184.
+ 1 APPPATH\Views\jadwal_konsultasi.php(184): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_konsultasi"', 'C:\\xampp\\htdocs\\Project rpl\\app\\Views\\jadwal_konsultasi.php', 184)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\Project rpl\\app\\Views\\jadwal_konsultasi.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('jadwal_konsultasi', [], true)
+ 5 APPPATH\Controllers\JadwalKonsultasiController.php(33): view('jadwal_konsultasi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\JadwalKonsultasiController->index('1')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\JadwalKonsultasiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Project rpl\\public\\index.php')
+INFO - 2024-12-11 14:48:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:49:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:50:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
