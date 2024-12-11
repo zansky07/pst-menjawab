@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\KonsultasiModel;
@@ -184,6 +185,8 @@ class KonsultasiController extends BaseController
         return redirect()->to('/admin/dashboard')->with('message', 'Status berhasil diperbarui.');
     }
 
+
+
     public function delete($id)
     {
         // Periksa apakah pengguna sudah login
@@ -195,5 +198,15 @@ class KonsultasiController extends BaseController
         $konsultasiModel->delete($id);
 
         return redirect()->to('/dashboard')->with('message', 'Data berhasil dihapus');
+    }
+
+    public function postConsultation()
+    {
+        // Periksa apakah pengguna sudah login
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
+        }
+
+        return view('post_konsultasi');
     }
 }

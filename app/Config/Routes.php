@@ -35,6 +35,7 @@ $routes->get('/admin/settings/consultant', 'AdminContentController::pengaturan_k
 // Consultation Management Routes
 $routes->get('/admin/consultation/delete/(:num)', 'KonsultasiController::delete/$1');
 $routes->get('/admin/consultation/detail/(:num)', 'KonsultasiController::detail/$1');
+$routes->get('/admin/consultation/postConsultation', 'KonsultasiController::postConsultation');
 $routes->post('/admin/consultation/detail/update/(:num)', 'KonsultasiController::updateStatus/$1');
 
 // Jadwal Konsultasi Routes (Admin)
@@ -55,4 +56,3 @@ $routes->get('/admin/consultant/add', 'KonsultanManagementController::create');
 $routes->post('/admin/consultant/store', 'KonsultanManagementController::store');
 $routes->get('/admin/consultant/detail/(:num)', 'KonsultanManagementController::detail/$1');
 $routes->get('/admin/consultant/delete/(:num)', 'KonsultanManagementController::delete/$1');
-
