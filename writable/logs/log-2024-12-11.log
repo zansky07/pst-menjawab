@@ -1,0 +1,59 @@
+INFO - 2024-12-11 00:55:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 00:56:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 00:56:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 00:56:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 00:57:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 00:57:36 --> ErrorException: preg_match(): Compilation failed: invalid range in character class at offset 4
+[Method: POST, Route: consultation/reserve/submit]
+in APPPATH\Controllers\KonsultasiController.php on line 42.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match(): Compilation failed: invalid range in character class at offset 4', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Controllers\\KonsultasiController.php', 42)
+ 2 APPPATH\Controllers\KonsultasiController.php(42): preg_match('/^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/', 'nama@gmail.com')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->submit()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-11 01:03:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 01:03:11 --> ErrorException: preg_match(): Compilation failed: invalid range in character class at offset 4
+[Method: POST, Route: consultation/reserve/submit]
+in APPPATH\Controllers\KonsultasiController.php on line 42.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match(): Compilation failed: invalid range in character class at offset 4', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Controllers\\KonsultasiController.php', 42)
+ 2 APPPATH\Controllers\KonsultasiController.php(42): preg_match('/^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/', 'nama@gmail.com')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->submit()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-11 01:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 01:03:25 --> ErrorException: preg_match(): Compilation failed: invalid range in character class at offset 4
+[Method: POST, Route: consultation/reserve/submit]
+in APPPATH\Controllers\KonsultasiController.php on line 42.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match(): Compilation failed: invalid range in character class at offset 4', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Controllers\\KonsultasiController.php', 42)
+ 2 APPPATH\Controllers\KonsultasiController.php(42): preg_match('/^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/', 'nama@gmail')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->submit()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-11 01:03:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 01:03:48 --> ErrorException: preg_match(): Compilation failed: invalid range in character class at offset 4
+[Method: POST, Route: consultation/reserve/submit]
+in APPPATH\Controllers\KonsultasiController.php on line 42.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match(): Compilation failed: invalid range in character class at offset 4', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Controllers\\KonsultasiController.php', 42)
+ 2 APPPATH\Controllers\KonsultasiController.php(42): preg_match('/^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/', 'nama@email.com')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->submit()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2024-12-11 01:03:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 01:04:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 01:04:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
