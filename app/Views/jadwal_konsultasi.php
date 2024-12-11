@@ -148,224 +148,269 @@
     }
 </style>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Assuming the format of jadwal_konsultasi is 'YYYY-MM-DD HH:mm:ss'
+        const jadwalKonsultasi = '<?= $konsultasi['jadwal_konsultasi'] ?>';
+        if (jadwalKonsultasi) {
+            const date = new Date(jadwalKonsultasi);
+
+            // Extract date and time components
+            const dateValue = date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            const timeValue = date.toTimeString().split(' ')[0].substring(0, 5); // Format: HH:mm
+
+            // Set the date and time pickers with these values
+            document.getElementById('datePicker').value = dateValue;
+            document.getElementById('timePicker').value = timeValue;
+        }
+    });
+</script>
+
 <body class = "mt-28 md:mt-16  bg-oranye-1">
     <div class="flex overflow-hidden flex-col pt-8">
         <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
-		<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
-			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
-				<div class="flex items-center space-x-4">
-					<img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
-					<span class="text-gray-800 font-semibold text-sm md:text-base"> PST Menjawab BPS Provinsi DKI Jakarta </span>
-				</div>
-				<div class="text-oranye-4 order-3 w-full md:w-auto md:order-2">
-					<ul class="flex font-semibold items-center justify-between space-x-4">
-						<li class="hover:text-oranye-2">
-							<a href="/admin/dashboard">Dashboard</a>
-						</li>
-						<li class="hover:text-oranye-2">
-							<a href="/admin/statistics">Statistik</a>
-						</li>
-						<li class="relative">
-							<button id="dropdownNavbarLink" class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center"> Pengaturan <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-								</svg>
-							</button>
-							<div id="dropdownNavbar" class="hidden absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow mt-2 w-44">
-								<ul class="py-1">
-									<li>
-										<a href="admin/settings/admin" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
-									</li>
-									<li>
-										<a href="admin/settings/consultant" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="order-2 md:order-3">
-					<button class="px-4 py-2 bg-oranye-3 hover:bg-oranye-4 text-white rounded-xl flex items-center gap-2">
-						<span>
-							<a href="/admin/logout">Keluar</a>
-						</span>
-					</button>
-				</div>
-			</div>
-		</nav>
+            <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
+                <div
+                    class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
+                    <div class="flex items-center space-x-4">
+                        <img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
+                        <span class="text-gray-800 font-semibold text-sm md:text-base"> PST Menjawab BPS Provinsi DKI
+                            Jakarta </span>
+                    </div>
+                    <div class="text-oranye-4 order-3 w-full md:w-auto md:order-2">
+                        <ul class="flex font-semibold items-center justify-between space-x-4">
+                            <li class="hover:text-oranye-2">
+                                <a href="/admin/dashboard">Dashboard</a>
+                            </li>
+                            <li class="hover:text-oranye-2">
+                                <a href="/admin/statistics">Statistik</a>
+                            </li>
+                            <li class="relative">
+                                <button id="dropdownNavbarLink"
+                                    class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center">
+                                    Pengaturan <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                                <div id="dropdownNavbar"
+                                    class="hidden absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow mt-2 w-44">
+                                    <ul class="py-1">
+                                        <li>
+                                            <a href="admin/settings/admin"
+                                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
+                                        </li>
+                                        <li>
+                                            <a href="admin/settings/consultant"
+                                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="order-2 md:order-3">
+                        <button
+                            class="px-4 py-2 bg-oranye-3 hover:bg-oranye-4 text-white rounded-xl flex items-center gap-2">
+                            <span>
+                                <a href="/admin/logout">Keluar</a>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
 
 
-        <!-- Main Content -->
-        <main>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="min-h-screen bg-oranye-1 mt-28 md:mt-16">
-                    <div class="max-w-4xl mx-auto py-12 px-4">
-                        <div class="bg-white rounded-lg shadow-lg p-6">
-                            <h2 class="text-2xl font-bold text-center mb-8">Jadwalkan Konsultasi</h2>
-                            <form action="/admin/consultation/schedule/store" method="post" class="space-y-6">
-                                <!-- Hidden input remains the same -->
-                                <input type="hidden" name="konsultasi_id" value="<?= $konsultasi['id'] ?>">
+            <!-- Main Content -->
+            <main>
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="min-h-screen bg-oranye-1 mt-28 md:mt-16">
+                        <div class="max-w-4xl mx-auto py-12 px-4">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h2 class="text-2xl font-bold text-center mb-8">Jadwalkan Konsultasi</h2>
+                                <form action="/admin/consultation/schedule/store" method="post" class="space-y-6">
+                                    <!-- Hidden input remains the same -->
+                                    <input type="hidden" name="konsultasi_id" value="<?= $konsultasi['id'] ?>">
 
-                                <!-- Date and Time Picker -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">Tanggal
-                                            Konsultasi</label>
-                                        <input type="text" id="datePicker" name="jadwal_konsultasi"
-                                            class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
-                                            readonly>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">Waktu
-                                            Konsultasi</label>
-                                        <div class="flex items-center">
-                                            <input type="text" id="timePicker" name="waktu_konsultasi"
+                                    <!-- Date and Time Picker -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Tanggal
+                                                Konsultasi</label>
+                                            <input type="text" id="datePicker" name="jadwal_konsultasi"
                                                 class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
+                                                value="<?= isset($konsultasi['tanggal_konsultasi']) ? $konsultasi['tanggal_konsultasi'] : '' ?>"
                                                 readonly>
-                                            <span class="ml-2 mt-1 text-sm font-medium text-gray-700">WIB</span>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Waktu
+                                                Konsultasi</label>
+                                            <div class="flex items-center">
+                                                <input type="text" id="timePicker" name="waktu_konsultasi"
+                                                    class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
+                                                    value="<?= isset($konsultasi['waktu_konsultasi']) ? $konsultasi['waktu_konsultasi'] : '' ?>"
+                                                    readonly>
+                                                <span class="ml-2 mt-1 text-sm font-medium text-gray-700">WIB</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
                                 <!-- Link Zoom -->
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Link Zoom</label>
                                     <input type="text" name="link_zoom"
                                         class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
+                                        value="<?= $konsultasi['link_zoom'] ?>"
                                         required>
                                 </div>
 
-                                <!-- Petugas Dropdown -->
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700">Petugas</label>
-                                    <div class="relative">
-                                        <select name="konsultan_id"
-                                            class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 appearance-none bg-oranye-1 pr-10 cursor-pointer"
-                                            required>
-                                            <?php foreach ($konsultan as $k): ?>
-                                                <option value="<?= $k['id'] ?>"><?= $k['nama'] ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                        <div
-                                            class="absolute inset-y-0 right-0 flex items-center px-2 mt-1 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
+                                    <!-- Petugas Dropdown -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">Petugas</label>
+                                        <div class="relative">
+                                            <select name="konsultan_id" class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 appearance-none bg-oranye-1 pr-10 cursor-pointer" required>
+                                                <?php foreach ($konsultan as $k): ?>
+                                                    <option value="<?= $k['id'] ?>" <?= isset($konsultasi['konsultan_id']) && $konsultasi['konsultan_id'] == $k['id'] ? 'selected' : '' ?>>
+                                                        <?= $k['nama'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <div class="absolute inset-y-0 right-0 flex items-center px-2 mt-1 pointer-events-none">
+                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="flex justify-end">
-                                    <button type="submit"
-                                        class="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition-colors duration-200">
-                                        Selanjutnya
+
+                        
+                                <div class="flex justify-end space-x-1">
+                                    <a href="<?= base_url('admin/consultation/detail/' . $konsultasi['id']) ?>"
+                                        class="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 text-center">
+                                        Kembali
+                                    </a>
+                                    <button type="submit" id="submitButton" class="bg-orange-500 text-white px-6 py-2 rounded-md font-semibold hover:bg-orange-600 transition-colors duration-200">
+                                        Simpan
                                     </button>
+                                        <script>
+                                            document.getElementById('submitButton').addEventListener('click', function(event) {
+                                                const confirmation = confirm('Apakah Anda yakin ingin menyimpan perubahan?');
+                                                if (!confirmation) {
+                                                    event.preventDefault(); // Prevent form submission if not confirmed
+                                                }
+                                            });
+                                        </script>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+        </div>
+        </main>
+
+        <div class="relative" id="footer">
+            <img src="/assets/images/footer.png" alt="footer" class="w-full">
+            <div
+                class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
+                <div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">> <div
+                        class="w-1/3 text-left">
+                        <div class="flex items-center space-x-4">
+                            <img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
+                            <h3 class="text-xl font-semibold">Badan Pusat Statistik Provinsi DKI Jakarta</h3>
+                        </div>
+                        <p class="mt-4 text-base">Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
+                            <span>Phone (021) 31928493</span>
+                            <br>
+                            <span>Fax. (021) 3152004</span>
+                            <br>
+                            <span>E-mail: bps3100@bps.go.id</span>
+                        </p>
+                    </div>
+                    <div class="w-1/3 text-left">
+                        <h4 class="text-xl font-semibold">Website Lainnya:</h4>
+                        <ul class="list-none text-base">
+                            <li>
+                                <a href="https://www.bps.go.id" class="underline">Website BPS Indonesia</a>
+                            </li>
+                            <li>
+                                <a href="https://jakarta.bps.go.id" class="underline">Website BPS Provinsi DKI
+                                    Jakarta</a>
+                            </li>
+                            <li>
+                                <a href="https://pst.bps.go.id" class="underline">Website Pelayanan Statistik
+                                    Terpadu</a>
+                            </li>
+                            <li>
+                                <a href="https://silastik.bps.go.id" class="underline">Website SILASTIK</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-1/3 text-left">
+                        <h4 class="text-xl font-semibold">Sosial Media:</h4>
+                        <ul class="list-none text-base">
+                            <li>
+                                <a href="https://www.facebook.com/bpsdkijakarta/" class="underline">Facebook</a>
+                            </li>
+                            <li>
+                                <a href="https://x.com/bpsdkijakarta/" class="underline">Twitter</a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/bpsdkijakarta/" class="underline">Instagram</a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/c/BPSDKI" class="underline">YouTube</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6 text-sm"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved.
+                </div>
             </div>
         </div>
-    </main>
 
-    <div class="relative" id="footer">
-			<img src="/assets/images/footer.png" alt="footer" class="w-full">
-			<div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
-				<div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">> <div class="w-1/3 text-left">
-						<div class="flex items-center space-x-4">
-							<img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
-							<h3 class="text-xl font-semibold">Badan Pusat Statistik Provinsi DKI Jakarta</h3>
-						</div>
-						<p class="mt-4 text-base">Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
-							<span>Phone (021) 31928493</span>
-							<br>
-							<span>Fax. (021) 3152004</span>
-							<br>
-							<span>E-mail: bps3100@bps.go.id</span>
-						</p>
-					</div>
-					<div class="w-1/3 text-left">
-						<h4 class="text-xl font-semibold">Website Lainnya:</h4>
-						<ul class="list-none text-base">
-							<li>
-								<a href="https://www.bps.go.id" class="underline">Website BPS Indonesia</a>
-							</li>
-							<li>
-								<a href="https://jakarta.bps.go.id" class="underline">Website BPS Provinsi DKI Jakarta</a>
-							</li>
-							<li>
-								<a href="https://pst.bps.go.id" class="underline">Website Pelayanan Statistik Terpadu</a>
-							</li>
-							<li>
-								<a href="https://silastik.bps.go.id" class="underline">Website SILASTIK</a>
-							</li>
-						</ul>
-					</div>
-					<div class="w-1/3 text-left">
-						<h4 class="text-xl font-semibold">Sosial Media:</h4>
-						<ul class="list-none text-base">
-							<li>
-								<a href="https://www.facebook.com/bpsdkijakarta/" class="underline">Facebook</a>
-							</li>
-							<li>
-								<a href="https://x.com/bpsdkijakarta/" class="underline">Twitter</a>
-							</li>
-							<li>
-								<a href="https://www.instagram.com/bpsdkijakarta/" class="underline">Instagram</a>
-							</li>
-							<li>
-								<a href="https://www.youtube.com/c/BPSDKI" class="underline">YouTube</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="mt-6 text-sm"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
-			</div>
-		</div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        // Date Picker
-        flatpickr("#datePicker", {
-            dateFormat: "D, M d", // Format: Mon, Nov 29
-            defaultDate: "today",
-            minDate: "today",
-            disable: [
-                function (date) {
-                    return (date.getDay() === 0 || date.getDay() === 6);
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script>
+            // Date Picker
+            flatpickr("#datePicker", {
+                dateFormat: "Y-m-d", // Format: Mon, Nov 29
+                defaultDate: "<?= isset($konsultasi['tanggal_konsultasi']) ? $konsultasi['tanggal_konsultasi'] : 'today' ?>",
+                minDate: "today",
+                disable: [
+                    function (date) {
+                        return (date.getDay() === 0 || date.getDay() === 6);
+                    }
+                ],
+                onChange: function (selectedDates, dateStr) {
+                    document.querySelector(".flatpickr-current-month").style.background = "#E76F51";
+                },
+                onReady: function () {
+                    document.querySelector(".flatpickr-current-month").style.background = "#E76F51";
                 }
-            ],
-            onChange: function (selectedDates, dateStr) {
-                document.querySelector(".flatpickr-current-month").style.background = "#E76F51";
-            },
-            onReady: function () {
-                document.querySelector(".flatpickr-current-month").style.background = "#E76F51";
-            }
-        });
+            });
 
-        // Time Picker
-        flatpickr("#timePicker", {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-            minTime: "07:00",
-            maxTime: "23:59",
-            minuteIncrement: 1,
-            time_24hr: true,
-            defaultDate: "07:00",
-            onChange: function (selectedDates, dateStr) {
-                // Custom handling if needed
-            },
-            onOpen: function () {
-                document.querySelector("#timePicker").parentElement.classList.add("time-picker-custom");
-            },
-            onClose: function () {
-                document.querySelector("#timePicker").parentElement.classList.remove("time-picker-custom");
-            }
-        });
-    </script>
+            // Time Picker
+            flatpickr("#timePicker", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                minTime: "07:00",
+                maxTime: "23:59",
+                minuteIncrement: 1,
+                time_24hr: true,
+                defaultDate: "<?= isset($konsultasi['waktu_konsultasi']) ? $konsultasi['waktu_konsultasi'] : '07:00' ?>",
+                onChange: function (selectedDates, dateStr) {
+                    // Custom handling if needed
+                },
+                onOpen: function () {
+                    document.querySelector("#timePicker").parentElement.classList.add("time-picker-custom");
+                },
+                onClose: function () {
+                    document.querySelector("#timePicker").parentElement.classList.remove("time-picker-custom");
+                }
+            });
+        </script>
 
 </body>
 
