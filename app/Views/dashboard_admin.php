@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
         }
     </style>
 </head>
+
 <body class="bg-oranye-1 mt-28 md:mt-16">
 <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
@@ -63,17 +65,20 @@
 
         <!-- Filter Button -->
         <div class="flex justify-end mb-4">
-            <button id="filterBtn" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">Filter</button>
+            <button id="filterBtn"
+                class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">Filter</button>
         </div>
 
         <!-- Filter Modal -->
-        <div id="filterModal" class="fixed inset-0 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+        <div id="filterModal"
+            class="fixed inset-0 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
             <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
                 <h2 class="text-2xl font-bold mb-4">Filter</h2>
                 <form action="/admin/dashboard/filter" method="post" id="filterForm">
                     <div class="mb-4">
                         <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
-                        <select id="status" name="status" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                        <select id="status" name="status"
+                            class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:outline-none">
                             <option value="">All</option>
                             <option value="Sedang diproses">Sedang diproses</option>
                             <option value="Disetujui">Disetujui</option>
@@ -82,8 +87,10 @@
                         </select>
                     </div>
                     <div class="flex justify-end">
-                        <button type="button" id="closeModalBtn" class="bg-gray-500 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-gray-600 mr-2">Close</button>
-                        <button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-orange-600">Apply</button>
+                        <button type="button" id="closeModalBtn"
+                            class="bg-gray-500 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-gray-600 mr-2">Close</button>
+                        <button type="submit"
+                            class="bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-orange-600">Apply</button>
                     </div>
                 </form>
             </div>
@@ -110,13 +117,7 @@
                                     <td class="py-2 px-4">
                                         <div class="flex justify-around">
                                             <a href="/admin/consultation/detail/<?= $request['id'] ?>" class="bg-green-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-green-600">Detail</a>
-                                            <a href="/admin/consultation/delete/<?= $request['id'] ?>" class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600" onclick="return confirmDelete()">Hapus</a>
-                                                <script>
-                                                    function confirmDelete() {
-                                                        return confirm('Apakah Anda yakin ingin menghapus permintaan konsultasi ini?');
-                                                    }
-                                                </script>
-
+                                            <a href="/admin/consultation/delete/<?= $request['id'] ?>" class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600">Hapus</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -182,17 +183,18 @@
 		</div>
 
     <script>
-        document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
-			const dropdown = document.getElementById('dropdownNavbar');
-			dropdown.classList.toggle('hidden');
-		});
-        document.getElementById('filterBtn').addEventListener('click', function() {
+        document.getElementById('dropdownNavbarLink').addEventListener('click', function () {
+            const dropdown = document.getElementById('dropdownNavbar');
+            dropdown.classList.toggle('hidden');
+        });
+        document.getElementById('filterBtn').addEventListener('click', function () {
             document.getElementById('filterModal').classList.remove('hidden');
         });
 
-        document.getElementById('closeModalBtn').addEventListener('click', function() {
+        document.getElementById('closeModalBtn').addEventListener('click', function () {
             document.getElementById('filterModal').classList.add('hidden');
         });
     </script>
 </body>
+
 </html>
