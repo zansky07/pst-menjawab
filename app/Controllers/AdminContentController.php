@@ -53,20 +53,20 @@ class AdminContentController extends BaseController
             }
         
             $konsultasiModel = new KonsultasiModel();
-            $status = $this->request->getGet('status'); // Filter status from query string
-            $periode = $this->request->getGet('periode'); // Filter period from query string
         
-            // Apply filter by status
-            if ($status && $status !== 'semua') {
-                $konsultasiModel->where('status_konsultasi', $status);
+            // Ambil nilai filter dari query string, dengan nilai default 'semua'
+            $data['status'] = $this->request->getGet('status') ?? 'semua';
+            $data['periode'] = $this->request->getGet('periode') ?? 'semua';
+        
+            // Terapkan filter berdasarkan status
+            if ($data['status'] !== 'semua') {
+                $konsultasiModel->where('status_konsultasi', $data['status']);
             }
         
-            // Apply filter by periode (1bulan, 3bulan, 6bulan, 12bulan)
-            if ($periode && $periode !== 'semua') {
+            // Terapkan filter berdasarkan periode
+            if ($data['periode'] !== 'semua') {
                 $date = new \CodeIgniter\I18n\Time('now');
-        
-                // Determine the date range based on periode
-                switch ($periode) {
+                switch ($data['periode']) {
                     case '1bulan':
                         $date->subMonths(1);
                         break;
@@ -80,20 +80,14 @@ class AdminContentController extends BaseController
                         $date->subMonths(12);
                         break;
                 }
-        
-                // Filter based on the calculated date
                 $konsultasiModel->where('tanggal_reservasi >=', $date);
             }
         
-            $data['requests'] = $konsultasiModel->paginate(10); // Pagination
-            $data['pager'] = $konsultasiModel->pager;
-        
-            // Pass request data to the view
-            $data['status'] = $status;
-            $data['periode'] = $periode;
+            $data['requests'] = $konsultasiModel->paginate(10); // Data dengan pagination
+            $data['pager'] = $konsultasiModel->pager; // Pager untuk navigasi pagination
         
             return view('statistik_admin', $data);
-        }               
+        }                     
         
         private function exportCSV($data)
         {
@@ -165,15 +159,41 @@ class AdminContentController extends BaseController
             }
         
             $konsultasiModel = new KonsultasiModel();
-            $status = $this->request->getGet('status'); // Filter status dari query string
-            $periode = $this->request->getGet('periode'); // Filter periode dari query string
         
-            // Mendapatkan data dari model
-            $data = $konsultasiModel->findAll(); // Ambil semua data
+            // Ambil nilai filter dari query string, dengan nilai default 'semua'
+            $data['status'] = $this->request->getGet('status') ?? 'semua';
+            $data['periode'] = $this->request->getGet('periode') ?? 'semua';
         
-            // Tentukan format ekspor berdasarkan parameter query string
+            // Terapkan filter berdasarkan status
+            if ($data['status'] !== 'semua') {
+                $konsultasiModel->where('status_konsultasi', $data['status']);
+            }
+        
+            // Terapkan filter berdasarkan periode
+            if ($data['periode'] !== 'semua') {
+                $date = new \CodeIgniter\I18n\Time('now');
+                switch ($data['periode']) {
+                    case '1bulan':
+                        $date->subMonths(1);
+                        break;
+                    case '3bulan':
+                        $date->subMonths(3);
+                        break;
+                    case '6bulan':
+                        $date->subMonths(6);
+                        break;
+                    case '12bulan':
+                        $date->subMonths(12);
+                        break;
+                }
+                $konsultasiModel->where('tanggal_reservasi >=', $date);
+            }
+        
+            // Ambil data yang sesuai dengan filter
+            $data = $konsultasiModel->findAll();
+        
+            // Tentukan format ekspor
             $format = $this->request->getGet('format');
-        
             switch ($format) {
                 case 'csv':
                     $this->exportCSV($data);
@@ -187,7 +207,7 @@ class AdminContentController extends BaseController
                 default:
                     return redirect()->to('/admin/statistics')->with('error', 'Format ekspor tidak valid.');
             }
-        }
+        }        
         
         public function pengaturan() { 
         // Periksa apakah pengguna sudah login 
@@ -200,4 +220,24 @@ class AdminContentController extends BaseController
         $data['konsultans'] = $konsultanModel->findAll(); 
         return view('pengaturan_admin', $data); 
         }
+
+        public function pengaturan_admin() { 
+            // Periksa apakah pengguna sudah login 
+            if (!session()->get('logged_in')) { 
+                return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
+            } 
+            $adminModel = new AdminModel();  
+            $data['admins'] = $adminModel->findAll(); 
+            return view('pengaturan_admin', $data); 
+        }
+
+        public function pengaturan_konsultan() { 
+            // Periksa apakah pengguna sudah login 
+            if (!session()->get('logged_in')) { 
+                return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
+            } 
+            $konsultanModel = new KonsultanModel(); 
+            $data['konsultans'] = $konsultanModel->findAll(); 
+            return view('pengaturan_konsultan', $data); 
+            }
 }

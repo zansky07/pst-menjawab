@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\KonsultasiModel;
@@ -30,7 +31,7 @@ class KonsultasiController extends BaseController
 
         // Validasi data menggunakan regex
         $namaPattern = "/^[a-zA-Z\s]{1,50}$/";
-        $emailPattern = "/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/";
+        $emailPattern = "/^[\w.\-]+@([\w-]+\.)+[\w-]{2,4}$/";
         $whatsappPattern = "/^08[1-9][0-9]{6,10}$/";
         $topikPattern = "/^[\w\s]{3,100}$/";
         $kategoriPattern = "/^[\w\s]{3,50}$/";
@@ -162,7 +163,7 @@ class KonsultasiController extends BaseController
         if ($status_konsultasi === 'Ditolak') {
             $data['alasan_penolakan'] = $alasan_penolakan;
         }
-        
+
         if ($status_konsultasi === 'Selesai') {
             $data['kehadiran'] = $kehadiran_konsumen;
         }
@@ -170,13 +171,21 @@ class KonsultasiController extends BaseController
         // Update the record
         $konsultasiModel->update($id, $data);
 
+        $konsultasi = $konsultasiModel->find($id);
+
         // If status is "Disetujui", redirect to scheduling page
         if ($status_konsultasi === 'Disetujui') {
-            return redirect()->to("/admin/consultation/schedule/{$id}")->with('message', 'Status diperbarui. Silakan jadwalkan konsultasi.');
+            if (empty($konsultasi['jadwal_konsultasi'])) {
+                return redirect()->to("/admin/consultation/schedule/{$id}")->with('message', 'Status diperbarui. Silakan jadwalkan konsultasi.');
+            } else {
+                return redirect()->to('/admin/dashboard')->with('message', 'Status diperbarui. Jadwal konsultasi sudah tersedia.');
+            }
         }
         // Otherwise, redirect back to dashboard
         return redirect()->to('/admin/dashboard')->with('message', 'Status berhasil diperbarui.');
     }
+
+
 
     public function delete($id)
     {
@@ -189,5 +198,15 @@ class KonsultasiController extends BaseController
         $konsultasiModel->delete($id);
 
         return redirect()->to('/admin/dashboard')->with('message', 'Data berhasil dihapus');
+    }
+
+    public function postConsultation()
+    {
+        // Periksa apakah pengguna sudah login
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
+        }
+
+        return view('post_konsultasi');
     }
 }

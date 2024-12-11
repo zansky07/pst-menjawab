@@ -36,7 +36,7 @@
         }
 
         .welcome {
-            font-size: 2.5vw;
+            font-size: 2vw;
             color: white;
             text-align: center;
             font-weight: bold;
@@ -118,12 +118,12 @@
         /* Responsif untuk Smartphone */
         @media (max-width: 768px) {
             .welcome {
-                font-size: 5vw;
+                font-size: 3vw;
                 /* Ukuran font lebih kecil untuk smartphone */
             }
 
             .welcome2 {
-                font-size: 4vw;
+                font-size: 2vw;
                 /* Ukuran font lebih kecil untuk smartphone */
             }
 
@@ -150,8 +150,17 @@
             }
 
             .alert {
-                font-size: 14px;
+                font-size: 12px;
                 /* Ukuran font alert lebih kecil pada smartphone */
+            }
+
+            p {
+                font-size: 11px;
+            }
+
+            h3.text-lg,
+            h3.text-xl {
+                font-size: 12px;
             }
         }
 
@@ -175,10 +184,32 @@
     </style>
 </head>
 
-<body style="margin: 0; height: 240vh;" class="bg-oranye-1">
-    <main class="container mx-auto mt-0 bg-oranye-1" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 45vh;">
+<body style="margin: 0; height: 260vh;" class="bg-oranye-1">
+    <main class="container-fluid mx-auto mt-0 bg-oranye-1" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 55vh;">
+        <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
+            <div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
+                <div class="flex items-center space-x-4">
+                    <img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
+                    <span class="text-gray-800 hover:text-oranye-2 font-semibold text-sm md:text-base"><a href="/"> PST Menjawab BPS Provinsi DKI Jakarta </a></span>
+                </div>
+                <div class="text-oranye-4 order-3 w-full md:w-auto md:order-2">
+                    <ul class="flex font-semibold items-center justify-between space-x-4">
+                        <li class="hover:text-oranye-2">
+                            <a href="/consultation">Konsultasi</a>
+                        </li>
+                        <li class="hover:text-oranye-2">
+                            <a href="/chatbot">Chatbot</a>
+                        </li>
+                        <li class="hover:text-oranye-2">
+                            <a href="/consultation/checkReservation">Cek Reservasi</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <!-- Video Thumbnail -->
         <div class="text-center mb-8">
+            <br><br><br><br>
             <h1 class=" welcome">SELAMAT DATANG DI PST MENJAWAB</h1>
             <h2 class="welcome2">PELAYANAN STATISTIK TERPADU</h2>
             <h2 class="welcome2">BPS PROVINSI DKI JAKARTA</h2>
@@ -244,6 +275,60 @@
                 <img src="<?= base_url('assets/images/papan.png') ?>" alt="Informasi Terkini" class="mx-auto w-20 mb-4" style="margin-top: 20px;">
                 <p class=" text-white text-left">Rekomendasi Kegiatan Statistik adalah layanan untuk instansi pemerintah yang akan melakukan survei dan membutuhkan saran terkait kegiatan statistik, membantu merencanakan dan mengembangkan survei yang efektif dan sesuai kebutuhan.</p>
             </a>
+            </div>
+            <div class="relative" id="footer">
+                <img src="/assets/images/footer.png" alt="footer" class="w-full">
+                <div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
+                    <div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">> <div class="w-1/3 text-left">
+                            <div class="flex items-center space-x-4">
+                                <img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
+                                <h3 class="text-xl font-semibold">Badan Pusat Statistik Provinsi DKI Jakarta</h3>
+                            </div>
+                            <p class="mt-4 text-base">Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
+                                <span>Phone (021) 31928493</span>
+                                <br>
+                                <span>Fax. (021) 3152004</span>
+                                <br>
+                                <span>E-mail: bps3100@bps.go.id</span>
+                            </p>
+                        </div>
+                        <div class="w-1/3 text-left">
+                            <h4 class="text-xl font-semibold">Website Lainnya:</h4>
+                            <ul class="list-none text-base">
+                                <li>
+                                    <a href="https://www.bps.go.id" class="underline">Website BPS Indonesia</a>
+                                </li>
+                                <li>
+                                    <a href="https://jakarta.bps.go.id" class="underline">Website BPS Provinsi DKI Jakarta</a>
+                                </li>
+                                <li>
+                                    <a href="https://pst.bps.go.id" class="underline">Website Pelayanan Statistik Terpadu</a>
+                                </li>
+                                <li>
+                                    <a href="https://silastik.bps.go.id" class="underline">Website SILASTIK</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="w-1/3 text-left">
+                            <h4 class="text-xl font-semibold">Sosial Media:</h4>
+                            <ul class="list-none text-base">
+                                <li>
+                                    <a href="https://www.facebook.com/bpsdkijakarta/" class="underline">Facebook</a>
+                                </li>
+                                <li>
+                                    <a href="https://x.com/bpsdkijakarta/" class="underline">Twitter</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/bpsdkijakarta/" class="underline">Instagram</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/c/BPSDKI" class="underline">YouTube</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-sm"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
+                </div>
             </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
