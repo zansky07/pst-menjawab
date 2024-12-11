@@ -71,9 +71,36 @@ class KonsultasiController extends BaseController
         // Simpan data ke database menggunakan KonsultasiModel
         $this->konsultasiModel->insert($data);
 
+        // Kirim email pemberitahuan
+        $email = \Config\Services::email();
+        $email->setTo($data['email_konsumen']);
+        $email->setFrom('mfauzanfk@gmail.com', 'PST Menjawab');
+        $email->setSubject('Reservasi Konsultasi Online Berhasil');
+        $email->setMessage("
+            <p>Halo <strong>{$data['nama_konsumen']}</strong>,</p>
+            <p>Reservasi konsultasi Anda berhasil! Berikut detailnya:</p>
+            <ul>
+                <li><strong>Nama:</strong> {$data['nama_konsumen']}</li>
+                <li><strong>Topik:</strong> {$data['topik']}</li>
+                <li><strong>Kategori:</strong> {$data['kategori']}</li>
+                <li><strong>Lingkup:</strong> {$data['lingkup']}</li>
+                <li><strong>Deskripsi:</strong> {$data['deskripsi']}</li>
+            </ul>
+            <p>Kami akan menghubungi Anda untuk langkah selanjutnya.</p>
+            <p>Terima kasih,<br>PST Menjawab</p>
+        ");
+
+        if ($email->send()) {
+            session()->setFlashdata('success', 'Reservasi berhasil. Email pemberitahuan telah dikirim.');
+        } else {
+            session()->setFlashdata('error', 'Reservasi berhasil, tetapi email tidak dapat dikirim.');
+        }
+
         // Redirect ke halaman utama setelah submit
-        session()->setFlashdata('success', 'Reservasi berhasil dibuat dengan token: ' . $token);
-        return redirect()->to('/');
+        // session()->setFlashdata('success', 'Reservasi berhasil dibuat dengan token: ' . $token);
+        echo $email->printDebugger(['headers']);
+
+        // return redirect()->to('/');
     }
 
     public function checkStatus()
@@ -139,7 +166,7 @@ class KonsultasiController extends BaseController
         $data['konsultasi'] = $konsultasiModel->find($id);
 
         if (!$data['konsultasi']) {
-            return redirect()->to('/dashboard')->with('error', 'Data tidak ditemukan.');
+            return redirect()->to('/admin/dashboard')->with('error', 'Data tidak ditemukan.');
         }
 
         return view('konsultasi_detail_admin', $data);
@@ -197,7 +224,7 @@ class KonsultasiController extends BaseController
         $konsultasiModel = new konsultasiModel();
         $konsultasiModel->delete($id);
 
-        return redirect()->to('/dashboard')->with('message', 'Data berhasil dihapus');
+        return redirect()->to('/admin/dashboard')->with('message', 'Data berhasil dihapus');
     }
 
     public function postConsultation()

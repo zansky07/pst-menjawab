@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+INFO - 2024-12-11 03:53:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:54:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:54:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:54:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 03:54:58 --> ErrorException: Undefined array key "id_konsultasi"
+[Method: GET, Route: admin/consultation/detail/3]
+in APPPATH\Views\konsultasi_detail_admin.php on line 73.
+ 1 APPPATH\Views\konsultasi_detail_admin.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_konsultasi"', 'C:\\xampp\\htdocs\\Project rpl\\app\\Views\\konsultasi_detail_admin.php', 73)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\Project rpl\\app\\Views\\konsultasi_detail_admin.php')
+=======
 INFO - 2024-12-11 02:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 CRITICAL - 2024-12-11 02:57:18 --> TypeError: App\Controllers\AdminContentController::index(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
 [Method: GET, Route: admin/dashboard]
@@ -87,6 +98,7 @@ CRITICAL - 2024-12-11 13:04:38 --> ErrorException: Undefined variable $id
 in APPPATH\Views\konsultasi_detail_admin.php on line 214.
  1 APPPATH\Views\konsultasi_detail_admin.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\XAMPP2\\htdocs\\fix-pst-menjawab\\pst-menjawab\\app\\Views\\konsultasi_detail_admin.php', 214)
  2 SYSTEMPATH\View\View.php(234): include('C:\\XAMPP2\\htdocs\\fix-pst-menjawab\\pst-menjawab\\app\\Views\\konsultasi_detail_admin.php')
+>>>>>>> e90b9a5aa297f27b9f95c3f74f14c1d545669a1e
  3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
  4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('konsultasi_detail_admin', [], true)
  5 APPPATH\Controllers\KonsultasiController.php(144): view('konsultasi_detail_admin', [...])
@@ -96,6 +108,24 @@ in APPPATH\Views\konsultasi_detail_admin.php on line 214.
  9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+<<<<<<< HEAD
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Project rpl\\public\\index.php')
+INFO - 2024-12-11 03:57:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:57:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:58:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 03:58:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 04:03:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 04:03:12 --> ErrorException: Undefined array key "id_konsultasi"
+[Method: GET, Route: admin/consultation/detail/2]
+in APPPATH\Views\konsultasi_detail_admin.php on line 73.
+ 1 APPPATH\Views\konsultasi_detail_admin.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_konsultasi"', 'C:\\xampp\\htdocs\\Project rpl\\app\\Views\\konsultasi_detail_admin.php', 73)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\Project rpl\\app\\Views\\konsultasi_detail_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('konsultasi_detail_admin', [], true)
+ 5 APPPATH\Controllers\KonsultasiController.php(144): view('konsultasi_detail_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->detail('2')
+=======
 12 SYSTEMPATH\rewrite.php(44): require_once('C:\\XAMPP2\\htdocs\\fix-pst-menjawab\\pst-menjawab\\public\\index.php')
 INFO - 2024-12-11 13:04:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-11 13:04:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
@@ -108,11 +138,39 @@ in APPPATH\Views\konsultasi_detail_admin.php on line 214.
  4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('konsultasi_detail_admin', [], true)
  5 APPPATH\Controllers\KonsultasiController.php(144): view('konsultasi_detail_admin', [...])
  6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->detail('3')
+>>>>>>> e90b9a5aa297f27b9f95c3f74f14c1d545669a1e
  7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
  8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+<<<<<<< HEAD
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Project rpl\\public\\index.php')
+INFO - 2024-12-11 04:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:47:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:47:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:47:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:48:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:48:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-11 14:48:55 --> ErrorException: Undefined array key "id_konsultasi"
+[Method: GET, Route: admin/consultation/schedule/1]
+in APPPATH\Views\jadwal_konsultasi.php on line 184.
+ 1 APPPATH\Views\jadwal_konsultasi.php(184): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_konsultasi"', 'C:\\xampp\\htdocs\\Project rpl\\app\\Views\\jadwal_konsultasi.php', 184)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\Project rpl\\app\\Views\\jadwal_konsultasi.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('jadwal_konsultasi', [], true)
+ 5 APPPATH\Controllers\JadwalKonsultasiController.php(33): view('jadwal_konsultasi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\JadwalKonsultasiController->index('1')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\JadwalKonsultasiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Project rpl\\public\\index.php')
+INFO - 2024-12-11 14:48:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:49:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-11 14:50:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+=======
 12 SYSTEMPATH\rewrite.php(44): require_once('C:\\XAMPP2\\htdocs\\fix-pst-menjawab\\pst-menjawab\\public\\index.php')
 INFO - 2024-12-11 13:05:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-11 13:15:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
@@ -302,105 +360,3 @@ INFO - 2024-12-11 14:28:32 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-12-11 14:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-11 14:29:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-11 14:29:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:37:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:37:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:38:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:38:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:38:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:39:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:40:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:40:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:40:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:40:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:40:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 14:40:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:01:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:02:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:02:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:02:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:02:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:02:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:02:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:02:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:02:29 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:02:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:02:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:15:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:15:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:16:33 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:16:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:16:52 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:16:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:17:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:17:01 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:17:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:17:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:17:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:17:14 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:32:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:32:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:32:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:32:50 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:32:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:32:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:34:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:34:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:34:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:34:36 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:34:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:34:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:34:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:34:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:34:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:34:56 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:34:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:35:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:37:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:37:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:37:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:37:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:37:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:37:46 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:37:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:37:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:51:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:51:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:51:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:51:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-ERROR - 2024-12-11 15:51:51 --> Notification Error: Undefined array key "no_wa_konsumen"
-INFO - 2024-12-11 15:51:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-12-11 15:52:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

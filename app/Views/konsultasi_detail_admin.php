@@ -112,7 +112,7 @@
     </nav>
     <div class="max-w-xl lg:max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
         <h1 class="text-2xl font-bold mb-6">Detail</h1>
-        <form action="/admin/consultation/detail/update/<?= $konsultasi['id'] ?>" method="post">
+        <form action="<?= base_url('admin/update_konsultasi/'.$konsultasi['id']) ?>" method="POST">
             <?= csrf_field() ?>
             <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Nama
@@ -180,7 +180,12 @@
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Jadwal Konsultasi</label>
                 <div class="flex items-center w-full">
                     <input type="text" class="flex-grow px-3 py-2 bg-orange-100 border border-orange-300 rounded-md" value="<?= esc($formatted_jadwal) ?>" readonly>
-                    <a href="/admin/consultation/schedule/delete/<?= $konsultasi['id'] ?>" class="ml-2 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">Hapus</a>
+                    <a href="/admin/consultation/schedule/delete/<?= $konsultasi['id'] ?>" class="ml-2 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600" onclick="return confirmDelete()">Hapus</a>
+                        <script>
+                            function confirmDelete() {
+                                return confirm('Apakah Anda yakin ingin menghapus jadwal konsultasi ini?');
+                            }
+                        </script>
                 </div>
             </div>
             <!-- IF DITOLAK SELECTED -->
@@ -191,8 +196,8 @@
             <div id="notif-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Kirim Notifikasi</label>
                 <div class="flex space-x-4 md:space-x-2 w-full md:col-span-1">
-                    <button name="notif_wa" class="w-full md:w-auto bg-orange-500 text-white py-2 px-5 rounded-md hover:bg-orange-600">VIA WHATSAPP</button>
-                    <button name="notif_email" class="w-full md:w-auto bg-orange-500 text-white py-2 px-5 rounded-md hover:bg-orange-600">VIA EMAIL</button>
+                    <a href="" name="notif_wa" class="w-full md:w-auto bg-orange-500 text-white py-2 px-5 rounded-md hover:bg-orange-600">VIA WHATSAPP</a>
+                    <a href="" name="notif_email" class="w-full md:w-auto bg-orange-500 text-white py-2 px-5 rounded-md hover:bg-orange-600">VIA EMAIL</a>
                 </div>
             </div>
             <!-- IF SELESAI SELECTED -->
