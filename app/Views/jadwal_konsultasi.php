@@ -148,6 +148,24 @@
     }
 </style>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Assuming the format of jadwal_konsultasi is 'YYYY-MM-DD HH:mm:ss'
+        const jadwalKonsultasi = '<?= $konsultasi['jadwal_konsultasi'] ?>';
+        if (jadwalKonsultasi) {
+            const date = new Date(jadwalKonsultasi);
+
+            // Extract date and time components
+            const dateValue = date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            const timeValue = date.toTimeString().split(' ')[0].substring(0, 5); // Format: HH:mm
+
+            // Set the date and time pickers with these values
+            document.getElementById('datePicker').value = dateValue;
+            document.getElementById('timePicker').value = timeValue;
+        }
+    });
+</script>
+
 <body class = "mt-28 md:mt-16  bg-oranye-1">
     <div class="flex overflow-hidden flex-col pt-8">
         <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
@@ -231,6 +249,7 @@
                                     <label class="block text-sm font-medium text-gray-700">Link Zoom</label>
                                     <input type="text" name="link_zoom"
                                         class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
+                                        value="<?= $konsultasi['link_zoom'] ?>"
                                         required>
                                 </div>
 
@@ -255,11 +274,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex justify-end">
-                                    <button type="submit"
-                                        class="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition-colors duration-200">
-                                        Selanjutnya
+                                <div class="flex justify-end space-x-1">
+                                    <a href="<?= base_url('admin/consultation/detail/' . $konsultasi['id']) ?>"
+                                        class="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 text-center">
+                                        Kembali
+                                    </a>
+                                    <button type="submit" id="submitButton" class="bg-orange-500 text-white px-6 py-2 rounded-md font-semibold hover:bg-orange-600 transition-colors duration-200">
+                                        Simpan
                                     </button>
+                                        <script>
+                                            document.getElementById('submitButton').addEventListener('click', function(event) {
+                                                const confirmation = confirm('Apakah Anda yakin ingin menyimpan perubahan?');
+                                                if (!confirmation) {
+                                                    event.preventDefault(); // Prevent form submission if not confirmed
+                                                }
+                                            });
+                                        </script>
                                 </div>
                             </form>
                         </div>

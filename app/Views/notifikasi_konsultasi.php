@@ -212,11 +212,7 @@
 
                             <!-- Action Buttons -->
                             <div class="flex justify-end space-x-1">
-                                <button type="submit" href="<?= base_url('admin/dashboard') ?>"
-                                    class="bg-orange-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-orange-700 text-center">
-                                    Simpan
-                                </button>
-                                <a href="<?= base_url('admin/consultation/schedule/' . $konsultasi['id']) ?>"
+                                <a href="<?= base_url('admin/consultation/detail/' . $konsultasi['id']) ?>"
                                     class="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 text-center">
                                     Kembali
                                 </a>

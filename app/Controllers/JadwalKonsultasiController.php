@@ -74,7 +74,7 @@ class JadwalKonsultasiController extends BaseController
             $this->konsultasiModel->update($konsultasi_id, $data);
 
             // Redirect ke halaman notifikasi dengan pesan sukses
-            return redirect()->to('/admin/consultation/notification/' . $konsultasi_id)
+            return redirect()->to('/admin/consultation/detail/' . $konsultasi_id)
                 ->with('success', 'Jadwal konsultasi berhasil disimpan');
 
         } catch (\Exception $e) {
