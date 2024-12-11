@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Statistik Admin</title> ` <script src="https://cdn.tailwindcss.com"></script>
+		<title>Statistik Admin</title>
+		<script src="https://cdn.tailwindcss.com"></script>
 		<link rel="stylesheet" href="
 					<?= base_url('assets/css/styles.css') ?>">`
 	</head>
@@ -30,10 +31,10 @@
 							<div id="dropdownNavbar" class="hidden absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow mt-2 w-44">
 								<ul class="py-1">
 									<li>
-										<a href="admin/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
+										<a href="/admin/settings/admin" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
 									</li>
 									<li>
-										<a href="admin/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
+										<a href="/admin/settings/consultant" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
 									</li>
 								</ul>
 							</div>

@@ -134,7 +134,7 @@
             </div>
         </div>
     </div>
-    <div class="relative">
+    <div class="relative" id="footer" >
 			<img src="/assets/images/footer.png" alt="footer" class="w-full">
 			<div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
 				<div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">>
