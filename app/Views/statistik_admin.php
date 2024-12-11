@@ -14,16 +14,16 @@
 					<img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
 					<span class="text-gray-800 font-semibold text-sm md:text-base"> PST Menjawab BPS Provinsi DKI Jakarta </span>
 				</div>
-				<div class="text-gray-500 order-3 w-full md:w-auto md:order-2">
+				<div class="text-oranye-4 order-3 w-full md:w-auto md:order-2">
 					<ul class="flex font-semibold items-center justify-between space-x-4">
-						<li class="hover:text-indigo-400">
+						<li class="hover:text-oranye-2">
 							<a href="/admin/dashboard">Dashboard</a>
 						</li>
-						<li class="hover:text-indigo-400">
+						<li class="hover:text-oranye-2">
 							<a href="/admin/statistics">Statistik</a>
 						</li>
 						<li class="relative">
-							<button id="dropdownNavbarLink" class="text-gray-700 hover:bg-gray-50 md:hover:bg-transparent py-2 md:hover:text-blue-700 flex items-center"> Pengaturan <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+							<button id="dropdownNavbarLink" class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center"> Pengaturan <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
 									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
 								</svg>
 							</button>
@@ -204,7 +204,7 @@
 							<img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
 							<h3 class="text-xl font-semibold">Badan Pusat Statistik Provinsi DKI Jakarta</h3>
 						</div>
-						<p class="mt-4 text-base"> Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
+						<p class="mt-4 text-base">Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
 							<span>Phone (021) 31928493</span>
 							<br>
 							<span>Fax. (021) 3152004</span>

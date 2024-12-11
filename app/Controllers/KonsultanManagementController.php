@@ -37,7 +37,7 @@ class KonsultanManagementController extends BaseController
             'whatsapp' => $this->request->getPost('whatsapp')
         ]);
 
-        return redirect()->to('/admin/settings')->with('message', 'Konsultan berhasil ditambahkan!');
+        return redirect()->to('/admin/settings/consultant')->with('message', 'Konsultan berhasil ditambahkan!');
     }
 
     public function delete($id)
@@ -45,7 +45,7 @@ class KonsultanManagementController extends BaseController
         $konsultanModel = new KonsultanModel();
         $konsultanModel->delete($id);
 
-        return redirect()->to('/admin/settings')->with('message', 'Konsultan berhasil dihapus!');
+        return redirect()->to('/admin/settings/consultant')->with('message', 'Konsultan berhasil dihapus!');
     }
 
     public function detail($id)

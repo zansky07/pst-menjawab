@@ -220,4 +220,24 @@ class AdminContentController extends BaseController
         $data['konsultans'] = $konsultanModel->findAll(); 
         return view('pengaturan_admin', $data); 
         }
+
+        public function pengaturan_admin() { 
+            // Periksa apakah pengguna sudah login 
+            if (!session()->get('logged_in')) { 
+                return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
+            } 
+            $adminModel = new AdminModel();  
+            $data['admins'] = $adminModel->findAll(); 
+            return view('pengaturan_admin', $data); 
+        }
+
+        public function pengaturan_konsultan() { 
+            // Periksa apakah pengguna sudah login 
+            if (!session()->get('logged_in')) { 
+                return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
+            } 
+            $konsultanModel = new KonsultanModel(); 
+            $data['konsultans'] = $konsultanModel->findAll(); 
+            return view('pengaturan_konsultan', $data); 
+            }
 }
