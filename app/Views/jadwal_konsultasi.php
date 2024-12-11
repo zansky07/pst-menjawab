@@ -265,39 +265,26 @@
                                         required>
                                 </div>
 
-                                <!-- Petugas Dropdown -->
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700">Petugas</label>
-                                    <div class="relative">
-                                        <select name="konsultan_id"
-                                            class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 appearance-none bg-oranye-1 pr-10 cursor-pointer"
-                                            required>
-                                    </div>
-
                                     <!-- Petugas Dropdown -->
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700">Petugas</label>
                                         <div class="relative">
-                                            <select name="konsultan_id"
-                                                class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 appearance-none bg-oranye-1 pr-10 cursor-pointer"
-                                                required>
+                                            <select name="konsultan_id" class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 appearance-none bg-oranye-1 pr-10 cursor-pointer" required>
                                                 <?php foreach ($konsultan as $k): ?>
                                                     <option value="<?= $k['id'] ?>" <?= isset($konsultasi['konsultan_id']) && $konsultasi['konsultan_id'] == $k['id'] ? 'selected' : '' ?>>
                                                         <?= $k['nama'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
-                                            <div
-                                                class="absolute inset-y-0 right-0 flex items-center px-2 mt-1 pointer-events-none">
-                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            <div class="absolute inset-y-0 right-0 flex items-center px-2 mt-1 pointer-events-none">
+                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                                 </svg>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
+                        
                                 <div class="flex justify-end space-x-1">
                                     <a href="<?= base_url('admin/consultation/detail/' . $konsultasi['id']) ?>"
                                         class="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 text-center">
