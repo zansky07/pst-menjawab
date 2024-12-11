@@ -30,6 +30,13 @@ class JadwalKonsultasiController extends BaseController
             return redirect()->to('/admin/consultation/detail/$id')->with('error', 'Data konsultasi tidak ditemukan.');
         }
 
+        // Pisahkan tanggal dan waktu
+        if (!empty($data['konsultasi']['jadwal_konsultasi'])) {
+            $jadwalParts = explode(' ', $data['konsultasi']['jadwal_konsultasi']);
+            $data['konsultasi']['tanggal_konsultasi'] = $jadwalParts[0]; // Tanggal
+            $data['konsultasi']['waktu_konsultasi'] = $jadwalParts[1]; // Waktu
+        }
+
         return view('jadwal_konsultasi', $data);
     }
 

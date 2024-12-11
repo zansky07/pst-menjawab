@@ -222,7 +222,7 @@
                                                 Konsultasi</label>
                                             <input type="text" id="datePicker" name="jadwal_konsultasi"
                                                 class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
-                                                value="<?= isset($konsultasi['jadwal_konsultasi']) ? explode(' ', $konsultasi['jadwal_konsultasi'])[0] : '' ?>"
+                                                value="<?= isset($konsultasi['tanggal_konsultasi']) ? $konsultasi['tanggal_konsultasi'] : '' ?>"
                                                 readonly>
                                         </div>
                                         <div>
@@ -256,7 +256,8 @@
                                                 required>
                                                 <?php foreach ($konsultan as $k): ?>
                                                     <option value="<?= $k['id'] ?>" <?= isset($konsultasi['konsultan_id']) && $konsultasi['konsultan_id'] == $k['id'] ? 'selected' : '' ?>>
-                                                        <?= $k['nama'] ?></option>
+                                                        <?= $k['nama'] ?>
+                                                    </option>
                                                 <?php endforeach; ?>
                                             </select>
                                             <div
@@ -349,7 +350,7 @@
             // Date Picker
             flatpickr("#datePicker", {
                 dateFormat: "Y-m-d", // Format: Mon, Nov 29
-                defaultDate: "<?= isset($konsultasi['jadwal_konsultasi']) ? explode(' ', $konsultasi['jadwal_konsultasi'])[0] : 'today' ?>",
+                defaultDate: "<?= isset($konsultasi['tanggal_konsultasi']) ? $konsultasi['tanggal_konsultasi'] : 'today' ?>",
                 minDate: "today",
                 disable: [
                     function (date) {
