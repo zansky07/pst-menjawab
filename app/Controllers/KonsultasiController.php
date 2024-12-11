@@ -97,10 +97,10 @@ class KonsultasiController extends BaseController
         }
 
         // Redirect ke halaman utama setelah submit
-        // session()->setFlashdata('success', 'Reservasi berhasil dibuat dengan token: ' . $token);
-        echo $email->printDebugger(['headers']);
+        session()->setFlashdata('success', 'Reservasi dibuat dengan token: ' . $token);
 
-        // return redirect()->to('/');
+
+        return redirect()->to('/');
     }
 
     public function checkStatus()
