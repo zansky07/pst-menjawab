@@ -148,7 +148,6 @@
     }
 </style>
 
-<<<<<<< HEAD
 <body class = "mt-28 md:mt-16  bg-oranye-1">
     <div class="flex overflow-hidden flex-col pt-8">
         <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
@@ -193,30 +192,6 @@
 				</div>
 			</div>
 		</nav>
-=======
-<body class="bg-oranye-1 mt-28 md:mt-16">
-    <!-- Header/Navbar -->
-    <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
-        <nav class="flex flex-wrap gap-5 justify-between py-2 pr-20 pl-9 max-w-full text-xl bg-white bg-opacity-80 rounded-[50px] w-[1358px] max-md:px-5 max-md:mr-0.5 max-md:flex-col max-md:items-center"
-            role="navigation" aria-label="Main Navigation">
-            <div class="flex gap-5 text-black max-md:flex-col max-md:items-center">
-                <img src="/assets/logo-pst.png" class="object-contain shrink-0 aspect-[0.8] w-[43px]" alt="BPS Logo" />
-                <div class="flex-auto my-auto max-md:text-center">PST Menjawab BPS Provinsi DKI Jakarta</div>
-            </div>
-            <div
-                class="flex gap-10 my-auto whitespace-nowrap max-md:flex-col max-md:items-center max-md:gap-4 max-md:mt-4">
-                <a href="/admin/dashboard"
-                    class="text-black hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md"
-                    tabindex="0">Dashboard</a>
-                <a href="/admin/statistics"
-                    class="text-black hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md"
-                    tabindex="0">Statistik</a>
-                <a href="/admin/settings"
-                    class="text-black hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md"
-                    tabindex="0">Pengaturan</a>
-            </div>
-        </nav>
->>>>>>> 142c80acfcf5d16721a194ce955876762b77e2bd
 
 
         <!-- Main Content -->
@@ -294,7 +269,6 @@
         </div>
     </main>
 
-<<<<<<< HEAD
     <div class="relative" id="footer">
 			<img src="/assets/images/footer.png" alt="footer" class="w-full">
 			<div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
@@ -349,54 +323,6 @@
 				<div class="mt-6 text-sm"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
 			</div>
 		</div>
-=======
-    <!-- Footer -->
-    <footer>
-        <div class="relative">
-            <img src="/assets/images/footer.png" alt="footer" class="w-full">
-            <div
-                class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
-                <div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">>
-                    <div class="w-1/3 text-left">
-                        <div class="flex items-center space-x-4">
-                            <img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
-                            <h3 class="text-xl font-semibold">Badan Pusat Statistik Provinsi DKI Jakarta</h3>
-                        </div>
-                        <p class="mt-4 text-base">
-                            Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat<br>
-                            <span>Phone (021) 31928493</span><br>
-                            <span>Fax. (021) 3152004</span><br>
-                            <span>E-mail: bps3100@bps.go.id</span>
-                        </p>
-                    </div>
-                    <div class="w-1/3 text-left">
-                        <h4 class="text-xl font-semibold">Website Lainnya:</h4>
-                        <ul class="list-none text-base">
-                            <li><a href="https://www.bps.go.id" class="underline">Website BPS Indonesia</a></li>
-                            <li><a href="https://jakarta.bps.go.id" class="underline">Website BPS Provinsi DKI
-                                    Jakarta</a></li>
-                            <li><a href="https://pst.bps.go.id" class="underline">Website Pelayanan Statistik
-                                    Terpadu</a></li>
-                            <li><a href="https://silastik.bps.go.id" class="underline">Website SILASTIK</a></li>
-                        </ul>
-                    </div>
-                    <div class="w-1/3 text-left">
-                        <h4 class="text-xl font-semibold">Sosial Media:</h4>
-                        <ul class="list-none text-base">
-                            <li><a href="https://www.facebook.com/bpsdkijakarta/" class="underline">Facebook</a></li>
-                            <li><a href="https://x.com/bpsdkijakarta/" class="underline">Twitter</a></li>
-                            <li><a href="https://www.instagram.com/bpsdkijakarta/" class="underline">Instagram</a></li>
-                            <li><a href="https://www.youtube.com/c/BPSDKI" class="underline">YouTube</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="mt-6 text-sm">
-                    &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
->>>>>>> 142c80acfcf5d16721a194ce955876762b77e2bd
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
