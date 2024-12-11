@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Admin dan Konsultan</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href= "<?= base_url('assets/css/styles.css') ?>">`
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body class="mt-28 md:mt-16  bg-oranye-1" >
+< class="mt-28 md:mt-16  bg-oranye-1 mt-28 md:mt-16" >
 <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 				<div class="flex items-center space-x-4">
@@ -30,10 +31,10 @@
 							<div id="dropdownNavbar" class="hidden absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow mt-2 w-44">
 								<ul class="py-1">
 									<li>
-										<a href="admin/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
+										<a href="/admin/settings/admin" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
 									</li>
 									<li>
-										<a href="admin/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
+										<a href="/admin/settings/consultant" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
 									</li>
 								</ul>
 							</div>
@@ -120,6 +121,7 @@
             </table>
         </div>
     </div>
+                    </main>
     <div class="relative" id="footer">
 			<img src="/assets/images/footer.png" alt="footer" class="w-full">
 			<div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
@@ -176,6 +178,10 @@
 		</div>
 
         <script>
+        document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
+			const dropdown = document.getElementById('dropdownNavbar');
+			dropdown.classList.toggle('hidden');
+		});
         // Fungsi untuk konfirmasi penghapusan
         function confirmDelete(url) {
             Swal.fire({
