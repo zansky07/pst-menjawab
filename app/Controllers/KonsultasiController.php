@@ -30,7 +30,7 @@ class KonsultasiController extends BaseController
 
         // Validasi data menggunakan regex
         $namaPattern = "/^[a-zA-Z\s]{1,50}$/";
-        $emailPattern = "/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/";
+        $emailPattern = "/^[\w.\-]+@([\w-]+\.)+[\w-]{2,4}$/";
         $whatsappPattern = "/^08[1-9][0-9]{6,10}$/";
         $topikPattern = "/^[\w\s]{3,100}$/";
         $kategoriPattern = "/^[\w\s]{3,50}$/";
