@@ -9,8 +9,8 @@
 <body class="bg-orange-100 flex items-center justify-center min-h-screen">
     <div class="w-full max-w-md">
         <div class="bg-white shadow-md rounded-lg p-6">
-            <div class="text-center">
-                <img src="logo.png" alt="Logo" class="w-20 mx-auto mb-4">
+            <div class="text-center ">
+                <img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10 mx-auto mb-2">
                 <h2 class="text-2xl font-bold text-gray-700 mb-6">Login</h2>
                 <?php if (session()->getFlashdata('error')): ?>
                     <p style="color: red;"><?= session()->getFlashdata('error') ?></p>
