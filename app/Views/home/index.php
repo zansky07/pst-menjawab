@@ -1,15 +1,3 @@
-<?php if (session()->getFlashdata('success')): ?>
-    <div class="alert alert-success">
-        <?= session()->getFlashdata('success'); ?>
-    </div>
-<?php endif; ?>
-
-<?php if (session()->getFlashdata('error')): ?>
-    <div class="alert alert-danger">
-        <?= session()->getFlashdata('error'); ?>
-    </div>
-<?php endif; ?>
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -185,7 +173,7 @@
 </head>
 
 <body style="margin: 0; height: 260vh;" class="bg-oranye-1">
-    <main class="container-fluid mx-auto mt-0 bg-oranye-1" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 55vh;">
+    <main class="container-fluid mx-auto mt-0 bg-oranye-1" style="background-image: url('<?= base_url('assets/images/bg-welcome.png') ?>'); background-size: cover; background-position: top; height: 65vh;">
         <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
             <div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
                 <div class="flex items-center space-x-4">
@@ -210,6 +198,17 @@
         <!-- Video Thumbnail -->
         <div class="text-center mb-8">
             <br><br><br><br>
+                        <?php if (session()->getFlashdata('success')): ?>
+                            <div class="alert alert-success">
+                                <?= session()->getFlashdata('success'); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (session()->getFlashdata('error')): ?>
+                            <div class="alert alert-danger">
+                                <?= session()->getFlashdata('error'); ?>
+                            </div>
+                        <?php endif; ?>
             <h1 class=" welcome">SELAMAT DATANG DI PST MENJAWAB</h1>
             <h2 class="welcome2">PELAYANAN STATISTIK TERPADU</h2>
             <h2 class="welcome2">BPS PROVINSI DKI JAKARTA</h2>

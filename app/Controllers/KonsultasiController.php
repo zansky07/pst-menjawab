@@ -58,7 +58,7 @@ class KonsultasiController extends BaseController
         $data = [
             'nama_konsumen' => $nama,
             'email_konsumen' => $email,
-            'whatsapp' => $whatsapp,
+            'whatsapp_konsumen' => $whatsapp,
             'topik' => $topik,
             'kategori' => $kategori,
             'lingkup' => $lingkup,
@@ -85,6 +85,7 @@ class KonsultasiController extends BaseController
                 <li><strong>Kategori:</strong> {$data['kategori']}</li>
                 <li><strong>Lingkup:</strong> {$data['lingkup']}</li>
                 <li><strong>Deskripsi:</strong> {$data['deskripsi']}</li>
+                <li><strong>Token:</strong> {$data['token_konsultasi']}</li>
             </ul>
             <p>Kami akan menghubungi Anda untuk langkah selanjutnya.</p>
             <p>Terima kasih,<br>PST Menjawab</p>
