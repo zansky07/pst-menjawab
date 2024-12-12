@@ -248,7 +248,7 @@
             <h2 class="text-2xl font-bold">Layanan Lainnya</h2>
         </section>
 
-        <<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 mx-auto text-center" style="max-width: 80%;">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 mx-auto text-center" style="max-width: 80%;">
             <!-- Service 4 -->
             <a href="https://pst.bps.go.id/login" class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition">
                 <h3 class="text-lg font-semibold bg-biru-4 text-oranye-2">Penjualan Produk Statistik</h3>
@@ -279,7 +279,7 @@
             <div class="relative" id="footer">
                 <img src="/assets/images/footer.png" alt="footer" class="w-full">
                 <div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
-                    <div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">> <div class="w-1/3 text-left">
+                    <div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8"> <div class="w-1/3 text-left">
                             <div class="flex items-center space-x-4">
                                 <img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
                                 <h3 class="text-xl font-semibold">Badan Pusat Statistik Provinsi DKI Jakarta</h3>
