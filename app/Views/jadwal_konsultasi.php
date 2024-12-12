@@ -148,7 +148,25 @@
     }
 </style>
 
-<body class="mt-28 md:mt-16  bg-oranye-1">
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Assuming the format of jadwal_konsultasi is 'YYYY-MM-DD HH:mm:ss'
+        const jadwalKonsultasi = '<?= $konsultasi['jadwal_konsultasi'] ?>';
+        if (jadwalKonsultasi) {
+            const date = new Date(jadwalKonsultasi);
+
+            // Extract date and time components
+            const dateValue = date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            const timeValue = date.toTimeString().split(' ')[0].substring(0, 5); // Format: HH:mm
+
+            // Set the date and time pickers with these values
+            document.getElementById('datePicker').value = dateValue;
+            document.getElementById('timePicker').value = timeValue;
+        }
+    });
+</script>
+
+<body class = "mt-28 md:mt-16  bg-oranye-1">
     <div class="flex overflow-hidden flex-col pt-8">
         <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
             <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
@@ -238,46 +256,53 @@
                                         </div>
                                     </div>
 
-                                    <!-- Link Zoom -->
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">Link Zoom</label>
-                                        <input type="text" name="link_zoom"
-                                            class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
-                                            value="<?= isset($konsultasi['link_zoom']) ? $konsultasi['link_zoom'] : '' ?>"
-                                            required>
-                                    </div>
+                                <!-- Link Zoom -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Link Zoom</label>
+                                    <input type="text" name="link_zoom"
+                                        class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
+                                        value="<?= $konsultasi['link_zoom'] ?>"
+                                        required>
+                                </div>
 
                                     <!-- Petugas Dropdown -->
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700">Petugas</label>
                                         <div class="relative">
-                                            <select name="konsultan_id"
-                                                class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 appearance-none bg-oranye-1 pr-10 cursor-pointer"
-                                                required>
+                                            <select name="konsultan_id" class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 appearance-none bg-oranye-1 pr-10 cursor-pointer" required>
                                                 <?php foreach ($konsultan as $k): ?>
                                                     <option value="<?= $k['id'] ?>" <?= isset($konsultasi['konsultan_id']) && $konsultasi['konsultan_id'] == $k['id'] ? 'selected' : '' ?>>
                                                         <?= $k['nama'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
-                                            <div
-                                                class="absolute inset-y-0 right-0 flex items-center px-2 mt-1 pointer-events-none">
-                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            <div class="absolute inset-y-0 right-0 flex items-center px-2 mt-1 pointer-events-none">
+                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                                 </svg>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex justify-end">
-                                        <button type="submit"
-                                            class="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition-colors duration-200">
-                                            Selanjutnya
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+
+                        
+                                <div class="flex justify-end space-x-1">
+                                    <a href="<?= base_url('admin/consultation/detail/' . $konsultasi['id']) ?>"
+                                        class="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 text-center">
+                                        Kembali
+                                    </a>
+                                    <button type="submit" id="submitButton" class="bg-orange-500 text-white px-6 py-2 rounded-md font-semibold hover:bg-orange-600 transition-colors duration-200">
+                                        Simpan
+                                    </button>
+                                        <script>
+                                            document.getElementById('submitButton').addEventListener('click', function(event) {
+                                                const confirmation = confirm('Apakah Anda yakin ingin menyimpan perubahan?');
+                                                if (!confirmation) {
+                                                    event.preventDefault(); // Prevent form submission if not confirmed
+                                                }
+                                            });
+                                        </script>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

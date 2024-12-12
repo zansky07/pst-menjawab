@@ -9,62 +9,83 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const statusSelect = document.querySelector('select[name="status_konsultasi"]');
-            const jadwalkanField = document.getElementById('jadwalkan-field');
-            const jadwalField = document.getElementById('jadwal-field');
-            const reasonField = document.getElementById('reason-field');
-            const notifField = document.getElementById('notif-field');
-            const kehadiranField = document.getElementById('kehadiran-field');
-            const kehadiranSelect = document.querySelector('select[name="kehadiran_konsumen"]');
-            const detailField = document.getElementById('detail-field');
+        const statusSelect = document.querySelector('select[name="status_konsultasi"]');
+        const jadwalkanField = document.getElementById('jadwalkan-field');
+        const jadwalField = document.getElementById('jadwal-field');
+        const jadwalFieldInput = document.getElementById('jadwal-field-input');
+        const reasonField = document.getElementById('reason-field');
+        const notifField = document.getElementById('notif-field');
+        const notifKonsul = document.getElementById('notif-konsul'); // Assuming 'notif-konsul' is the correct ID
+        const kehadiranField = document.getElementById('kehadiran-field');
+        const kehadiranSelect = document.querySelector('select[name="kehadiran_konsumen"]');
+        const detailField = document.getElementById('detail-field');
+        const kembali = document.getElementById('kembali');
 
-            function toggleFields() {
-                if (statusSelect.value === 'Disetujui') {
-                    jadwalkanField.classList.remove('hidden');
-                    jadwalField.classList.remove('hidden');
-                    kehadiranField.classList.add('hidden');
-                    kehadiranSelect.value = '';
-                    reasonField.classList.add('hidden');
-                    notifField.classList.add('hidden');
-                    detailField.classList.add('hidden');
-                } else if (statusSelect.value === 'Ditolak') {
-                    reasonField.classList.remove('hidden');
-                    notifField.classList.remove('hidden');
-                    jadwalkanField.classList.add('hidden');
-                    jadwalField.classList.add('hidden');
-                    kehadiranField.classList.add('hidden');
-                    kehadiranSelect.value = '';
-                    detailField.classList.add('hidden');
-                } else if (statusSelect.value === 'Selesai') {
-                    reasonField.classList.add('hidden');
-                    notifField.classList.add('hidden');
-                    jadwalkanField.classList.add('hidden');
-                    jadwalField.classList.add('hidden');
-                    kehadiranField.classList.remove('hidden');
-                    toggleDetailField();
-                } else {
-                    jadwalkanField.classList.add('hidden');
-                    jadwalField.classList.add('hidden');
-                    reasonField.classList.add('hidden');
-                    notifField.classList.add('hidden');
-                    kehadiranField.classList.add('hidden');
-                    kehadiranSelect.value = '';
-                    detailField.classList.add('hidden');
-                }
+        function toggleFields() {
+            if (statusSelect.value === 'Disetujui') {
+                jadwalkanField.classList.remove('hidden');
+                jadwalField.classList.remove('hidden');
+                kehadiranField.classList.add('hidden');
+                kehadiranSelect.value = '';
+                reasonField.classList.add('hidden');
+                notifField.classList.add('hidden');
+                detailField.classList.add('hidden');
+                toggleNotifKonsul();
+            } else if (statusSelect.value === 'Ditolak') {
+                reasonField.classList.remove('hidden');
+                notifField.classList.remove('hidden');
+                jadwalkanField.classList.add('hidden');
+                jadwalField.classList.add('hidden');
+                kehadiranField.classList.add('hidden');
+                kehadiranSelect.value = '';
+                detailField.classList.add('hidden');
+                toggleNotifKonsul();
+            } else if (statusSelect.value === 'Selesai') {
+                reasonField.classList.add('hidden');
+                notifField.classList.add('hidden');
+                jadwalkanField.classList.add('hidden');
+                jadwalField.classList.add('hidden');
+                kehadiranField.classList.remove('hidden');
+                toggleNotifKonsul();
+                toggleDetailField();
+            } else {
+                jadwalkanField.classList.add('hidden');
+                jadwalField.classList.add('hidden');
+                reasonField.classList.add('hidden');
+                notifField.classList.add('hidden');
+                kehadiranField.classList.add('hidden');
+                kehadiranSelect.value = '';
+                detailField.classList.add('hidden');
+                toggleNotifKonsul();
             }
+        }
 
-            function toggleDetailField() {
-                if (kehadiranSelect.value === 'Datang') {
-                    detailField.classList.remove('hidden');
-                } else {
-                    detailField.classList.add('hidden');
-                }
+        function toggleNotifKonsul() {
+            if (statusSelect.value === 'Disetujui' && jadwalFieldInput.value.trim() !== '') {
+                notifKonsul.classList.remove('hidden');
+                kembali.classList.add('hidden');
+            } else {
+                notifKonsul.classList.add('hidden');
+                kembali.classList.remove('hidden');
             }
+        }
 
+        function toggleDetailField() {
+            if (kehadiranSelect.value === 'Datang') {
+                detailField.classList.remove('hidden');
+            } else {
+                detailField.classList.add('hidden');
+            }
+        }
+
+        toggleFields();
+        statusSelect.addEventListener('change', function() {
             toggleFields();
-            statusSelect.addEventListener('change', toggleFields);
-            kehadiranSelect.addEventListener('change', toggleDetailField);
+            toggleNotifKonsul(); // Check notif-konsul when status changes
         });
+        jadwalFieldInput.addEventListener('input', toggleNotifKonsul); // Check notif-konsul when jadwal-field input changes
+        kehadiranSelect.addEventListener('change', toggleDetailField);
+    });
     </script>
 </head>
 
@@ -112,7 +133,7 @@
     </nav>
     <div class="max-w-xl lg:max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
         <h1 class="text-2xl font-bold mb-6">Detail</h1>
-        <form action="<?= base_url('admin/update_konsultasi/'.$konsultasi['id']) ?>" method="POST">
+        <form action="<?= base_url('/admin/consultation/detail/update/'.$konsultasi['id']) ?>" method="POST">
             <?= csrf_field() ?>
             <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Nama
@@ -161,10 +182,18 @@
                 </select>
             </div>
             <!-- IF DISETUJUI SELECTED-->
-            <div id="jadwalkan-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center"></label>
-                <div class="flex space-x-4 md:space-x-2 w-full md:col-span-1">
-                    <a href="/admin/consultation/schedule/<?= $konsultasi['id'] ?>" name="jadwal_btn" class="bg-orange-500 text-white py-3 px-2 rounded-md w-full text-center mx-1 text-sm transition duration-300 hover:bg-orange-600">Jadwalkan Konsultasi</a>
+            <div class="container grid grid-cols-1 md:grid-cols-4 gap-4 justify-start">
+                <div class="col-span-1"></div>
+                <div class="col-span-1"></div>
+                <div id="jadwalkan-field" class="mb-4 col-span-1">
+                    <div class="flex space-x-4 md:space-x-2 w-full">
+                        <a href="/admin/consultation/schedule/<?= $konsultasi['id'] ?>" name="jadwal_btn" class="w-full bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ">Jadwalkan</a>
+                    </div>
+                </div>
+                <div id="notif-konsul" class="mb-4 col-span-1">
+                    <div class="flex space-x-4 md:space-x-2 w-full">
+                        <a href="/admin/consultation/notification/<?= $konsultasi['id'] ?>" name="notif" class="w-full bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded ">Kirim Notifikasi</a>
+                    </div>
                 </div>
             </div>
             <?php
@@ -179,7 +208,7 @@
             <div id="jadwal-field" class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Jadwal Konsultasi</label>
                 <div class="flex items-center w-full">
-                    <input type="text" class="flex-grow px-3 py-2 bg-orange-100 border border-orange-300 rounded-md" value="<?= esc($formatted_jadwal) ?>" readonly>
+                    <input type="text" id="jadwal-field-input" class="flex-grow px-3 py-2 bg-orange-100 border border-orange-300 rounded-md" value="<?= esc($formatted_jadwal) ?>" readonly>
                     <a href="/admin/consultation/schedule/delete/<?= $konsultasi['id'] ?>" class="ml-2 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600" onclick="return confirmDelete()">Hapus</a>
                         <script>
                             function confirmDelete() {
@@ -188,6 +217,7 @@
                         </script>
                 </div>
             </div>
+
             <!-- IF DITOLAK SELECTED -->
             <div id="reason-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Alasan Penolakan</label>
@@ -221,7 +251,7 @@
             </div>
             <br>
             <div class="flex justify-end space-x-4">
-                <a href="/admin/dashboard" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">Kembali</a>
+                <a href="/admin/dashboard" id="kembali" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">Kembali</a>
                 <button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">Simpan Status</button>
             </div>
         </form>
