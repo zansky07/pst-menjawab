@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Detail Konsultasi Virtual</title>
-    <link rel="icon" href="logo-pst.png">
+    <link rel="icon" href="/assets/images/logo-pst.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
     <script>

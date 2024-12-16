@@ -6,7 +6,7 @@
 		<script src="https://cdn.tailwindcss.com"></script>
 		<link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">`
     <title>Tambah Konsultan</title>
-    <link rel="icon" href="logo-pst.png">
+    <link rel="icon" href="/assets/images/logo-pst.png">
     <style>
         body {
             font-family: Arial, sans-serif;

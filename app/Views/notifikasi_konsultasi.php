@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kirim Notifikasi</title>
-    <link rel="icon" href="logo-pst.png">
+    <link rel="icon" href="/assets/images/logo-pst.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
