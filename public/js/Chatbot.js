@@ -1,23 +1,85 @@
 const { useState, useRef, useEffect } = React;
 
+function formatMessage(text) {
+  if (!text) return '';
+
+  // Replace **text** with bold text
+  let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+  // Format tables
+  if (text.includes('|')) {
+    const lines = text.split('\n');
+    const tableLines = [];
+    let inTable = false;
+    
+    lines.forEach((line) => {
+      if (line.includes('|')) {
+        if (!inTable) {
+          tableLines.push('<div class="overflow-x-auto"><table class="min-w-full bg-white border-collapse border border-gray-300">');
+          inTable = true;
+        }
+        
+        const cells = line.split('|').filter(cell => cell.trim());
+        if (line.includes('---')) {
+          // Skip header separator line
+          return;
+        }
+        
+        const isHeader = tableLines.length === 1;
+        tableLines.push('<tr>');
+        cells.forEach((cell) => {
+          if (isHeader) {
+            tableLines.push(`<th class="border border-gray-300 px-4 py-2 bg-gray-100">${cell.trim()}</th>`);
+          } else {
+            tableLines.push(`<td class="border border-gray-300 px-4 py-2">${cell.trim()}</td>`);
+          }
+        });
+        tableLines.push('</tr>');
+      } else if (inTable) {
+        tableLines.push('</table></div>');
+        inTable = false;
+      }
+    });
+    
+    if (inTable) {
+      tableLines.push('</table></div>');
+    }
+    
+    formattedText = text.includes('|') 
+      ? tableLines.join('')
+      : formattedText;
+  }
+
+  // Format lists
+  formattedText = formattedText.replace(/^- (.*)/gm, '<li class="list-disc ml-4">$1</li>');
+  formattedText = formattedText.replace(/^(\d+)\. (.*)/gm, '<li class="list-decimal ml-4">$1. $2</li>');
+
+  // Format code blocks
+  formattedText = formattedText.replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>$1</code></pre>');
+
+  // Format inline code
+  formattedText = formattedText.replace(/`([^`]+)`/g, '<code class="bg-gray-100 px-1 rounded">$1</code>');
+
+  // Convert newlines to <br> tags
+  formattedText = formattedText.replace(/\n/g, '<br>');
+
+  return formattedText;
+}
+
 function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [topic, setTopic] = useState("");
-  
-  // Add ref for auto-scroll
   const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
 
-  // Scroll to bottom function
   const scrollToBottom = () => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   };
 
-  // Call scrollToBottom when messages change or loading state changes
   useEffect(() => {
     scrollToBottom();
   }, [messages, loading]);
@@ -120,7 +182,6 @@ function Chatbot() {
         <h1 className="text-lg font-semibold">PST Menjawab Chatbot</h1>
       </div>
 
-      {/* Add ref to chat container */}
       <div 
         ref={chatContainerRef}
         className="bg-gray-50 rounded-lg p-4 mb-6 min-h-[400px] max-h-[600px] overflow-y-auto"
@@ -175,9 +236,12 @@ function Chatbot() {
                     ? "bg-orange-500 text-white"
                     : "bg-white"
                 }`}
-              >
-                {message.content}
-              </div>
+                dangerouslySetInnerHTML={{
+                  __html: message.role === "assistant" 
+                    ? formatMessage(message.content)
+                    : message.content
+                }}
+              />
             </div>
           ))}
           {loading && (
@@ -203,7 +267,6 @@ function Chatbot() {
               </div>
             </div>
           )}
-          {/* Add ref for scroll anchor */}
           <div ref={messagesEndRef} />
         </div>
       </div>
