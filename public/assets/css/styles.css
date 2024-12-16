@@ -2027,6 +2027,11 @@ video {
   display: block;
 }
 
+strong {
+  font-weight: bold;
+  color: black; /* opsional */
+}
+
 @media not all and (min-width: 768px) {
   .max-md\:ml-0 {
     margin-left: 0px;
