@@ -1,10 +1,26 @@
-const { useState } = React;
+const { useState, useRef, useEffect } = React;
 
 function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [topic, setTopic] = useState("");
+  
+  // Add ref for auto-scroll
+  const messagesEndRef = useRef(null);
+  const chatContainerRef = useRef(null);
+
+  // Scroll to bottom function
+  const scrollToBottom = () => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  };
+
+  // Call scrollToBottom when messages change or loading state changes
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, loading]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +87,6 @@ function Chatbot() {
 
   return (
     <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
-      {/* Navigation Buttons */}
       <div className="flex justify-between mb-4">
         <button
           className="bg-gray-100 text-black py-2 px-6 rounded-full hover:bg-gray-200 transition-colors"
@@ -87,7 +102,6 @@ function Chatbot() {
         </button>
       </div>
 
-      {/* Topic Display */}
       <div className="bg-white shadow p-4 flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -106,8 +120,11 @@ function Chatbot() {
         <h1 className="text-lg font-semibold">PST Menjawab Chatbot</h1>
       </div>
 
-      {/* Chat Container */}
-      <div className="bg-gray-50 rounded-lg p-4 mb-6 min-h-[400px] max-h-[600px] overflow-y-auto">
+      {/* Add ref to chat container */}
+      <div 
+        ref={chatContainerRef}
+        className="bg-gray-50 rounded-lg p-4 mb-6 min-h-[400px] max-h-[600px] overflow-y-auto"
+      >
         <div className="space-y-4">
           {messages.map((message, index) => (
             <div
@@ -186,10 +203,11 @@ function Chatbot() {
               </div>
             </div>
           )}
+          {/* Add ref for scroll anchor */}
+          <div ref={messagesEndRef} />
         </div>
       </div>
 
-      {/* Input Form */}
       <form onSubmit={handleSubmit} className="flex gap-3">
         <input
           type="text"
@@ -210,4 +228,4 @@ function Chatbot() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<Chatbot />);
+window.Chatbot = Chatbot;
