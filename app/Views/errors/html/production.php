@@ -5,6 +5,7 @@
     <meta name="robots" content="noindex">
 
     <title><?= lang('Errors.whoops') ?></title>
+    <link rel="icon" href="/assets/images/logo-pst.png">
 
     <style>
         <?= preg_replace('#[\r\n\t ]+#', ' ', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.css')) ?>
