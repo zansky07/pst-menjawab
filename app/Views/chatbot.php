@@ -4,11 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Chat Page</title>
-	<link rel="icon" href="/assets/images/logo-pst.png">
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 	<script src="https://unpkg.com/lucide@latest"></script>
 	<link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 </head>
@@ -36,41 +35,6 @@
 			</div>
 		</div>
 	</nav>
-	<!-- <div class="w-full max-w-4xl">
-		<div class="flex justify-between mb-4">
-			<button class="bg-white text-black py-2 px-4 rounded-full" onclick="window.location.href='/';">Kembali</button>
-			<button class="bg-white text-black py-2 px-4 rounded-full" onclick="window.location.href='/chatbot';">Obrolan Baru</button>
-		</div>
-		<div class="bg-white flex-1 ml-4 p-6 rounded-lg h-12 flex items-center justify-center text-center mt-8 mb-8">Topik yang diajukan</div>
-
-		<div class="space-y-4">
-			<div class="flex items-start">
-				<div class="bg-white w-12 h-12 rounded-full"></div>
-				<div class="bg-white flex-1 ml-4 p-4 rounded-lg">Pesan dari pengguna pertama yang cukup panjang untuk menunjukkan bahwa bubble chat akan membesar sesuai dengan panjang teks.</div>
-			</div>
-			<div class="flex items-start justify-end">
-				<div class="bg-white flex-1 mr-4 p-4 rounded-lg text-right">Balasan dari pengguna kedua yang juga cukup panjang untuk menunjukkan bahwa bubble chat akan membesar sesuai dengan panjang teks.</div>
-				<div class="bg-white w-12 h-12 rounded-full"></div>
-			</div>
-			<div class="flex items-start">
-				<div class="bg-white w-12 h-12 rounded-full"></div>
-				<div class="bg-white flex-1 ml-4 p-4 rounded-lg">Pesan lain dari pengguna pertama.</div>
-			</div>
-			<div class="flex items-start justify-end">
-				<div class="bg-white flex-1 mr-4 p-4 rounded-lg text-right">Balasan lain dari pengguna kedua.</div>
-				<div class="bg-white w-12 h-12 rounded-full"></div>
-			</div>
-			<div class="flex items-start">
-				<div class="bg-white w-12 h-12 rounded-full"></div>
-				<div class="bg-white flex-1 ml-4 p-4 rounded-lg">Pesan terakhir dari pengguna pertama.</div>
-			</div>
-		</div>
-		<div class="flex items-start mt-4">
-			<div class="bg-white flex-1 ml-4 p-4 rounded-lg h-12 flex items-center"></div>
-			<button class="bg-white text-black py-2 px-10 ml-4 rounded-lg h-12 " onclick="window.location.href=' ';">Kirim</button>
-		</div> -->
-
-	<!-- </div> -->
 
 	<div id="root" class="w-full max-w-4xl"></div>
 
@@ -80,7 +44,7 @@
 		const root = ReactDOM.createRoot(document.getElementById('root'));
 		root.render(<Chatbot />);
 	</script>
-	
+
 	<div class="relative" id="footer">
 		<img src="/assets/images/footer.png" alt="footer" class="w-full">
 		<div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
