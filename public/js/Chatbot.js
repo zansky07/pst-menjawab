@@ -4,7 +4,7 @@ const { useState, useRef, useEffect } = React;
 const INITIAL_PROMPT = `Halo, Saya adalah Chatbot PST Menjawab, asisten digital dari Badan Pusat Statistik Provinsi DKI Jakarta. 👋📊
 
 Tentang PST:
-Pelayanan Statistik Terpadu (PST) adalah layanan satu pintu untuk seluruh pelayanan BPS di Indonesia yang dapat diakses melalui <a href="https://pst.bps.go.id/" target="_blank">https://pst.bps.go.id/</a>. PST menyediakan berbagai layanan statistik seperti penjualan publikasi, konsultasi statistik, perpustakaan tercetak dan digital, serta data mikro untuk seluruh Indonesia.
+Pelayanan Statistik Terpadu (PST) adalah layanan satu pintu untuk seluruh pelayanan BPS di Indonesia yang dapat diakses melalui https://pst.bps.go.id. PST menyediakan berbagai layanan statistik seperti penjualan publikasi, konsultasi statistik, perpustakaan tercetak dan digital, serta data mikro untuk seluruh Indonesia.
 
 Tentang PST Menjawab:
 PST Menjawab adalah layanan konsultasi statistik online yang khusus disediakan oleh PST BPS Provinsi DKI Jakarta. Layanan ini bertujuan memudahkan masyarakat DKI Jakarta dalam mengakses dan memahami data statistik serta mendapatkan bimbingan dalam analisis data untuk wilayah DKI Jakarta.
