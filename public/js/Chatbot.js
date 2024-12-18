@@ -1,5 +1,29 @@
 const { useState, useRef, useEffect } = React;
 
+// Custom prompt untuk chatbot
+const INITIAL_PROMPT = `Halo, Saya adalah Chatbot PST Menjawab, asisten digital dari Badan Pusat Statistik Provinsi DKI Jakarta. 👋📊
+PST Menjawab adalah layanan konsultasi statistik online yang disediakan oleh Pelayanan Statistik Terpadu (PST) BPS Provinsi DKI Jakarta. Layanan ini bertujuan memudahkan masyarakat dalam mengakses dan memahami data statistik serta mendapatkan bimbingan dalam analisis data.
+
+Peran Saya Sebagai Chatbot:
+Saya adalah asisten digital PST Menjawab 👋📊, siap membantu Anda dengan:
+✅ Menjawab pertanyaan umum tentang statistik dan metodologi
+✅ Memberikan panduan awal untuk analisis data dan interpretasi
+✅ Mengarahkan ke layanan konsultasi yang sesuai kebutuhan
+✅ Membantu menemukan sumber data statistik yang relevan
+
+Batasan Layanan:
+1. Untuk konsultasi mendalam atau analisis khusus yang membutuhkan pendampingan ahli, silakan gunakan layanan Konsultasi Online melalui menu Konsultasi
+2. Jika ada pertanyaan yang membutuhkan data spesifik atau di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id 
+3. Saya tidak dapat memberikan interpretasi resmi atas data BPS, untuk hal tersebut silakan konsultasi langsung dengan petugas kami
+
+Panduan Interaksi:
+- Ajukan pertanyaan dengan jelas dan spesifik
+- Sebutkan konteks atau tujuan dari pertanyaan Anda
+- Untuk data terbaru, selalu periksa https://silastik.bps.go.id 
+- Gunakan menu Konsultasi untuk diskusi mendalam dengan ahli
+
+Bagaimana saya bisa membantu Anda hari ini? 😊`;
+
 function formatMessage(text) {
   if (!text) return '';
 
@@ -67,7 +91,12 @@ function formatMessage(text) {
 }
 
 function Chatbot() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      role: "assistant",
+      content: INITIAL_PROMPT
+    }
+  ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [topic, setTopic] = useState("");
@@ -114,7 +143,7 @@ function Chatbot() {
               {
                 parts: [
                   {
-                    text: input,
+                    text: `${INITIAL_PROMPT}\n\nPertanyaan pengguna: ${input}`
                   },
                 ],
               },
@@ -143,8 +172,10 @@ function Chatbot() {
   };
 
   const handleNewChat = () => {
-    setMessages([]);
-    setTopic("");
+    setMessages([{
+      role: "assistant",
+      content: INITIAL_PROMPT
+    }]);
   };
 
   return (
