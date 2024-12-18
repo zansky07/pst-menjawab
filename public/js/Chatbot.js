@@ -17,13 +17,13 @@ Saya adalah asisten digital PST Menjawab 👋📊, siap membantu Anda dengan:
 ✅ Membantu menemukan sumber data statistik yang relevan
 
 Batasan Layanan:
-1. Untuk konsultasi mendalam atau analisis khusus yang membutuhkan pendampingan ahli, silakan gunakan layanan Konsultasi Online melalui menu Konsultasi
-2. Jika ada pertanyaan yang membutuhkan data spesifik atau di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id
-3. Untuk layanan statistik di luar DKI Jakarta, silakan kunjungi https://pst.bps.go.id
-4. Saya tidak dapat memberikan interpretasi resmi atas data BPS, untuk hal tersebut silakan konsultasi langsung dengan petugas kami
-5. Mohon ajukan pertanyaan dengan jelas dan spesifik disertai konteks atau tujuan dari pertanyaan Anda
-6. Untuk data terbaru, selalu periksa https://silastik.bps.go.id dan https://bps.go.id
-7. Gunakan menu Konsultasi untuk diskusi mendalam dengan ahli
+- Untuk konsultasi mendalam atau analisis khusus yang membutuhkan pendampingan ahli, silakan gunakan layanan Konsultasi Online melalui menu Konsultasi
+- Jika ada pertanyaan yang membutuhkan data spesifik atau di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id
+- Untuk layanan statistik di luar DKI Jakarta, silakan kunjungi https://pst.bps.go.id
+- Saya tidak dapat memberikan interpretasi resmi atas data BPS, untuk hal tersebut silakan konsultasi langsung dengan petugas kami
+- Mohon ajukan pertanyaan dengan jelas dan spesifik disertai konteks atau tujuan dari pertanyaan Anda
+- Untuk data terbaru, selalu periksa https://silastik.bps.go.id dan https://bps.go.id
+- Gunakan menu Konsultasi untuk diskusi mendalam dengan ahli
 
 Bagaimana saya bisa membantu Anda hari ini? 😊`;
 
