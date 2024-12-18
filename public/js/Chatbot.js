@@ -2,7 +2,12 @@ const { useState, useRef, useEffect } = React;
 
 // Custom prompt untuk chatbot
 const INITIAL_PROMPT = `Halo, Saya adalah Chatbot PST Menjawab, asisten digital dari Badan Pusat Statistik Provinsi DKI Jakarta. 👋📊
-PST Menjawab adalah layanan konsultasi statistik online yang disediakan oleh Pelayanan Statistik Terpadu (PST) BPS Provinsi DKI Jakarta. Layanan ini bertujuan memudahkan masyarakat dalam mengakses dan memahami data statistik serta mendapatkan bimbingan dalam analisis data.
+
+Tentang PST:
+Pelayanan Statistik Terpadu (PST) adalah layanan satu pintu untuk seluruh pelayanan BPS di Indonesia yang dapat diakses melalui <a href="https://pst.bps.go.id/" target="_blank">https://pst.bps.go.id/</a>. PST menyediakan berbagai layanan statistik seperti penjualan publikasi, konsultasi statistik, perpustakaan tercetak dan digital, serta data mikro untuk seluruh Indonesia.
+
+Tentang PST Menjawab:
+PST Menjawab adalah layanan konsultasi statistik online yang khusus disediakan oleh PST BPS Provinsi DKI Jakarta. Layanan ini bertujuan memudahkan masyarakat DKI Jakarta dalam mengakses dan memahami data statistik serta mendapatkan bimbingan dalam analisis data untuk wilayah DKI Jakarta.
 
 Peran Saya Sebagai Chatbot:
 Saya adalah asisten digital PST Menjawab 👋📊, siap membantu Anda dengan:
@@ -13,22 +18,31 @@ Saya adalah asisten digital PST Menjawab 👋📊, siap membantu Anda dengan:
 
 Batasan Layanan:
 1. Untuk konsultasi mendalam atau analisis khusus yang membutuhkan pendampingan ahli, silakan gunakan layanan Konsultasi Online melalui menu Konsultasi
-2. Jika ada pertanyaan yang membutuhkan data spesifik atau di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id 
-3. Saya tidak dapat memberikan interpretasi resmi atas data BPS, untuk hal tersebut silakan konsultasi langsung dengan petugas kami
-
-Panduan Interaksi:
-- Ajukan pertanyaan dengan jelas dan spesifik
-- Sebutkan konteks atau tujuan dari pertanyaan Anda
-- Untuk data terbaru, selalu periksa https://silastik.bps.go.id 
-- Gunakan menu Konsultasi untuk diskusi mendalam dengan ahli
+2. Jika ada pertanyaan yang membutuhkan data spesifik atau di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id
+3. Untuk layanan statistik di luar DKI Jakarta, silakan kunjungi https://pst.bps.go.id
+4. Saya tidak dapat memberikan interpretasi resmi atas data BPS, untuk hal tersebut silakan konsultasi langsung dengan petugas kami
+5. Mohon ajukan pertanyaan dengan jelas dan spesifik disertai konteks atau tujuan dari pertanyaan Anda
+6. Untuk data terbaru, selalu periksa https://silastik.bps.go.id dan https://bps.go.id
+7. Gunakan menu Konsultasi untuk diskusi mendalam dengan ahli
 
 Bagaimana saya bisa membantu Anda hari ini? 😊`;
 
 function formatMessage(text) {
   if (!text) return "";
 
-  // Replace **text** with bold text
-  let formattedText = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  let formattedText = text;
+
+  // Format URLs with clickable links (process this first)
+  formattedText = formattedText.replace(
+    /(https?:\/\/[^\s]+)/g,
+    '<a href="$1" target="_blank" class="text-blue-500 hover:text-blue-700 underline">$1</a>'
+  );
+
+  // Format bold text with ** **
+  formattedText = formattedText.replace(
+    /\*\*((?!\*\*).+?)\*\*/g,
+    "<strong>$1</strong>"
+  );
 
   // Format tables
   if (text.includes("|")) {
