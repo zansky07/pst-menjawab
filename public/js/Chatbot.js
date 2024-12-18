@@ -4,7 +4,7 @@ const { useState, useRef, useEffect } = React;
 const INITIAL_PROMPT = `Halo, Saya adalah Chatbot PST Menjawab, asisten digital dari Badan Pusat Statistik Provinsi DKI Jakarta. 👋📊
 
 Tentang PST:
-Pelayanan Statistik Terpadu (PST) adalah layanan satu pintu untuk seluruh pelayanan BPS di Indonesia yang dapat diakses melalui <a href="https://pst.bps.go.id/" target="_blank">https://pst.bps.go.id/</a>. PST menyediakan berbagai layanan statistik seperti penjualan publikasi, konsultasi statistik, perpustakaan tercetak dan digital, serta data mikro untuk seluruh Indonesia.
+Pelayanan Statistik Terpadu (PST) adalah layanan satu pintu untuk seluruh pelayanan BPS di Indonesia yang dapat diakses melalui https://pst.bps.go.id yang menyediakan berbagai layanan statistik seperti penjualan publikasi, konsultasi statistik, perpustakaan tercetak dan digital, serta data mikro untuk seluruh Indonesia.
 
 Tentang PST Menjawab:
 PST Menjawab adalah layanan konsultasi statistik online yang khusus disediakan oleh PST BPS Provinsi DKI Jakarta. Layanan ini bertujuan memudahkan masyarakat DKI Jakarta dalam mengakses dan memahami data statistik serta mendapatkan bimbingan dalam analisis data untuk wilayah DKI Jakarta.
@@ -17,13 +17,13 @@ Saya adalah asisten digital PST Menjawab 👋📊, siap membantu Anda dengan:
 ✅ Membantu menemukan sumber data statistik yang relevan
 
 Batasan Layanan:
-1. Untuk konsultasi mendalam atau analisis khusus yang membutuhkan pendampingan ahli, silakan gunakan layanan Konsultasi Online melalui menu Konsultasi
-2. Jika ada pertanyaan yang membutuhkan data spesifik atau di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id
-3. Untuk layanan statistik di luar DKI Jakarta, silakan kunjungi https://pst.bps.go.id
-4. Saya tidak dapat memberikan interpretasi resmi atas data BPS, untuk hal tersebut silakan konsultasi langsung dengan petugas kami
-5. Mohon ajukan pertanyaan dengan jelas dan spesifik disertai konteks atau tujuan dari pertanyaan Anda
-6. Untuk data terbaru, selalu periksa https://silastik.bps.go.id dan https://bps.go.id
-7. Gunakan menu Konsultasi untuk diskusi mendalam dengan ahli
+- Untuk konsultasi mendalam atau analisis khusus yang membutuhkan pendampingan ahli, silakan gunakan layanan Konsultasi Online melalui menu Konsultasi
+- Jika ada pertanyaan yang membutuhkan data spesifik atau di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id
+- Untuk layanan statistik di luar DKI Jakarta, silakan kunjungi https://pst.bps.go.id
+- Saya tidak dapat memberikan interpretasi resmi atas data BPS, untuk hal tersebut silakan konsultasi langsung dengan petugas kami
+- Mohon ajukan pertanyaan dengan jelas dan spesifik disertai konteks atau tujuan dari pertanyaan Anda
+- Untuk data terbaru, selalu periksa https://silastik.bps.go.id dan https://bps.go.id
+- Gunakan menu Konsultasi untuk diskusi mendalam dengan ahli
 
 Bagaimana saya bisa membantu Anda hari ini? 😊`;
 
@@ -246,6 +246,7 @@ function Chatbot() {
         <h1 className="text-lg font-semibold">PST Menjawab Chatbot</h1>
       </div>
 
+      {/* Chat messages container */}
       <div
         ref={chatContainerRef}
         className="bg-gray-50 rounded-lg p-4 mb-6 min-h-[400px] max-h-[600px] overflow-y-auto"
@@ -255,13 +256,11 @@ function Chatbot() {
             <div
               key={index}
               className={`flex items-start gap-3 ${
-                message.role === "user" ? "flex-row-reverse" : ""
+                message.role === "user" ? "justify-end" : ""
               }`}
             >
-              <div
-                className={`shrink-0 w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center`}
-              >
-                {message.role === "assistant" ? (
+              {message.role === "assistant" && (
+                <div className="shrink-0 w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -276,7 +275,23 @@ function Chatbot() {
                   >
                     <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path>
                   </svg>
-                ) : (
+                </div>
+              )}
+              <div
+                className={`px-4 py-3 rounded-lg ${
+                  message.role === "user"
+                    ? "bg-orange-500 text-white rounded-br-none max-w-[80%] ml-auto"
+                    : "bg-white max-w-[80%]"
+                }`}
+                dangerouslySetInnerHTML={{
+                  __html:
+                    message.role === "assistant"
+                      ? formatMessage(message.content)
+                      : message.content,
+                }}
+              />
+              {message.role === "user" && (
+                <div className="shrink-0 w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -292,21 +307,8 @@ function Chatbot() {
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
                   </svg>
-                )}
-              </div>
-              <div
-                className={`flex-1 px-4 py-3 rounded-lg ${
-                  message.role === "user"
-                    ? "bg-orange-500 text-white"
-                    : "bg-white"
-                }`}
-                dangerouslySetInnerHTML={{
-                  __html:
-                    message.role === "assistant"
-                      ? formatMessage(message.content)
-                      : message.content,
-                }}
-              />
+                </div>
+              )}
             </div>
           ))}
           {loading && (
