@@ -4,11 +4,13 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Statistik Admin</title>
+		<link rel="icon" href="/assets/images/logo-pst.png">
 		<script src="https://cdn.tailwindcss.com"></script>
 		<link rel="stylesheet" href="
+					
 					<?= base_url('assets/css/styles.css') ?>">`
 	</head>
-	<body class="bg-oranye-1 mt-28 md:mt-16">
+	<body class="flex flex-col bg-oranye-1 mt-28 md:mt-16">
 		<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 				<div class="flex items-center space-x-4">
@@ -50,9 +52,10 @@
 				</div>
 			</div>
 		</nav>
-		<div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
+		<div class="flex-grow z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
 			<button id="openModalButton" class="self-start px-6 py-2.5 mt-5 ml-14 text-base font-bold text-center text-white bg-oranye-3 rounded-3xl hover:bg-oranye-4 focus:outline-none focus:ring-2 focus:ring-orange-500 max-md:px-5 max-md:ml-2.5" aria-label="Filter"> Filter </button>
 			<form action="
+								
 								<?= base_url('/admin/statistics') ?>" method="get">
 				<div id="filterModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 hidden justify-center items-center z-50">
 					<div class="bg-white p-6 rounded-lg w-96 transform translate-x-[-50%] translate-y-[-50%] absolute top-1/2 left-1/2">
@@ -62,6 +65,7 @@
 							<label for="status" class="block text-sm font-semibold mb-2">Status:</label>
 							<select id="status" name="status" class="w-full px-4 py-2 border border-gray-300 rounded-md">
 								<option value="selesai
+													
 													<?= $status === 'selesai' ? 'selected' : '' ?>">Selesai </option>
 								<option value="disetujui" <?= $status === 'disetujui' ? 'selected' : '' ?>>Disetujui </option>
 								<option value="ditolak" <?= $status === 'ditolak' ? 'selected' : '' ?>>Ditolak </option>
@@ -146,13 +150,19 @@
 					<h3 class="text-xl font-semibold">Pilih Format Ekspor</h3>
 					<div class="mt-4">
 						<a href="/admin/statistics/export?status=
+											
 											<?= isset($status) ? $status : 'semua' ?>&periode=
+											
 											<?= isset($periode) ? $periode : 'semua' ?>&format=csv" class="block py-2 px-4 bg-blue-500 text-white rounded-md mb-2 hover:bg-blue-600"> CSV </a>
 						<a href="/admin/statistics/export?status=
+											
 											<?= isset($status) ? $status : 'semua' ?>&periode=
+											
 											<?= isset($periode) ? $periode : 'semua' ?>&format=xlsx" class="block py-2 px-4 bg-blue-500 text-white rounded-md mb-2 hover:bg-blue-600"> Excel (XLSX) </a>
 						<a href="/admin/statistics/export?status=
+											
 											<?= isset($status) ? $status : 'semua' ?>&periode=
+											
 											<?= isset($periode) ? $periode : 'semua' ?>&format=word" class="block py-2 px-4 bg-blue-500 text-white rounded-md mb-2 hover:bg-blue-600"> Word (DOCX) </a>
 						<button onclick="closeExportModal()" class="block py-2 px-4 bg-oranye-2 text-white rounded-md hover:bg-oranye-3 mt-4 w-full">Tutup</button>
 					</div>
@@ -174,6 +184,7 @@
 								<td class="px-6 py-4 text-center">
 									<span class="inline-block px-3 py-1 text-sm font-semibold rounded-full 
                                         
+														
 														<?php 
                                         if ($request['status_konsultasi'] === 'Selesai') echo 'bg-hijau-1 text-white'; 
                                         elseif ($request['status_konsultasi'] === 'Ditolak') echo 'bg-merah-1 text-white'; 
@@ -183,8 +194,10 @@
 								</td>
 								<td class="px-6 py-4 text-center space-x-3">
 									<a href="/admin/consultation/detail/
+														
 														<?= $request['id'] ?>" class="px-3 py-2 text-white bg-hijau-1 rounded-md hover:bg-hijau-2"> Detail </a>
 									<a href="/admin/consultation/delete/
+														
 														<?= $request['id'] ?>" class="px-3 py-2 text-white bg-merah-1 rounded-md hover:bg-merah-2"> Hapus </a>
 								</td>
 							</tr> <?php endforeach; ?> <?php else: ?> <tr>
@@ -197,60 +210,72 @@
 				</div>
 			</div>
 		</div>
-		<div class="relative" id="footer">
-			<img src="/assets/images/footer.png" alt="footer" class="w-full">
-			<div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
-				<div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">> <div class="w-1/3 text-left">
+		<footer class="relative w-full mt-20">
+			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
+			<div class="absolute inset-x-0 top-0 -translate-y-full w-full z-20">
+				<img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
+			</div>
+			<!-- Kontainer dengan latar belakang oranye -->
+			<div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-10">
+				<!-- Footer Content -->
+				<div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
+					<!-- Informasi Utama -->
+					<div class="md:w-1/3 flex flex-col space-y-4">
 						<div class="flex items-center space-x-4">
-							<img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
-							<h3 class="text-xl font-semibold">Badan Pusat Statistik Provinsi DKI Jakarta</h3>
+							<div>
+								<img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
+							</div>
+							<h3 class="text-lg md:text-xl font-semibold leading-tight"> Badan Pusat Statistik Provinsi DKI Jakarta </h3>
 						</div>
-						<p class="mt-4 text-base">Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
-							<span>Phone (021) 31928493</span>
+						<p class="text-sm md:text-base leading-relaxed"> Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
+							<span>Phone: (021) 31928493</span>
 							<br>
-							<span>Fax. (021) 3152004</span>
+							<span>Fax: (021) 3152004</span>
 							<br>
 							<span>E-mail: bps3100@bps.go.id</span>
 						</p>
 					</div>
-					<div class="w-1/3 text-left">
-						<h4 class="text-xl font-semibold">Website Lainnya:</h4>
-						<ul class="list-none text-base">
+					<!-- Website Lainnya -->
+					<div class="md:w-1/3">
+						<h4 class="text-lg md:text-xl font-semibold mb-4">Website Lainnya:</h4>
+						<ul class="space-y-2 text-sm md:text-base">
 							<li>
-								<a href="https://www.bps.go.id" class="underline">Website BPS Indonesia</a>
+								<a href="https://www.bps.go.id" class="underline hover:text-gray-300">Website BPS Indonesia</a>
 							</li>
 							<li>
-								<a href="https://jakarta.bps.go.id" class="underline">Website BPS Provinsi DKI Jakarta</a>
+								<a href="https://jakarta.bps.go.id" class="underline hover:text-gray-300">Website BPS Provinsi DKI Jakarta</a>
 							</li>
 							<li>
-								<a href="https://pst.bps.go.id" class="underline">Website Pelayanan Statistik Terpadu</a>
+								<a href="https://pst.bps.go.id" class="underline hover:text-gray-300">Website Pelayanan Statistik Terpadu</a>
 							</li>
 							<li>
-								<a href="https://silastik.bps.go.id" class="underline">Website SILASTIK</a>
+								<a href="https://silastik.bps.go.id" class="underline hover:text-gray-300">Website SILASTIK</a>
 							</li>
 						</ul>
 					</div>
-					<div class="w-1/3 text-left">
-						<h4 class="text-xl font-semibold">Sosial Media:</h4>
-						<ul class="list-none text-base">
+					<!-- Sosial Media -->
+					<div class="md:w-1/3">
+						<h4 class="text-lg md:text-xl font-semibold mb-4">Sosial Media:</h4>
+						<ul class="space-y-2 text-sm md:text-base">
 							<li>
-								<a href="https://www.facebook.com/bpsdkijakarta/" class="underline">Facebook</a>
+								<a href="https://www.facebook.com/bpsdkijakarta/" class="underline hover:text-gray-300">Facebook</a>
 							</li>
 							<li>
-								<a href="https://x.com/bpsdkijakarta/" class="underline">Twitter</a>
+								<a href="https://x.com/bpsdkijakarta/" class="underline hover:text-gray-300">Twitter</a>
 							</li>
 							<li>
-								<a href="https://www.instagram.com/bpsdkijakarta/" class="underline">Instagram</a>
+								<a href="https://www.instagram.com/bpsdkijakarta/" class="underline hover:text-gray-300">Instagram</a>
 							</li>
 							<li>
-								<a href="https://www.youtube.com/c/BPSDKI" class="underline">YouTube</a>
+								<a href="https://www.youtube.com/c/BPSDKI" class="underline hover:text-gray-300">YouTube</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div class="mt-6 text-sm"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
+				<!-- Copyright -->
+				<div class="relative text-center text-xs md:text-sm mt-4 pb-4"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
 			</div>
-		</div>
+		</footer>
 		<script>
 			document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
 				const dropdown = document.getElementById('dropdownNavbar');

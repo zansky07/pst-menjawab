@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jadwal Konsultasi</title>
+    <link rel="icon" href="/assets/images/logo-pst.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
