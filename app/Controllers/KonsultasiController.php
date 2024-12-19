@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\KonsultasiModel;
+use App\Controllers\BaseController;
+use App\Helpers\WAHelper;
+
 
 class KonsultasiController extends BaseController
 {
@@ -88,10 +91,27 @@ class KonsultasiController extends BaseController
                 <li><strong>Token:</strong> {$data['token_konsultasi']}</li>
             </ul>
             <p>Kami akan menghubungi Anda untuk langkah selanjutnya.</p>
-            <p>Terima kasih,<br>PST Menjawab</p>
+            <p>Terima kasih,<br>PST Menjawab BPS DKI Jakarta</p>
         ");
 
-        if ($email->send()) {
+        $message = "🔔 [ *RESERVASI KONSULTASI ONLINE BERHASIL* ] 🔔\n\n";
+                $message .= "Halo, {$data['nama_konsumen']}!\n\n";
+                $message .= "Reservasi konsultasi Anda berhasil! Berikut detailnya:\n\n";
+                $message .= "*Nama:* {$data['nama_konsumen']}\n\n";
+                $message .= "*Topik:* {$data['topik']}\n";
+                $message .= "*Kategori:* {$data['kategori']}\n";
+                $message .= "*Lingkup:* {$data['lingkup']}\n";
+                $message .= "*Deskripsi:* {$data['deskripsi']}\n";
+                $message .= "*Token:* {$data['token_konsultasi']}\n\n";
+                $message .= "Kami akan menghubungi Anda untuk langkah selanjutnya.\n";
+                $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+
+        // Kirim notifikasi ke WhatsApp
+
+        WAHelper::send_wa_notification($whatsapp, $message);
+       
+
+        if ($email->send() ) {
             session()->setFlashdata('success', 'Reservasi berhasil. Email pemberitahuan telah dikirim.');
         } else {
             session()->setFlashdata('error', 'Reservasi berhasil, tetapi email tidak dapat dikirim.');
