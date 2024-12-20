@@ -45,14 +45,6 @@ class KonsultasiController extends BaseController
             $validationErrors['topik'] = "Topik harus berisi 3-100 karakter kata.";
         }
 
-        if (!preg_match("/^[\w\s]{3,50}$/", $data['kategori'])) {
-            $validationErrors['kategori'] = "Kategori harus berisi 3-50 karakter kata.";
-        }
-
-        if (!preg_match("/^[\w\s]{3,50}$/", $data['lingkup'])) {
-            $validationErrors['lingkup'] = "Lingkup harus berisi 3-50 karakter kata.";
-        }
-
         if (!preg_match("/^[\w\s\.\,]{3,500}$/", $data['deskripsi'])) {
             $validationErrors['deskripsi'] = "Deskripsi harus berisi 3-500 karakter kata.";
         }
@@ -75,7 +67,7 @@ class KonsultasiController extends BaseController
             'kategori' => $data['kategori'],
             'lingkup' => $data['lingkup'],
             'deskripsi' => $data['deskripsi'],
-            'token_konsultasi' => $data['token'],
+            'token_konsultasi' => $token,
             'status_konsultasi' => 'Sedang diproses', // Status default
             'tanggal_reservasi' => date('Y-m-d H:i:s'), // Tanggal reservasi saat submit
         ];
@@ -117,8 +109,7 @@ class KonsultasiController extends BaseController
 
         // Kirim notifikasi ke WhatsApp
 
-        WAHelper::send_wa_notification($data['whatsapp'], $message);
-       
+        WAHelper::send_wa_notification($data['whatsapp_konsumen'], $message);
 
         if ($email->send() ) {
             session()->setFlashdata('success', 'Reservasi berhasil. Email pemberitahuan telah dikirim.');
