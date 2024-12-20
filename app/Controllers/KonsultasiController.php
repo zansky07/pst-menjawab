@@ -23,34 +23,43 @@ class KonsultasiController extends BaseController
 
     public function submit()
     {
-        // Ambil data dari form
-        $nama = $this->request->getPost('nama');
-        $email = $this->request->getPost('email');
-        $whatsapp = $this->request->getPost('whatsapp');
-        $topik = $this->request->getPost('topik');
-        $kategori = $this->request->getPost('kategori');
-        $lingkup = $this->request->getPost('lingkup');
-        $deskripsi = $this->request->getPost('deskripsi');
+            // Ambil data dari form
+        $data = $this->request->getPost();
 
         // Validasi data menggunakan regex
-        $namaPattern = "/^[a-zA-Z\s]{1,50}$/";
-        $emailPattern = "/^[\w.\-]+@([\w-]+\.)+[\w-]{2,4}$/";
-        $whatsappPattern = "/^08[1-9][0-9]{6,10}$/";
-        $topikPattern = "/^[\w\s]{3,100}$/";
-        $kategoriPattern = "/^[\w\s]{3,50}$/";
-        $lingkupPattern = "/^[\w\s]{3,50}$/";
-        $deskripsiPattern = "/^[\w\s\.\,]{3,500}$/";
+        $validationErrors = [];
 
-        if (
-            !preg_match($namaPattern, $nama) ||
-            !preg_match($emailPattern, $email) ||
-            !preg_match($whatsappPattern, $whatsapp) ||
-            !preg_match($topikPattern, $topik) ||
-            !preg_match($kategoriPattern, $kategori) ||
-            !preg_match($lingkupPattern, $lingkup) ||
-            !preg_match($deskripsiPattern, $deskripsi)
-        ) {
-            session()->setFlashdata('error', 'Data yang Anda masukkan tidak valid. Silakan coba lagi.');
+        if (!preg_match("/^[a-zA-Z\s]{1,50}$/", $data['nama'])) {
+            $validationErrors['nama'] = "Nama harus berupa huruf dan maksimal 50 karakter.";
+        }
+
+        if (!preg_match("/^[\w.\-]+@([\w-]+\.)+[\w-]{2,4}$/", $data['email'])) {
+            $validationErrors['email'] = "Email tidak valid.";
+        }
+
+        if (!preg_match("/^08[1-9][0-9]{6,10}$/", $data['whatsapp'])) {
+            $validationErrors['whatsapp'] = "Nomor WhatsApp harus diawali dengan 08 dan terdiri dari 8-12 digit.";
+        }
+
+        if (!preg_match("/^[\w\s]{3,100}$/", $data['topik'])) {
+            $validationErrors['topik'] = "Topik harus berisi 3-100 karakter kata.";
+        }
+
+        if (!preg_match("/^[\w\s]{3,50}$/", $data['kategori'])) {
+            $validationErrors['kategori'] = "Kategori harus berisi 3-50 karakter kata.";
+        }
+
+        if (!preg_match("/^[\w\s]{3,50}$/", $data['lingkup'])) {
+            $validationErrors['lingkup'] = "Lingkup harus berisi 3-50 karakter kata.";
+        }
+
+        if (!preg_match("/^[\w\s\.\,]{3,500}$/", $data['deskripsi'])) {
+            $validationErrors['deskripsi'] = "Deskripsi harus berisi 3-500 karakter kata.";
+        }
+
+        // Jika ada error validasi
+        if (!empty($validationErrors)) {
+            session()->setFlashdata('validationErrors', $validationErrors);
             return redirect()->to('/consultation/reserve')->withInput();
         }
 
@@ -59,14 +68,14 @@ class KonsultasiController extends BaseController
 
         // Data yang akan disimpan
         $data = [
-            'nama_konsumen' => $nama,
-            'email_konsumen' => $email,
-            'whatsapp_konsumen' => $whatsapp,
-            'topik' => $topik,
-            'kategori' => $kategori,
-            'lingkup' => $lingkup,
-            'deskripsi' => $deskripsi,
-            'token_konsultasi' => $token,
+            'nama_konsumen' => $data['nama'],
+            'email_konsumen' => $data['email'],
+            'whatsapp_konsumen' => $data['whatsapp'],
+            'topik' => $data['topik'],
+            'kategori' => $data['kategori'],
+            'lingkup' => $data['lingkup'],
+            'deskripsi' => $data['deskripsi'],
+            'token_konsultasi' => $data['token'],
             'status_konsultasi' => 'Sedang diproses', // Status default
             'tanggal_reservasi' => date('Y-m-d H:i:s'), // Tanggal reservasi saat submit
         ];
@@ -108,7 +117,7 @@ class KonsultasiController extends BaseController
 
         // Kirim notifikasi ke WhatsApp
 
-        WAHelper::send_wa_notification($whatsapp, $message);
+        WAHelper::send_wa_notification($data['whatsapp'], $message);
        
 
         if ($email->send() ) {
