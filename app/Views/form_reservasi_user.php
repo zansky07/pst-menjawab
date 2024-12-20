@@ -68,7 +68,7 @@
                 <!-- Nomor Whatsapp -->
                 <div class="mb-4">
                     <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">Nomor Whatsapp</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" value="<?= old('whatsapp') ?>" placeholder="Masukkan nomor Whatsapp Anda" pattern="^08[1-9][0-9]{6,10}$" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                    <input type="tel" id="whatsapp" name="whatsapp" value="<?= old('whatsapp') ?>" placeholder="Masukkan nomor Whatsapp Anda" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
                     <?php if (isset(session()->getFlashdata('validationErrors')['whatsapp'])): ?>
                         <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['whatsapp'] ?></span>
                     <?php endif; ?>
