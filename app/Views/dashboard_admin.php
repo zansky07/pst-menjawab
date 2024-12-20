@@ -124,9 +124,9 @@
         <div class="h-20"></div>
 		<footer class="relative w-full mt-20">
 			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
-			<div class="absolute inset-x-0 top-0 -translate-y-full w-full z-0">
+			<!-- <div class="absolute inset-x-0 top-0 -translate-y-full w-full z-0">
 				<img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
-			</div>
+			</div> -->
 			<!-- Kontainer dengan latar belakang oranye -->
 			<div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-0">
 				<!-- Footer Content -->
