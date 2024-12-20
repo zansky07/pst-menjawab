@@ -38,7 +38,7 @@ class KonsultasiController extends BaseController
         }
 
         if (!preg_match("/^08[1-9][0-9]{6,10}$/", $data['whatsapp'])) {
-            $validationErrors['whatsapp'] = "Nomor WhatsApp harus diawali dengan 08 dan terdiri dari 8-12 digit.";
+            $validationErrors['whatsapp'] = "Nomor tidak valid. Masukkan nomor yang benar dan harus diawali dengan 08.";
         }
 
         if (!preg_match("/^[\w\s]{3,100}$/", $data['topik'])) {
