@@ -32,7 +32,7 @@
 				</div>
 			</div>
 		</nav>
-    <div class="max-w-lg mx-auto rounded-lg shadow-lg mt-10">
+    <div class="max-w-lg mx-auto rounded-lg shadow-lg mt-20">
         <form action="/consultation/status" method="post">
             <?= csrf_field() ?> <!-- Tambahkan CSRF protection -->
             <div class="flex items-center mb-4">
