@@ -9,8 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/css/form.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    <style>
+        body{
+            background-color: #F5EAE8;
+        }
+    </style>
 </head>
-<body class="bg-orange-1 mt-28 md:mt-16">
+<body class="bg-orange-1 mt-30 md:mt-16">
         <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 				<div class="flex items-center space-x-4">

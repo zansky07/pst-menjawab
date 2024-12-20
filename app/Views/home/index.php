@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 
     <style>
+        a{
+            text-decoration: none;
+        }
+
+        a:hover{
+            text-decoration: none; 
+        }
+
         .service img {
             width: 50px;
             margin-bottom: 10px;
@@ -46,7 +54,28 @@
         .fitur {
             min-height: 20rem;
             /* Set minimum height */
+            cursor: pointer;
         }
+
+        .hidden {
+            display: none;
+        }
+
+        .modal {
+            z-index: 1000;
+        }
+
+        .modal-content {
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
 
         /* Responsif dengan media query */
         @media (max-width: 768px) {
@@ -58,6 +87,11 @@
             .welcome2 {
                 font-size: 2.5vw;
             }
+
+            .modal-content {
+                padding: 1.5rem;
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -68,6 +102,16 @@
 
             .welcome2 {
                 font-size: 2vw;
+            }
+
+            .modal-content {
+                font-size: 0.8rem;
+            }
+
+            #closeModalBtn {
+                top: 8px;
+                right: 8px;
+                font-size: 1.5rem;
             }
         }
 
@@ -223,7 +267,7 @@
 
         <div class="grid grid-cols-2 md:grid-cols-3 gap-8 mt-8 mx-auto justify-items-center text-center w-4/5">
             <!-- Service 1 -->
-            <div class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition max-w-sm">
+            <div id="consultationCard" class="fitur text-center bg-oranye-3 shadow-lg p-6 rounded-lg transform hover:scale-105 transition max-w-sm">
                 <h3 class="text-xl font-semibold bg-biru-4 text-oranye-2">Konsultasi Langsung</h3>
                 <img src="<?= base_url('assets/images/konsultasi-langsung.png') ?>" alt="Konsultasi Langsung" class="mx-auto w-28 mb-4" style="margin-top: 20px;">
                 <p class="text-white text-left">Anda dapat melakukan konsultasi secara langsung dengan mengunjungi BPS Provinsi DKI Jakarta atau kantor BPS di kabupaten/kota seluruh Indonesia. Layanan ini memungkinkan Anda untuk bertatap muka dengan petugas BPS, sehingga mempermudah penyampaian kebutuhan data atau pertanyaan Anda secara lebih mendalam.</p>
@@ -240,6 +284,20 @@
                 <img src="<?= base_url('assets/images/meeting.png') ?>" alt="Konsultasi via Pertemuan Daring" class="mx-auto w-28 mb-4" style="margin-top: 20px;">
                 <p class="text-white text-left">Layanan ini memungkinkan Anda untuk berkomunikasi secara langsung dengan petugas melalui pertemuan daring, sehingga Anda tetap dapat memperoleh informasi atau menyampaikan kebutuhan data tanpa harus pergi ke kantor BPS.</p>
             </a>
+        </div>
+
+        <!-- Modal -->
+        <div id="consultationModal" class="modal hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+            <div class="modal-content bg-orange-400 text-white rounded-lg p-6 w-11/12 md:w-3/4 lg:w-1/3 relative transform scale-95 opacity-0 transition-transform duration-300">
+                <button id="closeModalBtn" class="absolute top-4 right-4 text-white text-xl font-bold">&times;</button>
+                <h2 class="text-xl font-semibold">Ingin konsultasi secara langsung?</h2>
+                <hr>
+                <p class="mt-4">Kunjungi kantor BPS Provinsi DKI Jakarta dengan alamat berikut:</p>
+                <a href="https://maps.app.goo.gl/7pusYpQhNL4hNvKG7">
+                    <p class="mt-2 font-bold">Jl. Salemba Tengah No.36 38, RT.2/RW.4, Paseban, Senen, Central Jakarta City, Jakarta 10440</p>
+                </a>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126911.81092355371!2d106.78849620141449!3d-6.264506171010917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f44329ef4425%3A0xa230b346572fa767!2sBadan%20Pusat%20Statistik%20(BPS)%20-%20Provinsi%20DKI%20Jakarta!5e0!3m2!1sen!2sid!4v1734628633494!5m2!1sen!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
 
 
@@ -334,6 +392,32 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Menampilkan modal dengan animasi
+        document.getElementById('consultationCard').addEventListener('click', function () {
+            const modal = document.getElementById('consultationModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.add('show'), 10); // Tambahkan class `show` setelah render
+        });
+
+        // Menutup modal ketika tombol "X" diklik
+        document.getElementById('closeModalBtn').addEventListener('click', function () {
+            const modal = document.getElementById('consultationModal');
+            modal.classList.remove('show');
+            setTimeout(() => modal.classList.add('hidden'), 300); // Sembunyikan modal setelah animasi selesai
+        });
+
+        // Menutup modal ketika klik di luar area modal
+        document.getElementById('consultationModal').addEventListener('click', function (event) {
+            if (event.target === this) {
+                const modal = document.getElementById('consultationModal');
+                modal.classList.remove('show');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+        });
+
+
+    </script>
 </body>
 
 </html>

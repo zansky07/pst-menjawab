@@ -1,23 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>PST Menjawab | Dashboard</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<link rel="stylesheet" href="
-					<?= base_url('assets/css/styles.css') ?>">
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				background-color: #f9f2f1;
-			}
-		</style>
-	</head>
-	<body class="flex flex-col min-h-screen bg-oranye-1 mt-28 md:mt-16 ">
-		<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
-=======
 
 <head>
     <meta charset="UTF-8">
@@ -36,7 +18,6 @@
 
 <body class="bg-oranye-1 mt-28 md:mt-16">
 <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
->>>>>>> 611882b5576a903847e26d4c87e29f977bdb307b
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 				<div class="flex items-center space-x-4">
 					<img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
