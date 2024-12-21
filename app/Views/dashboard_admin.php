@@ -17,7 +17,9 @@
 </head>
 
 <body class="bg-oranye-1 mt-28 md:mt-16">
-<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
+	
+	<!-- Header -->
+	<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 				<div class="flex items-center space-x-4">
 					<img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
@@ -58,6 +60,7 @@
 				</div>
 			</div>
 		</nav>
+
 		<main class="flex-grow mb-24">
 			<div class="container mx-auto p-6"> <?php if (session()->getFlashdata('message')): ?> <p class="text-green-500"> <?= session()->getFlashdata('message') ?> </p> <?php endif; ?>
 				<!-- Filter Button -->

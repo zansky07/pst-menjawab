@@ -9,7 +9,7 @@
     <link rel="stylesheet" href= "<?= base_url('assets/css/styles.css') ?>">`
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-< class="mt-28 md:mt-16  bg-oranye-1 mt-28 md:mt-16" >
+<body class="bg-oranye-1 min-h-screen flex flex-col mt-28 md:mt-16">
 <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 				<div class="flex items-center space-x-4">
@@ -51,31 +51,6 @@
 				</div>
 			</div>
 		</nav>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard">Dashboard</a>
-                        </li>    
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/statistics">Statistik</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/settings">Pengaturan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/logout">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
 
     <!-- Main Content -->
     <main class="flex-1 container mx-auto px-4 py-6">
