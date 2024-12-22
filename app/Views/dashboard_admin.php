@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="/assets/images/logo-pst.png">
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -108,8 +109,8 @@
 										<div class="flex justify-around">
 											<a href="/admin/consultation/detail/
 																<?= $request['id'] ?>" class="bg-green-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-green-600">Detail </a>
-											<a href="/admin/consultation/delete/
-																<?= $request['id'] ?>" class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus </a>
+											<a onclick="confirmDelete('/admin/consultation/delete/<?= $request['id'] ?>')"  
+																class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus </a>
 										</div>
 									</td>
 								</tr> <?php endforeach; ?> <?php else: ?> <tr>
@@ -202,6 +203,39 @@
 			document.getElementById('closeModalBtn').addEventListener('click', function() {
 				document.getElementById('filterModal').classList.add('hidden');
 			});
+
+			// Fungsi untuk konfirmasi penghapusan
+			function confirmDelete(url) {
+				Swal.fire({
+					title: 'Apakah Anda yakin?',
+					text: "Data yang dihapus tidak dapat dikembalikan!",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#d33',
+					cancelButtonColor: '#3085d6',
+					confirmButtonText: 'Ya, hapus!',
+					cancelButtonText: 'Batal'
+				}).then((result) => {
+					if (result.isConfirmed) {
+						window.location.href = url;
+					}
+				});
+			}
+
+			<?php if (session()->getFlashdata('delete_status')): ?>
+				const status = "<?= session()->getFlashdata('delete_status') ?>"; // 'success' atau 'error'
+				const message = "<?= session()->getFlashdata('message') ?>"; // Pesan flashdata
+
+				// Tampilkan notifikasi dengan SweetAlert
+				Swal.fire({
+					icon: status, // success atau error
+					title: status === 'success' ? 'Berhasil' : 'Gagal',
+					text: message,
+					showConfirmButton: true,
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'OK'
+				});
+			<?php endif; ?>
 		</script>
 	</body>
 </html>

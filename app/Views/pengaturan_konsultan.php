@@ -163,6 +163,21 @@
                 }
             });
         }
+
+		<?php if (session()->getFlashdata('delete_status')): ?>
+			const status = "<?= session()->getFlashdata('delete_status') ?>"; // 'success' atau 'error'
+			const message = "<?= session()->getFlashdata('message') ?>"; // Pesan flashdata
+
+			// Tampilkan notifikasi dengan SweetAlert
+			Swal.fire({
+				icon: status, // success atau error
+				title: status === 'success' ? 'Berhasil' : 'Gagal',
+				text: message,
+				showConfirmButton: true,
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: 'OK'
+			});
+		<?php endif; ?>
     </script>
 </body>
 </html>

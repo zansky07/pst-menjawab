@@ -284,7 +284,19 @@ class KonsultasiController extends BaseController
         }
 
         $konsultasiModel = new konsultasiModel();
-        $konsultasiModel->delete($id);
+
+        // Menghapus data
+        $isDeleted = $konsultasiModel->delete($id);
+    
+        if ($isDeleted) {
+            // Penghapusan berhasil
+            session()->setFlashdata('delete_status', 'success');
+            session()->setFlashdata('message', 'Data berhasil dihapus!');
+        } else {
+            // Penghapusan gagal
+            session()->setFlashdata('delete_status', 'error');
+            session()->setFlashdata('message', 'Data gagal dihapus!');
+        }
 
         return redirect()->to('/admin/dashboard')->with('message', 'Data berhasil dihapus');
     }
