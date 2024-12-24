@@ -116,7 +116,7 @@
                                     <a href="/admin/settings/admin" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
                                 </li>
                                 <li>
-                                    <a href="a/dmin/settings/consultant" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
+                                    <a href="/admin/settings/consultant" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
                                 </li>
                             </ul>
                         </div>
@@ -238,14 +238,7 @@
             <!-- IF DITOLAK SELECTED -->
             <div id="reason-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Alasan Penolakan</label>
-                <textarea name="alasan_penolakan" class="w-full px-3 py-2 bg-orange-100 border border-orange-300 rounded-md"></textarea>
-            </div>
-            <div id="notif-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Kirim Notifikasi</label>
-                <div class="flex space-x-4 md:space-x-2 w-full md:col-span-1">
-                    <a href="" name="notif_wa" class="w-full md:w-auto bg-orange-500 text-white py-2 px-5 rounded-md hover:bg-orange-600">VIA WHATSAPP</a>
-                    <a href="" name="notif_email" class="w-full md:w-auto bg-orange-500 text-white py-2 px-5 rounded-md hover:bg-orange-600">VIA EMAIL</a>
-                </div>
+                <textarea name="alasan_penolakan" class="w-full px-3 py-2 bg-orange-100 border border-orange-300 rounded-md"><?= esc($konsultasi['alasan_penolakan']) ?></textarea>
             </div>
             <!-- IF SELESAI SELECTED -->
             <div id="kehadiran-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
