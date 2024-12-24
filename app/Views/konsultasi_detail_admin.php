@@ -15,7 +15,6 @@
         const jadwalField = document.getElementById('jadwal-field');
         const jadwalFieldInput = document.getElementById('jadwal-field-input');
         const reasonField = document.getElementById('reason-field');
-        const notifField = document.getElementById('notif-field');
         const notifKonsul = document.getElementById('notif-konsul'); // Assuming 'notif-konsul' is the correct ID
         const kehadiranField = document.getElementById('kehadiran-field');
         const kehadiranSelect = document.querySelector('select[name="kehadiran_konsumen"]');
@@ -29,12 +28,10 @@
                 kehadiranField.classList.add('hidden');
                 kehadiranSelect.value = '';
                 reasonField.classList.add('hidden');
-                notifField.classList.add('hidden');
                 detailField.classList.add('hidden');
                 toggleNotifKonsul();
             } else if (statusSelect.value === 'Ditolak') {
                 reasonField.classList.remove('hidden');
-                notifField.classList.remove('hidden');
                 jadwalkanField.classList.add('hidden');
                 jadwalField.classList.add('hidden');
                 kehadiranField.classList.add('hidden');
@@ -43,7 +40,6 @@
                 toggleNotifKonsul();
             } else if (statusSelect.value === 'Selesai') {
                 reasonField.classList.add('hidden');
-                notifField.classList.add('hidden');
                 jadwalkanField.classList.add('hidden');
                 jadwalField.classList.add('hidden');
                 kehadiranField.classList.remove('hidden');
@@ -53,7 +49,6 @@
                 jadwalkanField.classList.add('hidden');
                 jadwalField.classList.add('hidden');
                 reasonField.classList.add('hidden');
-                notifField.classList.add('hidden');
                 kehadiranField.classList.add('hidden');
                 kehadiranSelect.value = '';
                 detailField.classList.add('hidden');
