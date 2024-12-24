@@ -228,6 +228,47 @@ class KonsultasiController extends BaseController
             } else {
                 return redirect()->to('/admin/dashboard')->with('message', 'Status diperbarui. Jadwal konsultasi sudah tersedia.');
             }
+        } else if($status_konsultasi == 'Ditolak'){
+            //   Jika ditolak maka kirim pesan ke konsumen
+            $konsultasi = $this->konsultasiModel->find($id);
+
+            // Kirim email pemberitahuan
+            $email = \Config\Services::email();
+            $email->setTo($konsultasi['email_konsumen']);
+            $email->setFrom('mfauzanfk@gmail.com', 'PST Menjawab');
+            $email->setSubject('Permintaan Anda Telah Ditolak!');
+            $emailMessage = "
+                <p>Halo <strong>{$konsultasi['nama_konsumen']}</strong>,</p>
+                <p>Maaf, Reservasi Konsultasi Anda Telah Kami Tolak! Berikut detailnya:</p>
+                <ul>
+                    <li><strong>Nama:</strong> {$konsultasi['nama_konsumen']}</li>
+                    <li><strong>Topik:</strong> {$konsultasi['topik']}</li>
+                    <li><strong>Alasan Penolakan:</strong> {$data['alasan_penolakan']}</li>
+                    <li><strong>Token:</strong> {$konsultasi['token_konsultasi']}</li>
+                </ul>
+                <p>Mohon Maaf Atas Ketidaknyamanannya.</p>
+                <p>Terima kasih,<br>PST Menjawab BPS DKI Jakarta</p>
+            ";
+            $email->setMessage($emailMessage);
+
+            if ($email->send()) {
+                log_message('info', 'Email berhasil dikirim ke ' . $konsultasi['email_konsumen']);
+            } else {
+                log_message('error', $email->printDebugger(['headers']));
+            }
+
+            // Kirim notifikasi ke WhatsApp
+            $message = "🔔 [ *RESERVASI KONSULTASI ONLINE ANDA DITOLAK* ] 🔔\n\n";
+            $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
+            $message .= "Maaf, Reservasi konsultasi Anda telah kami tolak! Berikut detailnya:\n\n";
+            $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
+            $message .= "*Topik:* {$konsultasi['topik']}\n";
+            $message .= "*Alasan Penolakan:* {$data['alasan_penolakan']}\n";
+            $message .= "*Token:* {$konsultasi['token_konsultasi']}\n\n";
+            $message .= "Kami mohon kehadiran Anda.\n";
+            $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+
+            WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
         }
         // Otherwise, redirect back to dashboard
         return redirect()->to('/admin/dashboard')->with('message', 'Status berhasil diperbarui.');
@@ -243,7 +284,19 @@ class KonsultasiController extends BaseController
         }
 
         $konsultasiModel = new konsultasiModel();
-        $konsultasiModel->delete($id);
+
+        // Menghapus data
+        $isDeleted = $konsultasiModel->delete($id);
+    
+        if ($isDeleted) {
+            // Penghapusan berhasil
+            session()->setFlashdata('delete_status', 'success');
+            session()->setFlashdata('message', 'Data berhasil dihapus!');
+        } else {
+            // Penghapusan gagal
+            session()->setFlashdata('delete_status', 'error');
+            session()->setFlashdata('message', 'Data gagal dihapus!');
+        }
 
         return redirect()->to('/admin/dashboard')->with('message', 'Data berhasil dihapus');
     }

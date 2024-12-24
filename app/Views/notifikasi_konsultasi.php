@@ -131,7 +131,8 @@
                                                 class="flex-1 border border-gray-300 rounded-md px-4 py-2 bg-oranye-1"
                                                 readonly>
                                             <button type="button"
-                                                class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">
+                                                class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600"
+                                                onclick="sendEmail('<?= esc($konsultan['email']) ?>', '<?= esc($konsultasi['link_zoom']) ?>', '<?= esc($konsultasi['jadwal_konsultasi']) ?>', '<?= esc($konsultasi['id']) ?>')">
                                                 Kirim Notifikasi Email
                                             </button>
                                         </div>
@@ -145,7 +146,8 @@
                                                 class="flex-1 border border-gray-300 rounded-md px-4 py-2 bg-oranye-1"
                                                 readonly>
                                             <button type="button"
-                                                class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">
+                                                class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600"
+                                                onclick="sendWhatsApp('<?= esc($konsultan['whatsapp']) ?>', '<?= esc($konsultasi['link_zoom']) ?>', '<?= esc($konsultasi['jadwal_konsultasi']) ?>', '<?= esc($konsultasi['id']) ?>')">
                                                 Kirim Notifikasi WhatsApp
                                             </button>
                                         </div>
@@ -236,6 +238,49 @@
 				<div class="mt-6 text-sm"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
 			</div>
 		</div>
+
+        <script>
+            function sendEmail(email, linkZoom, jadwal, id_konsultasi) {
+                fetch('<?= base_url("admin/send-email") ?>', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, linkZoom, jadwal, id_konsultasi })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Email berhasil dikirim!');
+                    } else {
+                        alert('Gagal mengirim email: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat mengirim email.');
+                });
+            }
+
+            function sendWhatsApp(whatsapp, linkZoom, jadwal, id_konsultasi) {
+                fetch('<?= base_url("admin/send-whatsapp") ?>', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ whatsapp, linkZoom, jadwal, id_konsultasi })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Notifikasi WhatsApp berhasil dikirim!');
+                    } else {
+                        alert('Gagal mengirim notifikasi WhatsApp: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat mengirim notifikasi WhatsApp.');
+                });
+            }
+        </script>
+
 </body>
 
 </html>

@@ -43,7 +43,19 @@ class KonsultanManagementController extends BaseController
     public function delete($id)
     {
         $konsultanModel = new KonsultanModel();
-        $konsultanModel->delete($id);
+
+        // Menghapus data
+        $isDeleted = $konsultanModel->delete($id);
+    
+        if ($isDeleted) {
+            // Penghapusan berhasil
+            session()->setFlashdata('delete_status', 'success');
+            session()->setFlashdata('message', 'Data berhasil dihapus!');
+        } else {
+            // Penghapusan gagal
+            session()->setFlashdata('delete_status', 'error');
+            session()->setFlashdata('message', 'Data gagal dihapus!');
+        }
 
         return redirect()->to('/admin/settings/consultant')->with('message', 'Konsultan berhasil dihapus!');
     }

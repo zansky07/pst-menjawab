@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/css/form.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body{
             background-color: #F5EAE8;
@@ -39,13 +40,25 @@
 		</nav>
     <div class="w-full max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg mt-20">
         
-        <?php if (session()->getFlashdata('error')): ?> 
-            <div class="mb-4 p-2 bg-red-100 text-red-700 rounded"> 
-                <?= session()->getFlashdata('error') ?> 
-            </div> 
-        <?php endif; ?>
+            <?php if (session()->getFlashdata('success')): ?>
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: '<?= session()->getFlashdata('success') ?>',
+                    });
+                </script>
+            <?php elseif (session()->getFlashdata('error')): ?>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal!',
+                        text: '<?= session()->getFlashdata('error') ?>',
+                    });
+                </script>
+            <?php endif; ?>
         
-        <form action="/consultation/reserve/submit" method="post">
+        <form id="reservationForm" action="/consultation/reserve/submit" method="post">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <!-- Nama Konsumen -->
                 <div class="mb-4">
@@ -192,5 +205,29 @@
 				<div class="mt-6 text-sm"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
 			</div>
 		</div>
+
+        <script>
+            document.getElementById('reservationForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Mencegah pengiriman formulir default
+                
+                // Menampilkan SweetAlert untuk konfirmasi
+                Swal.fire({
+                    title: 'Apakah data sudah benar?',
+                    text: "Pastikan semua data yang Anda masukkan sudah sesuai!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, kirim!',
+                    cancelButtonText: 'Periksa lagi'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Jika dikonfirmasi, kirim formulir
+                        event.target.submit();
+                    }
+                });
+            });
+        </script>
+
 </body>
 </html>

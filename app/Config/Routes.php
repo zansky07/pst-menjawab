@@ -44,6 +44,9 @@ $routes->post('/admin/consultation/schedule/store', 'JadwalKonsultasiController:
 $routes->get('/admin/consultation/notification/(:num)', 'JadwalKonsultasiController::notification/$1');
 $routes->post('/admin/consultation/notification/send/(:num)', 'JadwalKonsultasiController::sendNotification/$1');
 $routes->get('/admin/consultation/schedule/delete/(:num)', 'JadwalKonsultasiController::delete/$1');
+$routes->post('/admin/send-email', 'JadwalKonsultasiController::sendEmail');
+$routes->post('/admin/send-whatsapp', 'JadwalKonsultasiController::sendWhatsApp');
+
 
 // Admin Management Routes
 $routes->get('/admin/manage/add', 'AdminManagementController::create');

@@ -132,7 +132,9 @@
             </div>
         </div>
     </nav>
-    <div class="max-w-xl lg:max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    
+    <!-- Form -->
+    <div class="max-w-xl lg:max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md" style="margin-top: 100px;">
         <h1 class="text-2xl font-bold mb-6">Detail</h1>
         <form action="<?= base_url('/admin/consultation/detail/update/'.$konsultasi['id']) ?>" method="POST">
             <?= csrf_field() ?>
@@ -333,6 +335,19 @@
             <div class="mt-6 text-sm"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
         </div>
     </div>
+
+    <script>
+			document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
+				const dropdown = document.getElementById('dropdownNavbar');
+				dropdown.classList.toggle('hidden');
+			});
+			document.getElementById('filterBtn').addEventListener('click', function() {
+				document.getElementById('filterModal').classList.remove('hidden');
+			});
+			document.getElementById('closeModalBtn').addEventListener('click', function() {
+				document.getElementById('filterModal').classList.add('hidden');
+			});
+		</script>
 </body>
 
 </html>
