@@ -174,12 +174,26 @@
             </div>
             <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Status</label>
-                <select name="status_konsultasi" class="w-full px-3 py-2 bg-orange-500 text-white border border-orange-300 rounded-md">
-                    <?php $status_konsultasies = ['Sedang diproses', 'Disetujui', 'Ditolak', 'Selesai'];
+                <select name="status_konsultasi" class="w-full px-3 py-2 bg-orange-500 text-white border border-orange-300 rounded-md" 
+                    <?= in_array($konsultasi['status_konsultasi'], ['Ditolak', 'Selesai']) ? 'readonly' : '' ?> required>
+                    <?php 
+                    $status_konsultasies = ['Sedang diproses', 'Disetujui', 'Ditolak', 'Selesai'];
                     foreach ($status_konsultasies as $status_konsultasi) {
+                        // Set value="" jika status dari database sama dengan opsi saat ini
+                        $value = ($konsultasi['status_konsultasi'] == 'Sedang diproses' && $status_konsultasi == 'Sedang diproses') ? '' : $status_konsultasi;
                         $selected = ($status_konsultasi == $konsultasi['status_konsultasi']) ? 'selected' : '';
-                        echo "<option value=\"$status_konsultasi\" $selected>$status_konsultasi</option>";
-                    } ?>
+                        $disabled = '';
+                        // Logic for disabling options
+                        if ($konsultasi['status_konsultasi'] == 'Sedang diproses' && $status_konsultasi == 'Sedang diproses') {
+                            $disabled = 'disabled';
+                        } elseif ($konsultasi['status_konsultasi'] == 'Disetujui' && in_array($status_konsultasi, ['Sedang diproses', 'Ditolak'])) {
+                            $disabled = 'disabled';
+                        } elseif (in_array($konsultasi['status_konsultasi'], ['Ditolak', 'Selesai'])) {
+                            $disabled = 'disabled';
+                        }
+                        echo "<option value=\"$value\" $selected $disabled>$status_konsultasi</option>";
+                    }
+                    ?>
                 </select>
             </div>
             <!-- IF DISETUJUI SELECTED-->
@@ -253,7 +267,15 @@
             <br>
             <div class="flex justify-end space-x-4">
                 <a href="/admin/dashboard" id="kembali" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">Kembali</a>
-                <button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">Simpan Status</button>
+                <button id="submitButton" type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">Simpan Status</button>
+                    <script>
+                        document.getElementById('submitButton').addEventListener('click', function(event) {
+                            const confirmation = confirm('Apakah Anda yakin ingin menyimpan perubahan?');
+                                if (!confirmation) {
+                                    event.preventDefault(); // Prevent form submission if not confirmed
+                                    }
+                                });
+                    </script>
             </div>
         </form>
     </div>
