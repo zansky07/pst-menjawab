@@ -15,8 +15,8 @@ class AdminContentController extends BaseController
             }
     
             $konsultasiModel = new KonsultasiModel();
-    
-            $data['requests'] = $konsultasiModel->paginate(10);
+
+            $data['requests'] = $konsultasiModel->orderBy('id', 'DESC')->paginate(10);
             $data['pager'] = $konsultasiModel->pager; // Add pager to the data array
     
             return view('dashboard_admin', $data); // Ensure the correct view path

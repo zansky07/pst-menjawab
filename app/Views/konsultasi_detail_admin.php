@@ -15,7 +15,6 @@
         const jadwalField = document.getElementById('jadwal-field');
         const jadwalFieldInput = document.getElementById('jadwal-field-input');
         const reasonField = document.getElementById('reason-field');
-        const notifField = document.getElementById('notif-field');
         const notifKonsul = document.getElementById('notif-konsul'); // Assuming 'notif-konsul' is the correct ID
         const kehadiranField = document.getElementById('kehadiran-field');
         const kehadiranSelect = document.querySelector('select[name="kehadiran_konsumen"]');
@@ -29,12 +28,10 @@
                 kehadiranField.classList.add('hidden');
                 kehadiranSelect.value = '';
                 reasonField.classList.add('hidden');
-                notifField.classList.add('hidden');
                 detailField.classList.add('hidden');
                 toggleNotifKonsul();
             } else if (statusSelect.value === 'Ditolak') {
                 reasonField.classList.remove('hidden');
-                notifField.classList.remove('hidden');
                 jadwalkanField.classList.add('hidden');
                 jadwalField.classList.add('hidden');
                 kehadiranField.classList.add('hidden');
@@ -43,7 +40,6 @@
                 toggleNotifKonsul();
             } else if (statusSelect.value === 'Selesai') {
                 reasonField.classList.add('hidden');
-                notifField.classList.add('hidden');
                 jadwalkanField.classList.add('hidden');
                 jadwalField.classList.add('hidden');
                 kehadiranField.classList.remove('hidden');
@@ -53,7 +49,6 @@
                 jadwalkanField.classList.add('hidden');
                 jadwalField.classList.add('hidden');
                 reasonField.classList.add('hidden');
-                notifField.classList.add('hidden');
                 kehadiranField.classList.add('hidden');
                 kehadiranSelect.value = '';
                 detailField.classList.add('hidden');
@@ -116,7 +111,7 @@
                                     <a href="/admin/settings/admin" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
                                 </li>
                                 <li>
-                                    <a href="a/dmin/settings/consultant" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
+                                    <a href="/admin/settings/consultant" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
                                 </li>
                             </ul>
                         </div>
@@ -176,12 +171,26 @@
             </div>
             <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Status</label>
-                <select name="status_konsultasi" class="w-full px-3 py-2 bg-orange-500 text-white border border-orange-300 rounded-md">
-                    <?php $status_konsultasies = ['Sedang diproses', 'Disetujui', 'Ditolak', 'Selesai'];
+                <select name="status_konsultasi" class="w-full px-3 py-2 bg-orange-500 text-white border border-orange-300 rounded-md" 
+                    <?= in_array($konsultasi['status_konsultasi'], ['Ditolak', 'Selesai']) ? 'readonly' : '' ?> required>
+                    <?php 
+                    $status_konsultasies = ['Sedang diproses', 'Disetujui', 'Ditolak', 'Selesai'];
                     foreach ($status_konsultasies as $status_konsultasi) {
+                        // Set value="" jika status dari database sama dengan opsi saat ini
+                        $value = ($konsultasi['status_konsultasi'] == 'Sedang diproses' && $status_konsultasi == 'Sedang diproses') ? '' : $status_konsultasi;
                         $selected = ($status_konsultasi == $konsultasi['status_konsultasi']) ? 'selected' : '';
-                        echo "<option value=\"$status_konsultasi\" $selected>$status_konsultasi</option>";
-                    } ?>
+                        $disabled = '';
+                        // Logic for disabling options
+                        if ($konsultasi['status_konsultasi'] == 'Sedang diproses' && $status_konsultasi == 'Sedang diproses') {
+                            $disabled = 'disabled';
+                        } elseif ($konsultasi['status_konsultasi'] == 'Disetujui' && in_array($status_konsultasi, ['Sedang diproses', 'Ditolak'])) {
+                            $disabled = 'disabled';
+                        } elseif (in_array($konsultasi['status_konsultasi'], ['Ditolak', 'Selesai'])) {
+                            $disabled = 'disabled';
+                        }
+                        echo "<option value=\"$value\" $selected $disabled>$status_konsultasi</option>";
+                    }
+                    ?>
                 </select>
             </div>
             <!-- IF DISETUJUI SELECTED-->
@@ -224,14 +233,7 @@
             <!-- IF DITOLAK SELECTED -->
             <div id="reason-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Alasan Penolakan</label>
-                <textarea name="alasan_penolakan" class="w-full px-3 py-2 bg-orange-100 border border-orange-300 rounded-md"></textarea>
-            </div>
-            <div id="notif-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Kirim Notifikasi</label>
-                <div class="flex space-x-4 md:space-x-2 w-full md:col-span-1">
-                    <a href="" name="notif_wa" class="w-full md:w-auto bg-orange-500 text-white py-2 px-5 rounded-md hover:bg-orange-600">VIA WHATSAPP</a>
-                    <a href="" name="notif_email" class="w-full md:w-auto bg-orange-500 text-white py-2 px-5 rounded-md hover:bg-orange-600">VIA EMAIL</a>
-                </div>
+                <textarea name="alasan_penolakan" class="w-full px-3 py-2 bg-orange-100 border border-orange-300 rounded-md"><?= esc($konsultasi['alasan_penolakan']) ?></textarea>
             </div>
             <!-- IF SELESAI SELECTED -->
             <div id="kehadiran-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -255,7 +257,15 @@
             <br>
             <div class="flex justify-end space-x-4">
                 <a href="/admin/dashboard" id="kembali" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">Kembali</a>
-                <button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">Simpan Status</button>
+                <button id="submitButton" type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">Simpan Status</button>
+                    <script>
+                        document.getElementById('submitButton').addEventListener('click', function(event) {
+                            const confirmation = confirm('Apakah Anda yakin ingin menyimpan perubahan?');
+                                if (!confirmation) {
+                                    event.preventDefault(); // Prevent form submission if not confirmed
+                                    }
+                                });
+                    </script>
             </div>
         </form>
     </div>
