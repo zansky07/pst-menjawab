@@ -30,7 +30,10 @@ class AdminManagementController extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $validation->getErrors()
+            ]);
         }
 
         // Hash password
@@ -47,7 +50,10 @@ class AdminManagementController extends BaseController
             'role' => $this->request->getPost('role')
         ]);
 
-        return redirect()->to('/admin/settings/admin')->with('message', 'Admin berhasil ditambahkan!');
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Admin berhasil ditambahkan!'
+        ]);
     
     }
 

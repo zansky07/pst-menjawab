@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
     <title>Tambah Admin</title>
     <link rel="icon" href="/assets/images/logo-pst.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -68,7 +69,8 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <form action="<?= base_url('/admin/manage/store') ?>" method="POST">
+        
+        <form id="addForm" action="<?= base_url('/admin/manage/store') ?>" method="POST">
             <?= csrf_field() ?>
             <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Username</label>
@@ -89,7 +91,7 @@
             <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label
                     class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Password</label>
-                <input type="text" class="w-full px-3 py-2 bg-orange-100 border border-orange-300 rounded-md"
+                <input type="password" class="w-full px-3 py-2 bg-orange-100 border border-orange-300 rounded-md"
                 name="password" required>
             </div>
             <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -171,15 +173,66 @@
 
     <script>
 			document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
-				const dropdown = document.getElementById('dropdownNavbar');
-				dropdown.classList.toggle('hidden');
-			});
-			document.getElementById('filterBtn').addEventListener('click', function() {
-				document.getElementById('filterModal').classList.remove('hidden');
-			});
-			document.getElementById('closeModalBtn').addEventListener('click', function() {
-				document.getElementById('filterModal').classList.add('hidden');
-			});
+			const dropdown = document.getElementById('dropdownNavbar');
+			dropdown.classList.toggle('hidden');
+		});
+
+        document.getElementById('addForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+
+            Swal.fire({
+                title: 'Apakah data sudah benar?',
+                text: "Pastikan semua data yang Anda masukkan sudah sesuai!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, kirim!',
+                cancelButtonText: 'Periksa lagi'
+            }).then((result) => {
+                
+                if (result.isConfirmed) {
+                    fetch(event.target.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                title: 'Berhasil!',
+                                text: data.message,
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                window.location.href = '/admin/settings/admin';
+                            });
+                        } else {
+                            let errorMessages = Object.values(data.errors).join('<br>');
+                            Swal.fire({
+                                title: 'Gagal!',
+                                html: errorMessages,
+                                icon: 'error',
+                                confirmButtonText: 'Perbaiki'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Terjadi kesalahan server.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    });
+                }
+            });
+
+            
+        });
+
 		</script>
 </body>
 </html>
