@@ -251,7 +251,7 @@
             <div id="detail-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center"></label>
                 <div class="flex space-x-4 md:space-x-2 w-full md:col-span-1">
-                    <a href="/admin/consultation/postConsultation" name="detail_btn" class="bg-orange-500 text-white py-3 px-2 rounded-md w-full text-center mx-1 text-sm transition duration-300 hover:bg-orange-600">Isi Detail Konsultasi</a>
+                    <a href="/admin/consultation/postConsultation/<?= $konsultasi['id'] ?>" name="detail_btn" class="bg-orange-500 text-white py-3 px-2 rounded-md w-full text-center mx-1 text-sm transition duration-300 hover:bg-orange-600">Isi Detail Konsultasi</a>
                 </div>
             </div>
             <br>
@@ -266,6 +266,8 @@
                                     }
                                 });
                     </script>
+                <a href="<?= base_url('export-pdf/' . $konsultasi['id']) ?>" class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">EKSPOR PDF</a>
+
             </div>
         </form>
     </div>

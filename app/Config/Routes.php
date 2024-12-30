@@ -30,12 +30,13 @@ $routes->get('/admin/settings', 'AdminContentController::pengaturan');
 $routes->get('/admin/dashboard', 'AdminController::dashboard');
 $routes->get('/admin/settings/admin', 'AdminContentController::pengaturan_admin');
 $routes->get('/admin/settings/consultant', 'AdminContentController::pengaturan_konsultan');
-
+$routes->get('export-pdf/(:num)', 'ExportController::exportPDF/$1');
 
 // Consultation Management Routes
 $routes->get('/admin/consultation/delete/(:num)', 'KonsultasiController::delete/$1');
 $routes->get('/admin/consultation/detail/(:num)', 'KonsultasiController::detail/$1');
-$routes->get('/admin/consultation/postConsultation', 'KonsultasiController::postConsultation');
+$routes->get('/admin/consultation/postConsultation/(:num)', 'KonsultasiController::postConsultation/$1');
+$routes->post('/admin/consultation/postConsultation/(:num)', 'KonsultasiController::postDocum/$1');
 $routes->post('/admin/consultation/detail/update/(:num)', 'KonsultasiController::updateStatus/$1');
 
 // Jadwal Konsultasi Routes (Admin)

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\KonsultasiModel;
+use App\Models\KonsultanModel;
 use App\Controllers\BaseController;
 use App\Helpers\WAHelper;
 
@@ -301,13 +302,56 @@ class KonsultasiController extends BaseController
         return redirect()->to('/admin/dashboard')->with('message', 'Data berhasil dihapus');
     }
 
-    public function postConsultation()
+    public function postConsultation($id)
     {
         // Periksa apakah pengguna sudah login
         if (!session()->get('logged_in')) {
             return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
         }
+    
+        $konsultasiModel = new KonsultasiModel();
+        $konsultanModel = new KonsultanModel();
+    
+        // Temukan konsultasi berdasarkan ID
+        $data['konsultasi'] = $konsultasiModel->find($id);
+    
+        // Ambil konsultan_id dari data konsultasi
+        $konsultan_id = $data['konsultasi']['konsultan_id'];
+    
+        // Temukan konsultan berdasarkan konsultan_id
+        $data['konsultan'] = $konsultanModel->find($konsultan_id);
+    
+        return view('post_konsultasi', $data);
+    }    
 
-        return view('post_konsultasi');
+    public function postDocum($id)
+    {
+
+        $notula = '';
+        $i = 1;
+        while ($this->request->getPost("pertanyaan$i") && $this->request->getPost("jawaban$i")) {
+            $notula .= "Pertanyaan $i: " . $this->request->getPost("pertanyaan$i") . "\n" .
+                    "Jawaban $i: " . $this->request->getPost("jawaban$i") . "\n";
+            $i++;
+        }
+
+        $data = [
+            'notula' => $notula,
+            'status_konsultasi' => 'Selesai',
+            'kehadiran' => 'Datang'
+        ];
+
+        if ($file = $this->request->getFile('dokumentasi')) {
+            if ($file->isValid() && !$file->hasMoved()) {
+                $token = $this->konsultasiModel->find($id)['token_konsultasi']; // Ambil token dari model
+                $newName = 'konsultasi_' . $token . '_' . time() . '.' . $file->getClientExtension();
+                $file->move(FCPATH . 'assets/images/dokum', $newName);
+                $data['dokumentasi'] = $newName;
+            }
+        }
+
+        $this->konsultasiModel->update($id, $data);
+
+        return redirect()->to("/admin/consultation/detail/{$id}");
     }
 }
