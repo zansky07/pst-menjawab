@@ -326,15 +326,6 @@ class KonsultasiController extends BaseController
 
     public function postDocum($id)
     {
-        $validation = \Config\Services::validation();
-
-        $validation->setRules([
-            'dokumentasi' => 'uploaded[dokumentasi]|max_size[dokumentasi,2048]|is_image[dokumentasi]'
-        ]);
-
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        }
 
         $notula = '';
         $i = 1;
@@ -346,12 +337,14 @@ class KonsultasiController extends BaseController
 
         $data = [
             'notula' => $notula,
+            'status_konsultasi' => 'Selesai',
+            'kehadiran' => 'Datang'
         ];
 
         if ($file = $this->request->getFile('dokumentasi')) {
             if ($file->isValid() && !$file->hasMoved()) {
                 $token = $this->konsultasiModel->find($id)['token_konsultasi']; // Ambil token dari model
-                $newName = 'konsultasi_' . $token . '.' . $file->getClientExtension();
+                $newName = 'konsultasi_' . $token . '_' . time() . '.' . $file->getClientExtension();
                 $file->move(FCPATH . 'assets/images/dokum', $newName);
                 $data['dokumentasi'] = $newName;
             }

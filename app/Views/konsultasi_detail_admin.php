@@ -266,6 +266,8 @@
                                     }
                                 });
                     </script>
+                <a href="<?= base_url('export-pdf/' . $konsultasi['id']) ?>" class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">EKSPOR PDF</a>
+
             </div>
         </form>
     </div>

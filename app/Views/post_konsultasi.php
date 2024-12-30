@@ -134,8 +134,19 @@
                         <label class="block text-gray-700">Status</label>
                         <input type="text" class="bg-oranye-1 rounded-md p-2 w-full" value="Selesai" readonly>
                     </div>
+                    <?php if (!empty($konsultasi['notula'])): ?>
+                        <div class="mb-4">
+                            
+                                <label class="block text-gray-700">Riwayat Notula</label>
+                                <textarea class="bg-oranye-1 rounded-md p-2 w-full" readonly><?= htmlspecialchars($konsultasi['notula']) ?></textarea>                 
+                        </div>
+                    <?php endif; ?>
                     <div class="mb-4" id="notula-container">
+                    <?php if (!empty($konsultasi['notula'])): ?>
+                        <label class="block text-gray-700">Notula Baru</label>
+                    <?php else: ?>
                         <label class="block text-gray-700">Notula</label>
+                    <?php endif; ?>
                         <input type="text" name="pertanyaan1" class="bg-oranye-1 rounded-md p-2 mb-2 w-full" placeholder="Pertanyaan 1" value="<?= old('pertanyaan1', $konsultasi['pertanyaan1'] ?? '') ?>">
                         <input type="text" name="jawaban1" class="bg-oranye-1 rounded-md p-2 ml-4 mb-2 w-full" placeholder="Jawaban pertanyaan 1" value="<?= old('jawaban1', $konsultasi['jawaban1'] ?? '') ?>">
                     </div>
@@ -160,9 +171,8 @@
                 </div>
             </div>
             <div class="flex justify-end mt-6 space-x-4">
-                <button type="submit" class="bg-oranye-2 text-white rounded-md px-4 py-2">SIMPAN</button>
+                <button type="submit" class="bg-oranye-2 text-white rounded-md px-4 py-2" onclick="return confirm('Apakah Anda yakin ingin menyimpan data ini?')">SIMPAN</button>
                 <a href="/admin/consultation/detail/<?= $konsultasi['id'] ?>" class="bg-oranye-2 text-white rounded-md px-4 py-2">KEMBALI</a>
-                <button class="bg-oranye-2 text-white rounded-md px-4 py-2">EKSPOR PDF</button>
             </div>
         </form>
     </div>

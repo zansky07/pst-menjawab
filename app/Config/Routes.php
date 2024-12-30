@@ -30,7 +30,7 @@ $routes->get('/admin/settings', 'AdminContentController::pengaturan');
 $routes->get('/admin/dashboard', 'AdminController::dashboard');
 $routes->get('/admin/settings/admin', 'AdminContentController::pengaturan_admin');
 $routes->get('/admin/settings/consultant', 'AdminContentController::pengaturan_konsultan');
-
+$routes->get('export-pdf/(:num)', 'ExportController::exportPDF/$1');
 
 // Consultation Management Routes
 $routes->get('/admin/consultation/delete/(:num)', 'KonsultasiController::delete/$1');
