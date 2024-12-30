@@ -108,14 +108,14 @@
 								<div class="flex gap-5 max-md:flex-col">
 									<div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
 										<div class="flex flex-col px-9 pt-6 pb-11 w-full font-bold text-center text-white bg-oranye-2 rounded-[40px] max-md:px-5 max-md:mt-3">
-											<h3 class="text-2xl">Jumlah Pengunjung</h3>
-											<div class="self-center mt-11 text-6xl max-md:mt-10 max-md:text-4xl" aria-label="120 pengunjung">120</div>
+											<h3 class="text-2xl">Jumlah Pengunjung <br>Hari Ini</h3>
+											<div class="self-center mt-11 text-6xl max-md:mt-10 max-md:text-4xl" aria-label="<?= $jumlahPengunjungHarian ?> pengunjung"><?= $jumlahPengunjungHarian ?></div>
 										</div>
 									</div>
 									<div class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
 										<div class="flex flex-col grow px-10 pt-6 pb-12 mt-1 w-full font-bold text-center text-white bg-oranye-2 rounded-[40px] max-md:px-5 max-md:mt-4">
 											<h3 class="text-2xl">Jumlah Permintaan Konsultasi Online</h3>
-											<div class="self-center mt-5 text-6xl max-md:text-4xl" aria-label="100 permintaan">100</div>
+											<div class="self-center mt-5 text-6xl max-md:text-4xl" aria-label="<?= $jumlahPermintaan ?> permintaan"><?= $jumlahPermintaan ?></div>
 										</div>
 									</div>
 								</div>
@@ -125,13 +125,13 @@
 									<div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
 										<div class="flex flex-col grow px-10 pt-6 pb-12 w-full font-bold text-center text-white bg-oranye-2 rounded-[40px] max-md:px-5 max-md:mt-3.5">
 											<h3 class="text-2xl">Jumlah Permintaan yang disetujui</h3>
-											<div class="self-center mt-2.5 text-6xl max-md:text-4xl" aria-label="55 permintaan disetujui">55</div>
+											<div class="self-center mt-2.5 text-6xl max-md:text-4xl" aria-label="<?= $jumlahDisetujui ?> permintaan disetujui"><?= $jumlahDisetujui ?></div>
 										</div>
 									</div>
 									<div class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
 										<div class="flex flex-col grow px-12 pt-5 pb-14 w-full font-bold text-center text-white bg-oranye-2 rounded-[40px] max-md:px-5 max-md:mt-3.5">
 											<h3 class="text-2xl">Jumlah Permintaan yang ditolak</h3>
-											<div class="self-center mt-2.5 text-6xl max-md:text-4xl" aria-label="10 permintaan ditolak">10</div>
+											<div class="self-center mt-2.5 text-6xl max-md:text-4xl" aria-label="<?= $jumlahDitolak ?> permintaan ditolak"><?= $jumlahDitolak ?></div>
 										</div>
 									</div>
 								</div>

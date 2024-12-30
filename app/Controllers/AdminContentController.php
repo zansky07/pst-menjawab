@@ -51,8 +51,27 @@ class AdminContentController extends BaseController
             if (!session()->get('logged_in')) {
                 return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
             }
-
+            $db = \Config\Database::connect();
+            $visitorModel = $db->table('visitors');
             $konsultasiModel = new KonsultasiModel();
+
+            // **Jumlah pengunjung total**
+            $data['jumlahPengunjung'] = $visitorModel->countAllResults();
+
+            // **Jumlah pengunjung harian**
+            $today = new \CodeIgniter\I18n\Time('now');
+            $data['jumlahPengunjungHarian'] = $visitorModel
+                ->where('DATE(visited_at)', $today->toDateString())
+                ->countAllResults();
+
+            // Hitung jumlah permintaan konsultasi
+            $data['jumlahPermintaan'] = $konsultasiModel->countAll();
+
+            // Hitung jumlah permintaan yang disetujui
+            $data['jumlahDisetujui'] = $konsultasiModel->where('status_konsultasi', 'disetujui')->countAllResults();
+
+            // Hitung jumlah permintaan yang ditolak
+            $data['jumlahDitolak'] = $konsultasiModel->where('status_konsultasi', 'ditolak')->countAllResults();
 
             // Ambil nilai filter dari query string, dengan nilai default 'semua'
             $data['status'] = $this->request->getGet('status') ?? 'semua';
