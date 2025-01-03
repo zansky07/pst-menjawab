@@ -54,40 +54,41 @@
                 <!-- Kendala -->
                 <div class="md:col-span-2">
                     <label for="kendala" class="block text-sm font-medium text-gray-700 mb-1">Apakah Anda mengalami kendala saat memakai layanan kami? Jika ya, apa?</label>
-                    <textarea id="kendala" name="kendala" class="block w-full p-2 border border-gray-300 rounded-md h-24"></textarea>
+                    <textarea id="kendala" name="kendala" class="block w-full p-2 border border-gray-300 rounded-md h-24"><?= old('kendala') ?></textarea>
                 </div>
 
                 <!-- Konsultasi -->
                 <div>
                     <label for="konsultasi" class="block text-sm font-medium text-gray-700 mb-1">Kemungkinan konsultasi lagi (1-10)?</label>
-                    <input type="number" id="konsultasi" name="konsultasi" min="1" max="10" required class="block w-full p-2 border border-gray-300 rounded-md">
+                    <input type="number" id="konsultasi" name="konsultasi" min="1" max="10" value="<?= old('konsultasi') ?>" required class="block w-full p-2 border border-gray-300 rounded-md">
                 </div>
 
                 <!-- Kesulitan -->
                 <div>
                     <label for="kesulitan" class="block text-sm font-medium text-gray-700 mb-1">Kesulitan penggunaan website (1-10)?</label>
-                    <input type="number" id="kesulitan" name="kesulitan" min="1" max="10" required class="block w-full p-2 border border-gray-300 rounded-md">
+                    <input type="number" id="kesulitan" name="kesulitan" min="1" max="10" value="<?= old('kesulitan') ?>" required class="block w-full p-2 border border-gray-300 rounded-md">
                 </div>
 
                 <!-- Terjawab -->
                 <div>
                     <label for="terjawab" class="block text-sm font-medium text-gray-700 mb-1">Apakah kebutuhan Anda terjawab?</label>
                     <select id="terjawab" name="terjawab" required class="block w-full p-2 border border-gray-300 rounded-md">
-                        <option value="Ya">Ya</option>
-                        <option value="Tidak">Tidak</option>
+						<option value="" disabled <?= old('terjawab') ? '' : 'selected' ?>>-</option>
+                        <option value="Ya" <?= old('terjawab') === 'Ya' ? 'selected' : '' ?>>Ya</option>
+                        <option value="Tidak" <?= old('terjawab') === 'Tidak' ? 'selected' : '' ?>>Tidak</option>
                     </select>
                 </div>
 
                 <!-- Kepuasan -->
                 <div>
                     <label for="kepuasan" class="block text-sm font-medium text-gray-700 mb-1">Kepuasan terhadap layanan (1-10)?</label>
-                    <input type="number" id="kepuasan" name="kepuasan" min="1" max="10" required class="block w-full p-2 border border-gray-300 rounded-md">
+                    <input type="number" id="kepuasan" name="kepuasan" min="1" max="10" value="<?= old('kepuasan') ?>" required class="block w-full p-2 border border-gray-300 rounded-md">
                 </div>
 
                 <!-- Kritik dan Saran -->
                 <div class="md:col-span-2">
                     <label for="kritik_saran" class="block text-sm font-medium text-gray-700 mb-1">Kritik dan Saran</label>
-                    <textarea id="kritik_saran" name="kritik_saran" class="block w-full p-2 border border-gray-300 rounded-md h-24"></textarea>
+                    <textarea id="kritik_saran" name="kritik_saran" class="block w-full p-2 border border-gray-300 rounded-md h-24"><?= old('kritik_saran') ?></textarea>
                 </div>
             </div>
 
@@ -100,7 +101,8 @@
     <div class="relative" id="footer">
 			<img src="/assets/images/footer.png" alt="footer" class="w-full">
 			<div class="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-5 text-lg pb-12">
-				<div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">> <div class="w-1/3 text-left">
+				<div class="flex justify-between items-center w-full max-w-6xl mb-8 space-x-8">
+					<div class="w-1/3 text-left">
 						<div class="flex items-center space-x-4">
 							<img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
 							<h3 class="text-xl font-semibold">Badan Pusat Statistik Provinsi DKI Jakarta</h3>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,8 @@
 		</style>
 	</head>
 	<body class="flex flex-col min-h-screen bg-oranye-1 mt-28 md:mt-16 ">
+=======
+>>>>>>> b9a217c1ad9a090fc9ddaa89886967e865a3442c
 
 <head>
     <meta charset="UTF-8">
@@ -23,6 +26,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="/assets/images/logo-pst.png">
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,7 +36,13 @@
 </head>
 
 <body class="bg-oranye-1 mt-28 md:mt-16">
+<<<<<<< HEAD
 <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
+=======
+	
+	<!-- Header -->
+	<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
+>>>>>>> b9a217c1ad9a090fc9ddaa89886967e865a3442c
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 				<div class="flex items-center space-x-4">
 					<img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
@@ -73,6 +83,7 @@
 				</div>
 			</div>
 		</nav>
+
 		<main class="flex-grow mb-24">
 			<div class="container mx-auto p-6"> <?php if (session()->getFlashdata('message')): ?> <p class="text-green-500"> <?= session()->getFlashdata('message') ?> </p> <?php endif; ?>
 				<!-- Filter Button -->
@@ -120,8 +131,8 @@
 										<div class="flex justify-around">
 											<a href="/admin/consultation/detail/
 																<?= $request['id'] ?>" class="bg-green-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-green-600">Detail </a>
-											<a href="/admin/consultation/delete/
-																<?= $request['id'] ?>" class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus </a>
+											<a onclick="confirmDelete('/admin/consultation/delete/<?= $request['id'] ?>')"  
+																class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus </a>
 										</div>
 									</td>
 								</tr> <?php endforeach; ?> <?php else: ?> <tr>
@@ -139,9 +150,13 @@
         <div class="h-20"></div>
 		<footer class="relative w-full mt-20">
 			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
+<<<<<<< HEAD
 			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-0">
+=======
+			<!-- <div class="absolute inset-x-0 top-0 -translate-y-full w-full z-0">
+>>>>>>> b9a217c1ad9a090fc9ddaa89886967e865a3442c
 				<img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
-			</div>
+			</div> -->
 			<!-- Kontainer dengan latar belakang oranye -->
 			<div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-0">
 				<!-- Footer Content -->
@@ -214,6 +229,39 @@
 			document.getElementById('closeModalBtn').addEventListener('click', function() {
 				document.getElementById('filterModal').classList.add('hidden');
 			});
+
+			// Fungsi untuk konfirmasi penghapusan
+			function confirmDelete(url) {
+				Swal.fire({
+					title: 'Apakah Anda yakin?',
+					text: "Data yang dihapus tidak dapat dikembalikan!",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#d33',
+					cancelButtonColor: '#3085d6',
+					confirmButtonText: 'Ya, hapus!',
+					cancelButtonText: 'Batal'
+				}).then((result) => {
+					if (result.isConfirmed) {
+						window.location.href = url;
+					}
+				});
+			}
+
+			<?php if (session()->getFlashdata('delete_status')): ?>
+				const status = "<?= session()->getFlashdata('delete_status') ?>"; // 'success' atau 'error'
+				const message = "<?= session()->getFlashdata('message') ?>"; // Pesan flashdata
+
+				// Tampilkan notifikasi dengan SweetAlert
+				Swal.fire({
+					icon: status, // success atau error
+					title: status === 'success' ? 'Berhasil' : 'Gagal',
+					text: message,
+					showConfirmButton: true,
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'OK'
+				});
+			<?php endif; ?>
 		</script>
 	</body>
 </html>

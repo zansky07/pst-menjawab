@@ -22,12 +22,15 @@ class KonsultanManagementController extends BaseController
         $validation =  \Config\Services::validation();
         $validation->setRules([
             'nama' => 'required|max_length[100]',
-            'email' => 'required|valid_email|max_length[50]',
+            'email' => 'required|valid_email|is_unique[konsultan.email]|max_length[50]',
             'whatsapp' => 'required|max_length[20]'
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $validation->getErrors()
+            ]);
         }
 
         // Simpan data konsultan baru
@@ -37,13 +40,28 @@ class KonsultanManagementController extends BaseController
             'whatsapp' => $this->request->getPost('whatsapp')
         ]);
 
-        return redirect()->to('/admin/settings/consultant')->with('message', 'Konsultan berhasil ditambahkan!');
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Konsultan berhasil ditambahkan!'
+        ]);
     }
 
     public function delete($id)
     {
         $konsultanModel = new KonsultanModel();
-        $konsultanModel->delete($id);
+
+        // Menghapus data
+        $isDeleted = $konsultanModel->delete($id);
+    
+        if ($isDeleted) {
+            // Penghapusan berhasil
+            session()->setFlashdata('delete_status', 'success');
+            session()->setFlashdata('message', 'Data berhasil dihapus!');
+        } else {
+            // Penghapusan gagal
+            session()->setFlashdata('delete_status', 'error');
+            session()->setFlashdata('message', 'Data gagal dihapus!');
+        }
 
         return redirect()->to('/admin/settings/consultant')->with('message', 'Konsultan berhasil dihapus!');
     }

@@ -32,7 +32,7 @@
 				</div>
 			</div>
 		</nav>
-    <div class="max-w-lg mx-auto rounded-lg shadow-lg mt-10">
+    <div class="max-w-lg mx-auto rounded-lg shadow-lg mt-20">
         <form action="/consultation/status" method="post">
             <?= csrf_field() ?> <!-- Tambahkan CSRF protection -->
             <div class="flex items-center mb-4">
@@ -117,13 +117,13 @@
                         Unduh Notula <?= esc($reservation['notula']) ?>
                     </button>
                 </div>
-                <?php endif; ?>
                         <form action="/consultation/feedback" method="post">
                             <input type="hidden" name="token" value="<?= esc(old('token', $token)) ?>">
                                 <div class="grid grid-cols-3 gap-4 mt-4">
                                     <button type="submit" class="col-span-3 bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded-full">Isi Survei Kepuasan Konsumen</button>
                                 </div>
                         </form>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
     <?php else: ?>

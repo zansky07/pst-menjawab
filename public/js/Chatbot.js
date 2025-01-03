@@ -1,73 +1,132 @@
 const { useState, useRef, useEffect } = React;
 
-function formatMessage(text) {
-  if (!text) return '';
+// Custom prompt untuk chatbot
+const INITIAL_PROMPT = `Halo, Saya adalah Chatbot PST Menjawab, asisten digital dari Badan Pusat Statistik Provinsi DKI Jakarta. 👋📊
 
-  // Replace **text** with bold text
-  let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+Tentang PST:
+Pelayanan Statistik Terpadu (PST) adalah layanan satu pintu untuk seluruh pelayanan BPS di Indonesia yang dapat diakses melalui https://pst.bps.go.id yang menyediakan berbagai layanan statistik seperti penjualan publikasi, konsultasi statistik, perpustakaan tercetak dan digital, serta data mikro untuk seluruh Indonesia.
+
+Tentang PST Menjawab:
+PST Menjawab adalah layanan konsultasi statistik online yang khusus disediakan oleh PST BPS Provinsi DKI Jakarta. Layanan ini bertujuan memudahkan masyarakat DKI Jakarta dalam mengakses dan memahami data statistik serta mendapatkan bimbingan dalam analisis data untuk wilayah DKI Jakarta.
+
+Peran Saya Sebagai Chatbot:
+Saya adalah asisten digital PST Menjawab 👋📊, siap membantu Anda dengan:
+✅ Menjawab pertanyaan umum tentang statistik dan metodologi
+✅ Memberikan panduan awal untuk analisis data dan interpretasi
+✅ Mengarahkan ke layanan konsultasi yang sesuai kebutuhan
+✅ Membantu menemukan sumber data statistik yang relevan
+
+Batasan Layanan:
+- Untuk konsultasi mendalam atau analisis khusus yang membutuhkan pendampingan ahli, silakan gunakan layanan Konsultasi Online melalui menu Konsultasi
+- Jika ada pertanyaan yang membutuhkan data spesifik atau di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id
+- Untuk layanan statistik di luar DKI Jakarta, silakan kunjungi https://pst.bps.go.id
+- Saya tidak dapat memberikan interpretasi resmi atas data BPS, untuk hal tersebut silakan konsultasi langsung dengan petugas kami
+- Mohon ajukan pertanyaan dengan jelas dan spesifik disertai konteks atau tujuan dari pertanyaan Anda
+- Untuk data terbaru, selalu periksa https://silastik.bps.go.id dan https://bps.go.id
+- Gunakan menu Konsultasi untuk diskusi mendalam dengan ahli
+
+Bagaimana saya bisa membantu Anda hari ini? 😊`;
+
+function formatMessage(text) {
+  if (!text) return "";
+
+  let formattedText = text;
+
+  // Format URLs with clickable links (process this first)
+  formattedText = formattedText.replace(
+    /(https?:\/\/[^\s]+)/g,
+    '<a href="$1" target="_blank" class="text-blue-500 hover:text-blue-700 underline">$1</a>'
+  );
+
+  // Format bold text with ** **
+  formattedText = formattedText.replace(
+    /\*\*((?!\*\*).+?)\*\*/g,
+    "<strong>$1</strong>"
+  );
 
   // Format tables
-  if (text.includes('|')) {
-    const lines = text.split('\n');
+  if (text.includes("|")) {
+    const lines = text.split("\n");
     const tableLines = [];
     let inTable = false;
-    
+
     lines.forEach((line) => {
-      if (line.includes('|')) {
+      if (line.includes("|")) {
         if (!inTable) {
-          tableLines.push('<div class="overflow-x-auto"><table class="min-w-full bg-white border-collapse border border-gray-300">');
+          tableLines.push(
+            '<div class="overflow-x-auto"><table class="min-w-full bg-white border-collapse border border-gray-300">'
+          );
           inTable = true;
         }
-        
-        const cells = line.split('|').filter(cell => cell.trim());
-        if (line.includes('---')) {
+
+        const cells = line.split("|").filter((cell) => cell.trim());
+        if (line.includes("---")) {
           // Skip header separator line
           return;
         }
-        
+
         const isHeader = tableLines.length === 1;
-        tableLines.push('<tr>');
+        tableLines.push("<tr>");
         cells.forEach((cell) => {
           if (isHeader) {
-            tableLines.push(`<th class="border border-gray-300 px-4 py-2 bg-gray-100">${cell.trim()}</th>`);
+            tableLines.push(
+              `<th class="border border-gray-300 px-4 py-2 bg-gray-100">${cell.trim()}</th>`
+            );
           } else {
-            tableLines.push(`<td class="border border-gray-300 px-4 py-2">${cell.trim()}</td>`);
+            tableLines.push(
+              `<td class="border border-gray-300 px-4 py-2">${cell.trim()}</td>`
+            );
           }
         });
-        tableLines.push('</tr>');
+        tableLines.push("</tr>");
       } else if (inTable) {
-        tableLines.push('</table></div>');
+        tableLines.push("</table></div>");
         inTable = false;
       }
     });
-    
+
     if (inTable) {
-      tableLines.push('</table></div>');
+      tableLines.push("</table></div>");
     }
-    
-    formattedText = text.includes('|') 
-      ? tableLines.join('')
-      : formattedText;
+
+    formattedText = text.includes("|") ? tableLines.join("") : formattedText;
   }
 
   // Format lists
-  formattedText = formattedText.replace(/^- (.*)/gm, '<li class="list-disc ml-4">$1</li>');
-  formattedText = formattedText.replace(/^(\d+)\. (.*)/gm, '<li class="list-decimal ml-4">$1. $2</li>');
+  formattedText = formattedText.replace(
+    /^- (.*)/gm,
+    '<li class="list-disc ml-4">$1</li>'
+  );
+  formattedText = formattedText.replace(
+    /^(\d+)\. (.*)/gm,
+    '<li class="list-decimal ml-4">$1. $2</li>'
+  );
 
   // Format code blocks
-  formattedText = formattedText.replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>$1</code></pre>');
+  formattedText = formattedText.replace(
+    /```([\s\S]*?)```/g,
+    '<pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>$1</code></pre>'
+  );
 
   // Format inline code
-  formattedText = formattedText.replace(/`([^`]+)`/g, '<code class="bg-gray-100 px-1 rounded">$1</code>');
+  formattedText = formattedText.replace(
+    /`([^`]+)`/g,
+    '<code class="bg-gray-100 px-1 rounded">$1</code>'
+  );
 
   // Convert newlines to <br> tags
-  formattedText = formattedText.replace(/\n/g, '<br>');
+  formattedText = formattedText.replace(/\n/g, "<br>");
 
   return formattedText;
 }
 
 function Chatbot() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      role: "assistant",
+      content: INITIAL_PROMPT,
+    },
+  ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [topic, setTopic] = useState("");
@@ -76,7 +135,8 @@ function Chatbot() {
 
   const scrollToBottom = () => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
     }
   };
 
@@ -114,7 +174,7 @@ function Chatbot() {
               {
                 parts: [
                   {
-                    text: input,
+                    text: `${INITIAL_PROMPT}\n\nPertanyaan pengguna: ${input}`,
                   },
                 ],
               },
@@ -143,8 +203,12 @@ function Chatbot() {
   };
 
   const handleNewChat = () => {
-    setMessages([]);
-    setTopic("");
+    setMessages([
+      {
+        role: "assistant",
+        content: INITIAL_PROMPT,
+      },
+    ]);
   };
 
   return (
@@ -182,7 +246,8 @@ function Chatbot() {
         <h1 className="text-lg font-semibold">PST Menjawab Chatbot</h1>
       </div>
 
-      <div 
+      {/* Chat messages container */}
+      <div
         ref={chatContainerRef}
         className="bg-gray-50 rounded-lg p-4 mb-6 min-h-[400px] max-h-[600px] overflow-y-auto"
       >
@@ -191,13 +256,11 @@ function Chatbot() {
             <div
               key={index}
               className={`flex items-start gap-3 ${
-                message.role === "user" ? "flex-row-reverse" : ""
+                message.role === "user" ? "justify-end" : ""
               }`}
             >
-              <div
-                className={`shrink-0 w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center`}
-              >
-                {message.role === "assistant" ? (
+              {message.role === "assistant" && (
+                <div className="shrink-0 w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -212,7 +275,23 @@ function Chatbot() {
                   >
                     <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path>
                   </svg>
-                ) : (
+                </div>
+              )}
+              <div
+                className={`px-4 py-3 rounded-lg ${
+                  message.role === "user"
+                    ? "bg-orange-500 text-white rounded-br-none max-w-[80%] ml-auto"
+                    : "bg-white max-w-[80%]"
+                }`}
+                dangerouslySetInnerHTML={{
+                  __html:
+                    message.role === "assistant"
+                      ? formatMessage(message.content)
+                      : message.content,
+                }}
+              />
+              {message.role === "user" && (
+                <div className="shrink-0 w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -228,20 +307,8 @@ function Chatbot() {
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
                   </svg>
-                )}
-              </div>
-              <div
-                className={`flex-1 px-4 py-3 rounded-lg ${
-                  message.role === "user"
-                    ? "bg-orange-500 text-white"
-                    : "bg-white"
-                }`}
-                dangerouslySetInnerHTML={{
-                  __html: message.role === "assistant" 
-                    ? formatMessage(message.content)
-                    : message.content
-                }}
-              />
+                </div>
+              )}
             </div>
           ))}
           {loading && (
@@ -272,17 +339,36 @@ function Chatbot() {
       </div>
 
       <form onSubmit={handleSubmit} className="flex gap-3">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Ketik pesan Anda..."
-          className="flex-1 px-4 py-3 bg-gray-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-        />
+        <div className="flex-1">
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ketik pesan Anda..."
+            className="w-full px-4 py-3 bg-gray-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none overflow-y-auto"
+            style={{
+              minHeight: "50px",
+              maxHeight: "150px",
+              height: "auto",
+            }}
+            onInput={(e) => {
+              // Auto resize textarea based on content
+              e.target.style.height = "auto";
+              e.target.style.height =
+                Math.min(e.target.scrollHeight, 150) + "px";
+            }}
+            onKeyDown={(e) => {
+              // Submit on Enter (without Shift)
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleSubmit(e);
+              }
+            }}
+          />
+        </div>
         <button
           type="submit"
           disabled={loading}
-          className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+          className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors h-[50px]"
         >
           Kirim
         </button>

@@ -3,6 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\KonsultasiModel;
+use App\Models\KonsultanModel;
+use App\Controllers\BaseController;
+use App\Helpers\WAHelper;
+
 
 class KonsultasiController extends BaseController
 {
@@ -20,34 +24,35 @@ class KonsultasiController extends BaseController
 
     public function submit()
     {
-        // Ambil data dari form
-        $nama = $this->request->getPost('nama');
-        $email = $this->request->getPost('email');
-        $whatsapp = $this->request->getPost('whatsapp');
-        $topik = $this->request->getPost('topik');
-        $kategori = $this->request->getPost('kategori');
-        $lingkup = $this->request->getPost('lingkup');
-        $deskripsi = $this->request->getPost('deskripsi');
+            // Ambil data dari form
+        $data = $this->request->getPost();
 
         // Validasi data menggunakan regex
-        $namaPattern = "/^[a-zA-Z\s]{1,50}$/";
-        $emailPattern = "/^[\w.\-]+@([\w-]+\.)+[\w-]{2,4}$/";
-        $whatsappPattern = "/^08[1-9][0-9]{6,10}$/";
-        $topikPattern = "/^[\w\s]{3,100}$/";
-        $kategoriPattern = "/^[\w\s]{3,50}$/";
-        $lingkupPattern = "/^[\w\s]{3,50}$/";
-        $deskripsiPattern = "/^[\w\s\.\,]{3,500}$/";
+        $validationErrors = [];
 
-        if (
-            !preg_match($namaPattern, $nama) ||
-            !preg_match($emailPattern, $email) ||
-            !preg_match($whatsappPattern, $whatsapp) ||
-            !preg_match($topikPattern, $topik) ||
-            !preg_match($kategoriPattern, $kategori) ||
-            !preg_match($lingkupPattern, $lingkup) ||
-            !preg_match($deskripsiPattern, $deskripsi)
-        ) {
-            session()->setFlashdata('error', 'Data yang Anda masukkan tidak valid. Silakan coba lagi.');
+        if (!preg_match("/^[a-zA-Z\s]{1,50}$/", $data['nama'])) {
+            $validationErrors['nama'] = "Nama harus berupa huruf dan maksimal 50 karakter.";
+        }
+
+        if (!preg_match("/^[\w.\-]+@([\w-]+\.)+[\w-]{2,4}$/", $data['email'])) {
+            $validationErrors['email'] = "Email tidak valid.";
+        }
+
+        if (!preg_match("/^08[1-9][0-9]{6,10}$/", $data['whatsapp'])) {
+            $validationErrors['whatsapp'] = "Nomor tidak valid. Masukkan nomor yang benar dan harus diawali dengan 08.";
+        }
+
+        if (!preg_match("/^[\w\s]{3,100}$/", $data['topik'])) {
+            $validationErrors['topik'] = "Topik harus berisi 3-100 karakter kata.";
+        }
+
+        if (!preg_match("/^[\w\s\.\,]{3,500}$/", $data['deskripsi'])) {
+            $validationErrors['deskripsi'] = "Deskripsi harus berisi 3-500 karakter kata.";
+        }
+
+        // Jika ada error validasi
+        if (!empty($validationErrors)) {
+            session()->setFlashdata('validationErrors', $validationErrors);
             return redirect()->to('/consultation/reserve')->withInput();
         }
 
@@ -56,13 +61,13 @@ class KonsultasiController extends BaseController
 
         // Data yang akan disimpan
         $data = [
-            'nama_konsumen' => $nama,
-            'email_konsumen' => $email,
-            'whatsapp_konsumen' => $whatsapp,
-            'topik' => $topik,
-            'kategori' => $kategori,
-            'lingkup' => $lingkup,
-            'deskripsi' => $deskripsi,
+            'nama_konsumen' => $data['nama'],
+            'email_konsumen' => $data['email'],
+            'whatsapp_konsumen' => $data['whatsapp'],
+            'topik' => $data['topik'],
+            'kategori' => $data['kategori'],
+            'lingkup' => $data['lingkup'],
+            'deskripsi' => $data['deskripsi'],
             'token_konsultasi' => $token,
             'status_konsultasi' => 'Sedang diproses', // Status default
             'tanggal_reservasi' => date('Y-m-d H:i:s'), // Tanggal reservasi saat submit
@@ -88,10 +93,26 @@ class KonsultasiController extends BaseController
                 <li><strong>Token:</strong> {$data['token_konsultasi']}</li>
             </ul>
             <p>Kami akan menghubungi Anda untuk langkah selanjutnya.</p>
-            <p>Terima kasih,<br>PST Menjawab</p>
+            <p>Terima kasih,<br>PST Menjawab BPS DKI Jakarta</p>
         ");
 
-        if ($email->send()) {
+        $message = "🔔 [ *RESERVASI KONSULTASI ONLINE BERHASIL* ] 🔔\n\n";
+                $message .= "Halo, {$data['nama_konsumen']}!\n\n";
+                $message .= "Reservasi konsultasi Anda berhasil! Berikut detailnya:\n\n";
+                $message .= "*Nama:* {$data['nama_konsumen']}\n\n";
+                $message .= "*Topik:* {$data['topik']}\n";
+                $message .= "*Kategori:* {$data['kategori']}\n";
+                $message .= "*Lingkup:* {$data['lingkup']}\n";
+                $message .= "*Deskripsi:* {$data['deskripsi']}\n";
+                $message .= "*Token:* {$data['token_konsultasi']}\n\n";
+                $message .= "Kami akan menghubungi Anda untuk langkah selanjutnya.\n";
+                $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+
+        // Kirim notifikasi ke WhatsApp
+
+        WAHelper::send_wa_notification($data['whatsapp_konsumen'], $message);
+
+        if ($email->send() ) {
             session()->setFlashdata('success', 'Reservasi berhasil. Email pemberitahuan telah dikirim.');
         } else {
             session()->setFlashdata('error', 'Reservasi berhasil, tetapi email tidak dapat dikirim.');
@@ -208,6 +229,47 @@ class KonsultasiController extends BaseController
             } else {
                 return redirect()->to('/admin/dashboard')->with('message', 'Status diperbarui. Jadwal konsultasi sudah tersedia.');
             }
+        } else if($status_konsultasi == 'Ditolak'){
+            //   Jika ditolak maka kirim pesan ke konsumen
+            $konsultasi = $this->konsultasiModel->find($id);
+
+            // Kirim email pemberitahuan
+            $email = \Config\Services::email();
+            $email->setTo($konsultasi['email_konsumen']);
+            $email->setFrom('mfauzanfk@gmail.com', 'PST Menjawab');
+            $email->setSubject('Permintaan Anda Telah Ditolak!');
+            $emailMessage = "
+                <p>Halo <strong>{$konsultasi['nama_konsumen']}</strong>,</p>
+                <p>Maaf, Reservasi Konsultasi Anda Telah Kami Tolak! Berikut detailnya:</p>
+                <ul>
+                    <li><strong>Nama:</strong> {$konsultasi['nama_konsumen']}</li>
+                    <li><strong>Topik:</strong> {$konsultasi['topik']}</li>
+                    <li><strong>Alasan Penolakan:</strong> {$data['alasan_penolakan']}</li>
+                    <li><strong>Token:</strong> {$konsultasi['token_konsultasi']}</li>
+                </ul>
+                <p>Mohon Maaf Atas Ketidaknyamanannya.</p>
+                <p>Terima kasih,<br>PST Menjawab BPS DKI Jakarta</p>
+            ";
+            $email->setMessage($emailMessage);
+
+            if ($email->send()) {
+                log_message('info', 'Email berhasil dikirim ke ' . $konsultasi['email_konsumen']);
+            } else {
+                log_message('error', $email->printDebugger(['headers']));
+            }
+
+            // Kirim notifikasi ke WhatsApp
+            $message = "🔔 [ *RESERVASI KONSULTASI ONLINE ANDA DITOLAK* ] 🔔\n\n";
+            $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
+            $message .= "Maaf, Reservasi konsultasi Anda telah kami tolak! Berikut detailnya:\n\n";
+            $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
+            $message .= "*Topik:* {$konsultasi['topik']}\n";
+            $message .= "*Alasan Penolakan:* {$data['alasan_penolakan']}\n";
+            $message .= "*Token:* {$konsultasi['token_konsultasi']}\n\n";
+            $message .= "Kami mohon kehadiran Anda.\n";
+            $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+
+            WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
         }
         // Otherwise, redirect back to dashboard
         return redirect()->to('/admin/dashboard')->with('message', 'Status berhasil diperbarui.');
@@ -223,18 +285,73 @@ class KonsultasiController extends BaseController
         }
 
         $konsultasiModel = new konsultasiModel();
-        $konsultasiModel->delete($id);
+
+        // Menghapus data
+        $isDeleted = $konsultasiModel->delete($id);
+    
+        if ($isDeleted) {
+            // Penghapusan berhasil
+            session()->setFlashdata('delete_status', 'success');
+            session()->setFlashdata('message', 'Data berhasil dihapus!');
+        } else {
+            // Penghapusan gagal
+            session()->setFlashdata('delete_status', 'error');
+            session()->setFlashdata('message', 'Data gagal dihapus!');
+        }
 
         return redirect()->to('/admin/dashboard')->with('message', 'Data berhasil dihapus');
     }
 
-    public function postConsultation()
+    public function postConsultation($id)
     {
         // Periksa apakah pengguna sudah login
         if (!session()->get('logged_in')) {
             return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
         }
+    
+        $konsultasiModel = new KonsultasiModel();
+        $konsultanModel = new KonsultanModel();
+    
+        // Temukan konsultasi berdasarkan ID
+        $data['konsultasi'] = $konsultasiModel->find($id);
+    
+        // Ambil konsultan_id dari data konsultasi
+        $konsultan_id = $data['konsultasi']['konsultan_id'];
+    
+        // Temukan konsultan berdasarkan konsultan_id
+        $data['konsultan'] = $konsultanModel->find($konsultan_id);
+    
+        return view('post_konsultasi', $data);
+    }    
 
-        return view('post_konsultasi');
+    public function postDocum($id)
+    {
+
+        $notula = '';
+        $i = 1;
+        while ($this->request->getPost("pertanyaan$i") && $this->request->getPost("jawaban$i")) {
+            $notula .= "Pertanyaan $i: " . $this->request->getPost("pertanyaan$i") . "\n" .
+                    "Jawaban $i: " . $this->request->getPost("jawaban$i") . "\n";
+            $i++;
+        }
+
+        $data = [
+            'notula' => $notula,
+            'status_konsultasi' => 'Selesai',
+            'kehadiran' => 'Datang'
+        ];
+
+        if ($file = $this->request->getFile('dokumentasi')) {
+            if ($file->isValid() && !$file->hasMoved()) {
+                $token = $this->konsultasiModel->find($id)['token_konsultasi']; // Ambil token dari model
+                $newName = 'konsultasi_' . $token . '_' . time() . '.' . $file->getClientExtension();
+                $file->move(FCPATH . 'assets/images/dokum', $newName);
+                $data['dokumentasi'] = $newName;
+            }
+        }
+
+        $this->konsultasiModel->update($id, $data);
+
+        return redirect()->to("/admin/consultation/detail/{$id}");
     }
 }

@@ -6,6 +6,7 @@
 		<title>Statistik Admin</title>
 		<link rel="icon" href="/assets/images/logo-pst.png">
 		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<link rel="stylesheet" href="
 					
 					<?= base_url('assets/css/styles.css') ?>">`
@@ -54,9 +55,7 @@
 		</nav>
 		<div class="flex-grow z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
 			<button id="openModalButton" class="self-start px-6 py-2.5 mt-5 ml-14 text-base font-bold text-center text-white bg-oranye-3 rounded-3xl hover:bg-oranye-4 focus:outline-none focus:ring-2 focus:ring-orange-500 max-md:px-5 max-md:ml-2.5" aria-label="Filter"> Filter </button>
-			<form action="
-								
-								<?= base_url('/admin/statistics') ?>" method="get">
+			<form action="<?= base_url('/admin/statistics') ?>" method="get">
 				<div id="filterModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 hidden justify-center items-center z-50">
 					<div class="bg-white p-6 rounded-lg w-96 transform translate-x-[-50%] translate-y-[-50%] absolute top-1/2 left-1/2">
 						<h3 class="text-2xl font-bold mb-4">Filter Berdasarkan</h3>
@@ -64,12 +63,10 @@
 						<div class="mb-4">
 							<label for="status" class="block text-sm font-semibold mb-2">Status:</label>
 							<select id="status" name="status" class="w-full px-4 py-2 border border-gray-300 rounded-md">
-								<option value="selesai
-													
-													<?= $status === 'selesai' ? 'selected' : '' ?>">Selesai </option>
+								<option value="selesai" <?= $status === 'selesai' ? 'selected' : '' ?>>Selesai </option>
 								<option value="disetujui" <?= $status === 'disetujui' ? 'selected' : '' ?>>Disetujui </option>
 								<option value="ditolak" <?= $status === 'ditolak' ? 'selected' : '' ?>>Ditolak </option>
-								<option value="sedang_diproses" <?= $status === 'sedang diproses' ? 'selected' : '' ?>>Sedang Diproses </option>
+								<option value="sedang diproses" <?= $status === 'sedang diproses' ? 'selected' : '' ?>>Sedang Diproses </option>
 								<option value="semua" <?= $status === 'semua' ? 'selected' : '' ?>>Semua </option>
 							</select>
 							<label for="periode" class="block text-sm font-semibold mb-2">Tampilkan Berdasarkan:</label>
@@ -91,7 +88,7 @@
 			<div class="self-end mt-5 w-full max-w-[1315px] max-md:max-w-full">
 				<div class="flex gap-5 max-md:flex-col">
 					<section class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full" aria-labelledby="statistics-title">
-						<div class="flex flex-wrap grow gap-px px-7 py-1.5 w-full text-center text-black bg-white max-md:px-5 max-md:mt-7">
+						<!-- <div class="flex flex-wrap grow gap-px px-7 py-1.5 w-full text-center text-black bg-white max-md:px-5 max-md:mt-7">
 							<div class="flex flex-col self-end mt-20 text-xl whitespace-nowrap max-md:hidden max-md:mt-10" aria-hidden="true">
 								<div>50</div>
 								<div class="mt-4">40</div>
@@ -102,7 +99,8 @@
 									<div class="self-start mt-6">0</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
+						<canvas id="statistikChart" width="400" height="330" class="rounded-xl"></canvas>
 					</section>
 					<section class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full" aria-label="Statistik Summary">
 						<div class="flex flex-col w-full max-md:mt-7 max-md:max-w-full">
@@ -110,14 +108,14 @@
 								<div class="flex gap-5 max-md:flex-col">
 									<div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
 										<div class="flex flex-col px-9 pt-6 pb-11 w-full font-bold text-center text-white bg-oranye-2 rounded-[40px] max-md:px-5 max-md:mt-3">
-											<h3 class="text-2xl">Jumlah Pengunjung</h3>
-											<div class="self-center mt-11 text-6xl max-md:mt-10 max-md:text-4xl" aria-label="120 pengunjung">120</div>
+											<h3 class="text-2xl">Jumlah Pengunjung <br>Hari Ini</h3>
+											<div class="self-center mt-11 text-6xl max-md:mt-10 max-md:text-4xl" aria-label="<?= $jumlahPengunjungHarian ?> pengunjung"><?= $jumlahPengunjungHarian ?></div>
 										</div>
 									</div>
 									<div class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
 										<div class="flex flex-col grow px-10 pt-6 pb-12 mt-1 w-full font-bold text-center text-white bg-oranye-2 rounded-[40px] max-md:px-5 max-md:mt-4">
 											<h3 class="text-2xl">Jumlah Permintaan Konsultasi Online</h3>
-											<div class="self-center mt-5 text-6xl max-md:text-4xl" aria-label="100 permintaan">100</div>
+											<div class="self-center mt-5 text-6xl max-md:text-4xl" aria-label="<?= $jumlahPermintaan ?> permintaan"><?= $jumlahPermintaan ?></div>
 										</div>
 									</div>
 								</div>
@@ -127,13 +125,13 @@
 									<div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
 										<div class="flex flex-col grow px-10 pt-6 pb-12 w-full font-bold text-center text-white bg-oranye-2 rounded-[40px] max-md:px-5 max-md:mt-3.5">
 											<h3 class="text-2xl">Jumlah Permintaan yang disetujui</h3>
-											<div class="self-center mt-2.5 text-6xl max-md:text-4xl" aria-label="55 permintaan disetujui">55</div>
+											<div class="self-center mt-2.5 text-6xl max-md:text-4xl" aria-label="<?= $jumlahDisetujui ?> permintaan disetujui"><?= $jumlahDisetujui ?></div>
 										</div>
 									</div>
 									<div class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
 										<div class="flex flex-col grow px-12 pt-5 pb-14 w-full font-bold text-center text-white bg-oranye-2 rounded-[40px] max-md:px-5 max-md:mt-3.5">
 											<h3 class="text-2xl">Jumlah Permintaan yang ditolak</h3>
-											<div class="self-center mt-2.5 text-6xl max-md:text-4xl" aria-label="10 permintaan ditolak">10</div>
+											<div class="self-center mt-2.5 text-6xl max-md:text-4xl" aria-label="<?= $jumlahDitolak ?> permintaan ditolak"><?= $jumlahDitolak ?></div>
 										</div>
 									</div>
 								</div>
@@ -301,6 +299,71 @@
 			function closeExportModal() {
 				document.getElementById("exportModal").classList.add("hidden");
 			}
+
+			// Data grafik dari PHP
+			const chartLabels = <?= json_encode(array_keys($chartData)) ?>;
+			const chartValues = <?= json_encode(array_values($chartData)) ?>;
+
+			// Inisialisasi Chart.js
+			const ctx = document.getElementById('statistikChart').getContext('2d');
+			new Chart(ctx, {
+				type: 'line', // Jenis grafik: line, bar, pie, dll.
+				data: {
+					labels: chartLabels,
+					datasets: [{
+						label: 'Jumlah Konsultasi',
+						data: chartValues,
+						borderColor: 'rgb(245, 134, 48)',
+						backgroundColor: 'rgb(255, 255, 255)',
+						borderWidth: 1
+					}]
+				},
+				options: {
+					responsive: true,
+					plugins: {
+						legend: {
+							display: true
+						}
+					},
+					scales: {
+						x: {
+							title: {
+								display: true,
+								text: 'Tanggal'
+							}
+						},
+						y: {
+							title: {
+								display: true,
+								text: 'Jumlah'
+							},
+							beginAtZero: true,
+							ticks: {
+								stepSize: 1 // Menentukan interval sumbu vertikal menjadi 1
+							}
+						}
+					},
+					title: {
+						display: true, // Aktifkan judul
+						text: 'Grafik Jumlah Permintaan Konsultasi', // Isi judul
+						font: {
+							size: 16, // Ukuran font
+							weight: 'bold' // Tebal font
+						},
+						color: '#333' // Warna teks
+					}
+				},
+				plugins: [{
+					id: 'whiteBackground',
+					beforeDraw: (chart) => {
+						const ctx = chart.canvas.getContext('2d');
+						ctx.save();
+						ctx.fillStyle = 'white'; // Warna background putih
+						ctx.fillRect(0, 0, chart.width, chart.height);
+						ctx.restore();
+					}
+				}]
+			});
 		</script>
 	</body>
 </html>

@@ -30,7 +30,10 @@ class AdminManagementController extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            return $this->response->setJSON([
+                'success' => false,
+                'errors' => $validation->getErrors()
+            ]);
         }
 
         // Hash password
@@ -47,16 +50,32 @@ class AdminManagementController extends BaseController
             'role' => $this->request->getPost('role')
         ]);
 
-        return redirect()->to('/admin/settings')->with('message', 'Admin berhasil ditambahkan!');
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Admin berhasil ditambahkan!'
+        ]);
     
     }
 
     public function delete($id)
     {
         $adminModel = new AdminModel();
-        $adminModel->delete($id);
 
-        return redirect()->to('/admin/settings')->with('message', 'Admin berhasil dihapus!');
+        // Menghapus data
+        $isDeleted = $adminModel->delete($id);
+    
+        if ($isDeleted) {
+            // Penghapusan berhasil
+            session()->setFlashdata('delete_status', 'success');
+            session()->setFlashdata('message', 'Data berhasil dihapus!');
+        } else {
+            // Penghapusan gagal
+            session()->setFlashdata('delete_status', 'error');
+            session()->setFlashdata('message', 'Data gagal dihapus!');
+        }
+    
+
+        return redirect()->to('/admin/settings/admin')->with('message', 'Admin berhasil dihapus!');
     }
 
     public function detail($id)

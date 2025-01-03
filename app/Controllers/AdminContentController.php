@@ -15,8 +15,8 @@ class AdminContentController extends BaseController
             }
     
             $konsultasiModel = new KonsultasiModel();
-    
-            $data['requests'] = $konsultasiModel->paginate(10);
+
+            $data['requests'] = $konsultasiModel->orderBy('id', 'DESC')->paginate(10);
             $data['pager'] = $konsultasiModel->pager; // Add pager to the data array
     
             return view('dashboard_admin', $data); // Ensure the correct view path
@@ -51,43 +51,75 @@ class AdminContentController extends BaseController
             if (!session()->get('logged_in')) {
                 return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!');
             }
-        
+            $db = \Config\Database::connect();
+            $visitorModel = $db->table('visitors');
             $konsultasiModel = new KonsultasiModel();
-        
+
+            // **Jumlah pengunjung total**
+            $data['jumlahPengunjung'] = $visitorModel->countAllResults();
+
+            // **Jumlah pengunjung harian**
+            $today = new \CodeIgniter\I18n\Time('now');
+            $data['jumlahPengunjungHarian'] = $visitorModel
+                ->where('DATE(visited_at)', $today->toDateString())
+                ->countAllResults();
+
+            // Hitung jumlah permintaan konsultasi
+            $data['jumlahPermintaan'] = $konsultasiModel->countAll();
+
+            // Hitung jumlah permintaan yang disetujui
+            $data['jumlahDisetujui'] = $konsultasiModel->where('status_konsultasi', 'disetujui')->countAllResults();
+
+            // Hitung jumlah permintaan yang ditolak
+            $data['jumlahDitolak'] = $konsultasiModel->where('status_konsultasi', 'ditolak')->countAllResults();
+
             // Ambil nilai filter dari query string, dengan nilai default 'semua'
             $data['status'] = $this->request->getGet('status') ?? 'semua';
             $data['periode'] = $this->request->getGet('periode') ?? 'semua';
-        
+
             // Terapkan filter berdasarkan status
             if ($data['status'] !== 'semua') {
                 $konsultasiModel->where('status_konsultasi', $data['status']);
             }
-        
-            // Terapkan filter berdasarkan periode
-            if ($data['periode'] !== 'semua') {
-                $date = new \CodeIgniter\I18n\Time('now');
-                switch ($data['periode']) {
-                    case '1bulan':
-                        $date->subMonths(1);
-                        break;
-                    case '3bulan':
-                        $date->subMonths(3);
-                        break;
-                    case '6bulan':
-                        $date->subMonths(6);
-                        break;
-                    case '12bulan':
-                        $date->subMonths(12);
-                        break;
-                }
-                $konsultasiModel->where('tanggal_reservasi >=', $date);
+
+            // Default tanggal
+            $startDate = null;
+            $endDate = new \CodeIgniter\I18n\Time('now');
+
+            // Tentukan tanggal start berdasarkan periode
+            switch ($data['periode']) {
+                case '1bulan':
+                    $startDate = $endDate->subMonths(1);
+                    break;
+                case '3bulan':
+                    $startDate = $endDate->subMonths(3);
+                    break;
+                case '6bulan':
+                    $startDate = $endDate->subMonths(6);
+                    break;
+                case '12bulan':
+                    $startDate = $endDate->subMonths(12);
+                    break;
+                default:
+                    $startDate = null; // Tidak ada filter periode
+                    break;
             }
-        
+
+            // Terapkan filter berdasarkan tanggal jika ada
+            if ($startDate) {
+                $konsultasiModel->where('tanggal_reservasi >=', $startDate->toDateString());
+            }
+
+            $data['chartData'] = $konsultasiModel->getStatistics($data['status'], [
+                'start' => $startDate ? $startDate->toDateString() : null,
+                'end' => $endDate->toDateString(),
+            ]);
+
             $data['requests'] = $konsultasiModel->paginate(10); // Data dengan pagination
             $data['pager'] = $konsultasiModel->pager; // Pager untuk navigasi pagination
-        
+
             return view('statistik_admin', $data);
-        }                     
+        }
         
         private function exportCSV($data)
         {
