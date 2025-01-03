@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +15,6 @@
 		</style>
 	</head>
 	<body class="flex flex-col min-h-screen bg-oranye-1 mt-28 md:mt-16 ">
-		<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
-=======
 
 <head>
     <meta charset="UTF-8">
@@ -36,7 +33,6 @@
 
 <body class="bg-oranye-1 mt-28 md:mt-16">
 <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
->>>>>>> 611882b5576a903847e26d4c87e29f977bdb307b
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 				<div class="flex items-center space-x-4">
 					<img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
@@ -143,7 +139,7 @@
         <div class="h-20"></div>
 		<footer class="relative w-full mt-20">
 			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
-			<div class="absolute inset-x-0 top-0 -translate-y-full w-full z-0">
+			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-0">
 				<img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
 			</div>
 			<!-- Kontainer dengan latar belakang oranye -->

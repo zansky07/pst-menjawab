@@ -212,7 +212,7 @@
 		</div>
 		<footer class="relative w-full mt-20">
 			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
-			<div class="absolute inset-x-0 top-0 -translate-y-full w-full z-20">
+			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-20">
 				<img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
 			</div>
 			<!-- Kontainer dengan latar belakang oranye -->
