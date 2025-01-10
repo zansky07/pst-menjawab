@@ -46,59 +46,83 @@ class FeedbackController extends BaseController
     // Kirim token ke view jika laporan ditemukan dan feedback1 belum terisi
     return view('form_feedback_user', ['token' => $token]);
     }
- 
 
     public function submit()
     {
         // Aturan validasi
         $rules = [
-            'token' => 'required',
-            'konsultasi' => 'required|numeric|greater_than[0]|less_than_equal_to[10]',
-            'kesulitan' => 'required|numeric|greater_than[0]|less_than_equal_to[10]',
-            'kepuasan' => 'required|numeric|greater_than[0]|less_than_equal_to[10]',
-            'terjawab' => 'required|in_list[Ya,Tidak]',
+            'token' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Token wajib diisi.',
+                ],
+            ],
+            'kendala' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Isi "-" jika ingin mengosongkan.',
+                ],
+            ],
+            'konsultasi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kemungkinan konsultasi lagi wajib diisi.',
+                ],
+            ],
+            'kepuasan_web' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kepuasan penggunaan web wajib diisi.',
+                ],
+            ],
+            'kepuasan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kepuasan terhadap layanan wajib diisi.',
+                ],
+            ],
+            'terjawab' => [
+                'rules' => 'required|in_list[Ya,Tidak]',
+                'errors' => [
+                    'required' => 'Harap pilih apakah pertanyaan terjawab.',
+                    'in_list' => 'Pilihan tidak valid.',
+                ],
+            ],
+            'kritik_saran' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Isi "-" jika ingin mengosongkan.',
+                ],
+            ],
         ];
 
+        // Validasi input
         if (!$this->validate($rules)) {
-            // Jika validasi gagal, kembalikan ke halaman sebelumnya dengan pesan kesalahan
+            // Ambil token dari input
+            $token = $this->request->getPost('token');
+    
+            // Set pesan error
             session()->setFlashdata('error', $this->validator->listErrors());
-            return redirect()->back()->withInput();
+    
+            // Redirect ke metode create() dengan token
+            return $this->create();
         }
 
         // Ambil data dari form
-        $token = $this->request->getPost('token');
-        $feedback1 = $this->request->getPost('kendala');
-        $feedback2 = $this->request->getPost('konsultasi');
-        $feedback3 = $this->request->getPost('kesulitan');
-        $feedback4 = $this->request->getPost('terjawab');
-        $feedback5 = $this->request->getPost('kepuasan');
-        $feedback6 = $this->request->getPost('kritik_saran');
-
-        // Ambil konsultasi berdasarkan token
-        $konsultasi = $this->konsultasiModel->where('token_konsultasi', $token)->first();
-
-        if (!$konsultasi) {
-            // Token tidak ditemukan
-            session()->setFlashdata('error', 'Token tidak valid.');
-            return redirect()->back()->withInput();
-        }
-
-        // Data yang akan disimpan ke tabel laporan
         $data = [
-            'konsultasi_id' => $konsultasi['id'],
-            'feedback1' => $feedback1,
-            'feedback2' => $feedback2,
-            'feedback3' => $feedback3,
-            'feedback4' => $feedback4,
-            'feedback5' => $feedback5,
-            'feedback6' => $feedback6
+            'konsultasi_id' => $this->konsultasiModel->where('token_konsultasi', $this->request->getPost('token'))->first()['id'],
+            'feedback1' => $this->request->getPost('kendala'),
+            'feedback2' => $this->request->getPost('konsultasi'),
+            'feedback3' => $this->request->getPost('kepuasan_web'),
+            'feedback4' => $this->request->getPost('terjawab'),
+            'feedback5' => $this->request->getPost('kepuasan'),
+            'feedback6' => $this->request->getPost('kritik_saran'),
         ];
 
         // Simpan data ke database
-        $this->laporanModel->insert($data);
+        $this->laporanModel->save($data);
 
         // Redirect dengan pesan sukses
-        session()->setFlashdata('success', 'Feedback berhasil dikirim.');
-        return redirect()->to('/');
+        return redirect()->to('/')->with('success', 'Feedback berhasil dikirim.');
     }
 }
