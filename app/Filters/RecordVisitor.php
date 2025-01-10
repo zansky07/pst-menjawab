@@ -10,28 +10,32 @@ class RecordVisitor implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        $db = \Config\Database::connect();
-        $builder = $db->table('visitors');
+        $uri = $request->getUri()->getPath();
+        if (strpos($uri, 'admin') === false) {
+            $db = \Config\Database::connect();
+            $builder = $db->table('visitors');
 
-        // Data pengunjung
-        $ipAddress = $request->getIPAddress();
-        $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';
+            // Data pengunjung
+            $ipAddress = $request->getIPAddress();
+            $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';
 
 
-        // Periksa apakah kunjungan telah tercatat dalam 30 menit terakhir
-        $timeLimit = date('Y-m-d H:i:s', strtotime('-30 minutes'));
-        $existingVisit = $builder->where('ip_address', $ipAddress)
-                                 ->where('user_agent', $userAgent)
-                                 ->where('visited_at >=', $timeLimit)
-                                 ->get()
-                                 ->getRow();
+            // Periksa apakah kunjungan telah tercatat dalam 30 menit terakhir
+            $timeLimit = date('Y-m-d H:i:s', strtotime('-30 minutes'));
+            $existingVisit = $builder->where('ip_address', $ipAddress)
+                                    ->where('user_agent', $userAgent)
+                                    ->where('visited_at >=', $timeLimit)
+                                    ->get()
+                                    ->getRow();
 
-        if (!$existingVisit) {
-            // Simpan data kunjungan baru
-            $builder->insert([
-                'ip_address' => $ipAddress,
-                'user_agent' => $userAgent,
-            ]);
+            if (!$existingVisit) {
+                // Simpan data kunjungan baru
+                $builder->insert([
+                    'ip_address' => $ipAddress,
+                    'user_agent' => $userAgent,
+                ]);
+            }
+
         }
     }
 

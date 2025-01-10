@@ -1,9 +1,10 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\KonsultasiModel;
-use App\Models\KonsultanModel;
 use App\Models\AdminModel;
+use App\Models\LaporanModel;
+use App\Models\KonsultanModel;
+use App\Models\KonsultasiModel;
 
 class AdminContentController extends BaseController
 {
@@ -271,5 +272,61 @@ class AdminContentController extends BaseController
             $konsultanModel = new KonsultanModel(); 
             $data['konsultans'] = $konsultanModel->findAll(); 
             return view('pengaturan_konsultan', $data); 
+        }
+
+        public function feedback(){
+            if (!session()->get('logged_in')) { 
+                return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
             }
+            
+            $model = new LaporanModel();
+
+            // Ambil data feedback beserta laporan dan konsultan terkait
+            $feedbacks = $model->getFeedbackWithDetails();
+
+            // Hitung jumlah "Ya" dan "Tidak" untuk kebutuhan terjawab
+            $terjawabYa = 0;
+            $terjawabTidak = 0;
+
+            $totalKepuasan = ['layanan' => 0, 'web' => 0, 'kemungkinan' => 0];
+            $totalFeedback = count($feedbacks);
+
+            foreach ($feedbacks as $feedback) {
+                // Hitung kebutuhan terjawab
+                if ($feedback['feedback4'] === 'Ya') {
+                    $terjawabYa++;
+                } elseif ($feedback['feedback4'] === 'Tidak') {
+                    $terjawabTidak++;
+                }
+
+                // Hitung total kepuasan
+                $totalKepuasan['layanan'] += (int) $feedback['feedback5'];
+                $totalKepuasan['web'] += (int) $feedback['feedback3'];
+                $totalKepuasan['kemungkinan'] += (int) $feedback['feedback2'];
+            }
+
+            
+            
+            $proporsiTerjawab = [
+                'Ya' => $terjawabYa ,
+                'Tidak' => $terjawabTidak,
+            ];
+
+            // Hitung rata-rata kepuasan
+            $averageKepuasan = [
+                'layanan' => $totalFeedback > 0 ? $totalKepuasan['layanan'] / $totalFeedback : 0,
+                'web' => $totalFeedback > 0 ? $totalKepuasan['web'] / $totalFeedback : 0,
+                'kemungkinan' => $totalFeedback > 0 ? $totalKepuasan['kemungkinan'] / $totalFeedback : 0,
+            ];
+
+            // Kirim data ke view
+            $data = [
+                'proporsiTerjawab' => $proporsiTerjawab,
+                'averageKepuasan' => $averageKepuasan,
+                'feedbacks' => $feedbacks, // Data lengkap untuk tabel
+            ];
+
+            return view('feedback_view', $data);
+        
+        }
 }
