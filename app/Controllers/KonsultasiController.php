@@ -46,9 +46,9 @@ class KonsultasiController extends BaseController
             $validationErrors['topik'] = "Topik harus berisi 3-100 karakter kata.";
         }
 
-        if (!preg_match("/^[\w\s\.\,]{3,500}$/", $data['deskripsi'])) {
-            $validationErrors['deskripsi'] = "Deskripsi harus berisi 3-500 karakter kata.";
-        }
+        if (!preg_match("/^[\w\s\.,'\"!?\-\(\)]+$/", $data['deskripsi'])) {
+            $validationErrors['deskripsi'] = "Deskripsi harus berisi 3-500 karakter kata dan tanda baca diperbolehkan.";
+        }        
 
         // Jika ada error validasi
         if (!empty($validationErrors)) {
@@ -129,38 +129,35 @@ class KonsultasiController extends BaseController
     {
         // Load model
         $konsultasiModel = new \App\Models\KonsultasiModel();
-
-        // Ambil token dari input form
-        $token = $this->request->getPost('token');
-
+    
+        // Ambil token dari input form menggunakan method GET
+        $token = $this->request->getGet('token');
+    
         // Cari data reservasi berdasarkan token
         $reservation = $konsultasiModel->where('token_konsultasi', $token)->first();
-
+    
         // Buat array data kosong
         $data = [];
-
+    
         if ($reservation) {
             // Setel locale ke bahasa Indonesia
             setlocale(LC_TIME, 'id_ID.UTF-8');
-
+    
             // Ambil tanggal reservasi dari database
             $tanggal_reservasi = $reservation['tanggal_reservasi'];
             $jadwal_konsultasi = $reservation['jadwal_konsultasi'];
-
+    
             // Format tanggal menjadi bahasa Indonesia
             $tanggal_reservasi_indo = strftime('%d %B %Y', strtotime($tanggal_reservasi));
             $jadwal_konsultasi_indo = strftime('%d %B %Y', strtotime($jadwal_konsultasi));
-
+    
             // Jika token ditemukan, kirimkan data ke view
             $data['reservation'] = [
                 'tanggal_reservasi' => $tanggal_reservasi_indo,
                 'status' => $reservation['status_konsultasi'],
-                // disetujui
                 'zoom' => $reservation['link_zoom'],
                 'waktu_pertemuan' => $jadwal_konsultasi_indo,
-                // ditolak
                 'alasan' => $reservation['alasan_penolakan'],
-                // selesai
                 'kehadiran' => $reservation['kehadiran'],
                 'notula' => $reservation['notula'],
                 'dokumentasi' => $reservation['dokumentasi']
@@ -173,10 +170,9 @@ class KonsultasiController extends BaseController
                 ->with('error', "Token '$token' tidak valid atau tidak ditemukan.")
                 ->withInput();
         }
-
+    
         return view('reservation_status_user', $data);
-    }
-
+    }    
 
     public function detail($id)
     {
