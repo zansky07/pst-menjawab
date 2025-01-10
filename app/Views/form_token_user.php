@@ -33,7 +33,7 @@
 			</div>
 		</nav>
         <div class="max-w-lg mx-auto rounded-lg shadow-lg mt-20">
-            <form action="/consultation/status" method="post">
+            <form action="/consultation/status" method="get">
                 <div class="flex items-center mb-4">
                     <input 
                         type="text" 

@@ -12,7 +12,7 @@ $routes->get('/consultation', 'UserContentController::consultation');
 $routes->get('/consultation/reserve', 'KonsultasiController::create');
 $routes->post('/consultation/reserve/submit', 'KonsultasiController::submit');
 $routes->get('/consultation/checkReservation', 'UserContentController::token');
-$routes->post('/consultation/status', 'KonsultasiController::checkStatus');
+$routes->get('/consultation/status', 'KonsultasiController::checkStatus');
 $routes->post('/consultation/feedback', 'FeedbackController::create');
 $routes->post('/consultation/feedback/submit', 'FeedbackController::submit');
 

@@ -64,9 +64,30 @@
         <div class="max-w-lg mx-auto status bg-white p-4 rounded-lg text-center border border-orange-300 shadow-md">
             <div class="grid grid-cols-3 gap-4">
                 <p class="col-span-1 mb-2 text-left">Nomor Token</p>
-                <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                <button 
+                    id="copyTokenButton" 
+                    class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full" 
+                    onclick="copyToClipboard('<?= esc($token) ?>')">
                     <?= esc($token) ?>
                 </button>
+                <script>
+                    function copyToClipboard(value) {
+                        // Buat elemen input sementara
+                        const tempInput = document.createElement('input');
+                        tempInput.value = value; // Isi dengan nilai yang akan disalin
+                        document.body.appendChild(tempInput); // Tambahkan ke dokumen
+
+                        // Salin nilai ke clipboard
+                        tempInput.select();
+                        document.execCommand('copy');
+
+                        // Hapus elemen input sementara
+                        document.body.removeChild(tempInput);
+
+                        // Tampilkan notifikasi (opsional)
+                        alert('Token berhasil disalin ke clipboard: ' + value);
+                    }
+                </script>
                 <p class="col-span-1 mb-2 text-left">Tanggal Reservasi</p>
                 <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
                     <?= esc($reservation['tanggal_reservasi']) ?>
