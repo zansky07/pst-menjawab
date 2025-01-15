@@ -1,227 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal Konsultasi</title>
-    <link rel="icon" href="/assets/images/logo-pst.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jadwal Konsultasi</title>
+        <link rel="icon" href="/assets/images/logo-pst.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    </head>
 
-<style>
-    /* Custom Flatpickr Theme */
-    .flatpickr-day.selected,
-    .flatpickr-day.startRange,
-    .flatpickr-day.endRange,
-    .flatpickr-day.selected.inRange,
-    .flatpickr-day.startRange.inRange,
-    .flatpickr-day.endRange.inRange,
-    .flatpickr-day.selected:focus,
-    .flatpickr-day.startRange:focus,
-    .flatpickr-day.endRange:focus,
-    .flatpickr-day.selected:hover,
-    .flatpickr-day.startRange:hover,
-    .flatpickr-day.endRange:hover,
-    .flatpickr-day.selected.prevMonthDay,
-    .flatpickr-day.startRange.prevMonthDay,
-    .flatpickr-day.endRange.prevMonthDay,
-    .flatpickr-day.selected.nextMonthDay,
-    .flatpickr-day.startRange.nextMonthDay,
-    .flatpickr-day.endRange.nextMonthDay {
-        background: #E76F51;
-        border-color: #E76F51;
-        color: #fff;
-    }
+        <style>
+            /* Custom Flatpickr Theme */
+            .flatpickr-day.selected,
+            .flatpickr-day.startRange,
+            .flatpickr-day.endRange,
+            .flatpickr-day.selected.inRange,
+            .flatpickr-day.startRange.inRange,
+            .flatpickr-day.endRange.inRange,
+            .flatpickr-day.selected:focus,
+            .flatpickr-day.startRange:focus,
+            .flatpickr-day.endRange:focus,
+            .flatpickr-day.selected:hover,
+            .flatpickr-day.startRange:hover,
+            .flatpickr-day.endRange:hover,
+            .flatpickr-day.selected.prevMonthDay,
+            .flatpickr-day.startRange.prevMonthDay,
+            .flatpickr-day.endRange.prevMonthDay,
+            .flatpickr-day.selected.nextMonthDay,
+            .flatpickr-day.startRange.nextMonthDay,
+            .flatpickr-day.endRange.nextMonthDay {
+                background: #E76F51;
+                border-color: #E76F51;
+                color: #fff;
+            }
 
-    .flatpickr-day.inRange,
-    .flatpickr-day.prevMonthDay.inRange,
-    .flatpickr-day.nextMonthDay.inRange,
-    .flatpickr-day:hover,
-    .flatpickr-day.prevMonthDay:hover,
-    .flatpickr-day.nextMonthDay:hover,
-    .flatpickr-day:focus,
-    .flatpickr-day.prevMonthDay:focus,
-    .flatpickr-day.nextMonthDay:focus {
-        background: #fce8e4;
-        border-color: #fce8e4;
-        color: #E76F51;
-    }
+            .flatpickr-day.inRange,
+            .flatpickr-day.prevMonthDay.inRange,
+            .flatpickr-day.nextMonthDay.inRange,
+            .flatpickr-day:hover,
+            .flatpickr-day.prevMonthDay:hover,
+            .flatpickr-day.nextMonthDay:hover,
+            .flatpickr-day:focus,
+            .flatpickr-day.prevMonthDay:focus,
+            .flatpickr-day.nextMonthDay:focus {
+                background: #fce8e4;
+                border-color: #fce8e4;
+                color: #E76F51;
+            }
 
-    .flatpickr-day.today {
-        border-color: #E76F51;
-    }
+            .flatpickr-day.today {
+                border-color: #E76F51;
+            }
 
-    .flatpickr-day.today:hover,
-    .flatpickr-day.today:focus {
-        border-color: #E76F51;
-        background: #E76F51;
-        color: #fff;
-    }
+            .flatpickr-day.today:hover,
+            .flatpickr-day.today:focus {
+                border-color: #E76F51;
+                background: #E76F51;
+                color: #fff;
+            }
 
-    /* Custom styling untuk header calendar */
-    .flatpickr-months .flatpickr-month {
-        background: #E76F51;
-    }
+            /* Custom styling untuk header calendar */
+            .flatpickr-months .flatpickr-month {
+                background: #E76F51;
+            }
 
-    .flatpickr-months .flatpickr-prev-month:hover svg,
-    .flatpickr-months .flatpickr-next-month:hover svg {
-        fill: #fce8e4;
-    }
+            .flatpickr-months .flatpickr-prev-month:hover svg,
+            .flatpickr-months .flatpickr-next-month:hover svg {
+                fill: #fce8e4;
+            }
 
-    .flatpickr-months .flatpickr-prev-month svg,
-    .flatpickr-months .flatpickr-next-month svg {
-        fill: #fff;
-    }
+            .flatpickr-months .flatpickr-prev-month svg,
+            .flatpickr-months .flatpickr-next-month svg {
+                fill: #fff;
+            }
 
-    .flatpickr-month {
-        color: #fff;
-        /* Warna teks bulan menjadi putih */
-    }
+            .flatpickr-month {
+                color: #fff;
+                /* Warna teks bulan menjadi putih */
+            }
 
-    .flatpickr-current-month {
-        background: #E76F51 !important;
-        color: white !important;
-    }
+            .flatpickr-current-month {
+                background: #E76F51 !important;
+                color: white !important;
+            }
 
-    .flatpickr-current-month .flatpickr-monthDropdown-months {
-        background: #E76F51 !important;
-        color: white !important;
-    }
+            .flatpickr-current-month .flatpickr-monthDropdown-months {
+                background: #E76F51 !important;
+                color: white !important;
+            }
 
-    .flatpickr-current-month input.cur-year {
-        background: #E76F51 !important;
-        color: white !important;
-    }
+            .flatpickr-current-month input.cur-year {
+                background: #E76F51 !important;
+                color: white !important;
+            }
 
-    .flatpickr-months .flatpickr-prev-month,
-    .flatpickr-months .flatpickr-next-month {
-        color: white !important;
-    }
+            .flatpickr-months .flatpickr-prev-month,
+            .flatpickr-months .flatpickr-next-month {
+                color: white !important;
+            }
 
-    .flatpickr-months .flatpickr-prev-month svg,
-    .flatpickr-months .flatpickr-next-month svg {
-        fill: white !important;
-    }
+            .flatpickr-months .flatpickr-prev-month svg,
+            .flatpickr-months .flatpickr-next-month svg {
+                fill: white !important;
+            }
 
-    .flatpickr-current-month .flatpickr-monthDropdown-months:hover {
-        background: #E76F51 !important;
-    }
+            .flatpickr-current-month .flatpickr-monthDropdown-months:hover {
+                background: #E76F51 !important;
+            }
 
-    .numInputWrapper span {
-        border-color: white !important;
-    }
+            .numInputWrapper span {
+                border-color: white !important;
+            }
 
-    .numInputWrapper span:after {
-        border-top-color: white !important;
-    }
+            .numInputWrapper span:after {
+                border-top-color: white !important;
+            }
 
-    .numInputWrapper span.arrowUp:after {
-        border-bottom-color: white !important;
-    }
+            .numInputWrapper span.arrowUp:after {
+                border-bottom-color: white !important;
+            }
 
-    .numInputWrapper span.arrowDown:after {
-        border-top-color: white !important;
-    }
+            .numInputWrapper span.arrowDown:after {
+                border-top-color: white !important;
+            }
 
-    /* Custom styling untuk time picker */
-    .flatpickr-time input:hover,
-    .flatpickr-time .flatpickr-am-pm:hover,
-    .flatpickr-time input:focus,
-    .flatpickr-time .flatpickr-am-pm:focus {
-        background: #fce8e4;
-    }
+            /* Custom styling untuk time picker */
+            .flatpickr-time input:hover,
+            .flatpickr-time .flatpickr-am-pm:hover,
+            .flatpickr-time input:focus,
+            .flatpickr-time .flatpickr-am-pm:focus {
+                background: #fce8e4;
+            }
 
-    .flatpickr-time .numInputWrapper span.arrowUp:after {
-        border-bottom-color: #E76F51;
-    }
+            .flatpickr-time .numInputWrapper span.arrowUp:after {
+                border-bottom-color: #E76F51;
+            }
 
-    .flatpickr-time .numInputWrapper span.arrowDown:after {
-        border-top-color: #E76F51;
-    }
+            .flatpickr-time .numInputWrapper span.arrowDown:after {
+                border-top-color: #E76F51;
+            }
 
-    .flatpickr-monthDropdown-months {
-        background: #E76F51;
-        /* Warna latar default dropdown */
-        color: white;
-    }
-</style>
+            .flatpickr-monthDropdown-months {
+                background: #E76F51;
+                /* Warna latar default dropdown */
+                color: white;
+            }
+        </style>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Assuming the format of jadwal_konsultasi is 'YYYY-MM-DD HH:mm:ss'
-        const jadwalKonsultasi = '<?= $konsultasi['jadwal_konsultasi'] ?>';
-        if (jadwalKonsultasi) {
-            const date = new Date(jadwalKonsultasi);
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Assuming the format of jadwal_konsultasi is 'YYYY-MM-DD HH:mm:ss'
+                const jadwalKonsultasi = '<?= $konsultasi['jadwal_konsultasi'] ?>';
+                if (jadwalKonsultasi) {
+                    const date = new Date(jadwalKonsultasi);
 
-            // Extract date and time components
-            const dateValue = date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
-            const timeValue = date.toTimeString().split(' ')[0].substring(0, 5); // Format: HH:mm
+                    // Extract date and time components
+                    const dateValue = date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+                    const timeValue = date.toTimeString().split(' ')[0].substring(0, 5); // Format: HH:mm
 
-            // Set the date and time pickers with these values
-            document.getElementById('datePicker').value = dateValue;
-            document.getElementById('timePicker').value = timeValue;
-        }
-    });
-</script>
+                    // Set the date and time pickers with these values
+                    document.getElementById('datePicker').value = dateValue;
+                    document.getElementById('timePicker').value = timeValue;
+                }
+            });
+        </script>
 
-<body class = "mt-28 md:mt-16  bg-oranye-1">
-    <div class="flex overflow-hidden flex-col pt-8">
-        <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
-            <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
-                <div
-                    class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
-                    <div class="flex items-center space-x-4">
-                        <img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
-                        <span class="text-gray-800 font-semibold text-sm md:text-base"> PST Menjawab BPS Provinsi DKI
-                            Jakarta </span>
+    <body class = "mt-28 md:mt-16  bg-oranye-1">
+        <div class="flex overflow-hidden flex-col pt-8">
+            <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
+                <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
+                    <div
+                        class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
+                        <div class="flex items-center space-x-4">
+                            <img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
+                            <span class="text-gray-800 font-semibold text-sm md:text-base"> PST Menjawab BPS Provinsi DKI
+                                Jakarta </span>
+                        </div>
+                        <div class="text-oranye-4 order-3 w-full md:w-auto md:order-2">
+                            <ul class="flex font-semibold items-center justify-between space-x-4">
+                                <li class="hover:text-oranye-2">
+                                    <a href="/admin/dashboard">Dashboard</a>
+                                </li>
+                                <li class="hover:text-oranye-2">
+                                    <a href="/admin/statistics">Statistik</a>
+                                </li>
+                                <li class="relative">
+                                    <button id="dropdownNavbarLink"
+                                        class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center">
+                                        Pengaturan <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                    <div id="dropdownNavbar"
+                                        class="hidden absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow mt-2 w-44">
+                                        <ul class="py-1">
+                                            <li>
+                                                <a href="admin/settings/admin"
+                                                    class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
+                                            </li>
+                                            <li>
+                                                <a href="admin/settings/consultant"
+                                                    class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="order-2 md:order-3">
+                            <button
+                                class="px-4 py-2 bg-oranye-3 hover:bg-oranye-4 text-white rounded-xl flex items-center gap-2">
+                                <span>
+                                    <a href="/admin/logout">Keluar</a>
+                                </span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="text-oranye-4 order-3 w-full md:w-auto md:order-2">
-                        <ul class="flex font-semibold items-center justify-between space-x-4">
-                            <li class="hover:text-oranye-2">
-                                <a href="/admin/dashboard">Dashboard</a>
-                            </li>
-                            <li class="hover:text-oranye-2">
-                                <a href="/admin/statistics">Statistik</a>
-                            </li>
-                            <li class="relative">
-                                <button id="dropdownNavbarLink"
-                                    class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center">
-                                    Pengaturan <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                                <div id="dropdownNavbar"
-                                    class="hidden absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow mt-2 w-44">
-                                    <ul class="py-1">
-                                        <li>
-                                            <a href="admin/settings/admin"
-                                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
-                                        </li>
-                                        <li>
-                                            <a href="admin/settings/consultant"
-                                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="order-2 md:order-3">
-                        <button
-                            class="px-4 py-2 bg-oranye-3 hover:bg-oranye-4 text-white rounded-xl flex items-center gap-2">
-                            <span>
-                                <a href="/admin/logout">Keluar</a>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </nav>
-
+                </nav>
 
             <!-- Main Content -->
             <main>
@@ -310,75 +309,7 @@
         </div>
         </main>
 
-		<div>
-			<br><br><br><br><br><br><br><br><br><br>
-		</div>
-		<footer class="relative w-full mt-20">
-			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
-			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-20">
-				<img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
-			</div>
-			<!-- Kontainer dengan latar belakang oranye -->
-			<div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-10">
-				<!-- Footer Content -->
-				<div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
-					<!-- Informasi Utama -->
-					<div class="md:w-1/3 flex flex-col space-y-4">
-						<div class="flex items-center space-x-4">
-							<div>
-								<img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
-							</div>
-							<h3 class="text-lg md:text-xl font-semibold leading-tight"> Badan Pusat Statistik Provinsi DKI Jakarta </h3>
-						</div>
-						<p class="text-sm md:text-base leading-relaxed"> Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
-							<span>Phone: (021) 31928493</span>
-							<br>
-							<span>Fax: (021) 3152004</span>
-							<br>
-							<span>E-mail: bps3100@bps.go.id</span>
-						</p>
-					</div>
-					<!-- Website Lainnya -->
-					<div class="md:w-1/3">
-						<h4 class="text-lg md:text-xl font-semibold mb-4">Website Lainnya:</h4>
-						<ul class="space-y-2 text-sm md:text-base">
-							<li>
-								<a href="https://www.bps.go.id" class="underline hover:text-gray-300">Website BPS Indonesia</a>
-							</li>
-							<li>
-								<a href="https://jakarta.bps.go.id" class="underline hover:text-gray-300">Website BPS Provinsi DKI Jakarta</a>
-							</li>
-							<li>
-								<a href="https://pst.bps.go.id" class="underline hover:text-gray-300">Website Pelayanan Statistik Terpadu</a>
-							</li>
-							<li>
-								<a href="https://silastik.bps.go.id" class="underline hover:text-gray-300">Website SILASTIK</a>
-							</li>
-						</ul>
-					</div>
-					<!-- Sosial Media -->
-					<div class="md:w-1/3">
-						<h4 class="text-lg md:text-xl font-semibold mb-4">Sosial Media:</h4>
-						<ul class="space-y-2 text-sm md:text-base">
-							<li>
-								<a href="https://www.facebook.com/bpsdkijakarta/" class="underline hover:text-gray-300">Facebook</a>
-							</li>
-							<li>
-								<a href="https://x.com/bpsdkijakarta/" class="underline hover:text-gray-300">Twitter</a>
-							</li>
-							<li>
-								<a href="https://www.instagram.com/bpsdkijakarta/" class="underline hover:text-gray-300">Instagram</a>
-							</li>
-							<li>
-								<a href="https://www.youtube.com/c/BPSDKI" class="underline hover:text-gray-300">YouTube</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- Copyright -->
-				<div class="relative text-center text-xs md:text-sm mt-4 pb-4"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
-			</div>
-		</footer>
+        <?php include 'footer.php';?>
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -422,7 +353,5 @@
                 }
             });
         </script>
-
-</body>
-
+    </body>
 </html>

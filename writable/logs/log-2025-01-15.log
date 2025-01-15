@@ -345,3 +345,52 @@ INFO - 2025-01-15 13:44:06 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2025-01-15 13:44:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-01-15 13:47:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-01-15 13:49:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:50:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:58:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:58:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:59:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 14:31:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 14:31:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 14:31:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 14:32:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 14:33:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 14:34:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 14:40:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 14:41:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 15:20:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 15:20:55 --> ErrorException: include(navbar_admin.php): Failed to open stream: No such file or directory
+[Method: GET, Route: admin/dashboard]
+in APPPATH\Views\dashboard_admin.php on line 21.
+ 1 APPPATH\Views\dashboard_admin.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(navbar_admin.php): Failed to open stream: No such file or directory', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\dashboard_admin.php', 21)
+ 2 APPPATH\Views\dashboard_admin.php(21): include()
+ 3 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\dashboard_admin.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_admin', [], true)
+ 6 APPPATH\Controllers\AdminContentController.php(23): view('dashboard_admin', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2025-01-15 15:20:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 15:20:59 --> ErrorException: include(navbar_admin.php): Failed to open stream: No such file or directory
+[Method: GET, Route: admin/dashboard]
+in APPPATH\Views\dashboard_admin.php on line 21.
+ 1 APPPATH\Views\dashboard_admin.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(navbar_admin.php): Failed to open stream: No such file or directory', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\dashboard_admin.php', 21)
+ 2 APPPATH\Views\dashboard_admin.php(21): include()
+ 3 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\dashboard_admin.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_admin', [], true)
+ 6 APPPATH\Controllers\AdminContentController.php(23): view('dashboard_admin', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminContentController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminContentController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2025-01-15 15:21:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 15:23:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 15:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
