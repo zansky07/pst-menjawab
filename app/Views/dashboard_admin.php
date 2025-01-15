@@ -1,24 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>PST Menjawab | Dashboard</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<link rel="stylesheet" href="
-					<?= base_url('assets/css/styles.css') ?>">
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				background-color: #f9f2f1;
-			}
-		</style>
-	</head>
-	<body class="flex flex-col min-h-screen bg-oranye-1 mt-28 md:mt-16 ">
-=======
->>>>>>> b9a217c1ad9a090fc9ddaa89886967e865a3442c
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,13 +17,9 @@
 </head>
 
 <body class="bg-oranye-1 mt-28 md:mt-16">
-<<<<<<< HEAD
-<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
-=======
 	
 	<!-- Header -->
 	<nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
->>>>>>> b9a217c1ad9a090fc9ddaa89886967e865a3442c
 			<div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
 				<div class="flex items-center space-x-4">
 					<img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
@@ -148,17 +125,16 @@
 			</div>
 		</main>
         <div class="h-20"></div>
+		<div>
+			<br><br><br><br><br><br><br><br><br><br>
+		</div>
 		<footer class="relative w-full mt-20">
 			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
-<<<<<<< HEAD
-			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-0">
-=======
-			<!-- <div class="absolute inset-x-0 top-0 -translate-y-full w-full z-0">
->>>>>>> b9a217c1ad9a090fc9ddaa89886967e865a3442c
+			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-20">
 				<img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
-			</div> -->
+			</div>
 			<!-- Kontainer dengan latar belakang oranye -->
-			<div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-0">
+			<div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-10">
 				<!-- Footer Content -->
 				<div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
 					<!-- Informasi Utama -->

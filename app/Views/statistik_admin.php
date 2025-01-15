@@ -208,6 +208,9 @@
 				</div>
 			</div>
 		</div>
+		<div>
+			<br><br><br><br><br><br><br><br><br><br>
+		</div>
 		<footer class="relative w-full mt-20">
 			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
 			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-20">

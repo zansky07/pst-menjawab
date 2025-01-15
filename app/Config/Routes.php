@@ -12,7 +12,7 @@ $routes->get('/consultation', 'UserContentController::consultation');
 $routes->get('/consultation/reserve', 'KonsultasiController::create');
 $routes->post('/consultation/reserve/submit', 'KonsultasiController::submit');
 $routes->get('/consultation/checkReservation', 'UserContentController::token');
-$routes->post('/consultation/status', 'KonsultasiController::checkStatus');
+$routes->get('/consultation/status', 'KonsultasiController::checkStatus');
 $routes->post('/consultation/feedback', 'FeedbackController::create');
 $routes->post('/consultation/feedback/submit', 'FeedbackController::submit');
 
@@ -26,6 +26,7 @@ $routes->get('/admin/dashboard', 'AdminContentController::index');
 $routes->post('/admin/dashboard/filter', 'AdminContentController::filterDashboard');
 $routes->get('/admin/statistics', 'AdminContentController::statistik');
 $routes->get('/admin/statistics/export', 'AdminContentController::export');
+$routes->get('/admin/statistics/feedback', 'AdminContentController::feedback');
 $routes->get('/admin/settings', 'AdminContentController::pengaturan');
 $routes->get('/admin/dashboard', 'AdminController::dashboard');
 $routes->get('/admin/settings/admin', 'AdminContentController::pengaturan_admin');
