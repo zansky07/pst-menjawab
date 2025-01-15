@@ -1,0 +1,341 @@
+ERROR - 2025-01-15 12:51:32 --> mysqli_sql_exception: Table 'pstmenjawab.visitors' doesn't exist in D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\XAMPP\empty\htdocs\pst-menjawab\app\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\XAMPP\empty\htdocs\pst-menjawab\system\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#6 D:\XAMPP\empty\htdocs\pst-menjawab\system\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore(Array)
+#7 D:\XAMPP\empty\htdocs\pst-menjawab\system\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/statistic...', 'before')
+#8 D:\XAMPP\empty\htdocs\pst-menjawab\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\XAMPP\empty\htdocs\pst-menjawab\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 D:\XAMPP\empty\htdocs\pst-menjawab\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\XAMPP\empty\htdocs\pst-menjawab\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 D:\XAMPP\empty\htdocs\pst-menjawab\system\rewrite.php(44): require_once('D:\\XAMPP\\empty\\...')
+#13 {main}
+CRITICAL - 2025-01-15 12:51:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pstmenjawab.visitors' doesn't exist
+[Method: GET, Route: admin/statistics]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+AND `user_agent` = :user_agent:
+AND `visited_at` >= :visited_at:', [...], false)
+ 2 APPPATH\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/statistics', 'before')
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+CRITICAL - 2025-01-15 12:51:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pstmenjawab.visitors' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:32\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:32\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+AND `user_agent` = :user_agent:
+AND `visited_at` >= :visited_at:', [...], false)
+ 4 APPPATH\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 6 SYSTEMPATH\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 7 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/statistics', 'before')
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+CRITICAL - 2025-01-15 12:51:32 --> [Caused by] mysqli_sql_exception: Table 'pstmenjawab.visitors' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:32\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:32\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:32\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+AND `user_agent` = :user_agent:
+AND `visited_at` >= :visited_at:', [...], false)
+ 5 APPPATH\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 7 SYSTEMPATH\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 8 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/statistics', 'before')
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+ERROR - 2025-01-15 12:51:50 --> mysqli_sql_exception: Table 'pstmenjawab.visitors' doesn't exist in D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\XAMPP\empty\htdocs\pst-menjawab\app\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\XAMPP\empty\htdocs\pst-menjawab\system\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#6 D:\XAMPP\empty\htdocs\pst-menjawab\system\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore(Array)
+#7 D:\XAMPP\empty\htdocs\pst-menjawab\system\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/statistic...', 'before')
+#8 D:\XAMPP\empty\htdocs\pst-menjawab\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\XAMPP\empty\htdocs\pst-menjawab\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 D:\XAMPP\empty\htdocs\pst-menjawab\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\XAMPP\empty\htdocs\pst-menjawab\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 D:\XAMPP\empty\htdocs\pst-menjawab\system\rewrite.php(44): require_once('D:\\XAMPP\\empty\\...')
+#13 {main}
+CRITICAL - 2025-01-15 12:51:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pstmenjawab.visitors' doesn't exist
+[Method: GET, Route: admin/statistics]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+AND `user_agent` = :user_agent:
+AND `visited_at` >= :visited_at:', [...], false)
+ 2 APPPATH\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/statistics', 'before')
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+CRITICAL - 2025-01-15 12:51:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pstmenjawab.visitors' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:50\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:50\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+AND `user_agent` = :user_agent:
+AND `visited_at` >= :visited_at:', [...], false)
+ 4 APPPATH\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 6 SYSTEMPATH\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 7 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/statistics', 'before')
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+CRITICAL - 2025-01-15 12:51:50 --> [Caused by] mysqli_sql_exception: Table 'pstmenjawab.visitors' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:50\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:50\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:21:50\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+AND `user_agent` = :user_agent:
+AND `visited_at` >= :visited_at:', [...], false)
+ 5 APPPATH\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 7 SYSTEMPATH\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 8 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/statistics', 'before')
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+ERROR - 2025-01-15 12:52:02 --> mysqli_sql_exception: Table 'pstmenjawab.visitors' doesn't exist in D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\XAMPP\empty\htdocs\pst-menjawab\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\XAMPP\empty\htdocs\pst-menjawab\app\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\XAMPP\empty\htdocs\pst-menjawab\system\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#6 D:\XAMPP\empty\htdocs\pst-menjawab\system\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore(Array)
+#7 D:\XAMPP\empty\htdocs\pst-menjawab\system\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('', 'before')
+#8 D:\XAMPP\empty\htdocs\pst-menjawab\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\XAMPP\empty\htdocs\pst-menjawab\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 D:\XAMPP\empty\htdocs\pst-menjawab\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\XAMPP\empty\htdocs\pst-menjawab\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 D:\XAMPP\empty\htdocs\pst-menjawab\system\rewrite.php(44): require_once('D:\\XAMPP\\empty\\...')
+#13 {main}
+CRITICAL - 2025-01-15 12:52:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pstmenjawab.visitors' doesn't exist
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+AND `user_agent` = :user_agent:
+AND `visited_at` >= :visited_at:', [...], false)
+ 2 APPPATH\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('', 'before')
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+CRITICAL - 2025-01-15 12:52:02 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pstmenjawab.visitors' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:22:02\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:22:02\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+AND `user_agent` = :user_agent:
+AND `visited_at` >= :visited_at:', [...], false)
+ 4 APPPATH\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 6 SYSTEMPATH\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 7 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('', 'before')
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+CRITICAL - 2025-01-15 12:52:02 --> [Caused by] mysqli_sql_exception: Table 'pstmenjawab.visitors' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:22:02\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:22:02\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `visitors`
+WHERE `ip_address` = \'::1\'
+AND `user_agent` = \'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\'
+AND `visited_at` >= \'2025-01-15 12:22:02\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+AND `user_agent` = :user_agent:
+AND `visited_at` >= :visited_at:', [...], false)
+ 5 APPPATH\Filters\RecordVisitor.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\Filters\Filters.php(203): App\Filters\RecordVisitor->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 7 SYSTEMPATH\Filters\Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 8 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('', 'before')
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2025-01-15 12:57:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 12:57:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 12:57:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 12:57:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 12:57:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 12:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 12:59:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:01:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:01:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:02:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:02:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:03:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-15 13:03:47 --> Failed to send WhatsApp message: Failed to connect to localhost port 3000 after 2203 ms: Couldn't connect to server
+INFO - 2025-01-15 13:03:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:03:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:04:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:04:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-15 13:04:33 --> Failed to send WhatsApp message: Failed to connect to localhost port 3000 after 2202 ms: Couldn't connect to server
+INFO - 2025-01-15 13:04:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:04:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:05:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:05:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:05:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-15 13:05:38 --> Failed to send WhatsApp message: Failed to connect to localhost port 3000 after 2201 ms: Couldn't connect to server
+INFO - 2025-01-15 13:05:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:05:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:05:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:15:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:16:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:16:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:17:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:17:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:17:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:18:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:18:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:18:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:19:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-01-15 13:19:20 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\KonsultasiController.php on line 151.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->checkStatus()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+WARNING - 2025-01-15 13:19:20 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\KonsultasiController.php on line 152.
+ 1 APPPATH\Controllers\KonsultasiController.php(152): strtotime(null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->checkStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+WARNING - 2025-01-15 13:19:20 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\KonsultasiController.php on line 152.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->checkStatus()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2025-01-15 13:19:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:21:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:24:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:25:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:27:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:27:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 13:29:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
