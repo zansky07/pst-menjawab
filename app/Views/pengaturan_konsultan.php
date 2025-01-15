@@ -8,6 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href= "<?= base_url('assets/css/styles.css') ?>">`
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body class="bg-oranye-1 min-h-screen flex flex-col mt-28 md:mt-16">
     <!-- Header -->
@@ -64,20 +67,20 @@
         </div>
 
         <!-- Table -->
-        <div class="bg-white shadow-md rounded-lg overflow-x-auto">
-            <table class="w-full">
+        <div class="bg-white shadow-md rounded-lg overflow-x-auto p-4">
+            <table class="min-w-full" id="myTable" style="margin-top: 4px;">
                 <thead class="bg-orange-600 text-center">
                     <tr class="text-white text-sm md:text-base">
                         <th class="py-3 px-4">Nama</th>
-                        <th class="py-3 px-4">Aksi</th>
+                        <th class="py-3 px-4" style="text-align: center;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="text-left">
                     <?php if (!empty($konsultans) && is_array($konsultans)): ?>
                         <?php foreach ($konsultans as $konsultan): ?>
-                            <tr class="border-b">
+                            <tr class="odd:bg-white even:bg-biru-3 hover:bg-oranye-1 p-10">
                                 <td class="py-3 px-4 text-sm md:text-base"><?= esc($konsultan['nama']) ?></td>
-                                <td class="py-3 px-4 text-center">
+                                <td class="py-3 px-4 text-center" style="padding: 10px;">
                                     <a href="/admin/consultant/detail/<?= $konsultan['id'] ?>" 
                                         class="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200 text-sm md:text-base">
                                         Detail
@@ -169,6 +172,15 @@
 			</div>
 		</footer>
     <script>
+		$(document).ready(function() {
+            $('#myTable').DataTable({
+                responsive: true,
+                scrollX: true,
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Indonesian.json"
+                }
+            });
+        });
         document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
 			const dropdown = document.getElementById('dropdownNavbar');
 			dropdown.classList.toggle('hidden');

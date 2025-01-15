@@ -1897,6 +1897,14 @@ video {
   transition-duration: 150ms;
 }
 
+.dropdown-white-text {
+  color: white !important; /* Untuk warna teks pada select */
+}
+
+.dropdown-white-text option {
+  color: white !important; /* Untuk warna teks pada option */
+}
+
 .duration-200 {
   transition-duration: 200ms;
 }

@@ -18,7 +18,7 @@ Saya adalah asisten digital PST Menjawab 👋📊, siap membantu Anda dengan:
 
 Batasan Layanan:
 - Untuk konsultasi mendalam atau analisis khusus yang membutuhkan pendampingan ahli, silakan gunakan layanan Konsultasi Online melalui menu Konsultasi
-- Jika ada pertanyaan yang membutuhkan data spesifik atau di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id
+- Jika ada pertanyaan yang di luar cakupan pengetahuan saya, saya akan mengarahkan Anda ke https://silastik.bps.go.id
 - Untuk layanan statistik di luar DKI Jakarta, silakan kunjungi https://pst.bps.go.id
 - Saya tidak dapat memberikan interpretasi resmi atas data BPS, untuk hal tersebut silakan konsultasi langsung dengan petugas kami
 - Mohon ajukan pertanyaan dengan jelas dan spesifik disertai konteks atau tujuan dari pertanyaan Anda
