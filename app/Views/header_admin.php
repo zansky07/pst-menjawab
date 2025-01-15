@@ -10,15 +10,28 @@
                 <li class="hover:text-oranye-2">
                     <a href="/admin/dashboard">Dashboard</a>
                 </li>
-                <li class="hover:text-oranye-2">
-                    <a href="/admin/statistics">Statistik</a>
-                </li>
                 <li class="relative">
-                    <button id="dropdownNavbarLink" class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center"> Pengaturan <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <button id="dropdownNavbarLink" class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center"> Statistik <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
                     </button>
                     <div id="dropdownNavbar" class="hidden absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow mt-2 w-44">
+                        <ul class="py-1">
+                            <li>
+                                <a href="/admin/statistics" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Permintaan</a>
+                            </li>
+                            <li>
+                                <a href="/admin/statistics/feedback" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Umpan Balik</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="relative">
+                    <button id="dropdownNavbarLinkSettings" class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center"> Pengaturan <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="dropdownNavbarSettings" class="hidden absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow mt-2 w-44">
                         <ul class="py-1">
                             <li>
                                 <a href="/admin/settings/admin" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Admin</a>
@@ -40,3 +53,15 @@
         </div>
     </div>
 </nav>
+
+<script>
+			document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
+				const dropdown = document.getElementById('dropdownNavbar');
+				dropdown.classList.toggle('hidden');
+			});
+            document.getElementById('dropdownNavbarLinkSettings').addEventListener('click', function() {
+    const dropdown = document.getElementById('dropdownNavbarSettings');
+    dropdown.classList.toggle('hidden');
+});
+
+</script>

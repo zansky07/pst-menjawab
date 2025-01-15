@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -119,73 +118,6 @@
                 </div>
 
                 <!-- Deskripsi -->
-=======
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PST Menjawab | Form Reservasi Konsultasi Online</title>
-    <link rel="icon" href="/assets/images/logo-pst.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="<?= base_url('assets/css/form.css') ?>" rel="stylesheet">
-    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #F5EAE8;
-            font-family: 'Poppins', sans-serif;
-        }
-    </style>
-</head>
-
-<body class="bg-orange-1 mt-30 md:mt-16">
-    <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
-        <div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
-            <div class="flex items-center space-x-4">
-                <img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
-                <span class="text-gray-800 hover:text-oranye-2 font-semibold text-sm md:text-base"><a href="/"> PST Menjawab BPS Provinsi DKI Jakarta </a></span>
-            </div>
-            <div class="text-oranye-4 order-3 w-full md:w-auto md:order-2">
-                <ul class="flex font-semibold items-center justify-between space-x-4">
-                    <li class="hover:text-oranye-2">
-                        <a href="/consultation">Konsultasi</a>
-                    </li>
-                    <li class="hover:text-oranye-2">
-                        <a href="/chatbot">Chatbot</a>
-                    </li>
-                    <li class="hover:text-oranye-2">
-                        <a href="/consultation/checkReservation">Cek Reservasi</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="w-full max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg mt-20">
-
-        <?php if (session()->getFlashdata('success')): ?>
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Berhasil!',
-                    text: '<?= session()->getFlashdata('success') ?>',
-                });
-            </script>
-        <?php elseif (session()->getFlashdata('error')): ?>
-            <script>
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Gagal!',
-                    text: '<?= session()->getFlashdata('error') ?>',
-                });
-            </script>
-        <?php endif; ?>
-
-        <form id="reservationForm" action="/consultation/reserve/submit" method="post">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <!-- Nama Konsumen -->
->>>>>>> f299df78e428aa8e57dfd4b9c9aeb65099211ed2
                 <div class="mb-4">
                     <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi</label>
                     <textarea id="deskripsi" name="deskripsi" placeholder="Jelaskan detail konsultasi Anda..." class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none h-28 resize-none" required><?= old('deskripsi') ?></textarea>
@@ -201,152 +133,7 @@
             </form>
         </div>
 
-<<<<<<< HEAD
         <?php include 'footer.php';?>
-=======
-                <!-- Nomor Whatsapp -->
-                <div class="mb-4">
-                    <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">Nomor Whatsapp</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" value="<?= old('whatsapp') ?>" placeholder="Masukkan nomor Whatsapp Anda" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                    <?php if (isset(session()->getFlashdata('validationErrors')['whatsapp'])): ?>
-                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['whatsapp'] ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <!-- Topik -->
-                <div class="mb-4">
-                    <label for="topik" class="block text-sm font-medium text-gray-700 mb-1">Topik</label>
-                    <input type="text" id="topik" name="topik" value="<?= old('topik') ?>" placeholder="Masukkan topik konsultasi" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                    <?php if (isset(session()->getFlashdata('validationErrors')['topik'])): ?>
-                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['topik'] ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <!-- Kategori -->
-                <div class="mb-4">
-                    <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
-                    <select id="kategori" name="kategori" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                        <option value="" disabled <?= old('kategori') ? '' : 'selected' ?>>Pilih kategori</option>
-                        <option value="Unit Kerja BPS" <?= old('kategori') == 'Unit Kerja BPS' ? 'selected' : '' ?>>Unit Kerja BPS</option>
-                        <option value="Pegawai BPS" <?= old('kategori') == 'Pegawai BPS' ? 'selected' : '' ?>>Pegawai BPS</option>
-                        <option value="Mahasiswa Polstat STIS" <?= old('kategori') == 'Mahasiswa Polstat STIS' ? 'selected' : '' ?>>Mahasiswa Polstat STIS</option>
-                        <option value="Instansi/Lembaga Pemerintah (Pusat/Daerah)" <?= old('kategori') == 'Instansi/Lembaga Pemerintah (Pusat/Daerah)' ? 'selected' : '' ?>>Instansi/Lembaga Pemerintah (Pusat/Daerah)</option>
-                        <option value="Instansi Swasta" <?= old('kategori') == 'Instansi Swasta' ? 'selected' : '' ?>>Instansi Swasta</option>
-                        <option value="Lembaga Internasional/Perwakilan Negara Asing" <?= old('kategori') == 'Lembaga Internasional/Perwakilan Negara Asing' ? 'selected' : '' ?>>Lembaga Internasional/Perwakilan Negara Asing</option>
-                        <option value="Lembaga/Institusi Pendidikan" <?= old('kategori') == 'Lembaga/Institusi Pendidikan' ? 'selected' : '' ?>>Lembaga/Institusi Pendidikan</option>
-                        <option value="Peneliti, Mahasiswa, atau Pribadi Lainnya" <?= old('kategori') == 'Peneliti, Mahasiswa, atau Pribadi Lainnya' ? 'selected' : '' ?>>Peneliti, Mahasiswa, atau Pribadi Lainnya</option>
-                    </select>
-                    <?php if (isset(session()->getFlashdata('validationErrors')['kategori'])): ?>
-                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['kategori'] ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <!-- Lingkup -->
-                <div class="mb-4">
-                    <label for="lingkup" class="block text-sm font-medium text-gray-700 mb-1">Lingkup</label>
-                    <select id="lingkup" name="lingkup" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                        <option value="" disabled <?= old('lingkup') ? '' : 'selected' ?>>Pilih Lingkup</option>
-                        <option value="Indonesia" <?= old('lingkup') === 'Indonesia' ? 'selected' : '' ?>>Indonesia</option>
-                        <option value="Provinsi DKI Jakarta" <?= old('lingkup') === 'Provinsi DKI Jakarta' ? 'selected' : '' ?>>Provinsi DKI Jakarta</option>
-                        <option value="Kota Administrasi Jakarta Pusat" <?= old('lingkup') === 'Kota Administrasi Jakarta Pusat' ? 'selected' : '' ?>>Kota Administrasi Jakarta Pusat</option>
-                        <option value="Kota Administrasi Jakarta Barat" <?= old('lingkup') === 'Kota Administrasi Jakarta Barat' ? 'selected' : '' ?>>Kota Administrasi Jakarta Barat</option>
-                        <option value="Kota Administrasi Jakarta Timur" <?= old('lingkup') === 'Kota Administrasi Jakarta Timur' ? 'selected' : '' ?>>Kota Administrasi Jakarta Timur</option>
-                        <option value="Kota Administrasi Jakarta Utara" <?= old('lingkup') === 'Kota Administrasi Jakarta Utara' ? 'selected' : '' ?>>Kota Administrasi Jakarta Utara</option>
-                        <option value="Kota Administrasi Jakarta Selatan" <?= old('lingkup') === 'Kota Administrasi Jakarta Selatan' ? 'selected' : '' ?>>Kota Administrasi Jakarta Selatan</option>
-                        <option value="Kabupaten Administrasi Kepulauan Seribu" <?= old('lingkup') === 'Kabupaten Administrasi Kepulauan Seribu' ? 'selected' : '' ?>>Kabupaten Administrasi Kepulauan Seribu</option>
-                        <option value="Lainnya" <?= old('lingkup') === 'Lainnya' ? 'selected' : '' ?>>Lainnya</option>
-                    </select>
-                    <?php if (isset(session()->getFlashdata('validationErrors')['lingkup'])): ?>
-                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['lingkup'] ?></span>
-                    <?php endif; ?>
-                </div>
-            </div>
-
-            <!-- Deskripsi -->
-            <div class="mb-4">
-                <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi</label>
-                <textarea id="deskripsi" name="deskripsi" placeholder="Jelaskan detail konsultasi Anda..." class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none h-28 resize-none" required><?= old('deskripsi') ?></textarea>
-                <?php if (isset(session()->getFlashdata('validationErrors')['deskripsi'])): ?>
-                    <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['deskripsi'] ?></span>
-                <?php endif; ?>
-            </div>
-
-            <!-- Tombol Submit -->
-            <div class="mb-4">
-                <button type="submit" class="w-full bg-orange-500 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-orange-600">Kirim</button>
-            </div>
-        </form>
-    </div>
-    <div>
-        <br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <footer class="relative w-full mt-20">
-        <!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
-        <div class="absolute inset-x-0 top-1 -translate-y-full w-full z-20">
-            <img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
-        </div>
-        <!-- Kontainer dengan latar belakang oranye -->
-        <div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-10">
-            <!-- Footer Content -->
-            <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
-                <!-- Informasi Utama -->
-                <div class="md:w-1/3 flex flex-col space-y-4">
-                    <div class="flex items-center space-x-4">
-                        <div>
-                            <img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
-                        </div>
-                        <h3 class="text-lg md:text-xl font-semibold leading-tight"> Badan Pusat Statistik Provinsi DKI Jakarta </h3>
-                    </div>
-                    <p class="text-sm md:text-base leading-relaxed"> Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
-                        <span>Phone: (021) 31928493</span>
-                        <br>
-                        <span>Fax: (021) 3152004</span>
-                        <br>
-                        <span>E-mail: bps3100@bps.go.id</span>
-                    </p>
-                </div>
-                <!-- Website Lainnya -->
-                <div class="md:w-1/3">
-                    <h4 class="text-lg md:text-xl font-semibold mb-4">Website Lainnya:</h4>
-                    <ul class="space-y-2 text-sm md:text-base">
-                        <li>
-                            <a href="https://www.bps.go.id" class="underline hover:text-gray-300">Website BPS Indonesia</a>
-                        </li>
-                        <li>
-                            <a href="https://jakarta.bps.go.id" class="underline hover:text-gray-300">Website BPS Provinsi DKI Jakarta</a>
-                        </li>
-                        <li>
-                            <a href="https://pst.bps.go.id" class="underline hover:text-gray-300">Website Pelayanan Statistik Terpadu</a>
-                        </li>
-                        <li>
-                            <a href="https://silastik.bps.go.id" class="underline hover:text-gray-300">Website SILASTIK</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Sosial Media -->
-                <div class="md:w-1/3">
-                    <h4 class="text-lg md:text-xl font-semibold mb-4">Sosial Media:</h4>
-                    <ul class="space-y-2 text-sm md:text-base">
-                        <li>
-                            <a href="https://www.facebook.com/bpsdkijakarta/" class="underline hover:text-gray-300">Facebook</a>
-                        </li>
-                        <li>
-                            <a href="https://x.com/bpsdkijakarta/" class="underline hover:text-gray-300">Twitter</a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/bpsdkijakarta/" class="underline hover:text-gray-300">Instagram</a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/c/BPSDKI" class="underline hover:text-gray-300">YouTube</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Copyright -->
-            <div class="relative text-center text-xs md:text-sm mt-4 pb-4"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
-        </div>
-    </footer>
->>>>>>> f299df78e428aa8e57dfd4b9c9aeb65099211ed2
 
     <script>
         document.getElementById('reservationForm').addEventListener('submit', function(event) {
@@ -368,14 +155,7 @@
                     event.target.submit();
                 }
             });
-<<<<<<< HEAD
+        })
         </script>
     </body>
-=======
-        });
-    </script>
-
-</body>
-
->>>>>>> f299df78e428aa8e57dfd4b9c9aeb65099211ed2
 </html>
