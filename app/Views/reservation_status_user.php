@@ -152,13 +152,16 @@
             <p class="text-red-500"><?= esc($error) ?></p>
         </div>
     <?php endif; ?>
-    <footer class="relative w-full mt-20">
+    <div>
+			<br><br><br><br><br><br><br><br><br><br>
+		</div>
+		<footer class="relative w-full mt-20">
 			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
-			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-0">
+			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-20">
 				<img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
 			</div>
 			<!-- Kontainer dengan latar belakang oranye -->
-			<div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-0">
+			<div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-10">
 				<!-- Footer Content -->
 				<div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
 					<!-- Informasi Utama -->
