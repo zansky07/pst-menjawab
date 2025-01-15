@@ -10,6 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/css/form.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body class="bg-oranye-1 mt-28 md:mt-16">
@@ -17,8 +23,7 @@
         <div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
             <div class="flex items-center space-x-4">
                 <img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
-                <span class="text-gray-800 hover:text-oranye-2 font-semibold text-sm md:text-base"><a href="/"> PST
-                        Menjawab BPS Provinsi DKI Jakarta </a></span>
+                <span class="text-gray-800 hover:text-oranye-2 font-semibold text-sm md:text-base"><a href="/"> PST Menjawab BPS Provinsi DKI Jakarta </a></span>
             </div>
             <div class="text-oranye-4 order-3 w-full md:w-auto md:order-2">
                 <ul class="flex font-semibold items-center justify-between space-x-4">
@@ -39,10 +44,17 @@
         <form action="/consultation/status" method="get">
             <?= csrf_field() ?> <!-- Tambahkan CSRF protection -->
             <div class="flex items-center mb-4">
-                <input type="text" id="token" name="token"
-                    class="bg-white flex-grow p-2 border border-gray-300 rounded-l-md" placeholder="Masukkan Token Anda"
-                    value="<?= old('token') ? esc(old('token')) : '' ?>" required>
-                <button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-r-md hover:bg-orange-600">
+                <input
+                    type="text"
+                    id="token"
+                    name="token"
+                    class="bg-white flex-grow p-2 border border-gray-300 rounded-l-md"
+                    placeholder="Masukkan Token Anda"
+                    value="<?= old('token') ? esc(old('token')) : '' ?>"
+                    required>
+                <button
+                    type="submit"
+                    class="bg-orange-500 text-white py-2 px-4 rounded-r-md hover:bg-orange-600">
                     Cari
                 </button>
             </div>
@@ -60,7 +72,8 @@
         <div class="max-w-lg mx-auto status bg-white p-4 rounded-lg text-center border border-orange-300 shadow-md">
             <div class="grid grid-cols-3 gap-4">
                 <p class="col-span-1 mb-2 text-left">Nomor Token</p>
-                <button id="copyTokenButton"
+                <button
+                    id="copyTokenButton"
                     class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full"
                     onclick="copyToClipboard('<?= esc($token) ?>')">
                     <?= esc($token) ?>
@@ -137,9 +150,7 @@
                     <form action="/consultation/feedback" method="post">
                         <input type="hidden" name="token" value="<?= esc(old('token', $token)) ?>">
                         <div class="grid grid-cols-3 gap-4 mt-4">
-                            <button type="submit"
-                                class="col-span-3 bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded-full">Isi
-                                Survei Kepuasan Konsumen</button>
+                            <button type="submit" class="col-span-3 bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded-full">Isi Survei Kepuasan Konsumen</button>
                         </div>
                     </form>
                 <?php endif; ?>
@@ -168,11 +179,9 @@
                         <div>
                             <img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
                         </div>
-                        <h3 class="text-lg md:text-xl font-semibold leading-tight"> Badan Pusat Statistik Provinsi DKI
-                            Jakarta </h3>
+                        <h3 class="text-lg md:text-xl font-semibold leading-tight"> Badan Pusat Statistik Provinsi DKI Jakarta </h3>
                     </div>
-                    <p class="text-sm md:text-base leading-relaxed"> Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta
-                        Pusat <br>
+                    <p class="text-sm md:text-base leading-relaxed"> Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
                         <span>Phone: (021) 31928493</span>
                         <br>
                         <span>Fax: (021) 3152004</span>
@@ -185,20 +194,16 @@
                     <h4 class="text-lg md:text-xl font-semibold mb-4">Website Lainnya:</h4>
                     <ul class="space-y-2 text-sm md:text-base">
                         <li>
-                            <a href="https://www.bps.go.id" class="underline hover:text-gray-300">Website BPS
-                                Indonesia</a>
+                            <a href="https://www.bps.go.id" class="underline hover:text-gray-300">Website BPS Indonesia</a>
                         </li>
                         <li>
-                            <a href="https://jakarta.bps.go.id" class="underline hover:text-gray-300">Website BPS
-                                Provinsi DKI Jakarta</a>
+                            <a href="https://jakarta.bps.go.id" class="underline hover:text-gray-300">Website BPS Provinsi DKI Jakarta</a>
                         </li>
                         <li>
-                            <a href="https://pst.bps.go.id" class="underline hover:text-gray-300">Website Pelayanan
-                                Statistik Terpadu</a>
+                            <a href="https://pst.bps.go.id" class="underline hover:text-gray-300">Website Pelayanan Statistik Terpadu</a>
                         </li>
                         <li>
-                            <a href="https://silastik.bps.go.id" class="underline hover:text-gray-300">Website
-                                SILASTIK</a>
+                            <a href="https://silastik.bps.go.id" class="underline hover:text-gray-300">Website SILASTIK</a>
                         </li>
                     </ul>
                 </div>
@@ -207,15 +212,13 @@
                     <h4 class="text-lg md:text-xl font-semibold mb-4">Sosial Media:</h4>
                     <ul class="space-y-2 text-sm md:text-base">
                         <li>
-                            <a href="https://www.facebook.com/bpsdkijakarta/"
-                                class="underline hover:text-gray-300">Facebook</a>
+                            <a href="https://www.facebook.com/bpsdkijakarta/" class="underline hover:text-gray-300">Facebook</a>
                         </li>
                         <li>
                             <a href="https://x.com/bpsdkijakarta/" class="underline hover:text-gray-300">Twitter</a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/bpsdkijakarta/"
-                                class="underline hover:text-gray-300">Instagram</a>
+                            <a href="https://www.instagram.com/bpsdkijakarta/" class="underline hover:text-gray-300">Instagram</a>
                         </li>
                         <li>
                             <a href="https://www.youtube.com/c/BPSDKI" class="underline hover:text-gray-300">YouTube</a>
@@ -224,8 +227,7 @@
                 </div>
             </div>
             <!-- Copyright -->
-            <div class="relative text-center text-xs md:text-sm mt-4 pb-4"> &copy; 2024 Badan Pusat Statistik Provinsi
-                DKI Jakarta. All rights reserved. </div>
+            <div class="relative text-center text-xs md:text-sm mt-4 pb-4"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
         </div>
     </footer>
 </body>

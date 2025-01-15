@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,14 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
+
 <body class="bg-oranye-1 min-h-screen flex flex-col mt-28 md:mt-16">
     <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
         <div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
@@ -24,7 +32,7 @@
                     <li class="hover:text-oranye-2"><a href="/admin/dashboard">Dashboard</a></li>
                     <li class="hover:text-oranye-2"><a href="/admin/statistics">Statistik</a></li>
                     <li class="relative">
-                        <button id="dropdownNavbarLink" class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center"> Pengaturan 
+                        <button id="dropdownNavbarLink" class="text-hover:bg-oranye-4 md:hover:bg-transparent py-2 md:hover:text-oranye-2 flex items-center"> Pengaturan
                             <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
@@ -61,9 +69,9 @@
                 <tbody class="text-left">
                     <?php if (!empty($admins) && is_array($admins)): ?>
                         <?php foreach ($admins as $admin): ?>
-                            <tr  class="odd:bg-white even:bg-biru-3 hover:bg-oranye-1">
+                            <tr class="odd:bg-white even:bg-biru-3 hover:bg-oranye-1">
                                 <td class="py-3 px-4 text-sm md:text-base"><?= esc($admin['nama']) ?></td>
-                                <td class="py-3 px-4 text-center"  style="padding: 10px;">
+                                <td class="py-3 px-4 text-center" style="padding: 10px;">
                                     <a href="/admin/manage/detail/<?= $admin['id'] ?>" class="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200 text-sm md:text-base">Detail</a>
                                     <a onclick="confirmDelete('/admin/manage/delete/<?= $admin['id'] ?>')" class="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 transition duration-200 ml-2 text-sm md:text-base">Hapus</a>
                                 </td>
@@ -77,77 +85,77 @@
                 </tbody>
             </table>
         </div>
+        </div>
+    </main>
+    <div>
+        <br><br><br><br><br><br><br><br><br><br>
     </div>
-                    </main>
-					<div>
-			<br><br><br><br><br><br><br><br><br><br>
-		</div>
-		<footer class="relative w-full mt-20">
-			<!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
-			<div class="absolute inset-x-0 top-1 -translate-y-full w-full z-20">
-				<img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
-			</div>
-			<!-- Kontainer dengan latar belakang oranye -->
-			<div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-10">
-				<!-- Footer Content -->
-				<div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
-					<!-- Informasi Utama -->
-					<div class="md:w-1/3 flex flex-col space-y-4">
-						<div class="flex items-center space-x-4">
-							<div>
-								<img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
-							</div>
-							<h3 class="text-lg md:text-xl font-semibold leading-tight"> Badan Pusat Statistik Provinsi DKI Jakarta </h3>
-						</div>
-						<p class="text-sm md:text-base leading-relaxed"> Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
-							<span>Phone: (021) 31928493</span>
-							<br>
-							<span>Fax: (021) 3152004</span>
-							<br>
-							<span>E-mail: bps3100@bps.go.id</span>
-						</p>
-					</div>
-					<!-- Website Lainnya -->
-					<div class="md:w-1/3">
-						<h4 class="text-lg md:text-xl font-semibold mb-4">Website Lainnya:</h4>
-						<ul class="space-y-2 text-sm md:text-base">
-							<li>
-								<a href="https://www.bps.go.id" class="underline hover:text-gray-300">Website BPS Indonesia</a>
-							</li>
-							<li>
-								<a href="https://jakarta.bps.go.id" class="underline hover:text-gray-300">Website BPS Provinsi DKI Jakarta</a>
-							</li>
-							<li>
-								<a href="https://pst.bps.go.id" class="underline hover:text-gray-300">Website Pelayanan Statistik Terpadu</a>
-							</li>
-							<li>
-								<a href="https://silastik.bps.go.id" class="underline hover:text-gray-300">Website SILASTIK</a>
-							</li>
-						</ul>
-					</div>
-					<!-- Sosial Media -->
-					<div class="md:w-1/3">
-						<h4 class="text-lg md:text-xl font-semibold mb-4">Sosial Media:</h4>
-						<ul class="space-y-2 text-sm md:text-base">
-							<li>
-								<a href="https://www.facebook.com/bpsdkijakarta/" class="underline hover:text-gray-300">Facebook</a>
-							</li>
-							<li>
-								<a href="https://x.com/bpsdkijakarta/" class="underline hover:text-gray-300">Twitter</a>
-							</li>
-							<li>
-								<a href="https://www.instagram.com/bpsdkijakarta/" class="underline hover:text-gray-300">Instagram</a>
-							</li>
-							<li>
-								<a href="https://www.youtube.com/c/BPSDKI" class="underline hover:text-gray-300">YouTube</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- Copyright -->
-				<div class="relative text-center text-xs md:text-sm mt-4 pb-4"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
-			</div>
-		</footer>
+    <footer class="relative w-full mt-20">
+        <!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
+        <div class="absolute inset-x-0 top-1 -translate-y-full w-full z-20">
+            <img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
+        </div>
+        <!-- Kontainer dengan latar belakang oranye -->
+        <div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-10">
+            <!-- Footer Content -->
+            <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
+                <!-- Informasi Utama -->
+                <div class="md:w-1/3 flex flex-col space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div>
+                            <img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
+                        </div>
+                        <h3 class="text-lg md:text-xl font-semibold leading-tight"> Badan Pusat Statistik Provinsi DKI Jakarta </h3>
+                    </div>
+                    <p class="text-sm md:text-base leading-relaxed"> Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
+                        <span>Phone: (021) 31928493</span>
+                        <br>
+                        <span>Fax: (021) 3152004</span>
+                        <br>
+                        <span>E-mail: bps3100@bps.go.id</span>
+                    </p>
+                </div>
+                <!-- Website Lainnya -->
+                <div class="md:w-1/3">
+                    <h4 class="text-lg md:text-xl font-semibold mb-4">Website Lainnya:</h4>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li>
+                            <a href="https://www.bps.go.id" class="underline hover:text-gray-300">Website BPS Indonesia</a>
+                        </li>
+                        <li>
+                            <a href="https://jakarta.bps.go.id" class="underline hover:text-gray-300">Website BPS Provinsi DKI Jakarta</a>
+                        </li>
+                        <li>
+                            <a href="https://pst.bps.go.id" class="underline hover:text-gray-300">Website Pelayanan Statistik Terpadu</a>
+                        </li>
+                        <li>
+                            <a href="https://silastik.bps.go.id" class="underline hover:text-gray-300">Website SILASTIK</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Sosial Media -->
+                <div class="md:w-1/3">
+                    <h4 class="text-lg md:text-xl font-semibold mb-4">Sosial Media:</h4>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li>
+                            <a href="https://www.facebook.com/bpsdkijakarta/" class="underline hover:text-gray-300">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="https://x.com/bpsdkijakarta/" class="underline hover:text-gray-300">Twitter</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/bpsdkijakarta/" class="underline hover:text-gray-300">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/c/BPSDKI" class="underline hover:text-gray-300">YouTube</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div class="relative text-center text-xs md:text-sm mt-4 pb-4"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
+        </div>
+    </footer>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable({
@@ -162,6 +170,7 @@
             const dropdown = document.getElementById('dropdownNavbar');
             dropdown.classList.toggle('hidden');
         });
+
         function confirmDelete(url) {
             Swal.fire({
                 title: 'Apakah Anda yakin?',
@@ -192,4 +201,5 @@
         <?php endif; ?>
     </script>
 </body>
+
 </html>
