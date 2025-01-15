@@ -44,7 +44,7 @@
             text-align: center;
             font-weight: bold;
             padding: 10px;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
 
@@ -54,7 +54,7 @@
             color: white;
             text-align: center;
             padding: 10px;
-            font-family: Arial, sans-segirif;
+            font-family: 'Poppins', sans-serif;
         }
 
         .fitur {
