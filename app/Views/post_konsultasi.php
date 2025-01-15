@@ -20,7 +20,7 @@
             const uploadSizeText = document.getElementById('upload-size-text');
 
             // Tambahkan pertanyaan baru
-            addQuestionButton.addEventListener('click', function (e) {
+            addQuestionButton.addEventListener('click', function(e) {
                 e.preventDefault();
 
                 const questionCount = notulaContainer.querySelectorAll('input[name^="pertanyaan"]').length + 1;
@@ -54,7 +54,7 @@
                         fileInput.value = ""; // Reset file input
                     } else {
                         const reader = new FileReader();
-                        reader.onload = function (e) {
+                        reader.onload = function(e) {
                             uploadedImage.src = e.target.result; // Update image src
                             uploadedImage.style.display = 'block';
                             uploadText.style.display = 'none';
@@ -72,6 +72,12 @@
             }
         });
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body class="bg-oranye-1 flex justify-center items-center min-h-screen">
@@ -96,17 +102,17 @@
                     </div>
                     <?php if (!empty($konsultasi['notula'])): ?>
                         <div class="mb-4">
-                            
-                                <label class="block text-gray-700">Riwayat Notula</label>
-                                <textarea class="bg-oranye-1 rounded-md p-2 w-full" readonly><?= htmlspecialchars($konsultasi['notula']) ?></textarea>                 
+
+                            <label class="block text-gray-700">Riwayat Notula</label>
+                            <textarea class="bg-oranye-1 rounded-md p-2 w-full" readonly><?= htmlspecialchars($konsultasi['notula']) ?></textarea>
                         </div>
                     <?php endif; ?>
                     <div class="mb-4" id="notula-container">
-                    <?php if (!empty($konsultasi['notula'])): ?>
-                        <label class="block text-gray-700">Notula Baru</label>
-                    <?php else: ?>
-                        <label class="block text-gray-700">Notula</label>
-                    <?php endif; ?>
+                        <?php if (!empty($konsultasi['notula'])): ?>
+                            <label class="block text-gray-700">Notula Baru</label>
+                        <?php else: ?>
+                            <label class="block text-gray-700">Notula</label>
+                        <?php endif; ?>
                         <input type="text" name="pertanyaan1" class="bg-oranye-1 rounded-md p-2 mb-2 w-full" placeholder="Pertanyaan 1" value="<?= old('pertanyaan1', $konsultasi['pertanyaan1'] ?? '') ?>">
                         <input type="text" name="jawaban1" class="bg-oranye-1 rounded-md p-2 ml-4 mb-2 w-full" placeholder="Jawaban pertanyaan 1" value="<?= old('jawaban1', $konsultasi['jawaban1'] ?? '') ?>">
                     </div>
@@ -116,15 +122,14 @@
                     <button id="upload-button" type="button" class="bg-oranye-2 text-white rounded-md px-4 py-2 mb-4">PILIH GAMBAR</button>
                     <input type="file" id="file-input" name="dokumentasi" class="hidden" accept="image/*" />
                     <div id="image-box" class="bg-oranye-1 rounded-md p-8 flex flex-col items-center justify-center w-full">
-                        <img 
-                            id="uploaded-image" 
-                            alt="Uploaded image" 
-                            class="mb-4" 
-                            src="<?= !empty($konsultasi['dokumentasi']) 
-                                ? base_url('/assets/images/dokum/' . $konsultasi['dokumentasi']) 
-                                : base_url('/assets/images/upload.png') ?>" 
-                            style="display: <?= !empty($konsultasi['dokumentasi']) ? 'block' : 'none' ?>; width: 300px; height: auto;" 
-                        />
+                        <img
+                            id="uploaded-image"
+                            alt="Uploaded image"
+                            class="mb-4"
+                            src="<?= !empty($konsultasi['dokumentasi'])
+                                        ? base_url('/assets/images/dokum/' . $konsultasi['dokumentasi'])
+                                        : base_url('/assets/images/upload.png') ?>"
+                            style="display: <?= !empty($konsultasi['dokumentasi']) ? 'block' : 'none' ?>; width: 300px; height: auto;" />
                         <p id="upload-text" class="text-center">Upload Image</p>
                         <p id="upload-size-text" class="text-center text-sm">Ukuran gambar harus kurang dari <span class="font-semibold">2MB</span></p>
                     </div>

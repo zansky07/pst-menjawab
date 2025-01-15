@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<<<<<<< HEAD
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,23 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
     </head>
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Konsultasi</title>
+    <link rel="icon" href="/assets/images/logo-pst.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+>>>>>>> f299df78e428aa8e57dfd4b9c9aeb65099211ed2
 
         <style>
             /* Custom Flatpickr Theme */
@@ -167,6 +185,7 @@
             });
         </script>
 
+<<<<<<< HEAD
     <body class = "mt-28 md:mt-16  bg-oranye-1">
         <div class="flex overflow-hidden flex-col pt-8">
             <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
@@ -219,6 +238,18 @@
                                 </span>
                             </button>
                         </div>
+=======
+<body class="mt-28 md:mt-16  bg-oranye-1">
+    <div class="flex overflow-hidden flex-col pt-8">
+        <div class="flex z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
+            <nav class="bg-white shadow shadow-gray-300 fixed top-0 left-0 w-full px-8 z-50">
+                <div
+                    class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
+                    <div class="flex items-center space-x-4">
+                        <img src="/assets/images/logo-pst.png" alt="Logo" class="h-10 w-10">
+                        <span class="text-gray-800 font-semibold text-sm md:text-base"> PST Menjawab BPS Provinsi DKI
+                            Jakarta </span>
+>>>>>>> f299df78e428aa8e57dfd4b9c9aeb65099211ed2
                     </div>
                 </nav>
 
@@ -256,14 +287,14 @@
                                         </div>
                                     </div>
 
-                                <!-- Link Zoom -->
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700">Link Zoom</label>
-                                    <input type="text" name="link_zoom"
-                                        class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
-                                        value="<?= $konsultasi['link_zoom'] ?>"
-                                        required>
-                                </div>
+                                    <!-- Link Zoom -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">Link Zoom</label>
+                                        <input type="text" name="link_zoom"
+                                            class="mt-1 block w-full rounded-lg border border-gray-400 px-3 py-2 focus:outline-none focus:border-gray-500 bg-oranye-1"
+                                            value="<?= $konsultasi['link_zoom'] ?>"
+                                            required>
+                                    </div>
 
                                     <!-- Petugas Dropdown -->
                                     <div>
@@ -284,15 +315,15 @@
                                         </div>
                                     </div>
 
-                        
-                                <div class="flex justify-end space-x-1">
-                                    <a href="<?= base_url('admin/consultation/detail/' . $konsultasi['id']) ?>"
-                                        class="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 text-center">
-                                        Kembali
-                                    </a>
-                                    <button type="submit" id="submitButton" class="bg-orange-500 text-white px-6 py-2 rounded-md font-semibold hover:bg-orange-600 transition-colors duration-200">
-                                        Simpan
-                                    </button>
+
+                                    <div class="flex justify-end space-x-1">
+                                        <a href="<?= base_url('admin/consultation/detail/' . $konsultasi['id']) ?>"
+                                            class="bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 text-center">
+                                            Kembali
+                                        </a>
+                                        <button type="submit" id="submitButton" class="bg-orange-500 text-white px-6 py-2 rounded-md font-semibold hover:bg-orange-600 transition-colors duration-200">
+                                            Simpan
+                                        </button>
                                         <script>
                                             document.getElementById('submitButton').addEventListener('click', function(event) {
                                                 const confirmation = confirm('Apakah Anda yakin ingin menyimpan perubahan?');
@@ -301,37 +332,110 @@
                                                 }
                                             });
                                         </script>
-                                </div>
-                            </form>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-        </div>
-        </main>
+            </main>
 
+<<<<<<< HEAD
         <?php include 'footer.php';?>
+=======
+            <div>
+                <br><br><br><br><br><br><br><br><br><br>
+            </div>
+            <footer class="relative w-full mt-20">
+                <!-- Gambar footer2 di atas kontainer bg-oranye-2 -->
+                <div class="absolute inset-x-0 top-1 -translate-y-full w-full z-20">
+                    <img src="/assets/images/footer2.png" alt="footer" class="w-full object-cover">
+                </div>
+                <!-- Kontainer dengan latar belakang oranye -->
+                <div class="relative bg-oranye-2 text-white overflow-hidden pt-20 z-10">
+                    <!-- Footer Content -->
+                    <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
+                        <!-- Informasi Utama -->
+                        <div class="md:w-1/3 flex flex-col space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div>
+                                    <img src="/assets/images/logo-pst.png" alt="Logo" class="h-12 w-12">
+                                </div>
+                                <h3 class="text-lg md:text-xl font-semibold leading-tight"> Badan Pusat Statistik Provinsi DKI Jakarta </h3>
+                            </div>
+                            <p class="text-sm md:text-base leading-relaxed"> Jl. Salemba Tengah No. 36-38 Paseban Senen Jakarta Pusat <br>
+                                <span>Phone: (021) 31928493</span>
+                                <br>
+                                <span>Fax: (021) 3152004</span>
+                                <br>
+                                <span>E-mail: bps3100@bps.go.id</span>
+                            </p>
+                        </div>
+                        <!-- Website Lainnya -->
+                        <div class="md:w-1/3">
+                            <h4 class="text-lg md:text-xl font-semibold mb-4">Website Lainnya:</h4>
+                            <ul class="space-y-2 text-sm md:text-base">
+                                <li>
+                                    <a href="https://www.bps.go.id" class="underline hover:text-gray-300">Website BPS Indonesia</a>
+                                </li>
+                                <li>
+                                    <a href="https://jakarta.bps.go.id" class="underline hover:text-gray-300">Website BPS Provinsi DKI Jakarta</a>
+                                </li>
+                                <li>
+                                    <a href="https://pst.bps.go.id" class="underline hover:text-gray-300">Website Pelayanan Statistik Terpadu</a>
+                                </li>
+                                <li>
+                                    <a href="https://silastik.bps.go.id" class="underline hover:text-gray-300">Website SILASTIK</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Sosial Media -->
+                        <div class="md:w-1/3">
+                            <h4 class="text-lg md:text-xl font-semibold mb-4">Sosial Media:</h4>
+                            <ul class="space-y-2 text-sm md:text-base">
+                                <li>
+                                    <a href="https://www.facebook.com/bpsdkijakarta/" class="underline hover:text-gray-300">Facebook</a>
+                                </li>
+                                <li>
+                                    <a href="https://x.com/bpsdkijakarta/" class="underline hover:text-gray-300">Twitter</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/bpsdkijakarta/" class="underline hover:text-gray-300">Instagram</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/c/BPSDKI" class="underline hover:text-gray-300">YouTube</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Copyright -->
+                    <div class="relative text-center text-xs md:text-sm mt-4 pb-4"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
+                </div>
+            </footer>
+>>>>>>> f299df78e428aa8e57dfd4b9c9aeb65099211ed2
 
-        <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script>
-            // Date Picker
-            flatpickr("#datePicker", {
-                dateFormat: "Y-m-d", // Format: Mon, Nov 29
-                defaultDate: "<?= isset($konsultasi['tanggal_konsultasi']) ? $konsultasi['tanggal_konsultasi'] : 'today' ?>",
-                minDate: "today",
-                disable: [
-                    function (date) {
-                        return (date.getDay() === 0 || date.getDay() === 6);
+            <!-- Scripts -->
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+            <script>
+                // Date Picker
+                flatpickr("#datePicker", {
+                    dateFormat: "Y-m-d", // Format: Mon, Nov 29
+                    defaultDate: "<?= isset($konsultasi['tanggal_konsultasi']) ? $konsultasi['tanggal_konsultasi'] : 'today' ?>",
+                    minDate: "today",
+                    disable: [
+                        function(date) {
+                            return (date.getDay() === 0 || date.getDay() === 6);
+                        }
+                    ],
+                    onChange: function(selectedDates, dateStr) {
+                        document.querySelector(".flatpickr-current-month").style.background = "#E76F51";
+                    },
+                    onReady: function() {
+                        document.querySelector(".flatpickr-current-month").style.background = "#E76F51";
                     }
-                ],
-                onChange: function (selectedDates, dateStr) {
-                    document.querySelector(".flatpickr-current-month").style.background = "#E76F51";
-                },
-                onReady: function () {
-                    document.querySelector(".flatpickr-current-month").style.background = "#E76F51";
-                }
-            });
+                });
 
+<<<<<<< HEAD
             // Time Picker
             flatpickr("#timePicker", {
                 enableTime: true,
@@ -354,4 +458,30 @@
             });
         </script>
     </body>
+=======
+                // Time Picker
+                flatpickr("#timePicker", {
+                    enableTime: true,
+                    noCalendar: true,
+                    dateFormat: "H:i",
+                    minTime: "07:00",
+                    maxTime: "23:59",
+                    minuteIncrement: 1,
+                    time_24hr: true,
+                    defaultDate: "<?= isset($konsultasi['waktu_konsultasi']) ? $konsultasi['waktu_konsultasi'] : '07:00' ?>",
+                    onChange: function(selectedDates, dateStr) {
+                        // Custom handling if needed
+                    },
+                    onOpen: function() {
+                        document.querySelector("#timePicker").parentElement.classList.add("time-picker-custom");
+                    },
+                    onClose: function() {
+                        document.querySelector("#timePicker").parentElement.classList.remove("time-picker-custom");
+                    }
+                });
+            </script>
+
+</body>
+
+>>>>>>> f299df78e428aa8e57dfd4b9c9aeb65099211ed2
 </html>
