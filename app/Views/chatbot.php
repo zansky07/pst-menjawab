@@ -37,7 +37,7 @@
 		</div>
 	</nav>
 
-	<div id="root" class="w-full max-w-4xl"></div>
+	<div id="root" class="w-full max-w-4xl"> </div>
 
 	<!-- Load your React component -->
 	<script type="text/babel" src="/js/Chatbot.js"></script>
