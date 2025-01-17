@@ -136,7 +136,6 @@
                 <p class="text-red-500"><?= esc($error) ?></p>
             </div>
         <?php endif; ?>
-        
         <?php include 'footer.php';?>
     </body>
 </html>

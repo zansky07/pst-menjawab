@@ -1,139 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>PST Menjawab | Form Reservasi Konsultasi Online</title>
-        <link rel="icon" href="/assets/images/logo-pst.png">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <link href="<?= base_url('assets/css/form.css') ?>" rel="stylesheet">
-        <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <style>
-            body{
-                background-color: #F5EAE8;
-            }
-        </style>
-    </head>
-    <body class="bg-orange-1 mt-30 md:mt-16">
-        
-        <?php include 'header_user.php';?>
-        
-        <div class="w-full max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg mt-20">
-            <?php if (session()->getFlashdata('success')): ?>
-                <script>
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: '<?= session()->getFlashdata('success') ?>',
-                    });
-                </script>
-            <?php elseif (session()->getFlashdata('error')): ?>
-                <script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Gagal!',
-                        text: '<?= session()->getFlashdata('error') ?>',
-                    });
-                </script>
-            <?php endif; ?>
-            
-            <form id="reservationForm" action="/consultation/reserve/submit" method="post">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <!-- Nama Konsumen -->
-                    <div class="mb-4">
-                        <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Konsumen</label>
-                        <input type="text" id="nama" name="nama" value="<?= old('nama') ?>" placeholder="Masukkan nama lengkap Anda" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                        <?php if (isset(session()->getFlashdata('validationErrors')['nama'])): ?>
-                            <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['nama'] ?></span>
-                        <?php endif; ?>
-                    </div>
 
-                    <!-- Email -->
-                    <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
-                        <input type="email" id="email" name="email" value="<?= old('email') ?>" placeholder="contoh: nama@email.com" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                        <?php if (isset(session()->getFlashdata('validationErrors')['email'])): ?>
-                            <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['email'] ?></span>
-                        <?php endif; ?>
-                    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PST Menjawab | Form Reservasi Konsultasi Online</title>
+    <link rel="icon" href="/assets/images/logo-pst.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/css/form.css') ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5EAE8;
+        }
+    </style>
+</head>
 
-                    <!-- Nomor Whatsapp -->
-                    <div class="mb-4">
-                        <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">Nomor Whatsapp</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" value="<?= old('whatsapp') ?>" placeholder="Masukkan nomor Whatsapp Anda" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                        <?php if (isset(session()->getFlashdata('validationErrors')['whatsapp'])): ?>
-                            <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['whatsapp'] ?></span>
-                        <?php endif; ?>
-                    </div>
+<body class="bg-orange-1 mt-30 md:mt-16">
 
-                    <!-- Topik -->
-                    <div class="mb-4">
-                        <label for="topik" class="block text-sm font-medium text-gray-700 mb-1">Topik</label>
-                        <input type="text" id="topik" name="topik" value="<?= old('topik') ?>" placeholder="Masukkan topik konsultasi" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                        <?php if (isset(session()->getFlashdata('validationErrors')['topik'])): ?>
-                            <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['topik'] ?></span>
-                        <?php endif; ?>
-                    </div>
+    <?php include 'header_user.php'; ?>
 
-                    <!-- Kategori -->
-                    <div class="mb-4">
-                        <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
-                        <select id="kategori" name="kategori" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                            <option value="" disabled <?= old('kategori') ? '' : 'selected' ?>>Pilih kategori</option>
-                            <option value="Unit Kerja BPS" <?= old('kategori') == 'Unit Kerja BPS' ? 'selected' : '' ?>>Unit Kerja BPS</option>
-                            <option value="Pegawai BPS" <?= old('kategori') == 'Pegawai BPS' ? 'selected' : '' ?>>Pegawai BPS</option>
-                            <option value="Mahasiswa Polstat STIS" <?= old('kategori') == 'Mahasiswa Polstat STIS' ? 'selected' : '' ?>>Mahasiswa Polstat STIS</option>
-                            <option value="Instansi/Lembaga Pemerintah (Pusat/Daerah)" <?= old('kategori') == 'Instansi/Lembaga Pemerintah (Pusat/Daerah)' ? 'selected' : '' ?>>Instansi/Lembaga Pemerintah (Pusat/Daerah)</option>
-                            <option value="Instansi Swasta" <?= old('kategori') == 'Instansi Swasta' ? 'selected' : '' ?>>Instansi Swasta</option>
-                            <option value="Lembaga Internasional/Perwakilan Negara Asing" <?= old('kategori') == 'Lembaga Internasional/Perwakilan Negara Asing' ? 'selected' : '' ?>>Lembaga Internasional/Perwakilan Negara Asing</option>
-                            <option value="Lembaga/Institusi Pendidikan" <?= old('kategori') == 'Lembaga/Institusi Pendidikan' ? 'selected' : '' ?>>Lembaga/Institusi Pendidikan</option>
-                            <option value="Peneliti, Mahasiswa, atau Pribadi Lainnya" <?= old('kategori') == 'Peneliti, Mahasiswa, atau Pribadi Lainnya' ? 'selected' : '' ?>>Peneliti, Mahasiswa, atau Pribadi Lainnya</option>
-                        </select>
-                        <?php if (isset(session()->getFlashdata('validationErrors')['kategori'])): ?>
-                            <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['kategori'] ?></span>
-                        <?php endif; ?>
-                    </div>
+    <div class="w-full max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg mt-20">
+        <?php if (session()->getFlashdata('success')): ?>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '<?= session()->getFlashdata('success') ?>',
+                });
+            </script>
+        <?php elseif (session()->getFlashdata('error')): ?>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: '<?= session()->getFlashdata('error') ?>',
+                });
+            </script>
+        <?php endif; ?>
 
-                    <!-- Lingkup -->
-                    <div class="mb-4">
-                        <label for="lingkup" class="block text-sm font-medium text-gray-700 mb-1">Lingkup</label>
-                        <select id="lingkup" name="lingkup" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                            <option value="" disabled <?= old('lingkup') ? '' : 'selected' ?>>Pilih Lingkup</option>
-                            <option value="Indonesia" <?= old('lingkup') === 'Indonesia' ? 'selected' : '' ?>>Indonesia</option>
-                            <option value="Provinsi DKI Jakarta" <?= old('lingkup') === 'Provinsi DKI Jakarta' ? 'selected' : '' ?>>Provinsi DKI Jakarta</option>
-                            <option value="Kota Administrasi Jakarta Pusat" <?= old('lingkup') === 'Kota Administrasi Jakarta Pusat' ? 'selected' : '' ?>>Kota Administrasi Jakarta Pusat</option>
-                            <option value="Kota Administrasi Jakarta Barat" <?= old('lingkup') === 'Kota Administrasi Jakarta Barat' ? 'selected' : '' ?>>Kota Administrasi Jakarta Barat</option>
-                            <option value="Kota Administrasi Jakarta Timur" <?= old('lingkup') === 'Kota Administrasi Jakarta Timur' ? 'selected' : '' ?>>Kota Administrasi Jakarta Timur</option>
-                            <option value="Kota Administrasi Jakarta Utara" <?= old('lingkup') === 'Kota Administrasi Jakarta Utara' ? 'selected' : '' ?>>Kota Administrasi Jakarta Utara</option>
-                            <option value="Kota Administrasi Jakarta Selatan" <?= old('lingkup') === 'Kota Administrasi Jakarta Selatan' ? 'selected' : '' ?>>Kota Administrasi Jakarta Selatan</option>
-                            <option value="Kabupaten Administrasi Kepulauan Seribu" <?= old('lingkup') === 'Kabupaten Administrasi Kepulauan Seribu' ? 'selected' : '' ?>>Kabupaten Administrasi Kepulauan Seribu</option>
-                            <option value="Lainnya" <?= old('lingkup') === 'Lainnya' ? 'selected' : '' ?>>Lainnya</option>
-                        </select>
-                        <?php if (isset(session()->getFlashdata('validationErrors')['lingkup'])): ?>
-                            <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['lingkup'] ?></span>
-                        <?php endif; ?>
-                    </div>
-                </div>
-
-                <!-- Deskripsi -->
+        <form id="reservationForm" action="/consultation/reserve/submit" method="post">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Nama Konsumen -->
                 <div class="mb-4">
-                    <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi</label>
-                    <textarea id="deskripsi" name="deskripsi" placeholder="Jelaskan detail konsultasi Anda..." class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none h-28 resize-none" required><?= old('deskripsi') ?></textarea>
-                    <?php if (isset(session()->getFlashdata('validationErrors')['deskripsi'])): ?>
-                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['deskripsi'] ?></span>
+                    <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Konsumen</label>
+                    <input type="text" id="nama" name="nama" value="<?= old('nama') ?>" placeholder="Masukkan nama lengkap Anda" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                    <?php if (isset(session()->getFlashdata('validationErrors')['nama'])): ?>
+                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['nama'] ?></span>
                     <?php endif; ?>
                 </div>
 
-                <!-- Tombol Submit -->
+                <!-- Email -->
                 <div class="mb-4">
-                    <button type="submit" class="w-full bg-orange-500 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-orange-600">Kirim</button>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
+                    <input type="email" id="email" name="email" value="<?= old('email') ?>" placeholder="contoh: nama@email.com" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                    <?php if (isset(session()->getFlashdata('validationErrors')['email'])): ?>
+                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['email'] ?></span>
+                    <?php endif; ?>
                 </div>
-            </form>
-        </div>
 
-        <?php include 'footer.php';?>
+                <!-- Nomor Whatsapp -->
+                <div class="mb-4">
+                    <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">Nomor Whatsapp</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" value="<?= old('whatsapp') ?>" placeholder="Masukkan nomor Whatsapp Anda" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                    <?php if (isset(session()->getFlashdata('validationErrors')['whatsapp'])): ?>
+                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['whatsapp'] ?></span>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Topik -->
+                <div class="mb-4">
+                    <label for="topik" class="block text-sm font-medium text-gray-700 mb-1">Topik</label>
+                    <input type="text" id="topik" name="topik" value="<?= old('topik') ?>" placeholder="Masukkan topik konsultasi" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                    <?php if (isset(session()->getFlashdata('validationErrors')['topik'])): ?>
+                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['topik'] ?></span>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Kategori -->
+                <div class="mb-4">
+                    <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
+                    <select id="kategori" name="kategori" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                        <option value="" disabled <?= old('kategori') ? '' : 'selected' ?>>Pilih kategori</option>
+                        <option value="Unit Kerja BPS" <?= old('kategori') == 'Unit Kerja BPS' ? 'selected' : '' ?>>Unit Kerja BPS</option>
+                        <option value="Pegawai BPS" <?= old('kategori') == 'Pegawai BPS' ? 'selected' : '' ?>>Pegawai BPS</option>
+                        <option value="Mahasiswa Polstat STIS" <?= old('kategori') == 'Mahasiswa Polstat STIS' ? 'selected' : '' ?>>Mahasiswa Polstat STIS</option>
+                        <option value="Instansi/Lembaga Pemerintah (Pusat/Daerah)" <?= old('kategori') == 'Instansi/Lembaga Pemerintah (Pusat/Daerah)' ? 'selected' : '' ?>>Instansi/Lembaga Pemerintah (Pusat/Daerah)</option>
+                        <option value="Instansi Swasta" <?= old('kategori') == 'Instansi Swasta' ? 'selected' : '' ?>>Instansi Swasta</option>
+                        <option value="Lembaga Internasional/Perwakilan Negara Asing" <?= old('kategori') == 'Lembaga Internasional/Perwakilan Negara Asing' ? 'selected' : '' ?>>Lembaga Internasional/Perwakilan Negara Asing</option>
+                        <option value="Lembaga/Institusi Pendidikan" <?= old('kategori') == 'Lembaga/Institusi Pendidikan' ? 'selected' : '' ?>>Lembaga/Institusi Pendidikan</option>
+                        <option value="Peneliti, Mahasiswa, atau Pribadi Lainnya" <?= old('kategori') == 'Peneliti, Mahasiswa, atau Pribadi Lainnya' ? 'selected' : '' ?>>Peneliti, Mahasiswa, atau Pribadi Lainnya</option>
+                    </select>
+                    <?php if (isset(session()->getFlashdata('validationErrors')['kategori'])): ?>
+                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['kategori'] ?></span>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Lingkup -->
+                <div class="mb-4">
+                    <label for="lingkup" class="block text-sm font-medium text-gray-700 mb-1">Lingkup</label>
+                    <select id="lingkup" name="lingkup" class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                        <option value="" disabled <?= old('lingkup') ? '' : 'selected' ?>>Pilih Lingkup</option>
+                        <option value="Indonesia" <?= old('lingkup') === 'Indonesia' ? 'selected' : '' ?>>Indonesia</option>
+                        <option value="Provinsi DKI Jakarta" <?= old('lingkup') === 'Provinsi DKI Jakarta' ? 'selected' : '' ?>>Provinsi DKI Jakarta</option>
+                        <option value="Kota Administrasi Jakarta Pusat" <?= old('lingkup') === 'Kota Administrasi Jakarta Pusat' ? 'selected' : '' ?>>Kota Administrasi Jakarta Pusat</option>
+                        <option value="Kota Administrasi Jakarta Barat" <?= old('lingkup') === 'Kota Administrasi Jakarta Barat' ? 'selected' : '' ?>>Kota Administrasi Jakarta Barat</option>
+                        <option value="Kota Administrasi Jakarta Timur" <?= old('lingkup') === 'Kota Administrasi Jakarta Timur' ? 'selected' : '' ?>>Kota Administrasi Jakarta Timur</option>
+                        <option value="Kota Administrasi Jakarta Utara" <?= old('lingkup') === 'Kota Administrasi Jakarta Utara' ? 'selected' : '' ?>>Kota Administrasi Jakarta Utara</option>
+                        <option value="Kota Administrasi Jakarta Selatan" <?= old('lingkup') === 'Kota Administrasi Jakarta Selatan' ? 'selected' : '' ?>>Kota Administrasi Jakarta Selatan</option>
+                        <option value="Kabupaten Administrasi Kepulauan Seribu" <?= old('lingkup') === 'Kabupaten Administrasi Kepulauan Seribu' ? 'selected' : '' ?>>Kabupaten Administrasi Kepulauan Seribu</option>
+                        <option value="Lainnya" <?= old('lingkup') === 'Lainnya' ? 'selected' : '' ?>>Lainnya</option>
+                    </select>
+                    <?php if (isset(session()->getFlashdata('validationErrors')['lingkup'])): ?>
+                        <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['lingkup'] ?></span>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <!-- Deskripsi -->
+            <div class="mb-4">
+                <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi</label>
+                <textarea id="deskripsi" name="deskripsi" placeholder="Jelaskan detail konsultasi Anda..." class="block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none h-28 resize-none" required><?= old('deskripsi') ?></textarea>
+                <?php if (isset(session()->getFlashdata('validationErrors')['deskripsi'])): ?>
+                    <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['deskripsi'] ?></span>
+                <?php endif; ?>
+            </div>
+
+            <!-- Tombol Submit -->
+            <div class="mb-4">
+                <button type="submit" class="w-full bg-orange-500 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-orange-600">Kirim</button>
+            </div>
+        </form>
+    </div>
+
+    <?php include 'footer.php'; ?>
 
     <script>
         document.getElementById('reservationForm').addEventListener('submit', function(event) {
@@ -156,6 +160,7 @@
                 }
             });
         })
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>

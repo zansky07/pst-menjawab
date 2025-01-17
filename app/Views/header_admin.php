@@ -45,7 +45,7 @@
             </ul>
         </div>
         <div class="order-2 md:order-3">
-            <button class="px-4 py-2 bg-oranye-3 hover:bg-oranye-2 text-white rounded-xl flex items-center gap-2">
+            <button class="px-4 py-2 bg-orange-500 hover:bg-oranye-2 text-white rounded-xl flex items-center gap-2">
                 <span>
                     <a href="/admin/logout">Keluar</a>
                 </span>
@@ -55,13 +55,12 @@
 </nav>
 
 <script>
-			document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
-				const dropdown = document.getElementById('dropdownNavbar');
-				dropdown.classList.toggle('hidden');
-			});
-            document.getElementById('dropdownNavbarLinkSettings').addEventListener('click', function() {
-    const dropdown = document.getElementById('dropdownNavbarSettings');
-    dropdown.classList.toggle('hidden');
-});
-
+    document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
+        const dropdown = document.getElementById('dropdownNavbar');
+        dropdown.classList.toggle('hidden');
+    });
+    document.getElementById('dropdownNavbarLinkSettings').addEventListener('click', function() {
+        const dropdown = document.getElementById('dropdownNavbarSettings');
+        dropdown.classList.toggle('hidden');
+    });
 </script>

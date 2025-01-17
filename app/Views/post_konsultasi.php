@@ -81,9 +81,9 @@
 </head>
 
 <body class="bg-oranye-1 flex justify-center items-center min-h-screen">
-    <?php include 'header_admin.php';?>
+    <?php include 'header_admin.php'; ?>
 
-    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl mt-28 mb-28">
+    <main class="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl mt-28 mb-28">
         <h1 class="text-2xl font-semibold mb-6">Detail Konsultasi Virtual</h1>
         <form action="/admin/consultation/postConsultation/<?= esc($konsultasi['id']) ?>" method="POST" enctype="multipart/form-data">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -140,8 +140,8 @@
                 <a href="/admin/consultation/detail/<?= $konsultasi['id'] ?>" class="bg-oranye-2 text-white rounded-md px-4 py-2">KEMBALI</a>
             </div>
         </form>
-    </div>
-    <?php include 'footer.php';?>
+    </main>
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>
