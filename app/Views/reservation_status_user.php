@@ -11,11 +11,11 @@
         <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
     </head>
     <body class="bg-oranye-1 mt-28 md:mt-16">
-        <?php include 'header_user.php';?>
+        <?php include 'header_user.php'; ?>
         
         <div class="max-w-lg mx-auto rounded-lg shadow-lg mt-20">
             <form action="/consultation/status" method="post">
-                <?= csrf_field() ?> <!-- Tambahkan CSRF protection -->
+                <?= csrf_field() ?>
                 <div class="flex items-center mb-4">
                     <input 
                         type="text" 
@@ -34,109 +34,101 @@
             </form>
         </div>
             
-        <?php if(isset($reservation)): ?>
-
-    <?php if (isset($reservation)): ?>
-
-        <?php if (session()->getFlashdata('error')): ?>
-            <div class="mb-4 p-2 bg-red-100 text-red-700 rounded">
-                <?= session()->getFlashdata('error') ?>
-            </div>
-        <?php endif; ?>
-
-        <div class="max-w-lg mx-auto status bg-white p-4 rounded-lg text-center border border-orange-300 shadow-md">
-            <div class="grid grid-cols-3 gap-4">
-                <p class="col-span-1 mb-2 text-left">Nomor Token</p>
-                <button
-                    id="copyTokenButton"
-                    class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full"
-                    onclick="copyToClipboard('<?= esc($token) ?>')">
-                    <?= esc($token) ?>
-                </button>
-                <script>
-                    function copyToClipboard(value) {
-                        // Buat elemen input sementara
-                        const tempInput = document.createElement('input');
-                        tempInput.value = value; // Isi dengan nilai yang akan disalin
-                        document.body.appendChild(tempInput); // Tambahkan ke dokumen
-
-                        // Salin nilai ke clipboard
-                        tempInput.select();
-                        document.execCommand('copy');
-
-                        // Hapus elemen input sementara
-                        document.body.removeChild(tempInput);
-
-                        // Tampilkan notifikasi (opsional)
-                        alert('Token berhasil disalin ke clipboard: ' + value);
-                    }
-                </script>
-                <p class="col-span-1 mb-2 text-left">Tanggal Reservasi</p>
-                <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                    <?= esc($reservation['tanggal_reservasi']) ?>
-                </button>
-                <p class="col-span-1 mb-2 text-left">Status Reservasi</p>
-                <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                    <?= esc($reservation['status']) ?>
-                </button>
-            </div>
-
-            <?php if ($reservation['status'] == 'Disetujui'): ?>
-                <div class="grid grid-cols-3 gap-4 mt-4">
-                    <p class="col-span-1 mb-2 text-left">Link Pertemuan</p>
-                    <a href="<?= esc($reservation['zoom']) ?>" target="_blank"
-                        class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full text-center">
-                        Link Zoom
-                    </a>
-                    <p class="col-span-1 mb-2 text-left">Waktu Pertemuan</p>
-                    <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                        <?= esc($reservation['waktu_pertemuan']) ?>
-                    </button>
+        <?php if (isset($reservation)): ?>
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="mb-4 p-2 bg-red-100 text-red-700 rounded">
+                    <?= session()->getFlashdata('error') ?>
                 </div>
             <?php endif; ?>
 
-            <?php if ($reservation['status'] == 'Ditolak'): ?>
-                <div class="grid grid-cols-3 gap-4 mt-4">
-                    <p class="col-span-1 mb-2 text-left">Alasan Penolakan</p>
+            <div class="max-w-lg mx-auto status bg-white p-4 rounded-lg text-center border border-orange-300 shadow-md">
+                <div class="grid grid-cols-3 gap-4">
+                    <p class="col-span-1 mb-2 text-left">Nomor Token</p>
+                    <button
+                        id="copyTokenButton"
+                        class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full"
+                        onclick="copyToClipboard('<?= esc($token) ?>')">
+                        <?= esc($token) ?>
+                    </button>
+                    <script>
+                        function copyToClipboard(value) {
+                            const tempInput = document.createElement('input');
+                            tempInput.value = value;
+                            document.body.appendChild(tempInput);
+                            tempInput.select();
+                            document.execCommand('copy');
+                            document.body.removeChild(tempInput);
+                            alert('Token berhasil disalin ke clipboard: ' + value);
+                        }
+                    </script>
+                    <p class="col-span-1 mb-2 text-left">Tanggal Reservasi</p>
                     <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                        <?= esc($reservation['alasan']) ?>
+                        <?= esc($reservation['tanggal_reservasi']) ?>
+                    </button>
+                    <p class="col-span-1 mb-2 text-left">Status Reservasi</p>
+                    <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                        <?= esc($reservation['status']) ?>
                     </button>
                 </div>
-            <?php endif; ?>
 
-            <?php if ($reservation['status'] == 'Selesai'): ?>
-                <div class="grid grid-cols-3 gap-4 mt-4">
-                    <p class="col-span-1 mb-2 text-left">Kehadiran</p>
-                    <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                        <?= esc($reservation['kehadiran']) ?>
-                    </button>
-                </div>
-                <?php if($reservation['kehadiran'] == 'Datang'): ?>
+                <?php if ($reservation['status'] == 'Disetujui'): ?>
                     <div class="grid grid-cols-3 gap-4 mt-4">
-                        <p class="col-span-1 mb-2 text-left">Dokumentasi</p>
+                        <p class="col-span-1 mb-2 text-left">Link Pertemuan</p>
+                        <a href="<?= esc($reservation['zoom']) ?>" target="_blank"
+                            class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full text-center">
+                            Link Zoom
+                        </a>
+                        <p class="col-span-1 mb-2 text-left">Waktu Pertemuan</p>
                         <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                            Unduh Dokumentasi <?= esc($reservation['dokumentasi']) ?>
-                        </button>
-                        <p class="col-span-1 mb-2 text-left">Notula</p>
-                        <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                            Unduh Notula <?= esc($reservation['notula']) ?>
+                            <?= esc($reservation['waktu_pertemuan']) ?>
                         </button>
                     </div>
-                    <form action="/consultation/feedback" method="post">
-                        <input type="hidden" name="token" value="<?= esc(old('token', $token)) ?>">
-                            <div class="grid grid-cols-3 gap-4 mt-4">
-                                <button type="submit" class="col-span-3 bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded-full">Isi Survei Kepuasan Konsumen</button>
-                            </div>
-                    </form>
                 <?php endif; ?>
-            <?php endif; ?>
-        </div>
+
+                <?php if ($reservation['status'] == 'Ditolak'): ?>
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <p class="col-span-1 mb-2 text-left">Alasan Penolakan</p>
+                        <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                            <?= esc($reservation['alasan']) ?>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($reservation['status'] == 'Selesai'): ?>
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <p class="col-span-1 mb-2 text-left">Kehadiran</p>
+                        <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                            <?= esc($reservation['kehadiran']) ?>
+                        </button>
+                    </div>
+                    <?php if ($reservation['kehadiran'] == 'Datang'): ?>
+                        <div class="grid grid-cols-3 gap-4 mt-4">
+                            <p class="col-span-1 mb-2 text-left">Dokumentasi</p>
+                            <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                                Unduh Dokumentasi <?= esc($reservation['dokumentasi']) ?>
+                            </button>
+                            <p class="col-span-1 mb-2 text-left">Notula</p>
+                            <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                                Unduh Notula <?= esc($reservation['notula']) ?>
+                            </button>
+                        </div>
+                        <form action="/consultation/feedback" method="post">
+                            <input type="hidden" name="token" value="<?= esc(old('token', $token)) ?>">
+                            <div class="grid grid-cols-3 gap-4 mt-4">
+                                <button type="submit" class="col-span-3 bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded-full">
+                                    Isi Survei Kepuasan Konsumen
+                                </button>
+                            </div>
+                        </form>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
         <?php else: ?>
             <div class="max-w-lg mx-auto status bg-white p-4 rounded-lg text-center border border-red-300 shadow-md">     
                 <p class="text-red-500"><?= esc($error) ?></p>
             </div>
         <?php endif; ?>
         
-        <?php include 'footer.php';?>
+        <?php include 'footer.php'; ?>
     </body>
 </html>
