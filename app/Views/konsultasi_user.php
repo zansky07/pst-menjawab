@@ -7,20 +7,18 @@
 	<title>PST Menjawab | Konsultasi</title>
 	<link rel="icon" href="/assets/images/logo-pst.png">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">`
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<style>
 		body {
 			font-family: 'Poppins', sans-serif;
-			background-image: url('<?= base_url('assets/images/bg-consultation.png') ?>');
 		}
 	</style>
 </head>
+<!-- class="bg-orange-100" -->
 
-<body class="mt-28 md:mt-16">
-	<nav>
-		<?php include 'header_user.php'; ?>
-	</nav>
+<body style="background-image: url('<?= base_url('assets/images/bg-consultation.png') ?>'); mt-28 md:mt-16">
+	<?php include 'header_user.php'; ?>
 
 	<div class="max-w-3xl mx-auto mt-20 p-6 bg-white rounded-lg shadow-lg text-oranye-2 h-[290px]">
 		<div class="text-center mb-12">
@@ -31,6 +29,7 @@
 			</div>
 		</div>
 	</div>
+
 	<?php include 'footer.php'; ?>
 </body>
 
