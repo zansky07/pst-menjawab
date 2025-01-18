@@ -7,7 +7,7 @@
 	<title>PST Menjawab | Konsultasi</title>
 	<link rel="icon" href="/assets/images/logo-pst.png">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">`
+	<link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<style>
 		body {
