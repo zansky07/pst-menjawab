@@ -6,7 +6,7 @@ class WAHelper{
 
     public static function send_wa_notification($phoneNumber, $message)
     {
-        $url = 'http://localhost:3000/send-message'; // URL server Node.js
+        $url = 'https://baileyswaserver-production.up.railway.app/send-message'; // URL server Node.js
         
         // Memformat nomor telepon
         if ($phoneNumber[0] == '0') {
@@ -43,3 +43,5 @@ class WAHelper{
         return json_decode($response, true);
     }
 }
+
+
