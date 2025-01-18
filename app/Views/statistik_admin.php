@@ -118,7 +118,7 @@
 				</div>
 			</div>
 			<!-- Tombol Ekspor -->
-			<button class="self-start px-5 py-2.5 mt-8 ml-11 text-base font-bold text-center text-white bg-green-500 rounded-2xl hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-700" data-toggle="modal" data-target="#exportModal"> Ekspor </button>
+			<button type="button" class="self-start px-5 py-2.5 mt-8 ml-11 text-base font-bold text-center text-white bg-green-500 rounded-2xl hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-700" data-toggle="modal" data-target="#exportModal"> Ekspor </button>
 			<!-- Modal -->
 			<div id="exportModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
 				<div class="bg-white p-6 rounded-lg shadow-lg w-96">
@@ -139,7 +139,7 @@
 											<?= isset($status) ? $status : 'semua' ?>&periode=
 											
 											<?= isset($periode) ? $periode : 'semua' ?>&format=word" class="block py-2 px-4 bg-blue-500 text-white rounded-md mb-2 hover:bg-blue-600"> Word (DOCX) </a>
-						<button onclick="closeExportModal()" class="block py-2 px-4 bg-oranye-2 text-white rounded-md hover:bg-oranye-3 mt-4 w-full">Tutup</button>
+						<button type="button" onclick="closeExportModal()" class="block py-2 px-4 bg-oranye-2 text-white rounded-md hover:bg-oranye-3 mt-4 w-full">Tutup</button>
 					</div>
 				</div>
 			</div>

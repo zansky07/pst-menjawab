@@ -80,8 +80,7 @@
 					</table>
 				</div>
 			</div>
-			<!-- Copyright -->
-			<div class="relative text-center text-xs md:text-sm mt-4 pb-4"> &copy; 2024 Badan Pusat Statistik Provinsi DKI Jakarta. All rights reserved. </div>
+			
 		</div>
 		
 		<?php include 'footer.php';?>

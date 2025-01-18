@@ -25,7 +25,7 @@
     <?php include 'header_admin.php'; ?>
 
     <div class="max-w-xl lg:max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md" style="margin-top: 100px;">
-        <h1 class="text-2xl font-bold mb-6">Detail Adminn</h1>
+        <h1 class="text-2xl font-bold mb-6">Detail Admin</h1>
         <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
             <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Username</label>
             <input type="text" class="w-full px-3 py-2 bg-orange-100 border border-orange-300 rounded-md"

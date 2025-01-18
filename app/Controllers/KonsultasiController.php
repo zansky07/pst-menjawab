@@ -266,6 +266,114 @@ class KonsultasiController extends BaseController
             $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
 
             WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
+
+        } else if($status_konsultasi == 'Selesai'){
+
+            if($kehadiran_konsumen == 'Datang'){
+                //   Jika ditolak maka kirim pesan ke konsumen
+                $konsultasi = $this->konsultasiModel->find($id);
+
+                // Kirim email pemberitahuan
+                $email = \Config\Services::email();
+                $email->setTo($konsultasi['email_konsumen']);
+                $email->setFrom('mfauzanfk@gmail.com', 'PST Menjawab');
+                $email->setSubject('Proses Konsultasi Selesai');
+                $emailMessage = "
+                    <p>Halo <strong>{$konsultasi['nama_konsumen']}</strong>,</p>
+                    <p>Terima Kasih Sudah Hadir, Reservasi Konsultasi Anda Telah Selesai! Berikut detailnya:</p>
+                    <ul>
+                        <li><strong>Nama:</strong> {$konsultasi['nama_konsumen']}</li>
+                        <li><strong>Topik:</strong> {$konsultasi['topik']}</li>
+                        <li><strong>Kategori:</strong> {$konsultasi['kategori']}</li>
+                        <li><strong>Lingkup:</strong> {$konsultasi['lingkup']}</li>
+                        <li><strong>Deskripsi:</strong> {$konsultasi['deskripsi']}</li>
+                        <li><strong>Token:</strong> {$konsultasi['token_konsultasi']}</li>
+                        <li><strong>Jadwal:</strong> {$konsultasi['jadwal_konsultasi']}</li>
+                    </ul>
+
+                    Kami mohon kesediaannya mengisi form feedback berikut:<br>
+
+                    
+                    <p>Mohon Maaf Atas Ketidaknyamanannya.</p>
+                    <p>Terima kasih,<br>PST Menjawab BPS DKI Jakarta</p>
+                ";
+                $email->setMessage($emailMessage);
+
+                if ($email->send()) {
+                    log_message('info', 'Email berhasil dikirim ke ' . $konsultasi['email_konsumen']);
+                } else {
+                    log_message('error', $email->printDebugger(['headers']));
+                }
+
+                // Kirim notifikasi ke WhatsApp
+                $message = "🔔 [ *KONSULTASI ONLINE TELAH SELESAI* ] 🔔\n\n";
+                $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
+                $message .= "Terima Kasih Sudah Hadir, Reservasi konsultasi Anda telah selesai! Berikut detailnya:\n\n";
+                $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
+                $message .= "*Topik:* {$konsultasi['topik']}\n";
+                $message .= "*Kategori:* {$konsultasi['kategori']}\n";
+                $message .= "*Lingkup:* {$konsultasi['lingkup']}\n";
+                $message .= "*Deskripsi:* {$konsultasi['deskripsi']}\n";
+                $message .= "*Token:* {$konsultasi['token_konsultasi']}\n";
+                $message .= "*Jadwal:* {$konsultasi['jadwal_konsultasi']}\n\n";
+                $message .= "Kami mohon kesediaan Anda untuk mengisi form feedback berikut.\n";
+                $message .= "link\n";
+                $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+
+                WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
+
+        }   else if($kehadiran_konsumen == 'Tidak datang'){
+            
+            //   Jika ditolak maka kirim pesan ke konsumen
+            $konsultasi = $this->konsultasiModel->find($id);
+
+            // Kirim email pemberitahuan
+            $email = \Config\Services::email();
+            $email->setTo($konsultasi['email_konsumen']);
+            $email->setFrom('mfauzanfk@gmail.com', 'PST Menjawab');
+            $email->setSubject('Proses Konsultasi Selesai');
+            $emailMessage = "
+                <p>Halo <strong>{$konsultasi['nama_konsumen']}</strong>,</p>
+                    <p>Terima Kasih, Reservasi Konsultasi Anda Telah Selesai! Berikut detailnya:</p>
+                    <ul>
+                        <li><strong>Nama:</strong> {$konsultasi['nama_konsumen']}</li>
+                        <li><strong>Topik:</strong> {$konsultasi['topik']}</li>
+                        <li><strong>Kategori:</strong> {$konsultasi['kategori']}</li>
+                        <li><strong>Lingkup:</strong> {$konsultasi['lingkup']}</li>
+                        <li><strong>Deskripsi:</strong> {$konsultasi['deskripsi']}</li>
+                        <li><strong>Token:</strong> {$konsultasi['token_konsultasi']}</li>
+                        <li><strong>Status Kehadiran:</strong> {$konsultasi['kehadiran']}</li>
+                    </ul>
+                    
+                    <p>Mohon Maaf Atas Ketidaknyamanannya. Semoga kita dapat berjumpa di lain waktu</p>
+                    <p>Terima kasih,<br>PST Menjawab BPS DKI Jakarta</p>
+            ";
+            $email->setMessage($emailMessage);
+
+            if ($email->send()) {
+                log_message('info', 'Email berhasil dikirim ke ' . $konsultasi['email_konsumen']);
+            } else {
+                log_message('error', $email->printDebugger(['headers']));
+            }
+
+            // Kirim notifikasi ke WhatsApp
+            $message = "🔔 [ *KONSULTASI ONLINE TELAH SELESAI* ] 🔔\n\n";
+            $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
+            $message .= "Terima Kasih, Reservasi konsultasi Anda telah selesai! Berikut detailnya:\n\n";
+            $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
+            $message .= "*Topik:* {$konsultasi['topik']}\n";
+            $message .= "*Kategori:* {$konsultasi['kategori']}\n";
+            $message .= "*Lingkup:* {$konsultasi['lingkup']}\n";
+            $message .= "*Deskripsi:* {$konsultasi['deskripsi']}\n";
+            $message .= "*Token:* {$konsultasi['token_konsultasi']}\n";
+            $message .= "*Status Kehadiran:* {$konsultasi['kehadiran']}\n\n";
+            $message .= "Mohon Maaf Atas Ketidaknyamanannya. Semoga kita dapat berjumpa di lain waktu.\n";
+            $message .= "link\n";
+            $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+
+            WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
+        }
+            
         }
         // Otherwise, redirect back to dashboard
         return redirect()->to('/admin/dashboard')->with('message', 'Status berhasil diperbarui.');
@@ -333,7 +441,6 @@ class KonsultasiController extends BaseController
 
         $data = [
             'notula' => $notula,
-            'status_konsultasi' => 'Selesai',
             'kehadiran' => 'Datang'
         ];
 

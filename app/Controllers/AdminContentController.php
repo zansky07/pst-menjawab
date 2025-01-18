@@ -130,11 +130,11 @@ class AdminContentController extends BaseController
         
             $output = fopen('php://output', 'w');
             // Menulis header CSV
-            fputcsv($output, ['Status', 'Tanggal Reservasi']);
+            fputcsv($output, ['Token', 'Topik', 'Status', 'Tanggal Reservasi']);
         
             // Menulis data
             foreach ($data as $row) {
-                fputcsv($output, [$row['status_konsultasi'], $row['tanggal_reservasi']]);
+                fputcsv($output, [$row['token_konsultasi'], $row['topik'],$row['status_konsultasi'], $row['tanggal_reservasi']]);
             }
         
             fclose($output);
@@ -146,14 +146,18 @@ class AdminContentController extends BaseController
             $sheet = $spreadsheet->getActiveSheet();
         
             // Menulis header
-            $sheet->setCellValue('A1', 'Status');
-            $sheet->setCellValue('B1', 'Tanggal Reservasi');
+            $sheet->setCellValue('A1', 'Token');
+            $sheet->setCellValue('B1', 'Topik');
+            $sheet->setCellValue('C1', 'Status');
+            $sheet->setCellValue('D1', 'Tanggal Reservasi');
         
             // Menulis data
             $row = 2;
             foreach ($data as $item) {
-                $sheet->setCellValue('A' . $row, $item['status_konsultasi']);
-                $sheet->setCellValue('B' . $row, $item['tanggal_reservasi']);
+                $sheet->setCellValue('A' . $row, $item['token_konsultasi']);
+                $sheet->setCellValue('B' . $row, $item['topik']);
+                $sheet->setCellValue('C' . $row, $item['status_konsultasi']);
+                $sheet->setCellValue('D' . $row, $item['tanggal_reservasi']);
                 $row++;
             }
         
@@ -171,11 +175,11 @@ class AdminContentController extends BaseController
             $section = $phpWord->addSection();
         
             // Menulis header
-            $section->addText('Status | Tanggal Reservasi', ['bold' => true]);
+            $section->addText('Token| Topik | Status | Tanggal Reservasi', ['bold' => true]);
         
             // Menulis data
             foreach ($data as $item) {
-                $section->addText("{$item['status_konsultasi']} | {$item['tanggal_reservasi']}");
+                $section->addText("{$item['token_konsultasi']} | {$item['topik']} | {$item['status_konsultasi']} | {$item['tanggal_reservasi']}");
             }
         
             // Menyimpan file Word
