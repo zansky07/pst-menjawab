@@ -80,17 +80,17 @@
     </style>
 </head>
 
-<body class="bg-oranye-1 flex justify-center items-center min-h-screen">
+<body class="bg-oranye-1 flex flex-col justify-center items-center min-h-screen">
     <?php include 'header_admin.php'; ?>
 
-    <main class="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl mt-28 mb-28">
+    <main class="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl mt-28 mb-28 flex-grow">
         <h1 class="text-2xl font-semibold mb-6">Detail Konsultasi Virtual</h1>
         <form action="/admin/consultation/postConsultation/<?= esc($konsultasi['id']) ?>" method="POST" enctype="multipart/form-data">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <div class="mb-4">
                         <label class="block text-gray-700">Nama Petugas</label>
-                        <input type="text" class="bg-oranye-1 rounded-md p-2 w-full" value="<?= esc($konsultan['nama']) ?>" readonly>
+                        <input type="text" class="bg-oranye-1 rounded-md p-2 w-full"  value="<?= isset($konsultan['nama']) ? esc($konsultan['nama']) : 'Data tidak tersedia'; ?>" readonly>
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700">Nama Konsumen</label>

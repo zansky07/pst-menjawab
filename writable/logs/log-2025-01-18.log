@@ -253,3 +253,90 @@ INFO - 2025-01-18 12:48:45 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2025-01-18 12:48:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-01-18 12:48:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-01-18 12:48:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 19:21:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 19:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 19:22:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 19:22:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 19:22:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 19:22:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-18 19:22:28 --> ErrorException: Undefined array key "nama"
+[Method: GET, Route: admin/consultation/postConsultation/18]
+in APPPATH\Views\post_konsultasi.php on line 93.
+ 1 APPPATH\Views\post_konsultasi.php(93): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama"', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php', 93)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('post_konsultasi', [], true)
+ 5 APPPATH\Controllers\KonsultasiController.php(320): view('post_konsultasi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->postConsultation('18')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2025-01-18 19:52:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 19:54:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 19:57:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-18 19:57:01 --> ErrorException: Undefined variable $db
+[Method: GET, Route: admin/consultation/postConsultation/18]
+in APPPATH\Views\post_konsultasi.php on line 95.
+ 1 APPPATH\Views\post_konsultasi.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $db', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php', 95)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('post_konsultasi', [], true)
+ 5 APPPATH\Controllers\KonsultasiController.php(320): view('post_konsultasi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->postConsultation('18')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2025-01-18 19:57:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-18 19:57:34 --> ErrorException: Undefined variable $pstmenjawab
+[Method: GET, Route: admin/consultation/postConsultation/18]
+in APPPATH\Views\post_konsultasi.php on line 95.
+ 1 APPPATH\Views\post_konsultasi.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pstmenjawab', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php', 95)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('post_konsultasi', [], true)
+ 5 APPPATH\Controllers\KonsultasiController.php(320): view('post_konsultasi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->postConsultation('18')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2025-01-18 19:57:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-18 19:57:36 --> ErrorException: Undefined variable $pstmenjawab
+[Method: GET, Route: admin/consultation/postConsultation/18]
+in APPPATH\Views\post_konsultasi.php on line 95.
+ 1 APPPATH\Views\post_konsultasi.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pstmenjawab', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php', 95)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('post_konsultasi', [], true)
+ 5 APPPATH\Controllers\KonsultasiController.php(320): view('post_konsultasi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->postConsultation('18')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
+INFO - 2025-01-18 19:57:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-18 19:57:47 --> ErrorException: Undefined variable $db
+[Method: GET, Route: admin/consultation/postConsultation/18]
+in APPPATH\Views\post_konsultasi.php on line 95.
+ 1 APPPATH\Views\post_konsultasi.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $db', 'D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php', 95)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\app\\Views\\post_konsultasi.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('post_konsultasi', [], true)
+ 5 APPPATH\Controllers\KonsultasiController.php(320): view('post_konsultasi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\KonsultasiController->postConsultation('18')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\KonsultasiController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\XAMPP\\empty\\htdocs\\pst-menjawab\\public\\index.php')
