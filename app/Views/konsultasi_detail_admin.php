@@ -138,7 +138,7 @@
                 </div>
                 <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Status</label>
-                    <select name="status_konsultasi" class="dropdown-white-text w-full px-3 py-2 bg-oranye-2 text-white border border-orange-300 rounded-md "
+                    <select name="status_konsultasi" class="outline-none dropdown-white-text w-full px-3 py-2 bg-orange-500 text-white border border-orange-300 rounded-md "
                         <?= in_array($konsultasi['status_konsultasi'], ['Ditolak', 'Selesai']) ? 'readonly' : '' ?> required>
                         <?php
                         $status_konsultasies = ['Sedang diproses', 'Disetujui', 'Ditolak', 'Selesai'];
@@ -187,7 +187,7 @@
                 <div id="jadwal-field" class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Jadwal Konsultasi</label>
                     <div class="flex items-center w-full">
-                        <input type="text" id="jadwal-field-input" class="flex-grow px-3 py-2 bg-orange-100 border border-orange-300 rounded-md" value="<?= esc($formatted_jadwal) ?>" readonly>
+                        <input type="text" id="jadwal-field-input" class="flex-grow px-3 py-2 bg-oranye-500 border border-orange-300 rounded-md" value="<?= esc($formatted_jadwal) ?>" readonly>
                         <a href="/admin/consultation/schedule/delete/<?= $konsultasi['id'] ?>" class="ml-2 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600" onclick="return confirmDelete()">Hapus</a>
                         <script>
                             function confirmDelete() {
@@ -205,7 +205,7 @@
                 <!-- IF SELESAI SELECTED -->
                 <div id="kehadiran-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
                     <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Kehadiran Konsumen</label>
-                    <select name="kehadiran_konsumen" class="w-full px-3 py-2 bg-oranye-2 text-white border border-orange-300 rounded-md">
+                    <select name="kehadiran_konsumen" class="w-full px-3 py-2 bg-orange-500 text-white border border-orange-300 rounded-md">
                         <option value="" <?= !isset($konsultasi['kehadiran']) ? 'selected' : '' ?>>Pilih Kehadiran</option>
                         <?php $kehadiran_konsumens = ['Datang', 'Tidak datang'];
                         foreach ($kehadiran_konsumens as $kehadiran_konsumen) {
@@ -218,13 +218,13 @@
                 <div id="detail-field" class="mb-4 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
                     <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center"></label>
                     <div class="flex space-x-4 md:space-x-2 w-full md:col-span-1">
-                        <a href="/admin/consultation/postConsultation/<?= $konsultasi['id'] ?>" name="detail_btn" class="bg-oranye-2 text-white py-3 px-2 rounded-md w-full text-center mx-1 text-sm transition duration-300 hover:bg-orange-600">Isi Detail Konsultasi</a>
+                        <a href="/admin/consultation/postConsultation/<?= $konsultasi['id'] ?>" name="detail_btn" class="bg-orange-500 text-white py-3 px-2 rounded-md w-full text-center mx-1 text-sm transition duration-300 hover:bg-orange-600">Isi Detail Konsultasi</a>
                     </div>
                 </div>
                 <br>
                 <div class="flex justify-end space-x-4">
                     <a href="/admin/dashboard" id="kembali" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">Kembali</a>
-                    <button id="submitButton" type="submit" class="bg-oranye-2 text-white py-2 px-4 rounded-md hover:bg-orange-600">Simpan Status</button>
+                    <button id="submitButton" type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">Simpan Status</button>
                     <script>
                         document.getElementById('submitButton').addEventListener('click', function(event) {
                             const confirmation = confirm('Apakah Anda yakin ingin menyimpan perubahan?');
@@ -233,7 +233,7 @@
                             }
                         });
                     </script>
-                    <a href="<?= base_url('export-pdf/' . $konsultasi['id']) ?>" class="bg-oranye-2 text-white py-2 px-4 rounded-md hover:bg-orange-600">EKSPOR PDF</a>
+                    <a href="<?= base_url('export-pdf/' . $konsultasi['id']) ?>" class="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">EKSPOR PDF</a>
 
                 </div>
             </form>

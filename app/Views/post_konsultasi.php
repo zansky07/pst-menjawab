@@ -116,10 +116,10 @@
                         <input type="text" name="pertanyaan1" class="bg-oranye-1 rounded-md p-2 mb-2 w-full" placeholder="Pertanyaan 1" value="<?= old('pertanyaan1', $konsultasi['pertanyaan1'] ?? '') ?>">
                         <input type="text" name="jawaban1" class="bg-oranye-1 rounded-md p-2 ml-4 mb-2 w-full" placeholder="Jawaban pertanyaan 1" value="<?= old('jawaban1', $konsultasi['jawaban1'] ?? '') ?>">
                     </div>
-                    <button id="add-question" class="bg-oranye-2 text-white rounded-md px-4 py-2">TAMBAH PERTANYAAN</button>
+                    <button id="add-question" class="bg-orange-500 text-white rounded-md px-4 py-2">TAMBAH PERTANYAAN</button>
                 </div>
                 <div class="flex flex-col items-center">
-                    <button id="upload-button" type="button" class="bg-oranye-2 text-white rounded-md px-4 py-2 mb-4">PILIH GAMBAR</button>
+                    <button id="upload-button" type="button" class="bg-orange-500 text-white rounded-md px-4 py-2 mb-4">PILIH GAMBAR</button>
                     <input type="file" id="file-input" name="dokumentasi" class="hidden" accept="image/*" />
                     <div id="image-box" class="bg-oranye-1 rounded-md p-8 flex flex-col items-center justify-center w-full">
                         <img
@@ -136,8 +136,8 @@
                 </div>
             </div>
             <div class="flex justify-end mt-6 space-x-4">
-                <button type="submit" class="bg-oranye-2 text-white rounded-md px-4 py-2" onclick="return confirm('Apakah Anda yakin ingin menyimpan data ini?')">SIMPAN</button>
-                <a href="/admin/consultation/detail/<?= $konsultasi['id'] ?>" class="bg-oranye-2 text-white rounded-md px-4 py-2">KEMBALI</a>
+                <button type="submit" class="bg-orange-500 text-white rounded-md px-4 py-2" onclick="return confirm('Apakah Anda yakin ingin menyimpan data ini?')">SIMPAN</button>
+                <a href="/admin/consultation/detail/<?= $konsultasi['id'] ?>" class="bg-orange-500 text-white rounded-md px-4 py-2">KEMBALI</a>
             </div>
         </form>
     </main>

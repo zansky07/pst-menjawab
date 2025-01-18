@@ -29,12 +29,12 @@
 			<h1 class="text-xl md:text-2xl font-bold text-gray-700">Daftar Admin</h1>
 			<a href="/admin/manage/add" class="bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600 transition duration-200 text-sm md:text-base">Tambah Admin</a>
 		</div>
-		<div class="bg-white shadow-md rounded-lg overflow-hidden p-4">
+		<div class="bg-white shadow-md rounded-lg overflow-hidden p-5">
 			<table class="min-w-full" id="myTable" style="margin-top: 4px;">
-				<thead class="bg-orange-600 ">
+				<thead class="bg-orange-600 rounded-xl overflow-hidden">
 					<tr class="text-white text-sm md:text-base">
-						<th class="py-3 px-4">Nama</th>
-						<th class="py-3 px-4 text-center" style="text-align: center;">Aksi</th>
+						<th class="py-3 px-5" style="text-align: center;">Nama</th>
+						<th class="py-3 px-5 text-center" style="text-align: center;">Aksi</th>
 					</tr>
 				</thead>
 				<tbody class="text-left">
@@ -43,8 +43,8 @@
 							<tr class="odd:bg-white even:bg-biru-3 hover:bg-oranye-1">
 								<td class="py-3 px-4 text-sm md:text-base"><?= esc($admin['nama']) ?></td>
 								<td class="py-3 px-4 text-center" style="padding: 10px;">
-									<a href="/admin/manage/detail/<?= $admin['id'] ?>" class="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200 text-sm md:text-base">Detail</a>
-									<a onclick="confirmDelete('/admin/manage/delete/<?= $admin['id'] ?>')" class="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 transition duration-200 ml-2 text-sm md:text-base">Hapus</a>
+									<a href="/admin/manage/detail/<?= $admin['id'] ?>" class="bg-green-500 text-white py-1 px-10 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-green-600">Detail</a>
+									<a onclick="confirmDelete('/admin/manage/delete/<?= $admin['id'] ?>')" class="bg-red-500 text-white py-1 px-10 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600">Hapus</a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

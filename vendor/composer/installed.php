@@ -3,7 +3,7 @@
         'name' => 'codeigniter4/framework',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'a08986611cd52474480731e6e3cd8ab0204b826b',
+        'reference' => '09b8f534e6bbd3f925896e8834374381a771f7e4',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'codeigniter4/framework' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'a08986611cd52474480731e6e3cd8ab0204b826b',
+            'reference' => '09b8f534e6bbd3f925896e8834374381a771f7e4',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -665,7 +665,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'symfony/polyfill-php80' => array(
             'pretty_version' => 'v1.31.0',

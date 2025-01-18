@@ -22,7 +22,7 @@
 <body class="flex flex-col bg-oranye-1 mt-28 md:mt-16">
 	<?php include 'header_admin.php'; ?>
 	<div class="flex-grow z-10 flex-col px-10 w-full max-md:px-5 max-md:max-w-full">
-		<button id="openModalButton" class="self-start px-6 py-2.5 mt-5 ml-14 text-base font-bold text-center text-white bg-oranye-3 rounded-3xl hover:bg-oranye-4 focus:outline-none focus:ring-2 focus:ring-orange-500 max-md:px-5 max-md:ml-2.5" aria-label="Filter"> Filter </button>
+		<button id="openModalButton" class="self-start px-6 py-2.5 mt-5 ml-14 text-base font-bold text-center text-white bg-orange-500 rounded-xl hover:bg-oranye-4 focus:outline-none focus:ring-2 focus:ring-orange-500 max-md:px-5 max-md:ml-2.5" aria-label="Filter"> Filter </button>
 		<form action="<?= base_url('/admin/statistics') ?>" method="get">
 			<div id="filterModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 hidden justify-center items-center z-50">
 				<div class="bg-white p-6 rounded-lg w-96 transform translate-x-[-50%] translate-y-[-50%] absolute top-1/2 left-1/2">
