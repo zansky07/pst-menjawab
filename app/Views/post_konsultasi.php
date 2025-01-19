@@ -8,16 +8,39 @@
     <link rel="icon" href="/assets/images/logo-pst.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    <!-- Add SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const addQuestionButton = document.getElementById('add-question');
             const notulaContainer = document.getElementById('notula-container');
-
             const uploadButton = document.getElementById('upload-button');
             const fileInput = document.getElementById('file-input');
             const uploadedImage = document.getElementById('uploaded-image');
             const uploadText = document.getElementById('upload-text');
             const uploadSizeText = document.getElementById('upload-size-text');
+            const form = document.querySelector('form');
+
+            // Handle form submission with SweetAlert2
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin menyimpan data ini?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#f97316', // orange-500
+                    cancelButtonColor: '#6b7280', // gray-500
+                    confirmButtonText: 'Ya, Simpan',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
 
             // Tambahkan pertanyaan baru
             addQuestionButton.addEventListener('click', function(e) {
@@ -41,7 +64,7 @@
                 notulaContainer.appendChild(answerField);
             });
 
-            // Upload dan tampilkan gambar
+            // Upload dan tampilkan gambar dengan validasi
             uploadButton.addEventListener('click', () => {
                 fileInput.click();
             });
@@ -50,12 +73,17 @@
                 const file = event.target.files[0];
                 if (file) {
                     if (file.size > 2 * 1024 * 1024) {
-                        alert('Ukuran gambar harus kurang dari 2MB!');
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Ukuran gambar harus kurang dari 2MB!',
+                            icon: 'error',
+                            confirmButtonColor: '#f97316'
+                        });
                         fileInput.value = ""; // Reset file input
                     } else {
                         const reader = new FileReader();
                         reader.onload = function(e) {
-                            uploadedImage.src = e.target.result; // Update image src
+                            uploadedImage.src = e.target.result;
                             uploadedImage.style.display = 'block';
                             uploadText.style.display = 'none';
                             uploadSizeText.style.display = 'none';
@@ -136,7 +164,7 @@
                 </div>
             </div>
             <div class="flex justify-end mt-6 space-x-4">
-                <button type="submit" class="bg-orange-500 text-white rounded-md px-4 py-2" onclick="return confirm('Apakah Anda yakin ingin menyimpan data ini?')">SIMPAN</button>
+                <button type="submit" class="bg-orange-500 text-white rounded-md px-4 py-2">SIMPAN</button>
                 <a href="/admin/consultation/detail/<?= $konsultasi['id'] ?>" class="bg-orange-500 text-white rounded-md px-4 py-2">KEMBALI</a>
             </div>
         </form>
