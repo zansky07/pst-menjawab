@@ -65,19 +65,9 @@
 
 			<div class="self-end mt-5 w-full max-w-[1315px] max-md:max-w-full">
 				<div class="flex gap-5 max-md:flex-col">
-					<section class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full" aria-labelledby="statistics-title">
-						<!-- <div class="flex flex-wrap grow gap-px px-7 py-1.5 w-full text-center text-black bg-white max-md:px-5 max-md:mt-7">
-							<div class="flex flex-col self-end mt-20 text-xl whitespace-nowrap max-md:hidden max-md:mt-10" aria-hidden="true">
-								<div>50</div>
-								<div class="mt-4">40</div>
-								<div class="mt-5">30</div>
-								<div class="mt-8">20</div>
-								<div class="flex flex-col px-0.5 mt-7">
-									<div>10</div>
-									<div class="self-start mt-6">0</div>
-								</div>
-							</div>
-						</div> -->
+					<section class="flex flex-col w-6/12 bg-white rounded-xl shadow-lg max-md:ml-0 max-md:w-full" aria-labelledby="statistics-title">
+						<h2 class="px-4 py-2 text-orange-500 font-bold">Grafik Jumlah Konsultasi</h2>
+						<hr>
 						<canvas id="statistikChart" width="400" height="330" class="rounded-xl"></canvas>
 					</section>
 					<section class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full" aria-label="Statistik Summary">
