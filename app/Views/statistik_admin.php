@@ -8,6 +8,7 @@
 	<link rel="icon" href="/assets/images/logo-pst.png">
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<style>
 		body {
@@ -171,9 +172,7 @@
 											<a href="/admin/consultation/detail/
 														
 														<?= $request['id'] ?>" class="px-3 py-2 text-white bg-hijau-1 rounded-md hover:bg-hijau-2"> Detail </a>
-											<a href="/admin/consultation/delete/
-														
-														<?= $request['id'] ?>" class="px-3 py-2 text-white bg-merah-1 rounded-md hover:bg-merah-2"> Hapus </a>
+											<a href="#" onclick="confirmDelete('/admin/consultation/delete/<?= $request['id'] ?>')" class="px-3 py-2 text-white bg-merah-1 rounded-md hover:bg-merah-2"> Hapus </a>
 										</td>
 									</tr> <?php endforeach; ?> <?php else: ?> <tr>
 									<td colspan="4" class="px-6 py-4 text-center text-gray-500">Tidak ada data.</td>
@@ -181,7 +180,10 @@
 					</table>
 				</div>
 				<div class="p-4 bg-white border-t flex justify-center items-center">
-					<div class="flex justify-center items-center space-x-2"> <?php if (isset($pager)): ?> <div class="pagination"> <?= $pager->links() ?> </div> <?php endif; ?> </div>
+					<div class="flex justify-center items-center space-x-2"> <?php if ($pager): ?>
+						<?= $pager->links('default', 'tailwind_full') ?>
+						<?php endif; ?> 
+					</div>
 				</div>
 			</div>
 			<?php include 'footer.php'; ?>
@@ -269,6 +271,24 @@
 						}
 					}]
 				});
+
+				// Fungsi untuk konfirmasi penghapusan
+				function confirmDelete(url) {
+					Swal.fire({
+						title: 'Apakah Anda yakin?',
+						text: "Data yang dihapus tidak dapat dikembalikan!",
+						icon: 'warning',
+						showCancelButton: true,
+						confirmButtonColor: '#d33',
+						cancelButtonColor: '#3085d6',
+						confirmButtonText: 'Ya, hapus!',
+						cancelButtonText: 'Batal'
+					}).then((result) => {
+						if (result.isConfirmed) {
+							window.location.href = url;
+						}
+					});
+				}
 			</script>
 </body>
 
