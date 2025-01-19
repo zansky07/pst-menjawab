@@ -48,8 +48,8 @@
 			</div>
 			
             
-			<div class="flex flex-col self-end mt-4 w-full text-sm leading-none rounded border-2 border-solid border-zinc-100 max-w-[1310px] min-h-[368px] text-zinc-900 max-md:mr-1.5 max-md:max-w-full container mx-auto p-6 mb-12" role="table" aria-label="Daftar Permintaan"> <?php if (session()->getFlashdata('message')): ?> <p style="color: green;"> <?= session()->getFlashdata('message') ?> </p> <?php endif; ?> <div class="flex flex-col mt-10 overflow-hidden rounded-lg shadow-md">
-					<table id="myTable" class="min-w-full border border-gray-200 bg-white">
+			<div class="flex flex-col self-end mt-4 bg-white w-full text-sm leading-none rounded border-2 border-solid border-zinc-100 max-w-[1310px] min-h-[368px] text-zinc-900 max-md:mr-1.5 max-md:max-w-full container mx-auto p-6 mb-12" role="table" aria-label="Daftar Permintaan"> <?php if (session()->getFlashdata('message')): ?> <p style="color: green;"> <?= session()->getFlashdata('message') ?> </p> <?php endif; ?> <div class="flex flex-col mt-10 overflow-hidden rounded-lg shadow-md">
+					<table id="myTable" class="min-w-full border border-gray-200 bg-white"  style="margin-top: 4px;">
 						<thead>
 							<tr class="bg-oranye-2 text-white text-sm font-bold uppercase">
 								<th class="px-6 py-3 text-left">No</th>
@@ -62,7 +62,7 @@
 						</thead>
 						<tbody> <?php if (!empty($feedbacks)) : ?>
 								<?php foreach ($feedbacks as $index => $feedback) : ?>
-									<tr class="border-b">
+									<tr class="border-b odd:bg-white even:bg-biru-3 hover:bg-oranye-1">
 										<td class="px-6 py-3"><?= $index + 1 ?></td>
 										<td class="px-6 py-3"><?= $feedback['token_konsultasi'] ?></td>
 										<td class="px-6 py-3"><?= htmlspecialchars($feedback['konsultasi_topik'], ENT_QUOTES, 'UTF-8') ?></td>
@@ -91,6 +91,9 @@
 				$('#myTable').DataTable({
 					responsive: true, // Responsif
 					scrollX: true,    // Scroll horizontal
+					language: {
+					url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Indonesian.json"
+				}
 				});
 			});
 
