@@ -27,6 +27,7 @@ class AuthController extends BaseController
                 session()->set([
                     'id'       => $admin['id'],
                     'username' => $admin['username'],
+                    'role' => $admin['role'],
                     'logged_in' => true
                 ]);
 
