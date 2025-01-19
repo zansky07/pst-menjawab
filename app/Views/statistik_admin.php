@@ -48,7 +48,7 @@
 						</select>
 					</div>
 					<div class="flex justify-between mt-4">
-						<button id="closeModalButton" class="px-6 py-2 text-white bg-merah-1 rounded-md hover:bg-merah-2">Tutup</button>
+						<button type="button" id="closeModalButton" class="px-6 py-2 text-white bg-merah-1 rounded-md hover:bg-merah-2">Tutup</button>
 						<button type="submit" id="applyFilterButton" class="px-6 py-2 text-white bg-hijau-1 rounded-md hover:bg-hijau-2">Terapkan</button>
 					</div>
 					</li>
