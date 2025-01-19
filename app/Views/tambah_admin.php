@@ -63,13 +63,6 @@
                 <input type="text" class="w-full px-3 py-2 bg-orange-100 border border-orange-300 rounded-md"
                     name="whatsapp" value="<?= old('whatsapp') ?>" maxlength="20" required>
             </div>
-            <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label class="block text-gray-700 font-bold mb-2 md:mb-0 md:col-span-1 md:flex md:items-center">Role</label>
-                <select name="role" class="w-full px-3 py-2 bg-orange-500 text-white border border-orange-300 rounded-md">
-                    <option value="admin" <?= old('role') == 'admin' ? 'selected' : '' ?>>Admin</option>
-                    <option value="superadmin" <?= old('role') == 'superadmin' ? 'selected' : '' ?>>Superadmin</option>
-                </select>
-            </div>
             <br>
             <div class="flex justify-end space-x-4">
                 <a href="/admin/settings/admin" id="kembali" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">Kembali</a>

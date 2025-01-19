@@ -25,8 +25,7 @@ class AdminManagementController extends BaseController
             'nama' => 'required|max_length[20]',
             'email' => 'required|valid_email|max_length[50]',
             'password' => 'required|min_length[6]',
-            'whatsapp' => 'required|max_length[20]',
-            'role' => 'required'
+            'whatsapp' => 'required|max_length[20]'
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
@@ -47,7 +46,7 @@ class AdminManagementController extends BaseController
             'email' => $this->request->getPost('email'),
             'password' => $hashedPassword,
             'whatsapp' => $this->request->getPost('whatsapp'),
-            'role' => $this->request->getPost('role')
+            'role' => 'admin'
         ]);
 
         return $this->response->setJSON([

@@ -263,10 +263,16 @@ class AdminContentController extends BaseController
             if (!session()->get('logged_in')) { 
                 return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
             } 
+        
             $adminModel = new AdminModel();  
             $data['admins'] = $adminModel->findAll(); 
+        
+            // Ambil data role dari session
+            $role = session()->get('role');  // Pastikan role disimpan dalam session setelah login
+            $data['role'] = $role;  // Kirimkan role ke view
+        
             return view('pengaturan_admin', $data); 
-        }
+        }        
 
         public function pengaturan_konsultan() { 
             // Periksa apakah pengguna sudah login 
