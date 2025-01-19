@@ -15,6 +15,26 @@
 			font-family: 'Poppins', sans-serif;
 			background-color: #f9f2f1;
 		}
+		.table-container {
+			overflow-x: auto;
+		}
+		.action-buttons {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		.action-buttons a {
+			transition: all 0.3s ease;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0.375rem 0.75rem;
+			font-size: 0.875rem;
+			border-radius: 0.375rem;
+			min-width: 70px;
+			text-align: center;
+		}
 	</style>
 </head>
 
@@ -23,11 +43,16 @@
 	<?php include 'header_admin.php'; ?>
 
 	<main class="flex-grow mb-24">
-		<div class="container mx-auto p-6"> <?php if (session()->getFlashdata('message')): ?> <p class="text-green-500"> <?= session()->getFlashdata('message') ?> </p> <?php endif; ?>
+		<div class="container mx-auto p-6">
+			<?php if (session()->getFlashdata('message')): ?>
+				<p class="text-green-500"><?= session()->getFlashdata('message') ?></p>
+			<?php endif; ?>
+
 			<!-- Filter Button -->
 			<div class="flex justify-end mb-4">
 				<button id="filterBtn" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-xl">Filter</button>
 			</div>
+
 			<!-- Filter Modal -->
 			<div id="filterModal" class="fixed inset-0 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
 				<div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
@@ -45,42 +70,73 @@
 						</div>
 						<div class="flex justify-end">
 							<button type="button" id="closeModalBtn" class="bg-gray-500 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-gray-600 mr-2">Close</button>
-							<button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-orange-600">Apply</button>
+							<button type="submit" class="bg-orange-600 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-orange-600">Apply</button>
 						</div>
 					</form>
 				</div>
 			</div>
-			<div class="bg-white shadow-md rounded-lg overflow-hidden">
-				<div class="table-container">
-					<table class="min-w-full bg-white">
-						<thead class="bg-orange-600 text-white">
+
+			<div class="table-container w-full overflow-x-auto">
+				<table class="min-w-full border border-gray-200 bg-white shadow-md">
+					<thead class="bg-orange-600 text-white">
+						<tr class="bg-oranye-2 text-white text-sm font-bold uppercase">
+							<th class="px-4 py-3 text-left whitespace-nowrap">Token</th>
+							<th class="px-4 py-3 text-left whitespace-nowrap">Topik</th>
+							<th class="px-4 py-3 text-center whitespace-nowrap">Status</th>
+							<th class="px-4 py-3 text-center whitespace-nowrap">Aksi</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php if (!empty($requests) && is_array($requests)): ?>
+							<?php foreach ($requests as $request): ?>
+								<tr class="odd:bg-white even:bg-biru-3 hover:bg-oranye-1">
+									<td class="px-4 py-3 text-gray-800 whitespace-nowrap">
+										<?= esc($request['token_konsultasi']) ?>
+									</td>
+									<td class="px-4 py-3 text-gray-800 max-w-xs truncate">
+										<?= esc($request['topik']) ?>
+									</td>
+									<td class="px-4 py-3 text-center">
+										<span class="inline-block px-3 py-1 text-sm font-semibold rounded-full                                         														
+										<?php
+										if ($request['status_konsultasi'] === 'Selesai') echo 'bg-hijau-1 text-white';
+										elseif ($request['status_konsultasi'] === 'Ditolak') echo 'bg-merah-1 text-white';
+										elseif ($request['status_konsultasi'] === 'Sedang Diproses') echo 'bg-oranye-2 text-white';
+										else echo 'bg-gray-300 text-gray-700';
+										?>">
+											<?= esc($request['status_konsultasi']) ?>
+										</span>
+									</td>
+									<td class="px-4 py-3 text-center">
+										<div class="action-buttons">
+											<a href="/admin/consultation/detail/<?= $request['id'] ?>" 
+												class="bg-hijau-1 text-white hover:bg-hijau-2">
+												Detail
+											</a>
+											<a href="#" 
+												onclick="confirmDelete('/admin/consultation/delete/<?= $request['id'] ?>')" 
+												class="bg-merah-1 text-white hover:bg-merah-2">
+												Hapus
+											</a>
+										</div>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+						<?php else: ?>
 							<tr>
-								<th class="py-3 px-5 text-lg">Token</th>
-								<th class="py-3 px-5 text-lg">Topik</th>
-								<th class="py-3 px-5 text-lg">Status</th>
-								<th class="py-3 px-5 text-lg">Aksi</th>
+								<td colspan="4" class="px-4 py-3 text-center text-gray-500">Tidak ada data.</td>
 							</tr>
-						</thead>
-						<tbody> <?php if (!empty($requests) && is_array($requests)): ?> <?php foreach ($requests as $request): ?> <tr class="border-b">
-										<td class="py-2 px-4"> <?= esc($request['token_konsultasi']) ?> </td>
-										<td class="py-2 px-4"> <?= esc($request['topik']) ?> </td>
-										<td class="py-2 px-4"> <?= esc($request['status_konsultasi']) ?> </td>
-										<td class="py-2 px-4">
-											<div class="flex justify-around">
-												<a href="/admin/consultation/detail/
-																<?= $request['id'] ?>" class="bg-green-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-green-600">Detail </a>
-												<a onclick="confirmDelete('/admin/consultation/delete/<?= $request['id'] ?>')"
-													class="bg-red-500 text-white py-1 px-2 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus </a>
-											</div>
-										</td>
-									</tr> <?php endforeach; ?> <?php else: ?> <tr>
-									<td colspan="4" class="py-2 px-4">Tidak ada data.</td>
-								</tr> <?php endif; ?> </tbody>
-					</table>
-				</div>
-				<!-- Pagination -->
-				<div class="p-4 bg-white border-t flex justify-center items-center">
-					<div class="flex justify-center items-center space-x-2"> <?php if ($pager): ?> <?= $pager->links('default', 'tailwind_full') ?> <?php endif; ?> </div>
+						<?php endif; ?>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Pagination -->
+			<div class="p-4 bg-white border-t flex justify-center items-center">
+				<div class="flex justify-center items-center space-x-2">
+					<?php if ($pager): ?>
+						<?= $pager->links('default', 'tailwind_full') ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
