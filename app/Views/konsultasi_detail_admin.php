@@ -269,8 +269,12 @@
                             $disabled = '';
 
                             // Logic for disabling options
-                            if ($konsultasi['status_konsultasi'] == 'Sedang diproses' && $status_konsultasi == 'Sedang diproses') {
-                                $disabled = 'disabled';
+                            if ($konsultasi['status_konsultasi'] == 'Sedang diproses') {
+                                if ($status_konsultasi == 'Sedang diproses') {
+                                    $disabled = 'disabled';
+                                } elseif ($status_konsultasi == 'Selesai') {
+                                    $disabled = 'disabled';
+                                }
                             } elseif ($konsultasi['status_konsultasi'] == 'Disetujui' && in_array($status_konsultasi, ['Sedang diproses', 'Ditolak'])) {
                                 $disabled = 'disabled';
                             } elseif (in_array($konsultasi['status_konsultasi'], ['Ditolak', 'Selesai'])) {
