@@ -153,6 +153,7 @@ class KonsultasiController extends BaseController
     
             // Jika token ditemukan, kirimkan data ke view
             $data['reservation'] = [
+                'id'=> $reservation['id'],
                 'tanggal_reservasi' => $tanggal_reservasi_indo,
                 'status' => $reservation['status_konsultasi'],
                 'zoom' => $reservation['link_zoom'],

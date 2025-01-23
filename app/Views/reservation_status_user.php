@@ -111,14 +111,10 @@
                 </div>
                 <?php if ($reservation['kehadiran'] == 'Datang'): ?>
                     <div class="grid grid-cols-3 gap-4 mt-4">
-                        <p class="col-span-1 mb-2 text-left">Dokumentasi</p>
-                        <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                            Unduh Dokumentasi <?= esc($reservation['dokumentasi']) ?>
-                        </button>
                         <p class="col-span-1 mb-2 text-left">Notula</p>
-                        <button class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                            Unduh Notula <?= esc($reservation['notula']) ?>
-                        </button>
+                        <a href="<?= base_url('export-pdf/' . $reservation['id']) ?>" class="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                            Unduh Notula
+                        </a>
                     </div>
                     <form action="/consultation/feedback" method="post">
                         <input type="hidden" name="token" value="<?= esc(old('token', $token)) ?>">
