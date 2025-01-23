@@ -11,6 +11,12 @@ class KonsultanManagementController extends BaseController
         if (!session()->get('logged_in')) { 
             return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
         } 
+
+        // Periksa apakah pengguna memiliki role superadmin
+        if (session()->get('role') !== 'superadmin') {
+            return redirect()->to('/admin/dashboard')->with('error', 'Anda tidak memiliki izin untuk mengakses halaman ini!');
+        }
+
         return view('tambah_konsultan');
     }
 

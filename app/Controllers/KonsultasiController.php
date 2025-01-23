@@ -285,7 +285,7 @@ class KonsultasiController extends BaseController
                         <li><strong>Jadwal:</strong> {$konsultasi['jadwal_konsultasi']}</li>
                     </ul>
                     <p>Kami mohon kesediaannya mengisi form feedback berikut:</p>
-                    <p>[Link Form Feedback]</p>
+                    <p>http://pstmenjawab.my.id/consultation/status?token={$konsultasi['token_konsultasi']}</p>
                     <p>Terima kasih,<br>PST Menjawab BPS DKI Jakarta</p>
                 ";
                 $email->setMessage($emailMessage);

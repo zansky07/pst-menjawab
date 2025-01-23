@@ -4,10 +4,22 @@ namespace App\Helpers;
 
 class WAHelper{
 
+    private static $apiKey;
+
+    private static function initApiKey()
+    {
+        if (!self::$apiKey) {
+            self::$apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
+
+        }
+        return self::$apiKey;
+    }
+
+
     public static function send_wa_notification($phoneNumber, $message)
     {
-        $url = 'https://baileyswaserver-production.up.railway.app/send-message'; // URL server Node.js
         
+        $url = 'https://baileyswa.pstmenjawab.my.id/send-message';
         // Memformat nomor telepon
         if ($phoneNumber[0] == '0') {
             $phoneNumber = "62" . ltrim($phoneNumber, $phoneNumber[0]);
@@ -29,6 +41,7 @@ class WAHelper{
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json',
+            'x-api-key: ' .self::initApiKey()
         ]);
     
         $response = curl_exec($ch);

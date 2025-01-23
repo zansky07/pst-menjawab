@@ -22,7 +22,7 @@
     <?php include 'header_user.php'; ?>
 
     <div class="max-w-lg mx-auto rounded-lg shadow-lg mt-20">
-        <form action="/consultation/status" method="post">
+        <form action="/consultation/status" method="get">
             <?= csrf_field() ?>
             <div class="flex items-center mb-4">
                 <input
