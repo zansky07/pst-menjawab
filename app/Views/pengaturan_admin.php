@@ -48,9 +48,13 @@
 								<td class="py-3 px-4 text-sm md:text-base"><?= esc($admin['nama']) ?></td>
 								<td class="py-3 px-4 text-center" style="padding: 10px;">
 									<a href="/admin/manage/detail/<?= $admin['id'] ?>" class="bg-green-500 text-white py-1 px-10 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-green-600">Detail</a>
-									<?php if ($role === 'superadmin'): ?>
-										<a onclick="confirmDelete('/admin/manage/delete/<?= $admin['id'] ?>')" class="bg-red-500 text-white py-1 px-10 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600">Hapus</a>
-									<?php endif; ?>
+									<?php if ($admin['role'] !== 'superadmin'): ?>
+                                        <!-- Tombol Hapus dengan konfirmasi -->
+                                        <a onclick="confirmDelete('/admin/manage/delete/<?= $admin['id'] ?>')" class="bg-red-500 text-white py-1 px-10 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600">Hapus</a>
+                                    <?php else: ?>
+                                        <!-- Tombol dengan alert jika role superadmin -->
+                                        <a onclick="showAlert()" class="bg-red-500 text-white py-1 px-10 rounded-full w-full text-center mx-1 text-sm transition duration-300 hover:bg-red-600">Hapus</a>
+                                    <?php endif; ?>
 								</td>
 							</tr>
 						<?php endforeach; ?>
@@ -104,6 +108,15 @@
 				confirmButtonText: 'OK'
 			});
 		<?php endif; ?>
+		
+		function showAlert() {
+        Swal.fire({
+            title: 'Akun ini Permanen!',
+            text: 'Anda tidak dapat menghapus superadmin.',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+    }
 	</script>
 </body>
 

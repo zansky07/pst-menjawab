@@ -271,7 +271,7 @@ class AdminContentController extends BaseController
             
             // Periksa apakah pengguna memiliki role superadmin
             if ($role !== 'superadmin') {
-                return redirect()->back()->with('error', 'Anda tidak memiliki izin akses terhadap pengaturan admin!');
+                return redirect()->back()->with('error', 'Anda tidak memiliki izin akses terhadap pengaturan admin.');
             }
             
             $adminModel = new AdminModel();  
