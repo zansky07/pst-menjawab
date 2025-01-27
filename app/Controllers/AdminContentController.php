@@ -255,6 +255,8 @@ class AdminContentController extends BaseController
         $konsultanModel = new KonsultanModel(); 
         $data['admins'] = $adminModel->findAll(); 
         $data['konsultans'] = $konsultanModel->findAll(); 
+
+        
         return view('pengaturan_admin', $data); 
         }
 
@@ -263,16 +265,22 @@ class AdminContentController extends BaseController
             if (!session()->get('logged_in')) { 
                 return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
             } 
-        
+            
+            // Ambil data role dari session
+            $role = session()->get('role'); // Pastikan role disimpan dalam session setelah login
+            
+            // Periksa apakah pengguna memiliki role superadmin
+            if ($role !== 'superadmin') {
+                return redirect()->back()->with('error', 'Anda tidak memiliki izin akses terhadap pengaturan admin!');
+            }
+            
             $adminModel = new AdminModel();  
             $data['admins'] = $adminModel->findAll(); 
-        
-            // Ambil data role dari session
-            $role = session()->get('role');  // Pastikan role disimpan dalam session setelah login
-            $data['role'] = $role;  // Kirimkan role ke view
-        
+            
+            $data['role'] = $role; // Kirimkan role ke view
+            
             return view('pengaturan_admin', $data); 
-        }        
+        }               
 
         public function pengaturan_konsultan() { 
             // Periksa apakah pengguna sudah login 

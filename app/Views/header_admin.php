@@ -54,6 +54,26 @@
     </div>
 </nav>
 
+<?php if (session()->getFlashdata('error')): ?>
+    <style>
+        .alert {
+            background-color: #f8d7da; /* Latar belakang merah muda */
+            color: #dc3545; /* Warna teks merah */
+            font-weight: bold; /* Teks bold */
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb;
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+
+    <div class="alert">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+<?php endif; ?>
+
 <script>
     document.getElementById('dropdownNavbarLink').addEventListener('click', function() {
         const dropdown = document.getElementById('dropdownNavbar');
