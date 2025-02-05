@@ -1,3 +1,82 @@
+# Struktur Aplikasi Web PST Menjawab
+
+Repository ini berisi aplikasi web berbasis CodeIgniter untuk PST (Pelayanan Statistik Terpadu) Menjawab, sebuah layanan konsultasi statistik dari BPS DKI Jakarta.
+
+## Struktur Proyek
+
+### File Konfigurasi
+- Config/ - Berisi berbagai file konfigurasi:
+  - Paths.php - Mendefinisikan path direktori sistem
+  - Routes.php - Mendefinisikan routing URL
+  - Email.php - Pengaturan konfigurasi email
+
+### Controller
+- Controllers/ - Berisi kelas-kelas controller:
+  - AdminContentController.php - Menangani dashboard admin dan statistik
+  - AdminManagementController.php - Mengelola pengguna admin
+  - AuthController.php - Menangani autentikasi
+  - ExportController.php - Mengelola ekspor data
+  - FeedbackController.php - Menangani umpan balik konsultasi
+  - JadwalKonsultasiController.php - Mengelola jadwal konsultasi
+  - KonsultanManagementController.php - Mengelola konsultan
+  - KonsultasiController.php - Menangani proses konsultasi
+  - UserContentController.php - Mengelola konten untuk pengguna
+
+### Model
+- Models/ - Berisi model-model database:
+  - AdminModel.php - Model data admin
+  - KonsultanModel.php - Model data konsultan
+  - KonsultasiModel.php - Model data konsultasi
+  - LaporanModel.php - Model data laporan/umpan balik
+
+### View
+- Views/ - Berisi template tampilan:
+  - Tampilan Admin:
+    - pengaturan_konsultan.php
+    - post_konsultasi.php
+    - statistik_admin.php
+    - tambah_admin.php
+    - tambah_konsultan.php
+  - Tampilan Pengguna:
+    - reservation_status_user.php
+    - index.php (halaman utama)
+  - Tampilan Umum:
+    - footer.php
+    - Halaman error
+
+### Aset
+- public/assets/
+  - css/
+    - form.css - Styling formulir
+    - styles.css - Style global
+  - js/
+    - Chatbot.js - Fungsionalitas chatbot
+
+### Helper dan Filter
+- Helpers/
+  - WAHelper.php - Helper integrasi WhatsApp
+- Filters/
+  - RecordVisitor.php - Filter pelacakan pengunjung
+
+## Fitur Utama
+1. Pengelolaan konsultasi pengguna
+2. Dashboard dan statistik admin
+3. Manajemen konsultan
+4. Sistem umpan balik
+5. Kemampuan ekspor (PDF, CSV, Excel)
+6. Notifikasi email dan WhatsApp
+7. Integrasi chatbot
+8. Pelacakan pengunjung
+9. Autentikasi pengguna
+
+## Teknologi yang Digunakan
+- Backend: CodeIgniter 4
+- Frontend: TailwindCSS
+- Database: MySQL (tersirat dari model)
+- Tambahan: Integrasi API WhatsApp, Integrasi Email
+
+Aplikasi web ini merupakan sistem komprehensif untuk mengelola konsultasi statistik, dengan antarmuka terpisah untuk administrator dan pengguna, saluran komunikasi terintegrasi, dan kemampuan pelaporan yang kuat.
+
 # CodeIgniter 4 Framework
 
 ## What is CodeIgniter?
