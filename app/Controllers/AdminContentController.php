@@ -5,6 +5,7 @@ use App\Models\AdminModel;
 use App\Models\LaporanModel;
 use App\Models\KonsultanModel;
 use App\Models\KonsultasiModel;
+use App\Models\KeywordModel;
 
 class AdminContentController extends BaseController
 {
@@ -290,6 +291,16 @@ class AdminContentController extends BaseController
             $konsultanModel = new KonsultanModel(); 
             $data['konsultans'] = $konsultanModel->findAll(); 
             return view('pengaturan_konsultan', $data); 
+        }
+
+        public function pengaturan_keyword() { 
+            // Periksa apakah pengguna sudah login 
+            if (!session()->get('logged_in')) { 
+                return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
+            } 
+            $keywordModel = new KeywordModel(); 
+            $data['keywords'] = $keywordModel->getAll(); 
+            return view('pengaturan_keyword', $data); 
         }
 
         public function feedback(){

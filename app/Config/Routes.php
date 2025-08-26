@@ -31,6 +31,7 @@ $routes->get('/admin/settings', 'AdminContentController::pengaturan');
 $routes->get('/admin/dashboard', 'AdminController::dashboard');
 $routes->get('/admin/settings/admin', 'AdminContentController::pengaturan_admin');
 $routes->get('/admin/settings/consultant', 'AdminContentController::pengaturan_konsultan');
+$routes->get('/admin/settings/keyword', 'AdminContentController::pengaturan_keyword');
 $routes->get('export-pdf/(:num)', 'ExportController::exportPDF/$1');
 
 // Consultation Management Routes
@@ -61,3 +62,16 @@ $routes->get('/admin/consultant/add', 'KonsultanManagementController::create');
 $routes->post('/admin/consultant/store', 'KonsultanManagementController::store');
 $routes->get('/admin/consultant/detail/(:num)', 'KonsultanManagementController::detail/$1');
 $routes->get('/admin/consultant/delete/(:num)', 'KonsultanManagementController::delete/$1');
+
+// Keyword Management Route
+$routes->group('/admin/manage/keyword', function($routes) {
+    $routes->get('add', 'KeywordManagementController::create'); 
+    $routes->post('store', 'KeywordManagementController::store');       // tambah keyword
+    $routes->get('edit/(:segment)', 'KeywordManagementController::edit/$1');   // form edit
+    $routes->post('update/(:segment)', 'KeywordManagementController::update/$1'); // update
+    $routes->get('delete/(:segment)', 'KeywordManagementController::delete/$1'); // hapus
+});
+
+// Endpoint JSON untuk chatbot
+$routes->get('api/keywords', 'KeywordManagementController::getJson');
+

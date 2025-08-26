@@ -39,6 +39,9 @@
                             <li>
                                 <a href="/admin/settings/consultant" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Konsultan</a>
                             </li>
+                            <li>
+                                <a href="/admin/settings/keyword" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Chatbot</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
