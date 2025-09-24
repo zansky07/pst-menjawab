@@ -38,7 +38,7 @@
         {
             $data = $this->getAll();
             foreach ($data as &$item) {
-                if ($item['id'] === $id) {
+                if ($item['id'] == $id) {
                     $item['keyword']       = $keyword;
                     $item['link'] = $response_link;
                     break;
