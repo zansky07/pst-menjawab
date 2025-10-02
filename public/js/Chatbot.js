@@ -197,12 +197,12 @@ function Chatbot() {
 
       // Kirim ke Gemini dengan konteks training data
       const response = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent",
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "x-goog-api-key": "AIzaSyBwTE_iWrs3-jgHJYCvEn8bVkp0zrmWIVM",
+            "x-goog-api-key": "AIzaSyBHCo4SetoTpe_XtItCFIC8uZl2crLp-i8",
           },
           body: JSON.stringify({
             contents: [
