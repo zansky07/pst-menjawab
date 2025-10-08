@@ -57,6 +57,17 @@ const handleUserQuery = (query) => {
 function formatMessage(text) {
   if (!text) return "";
 
+  // escape karakter HTML dasar
+  text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  // lanjutkan formatting markdown/link dsb
+  text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+  text = text.replace(/`([^`]+)`/g, "<code>$1</code>");
+  text = text.replace(
+    /(https?:\/\/[^\s]+)/g,
+    '<a href="$1" target="_blank" class="text-blue-600 underline">$1</a>'
+  );
+
   let formattedText = text;
 
   // Format URLs with clickable links (process this first)
@@ -325,8 +336,8 @@ function Chatbot() {
                 dangerouslySetInnerHTML={{
                   __html:
                     message.role === "assistant"
-                      ? formatMessage(message.content)
-                      : message.content,
+                      ? DOMPurify.sanitize(formatMessage(message.content))
+                      : DOMPurify.sanitize(message.content),
                 }}
               />
               {message.role === "user" && (
