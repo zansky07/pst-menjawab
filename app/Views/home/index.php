@@ -264,7 +264,7 @@
             <h2 class="welcome2">PELAYANAN STATISTIK TERPADU</h2>
             <h2 class="welcome2">BPS PROVINSI DKI JAKARTA</h2>
             <iframe 
-                src="https://www.youtube.com/embed/Ylj_s-4pbFY?si=nywd3FCGBuHY8rgT" 
+                src="<?= esc($videoLink) ?>" 
                 title="Panduan"
                 class="mx-auto"
                 style="margin-top: 40px; width: 100%; max-width: 600px; height: auto; aspect-ratio: 16/9;"

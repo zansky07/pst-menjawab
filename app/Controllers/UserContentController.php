@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\VideoModel;
 
 class UserContentController extends Controller
 {
@@ -13,7 +14,12 @@ class UserContentController extends Controller
     public function index()
     {
         // Menampilkan halaman beranda
-        return view('home/index');
+        $videoModel = new VideoModel();
+        $video = $videoModel->first();
+
+        return view('home/index', [
+            'videoLink' => $video ? $video['link_video'] : null
+        ]);
     }
 
     public function chatbot(): string

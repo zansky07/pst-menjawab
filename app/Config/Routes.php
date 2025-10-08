@@ -32,7 +32,11 @@ $routes->get('/admin/dashboard', 'AdminController::dashboard');
 $routes->get('/admin/settings/admin', 'AdminContentController::pengaturan_admin');
 $routes->get('/admin/settings/consultant', 'AdminContentController::pengaturan_konsultan');
 $routes->get('/admin/settings/keyword', 'AdminContentController::pengaturan_keyword');
+$routes->get('/admin/settings/video', 'AdminContentController::pengaturan_video');
 $routes->get('export-pdf/(:num)', 'ExportController::exportPDF/$1');
+
+// Management Video
+$routes->post('/admin/settings/video/update', 'VideoController::update');
 
 // Consultation Management Routes
 $routes->get('/admin/consultation/delete/(:num)', 'KonsultasiController::delete/$1');

@@ -6,6 +6,7 @@ use App\Models\LaporanModel;
 use App\Models\KonsultanModel;
 use App\Models\KonsultasiModel;
 use App\Models\KeywordModel;
+use App\Models\VideoModel;
 
 class AdminContentController extends BaseController
 {
@@ -301,6 +302,20 @@ class AdminContentController extends BaseController
             $keywordModel = new KeywordModel(); 
             $data['keywords'] = $keywordModel->getAll(); 
             return view('pengaturan_keyword', $data); 
+        }
+
+        public function pengaturan_video() { 
+            // Periksa apakah pengguna sudah login 
+            if (!session()->get('logged_in')) { 
+                return redirect()->to('/admin/login')->with('error', 'Silakan login terlebih dahulu!'); 
+            } 
+
+            $model = new VideoModel();
+            $video = $model->first();
+
+            return view('pengaturan_video', [
+                'videoLink' => $video ? $video['link_video'] : null
+            ]);
         }
 
         public function feedback(){
