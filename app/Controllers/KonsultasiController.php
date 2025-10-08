@@ -56,6 +56,17 @@ class KonsultasiController extends BaseController
             return redirect()->to('/consultation/reserve')->withInput();
         }
 
+        $recaptchaResponse = $this->request->getPost('g-recaptcha-response');
+        $secretKey = getenv('RECAPTCHA_SECRET_KEY') ?: RECAPTCHA_SECRET_KEY;
+
+        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$recaptchaResponse}");
+        $responseKeys = json_decode($response, true);
+
+        if (!$responseKeys['success']) {
+            return redirect()->back()->with('error', 'Verifikasi CAPTCHA gagal!')->withInput();
+        }
+
+
         // Buat token unik untuk reservasi
         $token = strtoupper(uniqid('PST'));
 

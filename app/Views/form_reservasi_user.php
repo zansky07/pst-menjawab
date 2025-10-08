@@ -11,6 +11,7 @@
     <link href="<?= base_url('assets/css/form.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -129,6 +130,9 @@
                     <span class="text-red-500 text-sm"><?= session()->getFlashdata('validationErrors')['deskripsi'] ?></span>
                 <?php endif; ?>
             </div>
+            
+            <div class="g-recaptcha mb-4" data-sitekey="<?= getenv('RECAPTCHA_SITE_KEY') ?: RECAPTCHA_SITE_KEY ?>"></div>
+
 
             <!-- Tombol Submit -->
             <div class="mb-4">
@@ -142,6 +146,8 @@
     <script>
         document.getElementById('reservationForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Mencegah pengiriman formulir default
+
+            
 
             // Menampilkan SweetAlert untuk konfirmasi
             Swal.fire({
