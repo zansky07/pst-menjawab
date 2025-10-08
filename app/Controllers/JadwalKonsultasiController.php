@@ -116,19 +116,19 @@ class JadwalKonsultasiController extends BaseController
         }
 
         // Kirim notifikasi ke WhatsApp
-        $message = "🔔 [ *RESERVASI KONSULTASI ONLINE SUDAH DIJADWALKAN* ] 🔔\n\n";
-        $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
-        $message .= "Reservasi konsultasi Anda sudah dijadwalkan! Berikut detailnya:\n\n";
-        $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
-        $message .= "*Topik:* {$konsultasi['topik']}\n";
-        $message .= "*Tanggal:* {$tanggal}\n";
-        $message .= "*Jam:* {$jam} WIB\n";
-        $message .= "*Link Zoom:* {$data['link_zoom']}\n";
-        $message .= "*Token:* {$konsultasi['token_konsultasi']}\n\n";
-        $message .= "Kami mohon kehadiran Anda.\n";
-        $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+        // $message = "🔔 [ *RESERVASI KONSULTASI ONLINE SUDAH DIJADWALKAN* ] 🔔\n\n";
+        // $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
+        // $message .= "Reservasi konsultasi Anda sudah dijadwalkan! Berikut detailnya:\n\n";
+        // $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
+        // $message .= "*Topik:* {$konsultasi['topik']}\n";
+        // $message .= "*Tanggal:* {$tanggal}\n";
+        // $message .= "*Jam:* {$jam} WIB\n";
+        // $message .= "*Link Zoom:* {$data['link_zoom']}\n";
+        // $message .= "*Token:* {$konsultasi['token_konsultasi']}\n\n";
+        // $message .= "Kami mohon kehadiran Anda.\n";
+        // $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
 
-        WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
+        // WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
 
         // Redirect ke halaman notifikasi dengan pesan sukses
         return redirect()->to('/admin/consultation/detail/' . $konsultasi_id)

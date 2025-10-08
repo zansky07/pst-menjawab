@@ -96,21 +96,21 @@ class KonsultasiController extends BaseController
             <p>Terima kasih,<br>PST Menjawab BPS DKI Jakarta</p>
         ");
 
-        $message = "🔔 [ *RESERVASI KONSULTASI ONLINE BERHASIL* ] 🔔\n\n";
-                $message .= "Halo, {$data['nama_konsumen']}!\n\n";
-                $message .= "Reservasi konsultasi Anda berhasil! Berikut detailnya:\n\n";
-                $message .= "*Nama:* {$data['nama_konsumen']}\n\n";
-                $message .= "*Topik:* {$data['topik']}\n";
-                $message .= "*Kategori:* {$data['kategori']}\n";
-                $message .= "*Lingkup:* {$data['lingkup']}\n";
-                $message .= "*Deskripsi:* {$data['deskripsi']}\n";
-                $message .= "*Token:* {$data['token_konsultasi']}\n\n";
-                $message .= "Kami akan menghubungi Anda untuk langkah selanjutnya.\n";
-                $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+        // $message = "🔔 [ *RESERVASI KONSULTASI ONLINE BERHASIL* ] 🔔\n\n";
+        //         $message .= "Halo, {$data['nama_konsumen']}!\n\n";
+        //         $message .= "Reservasi konsultasi Anda berhasil! Berikut detailnya:\n\n";
+        //         $message .= "*Nama:* {$data['nama_konsumen']}\n\n";
+        //         $message .= "*Topik:* {$data['topik']}\n";
+        //         $message .= "*Kategori:* {$data['kategori']}\n";
+        //         $message .= "*Lingkup:* {$data['lingkup']}\n";
+        //         $message .= "*Deskripsi:* {$data['deskripsi']}\n";
+        //         $message .= "*Token:* {$data['token_konsultasi']}\n\n";
+        //         $message .= "Kami akan menghubungi Anda untuk langkah selanjutnya.\n";
+        //         $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
 
-        // Kirim notifikasi ke WhatsApp
+        // // Kirim notifikasi ke WhatsApp
 
-        WAHelper::send_wa_notification($data['whatsapp_konsumen'], $message);
+        // WAHelper::send_wa_notification($data['whatsapp_konsumen'], $message);
 
         if ($email->send() ) {
             session()->setFlashdata('success', 'Reservasi berhasil. Email pemberitahuan telah dikirim.');
@@ -254,17 +254,17 @@ class KonsultasiController extends BaseController
             }
 
             // Kirim notifikasi WhatsApp penolakan
-            $message = "🔔 [ *RESERVASI KONSULTASI ONLINE ANDA DITOLAK* ] 🔔\n\n";
-            $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
-            $message .= "Maaf, Reservasi konsultasi Anda telah kami tolak! Berikut detailnya:\n\n";
-            $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
-            $message .= "*Topik:* {$konsultasi['topik']}\n";
-            $message .= "*Alasan Penolakan:* {$data['alasan_penolakan']}\n";
-            $message .= "*Token:* {$konsultasi['token_konsultasi']}\n\n";
-            $message .= "Mohon maaf atas ketidaknyamanannya.\n";
-            $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+            // $message = "🔔 [ *RESERVASI KONSULTASI ONLINE ANDA DITOLAK* ] 🔔\n\n";
+            // $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
+            // $message .= "Maaf, Reservasi konsultasi Anda telah kami tolak! Berikut detailnya:\n\n";
+            // $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
+            // $message .= "*Topik:* {$konsultasi['topik']}\n";
+            // $message .= "*Alasan Penolakan:* {$data['alasan_penolakan']}\n";
+            // $message .= "*Token:* {$konsultasi['token_konsultasi']}\n\n";
+            // $message .= "Mohon maaf atas ketidaknyamanannya.\n";
+            // $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
 
-            WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
+            // WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
 
         } else if ($status_konsultasi == 'Selesai') {
             if ($kehadiran_konsumen == 'Datang') {
@@ -298,21 +298,21 @@ class KonsultasiController extends BaseController
                 }
 
                 // WhatsApp untuk konsumen yang datang
-                $message = "🔔 [ *KONSULTASI ONLINE TELAH SELESAI* ] 🔔\n\n";
-                $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
-                $message .= "Terima Kasih Sudah Hadir, Reservasi konsultasi Anda telah selesai! Berikut detailnya:\n\n";
-                $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
-                $message .= "*Topik:* {$konsultasi['topik']}\n";
-                $message .= "*Kategori:* {$konsultasi['kategori']}\n";
-                $message .= "*Lingkup:* {$konsultasi['lingkup']}\n";
-                $message .= "*Deskripsi:* {$konsultasi['deskripsi']}\n";
-                $message .= "*Token:* {$konsultasi['token_konsultasi']}\n";
-                $message .= "*Jadwal:* {$konsultasi['jadwal_konsultasi']}\n\n";
-                $message .= "Kami mohon kesediaan Anda untuk mengisi form feedback berikut:\n";
-                $message .= "[Link Form Feedback]\n\n";
-                $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+                // $message = "🔔 [ *KONSULTASI ONLINE TELAH SELESAI* ] 🔔\n\n";
+                // $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
+                // $message .= "Terima Kasih Sudah Hadir, Reservasi konsultasi Anda telah selesai! Berikut detailnya:\n\n";
+                // $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
+                // $message .= "*Topik:* {$konsultasi['topik']}\n";
+                // $message .= "*Kategori:* {$konsultasi['kategori']}\n";
+                // $message .= "*Lingkup:* {$konsultasi['lingkup']}\n";
+                // $message .= "*Deskripsi:* {$konsultasi['deskripsi']}\n";
+                // $message .= "*Token:* {$konsultasi['token_konsultasi']}\n";
+                // $message .= "*Jadwal:* {$konsultasi['jadwal_konsultasi']}\n\n";
+                // $message .= "Kami mohon kesediaan Anda untuk mengisi form feedback berikut:\n";
+                // $message .= "[Link Form Feedback]\n\n";
+                // $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
 
-                WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
+                // WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
 
             } else if ($kehadiran_konsumen == 'Tidak datang') {
                 // Email untuk konsumen yang tidak datang
@@ -344,20 +344,20 @@ class KonsultasiController extends BaseController
                 }
 
                 // WhatsApp untuk konsumen yang tidak datang
-                $message = "🔔 [ *KONSULTASI ONLINE TELAH SELESAI* ] 🔔\n\n";
-                $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
-                $message .= "Terima Kasih, Reservasi konsultasi Anda telah selesai! Berikut detailnya:\n\n";
-                $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
-                $message .= "*Topik:* {$konsultasi['topik']}\n";
-                $message .= "*Kategori:* {$konsultasi['kategori']}\n";
-                $message .= "*Lingkup:* {$konsultasi['lingkup']}\n";
-                $message .= "*Deskripsi:* {$konsultasi['deskripsi']}\n";
-                $message .= "*Token:* {$konsultasi['token_konsultasi']}\n";
-                $message .= "*Status Kehadiran:* {$konsultasi['kehadiran']}\n\n";
-                $message .= "Mohon Maaf Atas Ketidaknyamanannya. Semoga kita dapat berjumpa di lain waktu.\n";
-                $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
+                // $message = "🔔 [ *KONSULTASI ONLINE TELAH SELESAI* ] 🔔\n\n";
+                // $message .= "Halo, {$konsultasi['nama_konsumen']}!\n\n";
+                // $message .= "Terima Kasih, Reservasi konsultasi Anda telah selesai! Berikut detailnya:\n\n";
+                // $message .= "*Nama:* {$konsultasi['nama_konsumen']}\n";
+                // $message .= "*Topik:* {$konsultasi['topik']}\n";
+                // $message .= "*Kategori:* {$konsultasi['kategori']}\n";
+                // $message .= "*Lingkup:* {$konsultasi['lingkup']}\n";
+                // $message .= "*Deskripsi:* {$konsultasi['deskripsi']}\n";
+                // $message .= "*Token:* {$konsultasi['token_konsultasi']}\n";
+                // $message .= "*Status Kehadiran:* {$konsultasi['kehadiran']}\n\n";
+                // $message .= "Mohon Maaf Atas Ketidaknyamanannya. Semoga kita dapat berjumpa di lain waktu.\n";
+                // $message .= "Terima kasih, *PST Menjawab BPS DKI Jakarta*";
 
-                WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
+                // WAHelper::send_wa_notification($konsultasi['whatsapp_konsumen'], $message);
             }
         }
 

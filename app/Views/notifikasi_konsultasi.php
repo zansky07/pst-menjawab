@@ -144,7 +144,7 @@
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <!-- <div>
                                         <label class="block text-gray-700 font-medium mb-2">Nomor WA Konsultan</label>
                                         <div class="flex gap-2">
                                             <input type="text"
@@ -157,7 +157,7 @@
                                                 Kirim Notifikasi WhatsApp
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
 
