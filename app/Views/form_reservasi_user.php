@@ -11,7 +11,7 @@
     <link href="<?= base_url('assets/css/form.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=<?= getenv('RECAPTCHA_SITE_KEY') ?: RECAPTCHA_SITE_KEY ?>"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -45,6 +45,7 @@
         <?php endif; ?>
 
         <form id="reservationForm" action="/consultation/reserve/submit" method="post">
+            <?= csrf_field() ?>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <!-- Nama Konsumen -->
                 <div class="mb-4">
@@ -131,7 +132,8 @@
                 <?php endif; ?>
             </div>
             
-            <div class="g-recaptcha mb-4" data-sitekey="<?= getenv('RECAPTCHA_SITE_KEY') ?: RECAPTCHA_SITE_KEY ?>"></div>
+            <!-- hidden field untuk menampung token reCAPTCHA v3 -->
+            <input type="hidden" name="recaptcha_token" id="recaptchaToken" value="">
 
 
             <!-- Tombol Submit -->
@@ -144,29 +146,47 @@
     <?php include 'footer.php'; ?>
 
     <script>
+        const SITE_KEY = "<?= esc(getenv('RECAPTCHA_SITE_KEY') ?: RECAPTCHA_SITE_KEY) ?>";
+
         document.getElementById('reservationForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah pengiriman formulir default
+        event.preventDefault(); // tunda submit
 
-            
+        // SweetAlert konfirmasi
+        Swal.fire({
+            title: 'Apakah data sudah benar?',
+            text: "Pastikan semua data yang Anda masukkan sudah sesuai!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, kirim!',
+            cancelButtonText: 'Periksa lagi'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            // Ambil token reCAPTCHA v3 terlebih dahulu
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.ready(function() {
+                // action bisa apa saja, catat nama action di server untuk verifikasi opsional
+                grecaptcha.execute(SITE_KEY, {action: 'reserve_submit'}).then(function(token) {
+                    // masukkan token ke form
+                    document.getElementById('recaptchaToken').value = token;
 
-            // Menampilkan SweetAlert untuk konfirmasi
-            Swal.fire({
-                title: 'Apakah data sudah benar?',
-                text: "Pastikan semua data yang Anda masukkan sudah sesuai!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, kirim!',
-                cancelButtonText: 'Periksa lagi'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Jika dikonfirmasi, kirim formulir
+                    // akhirnya submit form
                     event.target.submit();
-                }
-            });
-        })
-    </script>
+                }).catch(function(err){
+                    console.error('reCAPTCHA execute error:', err);
+                    Swal.fire('Gagal verifikasi', 'Terjadi masalah saat verifikasi reCAPTCHA. Silakan coba lagi.', 'error');
+                });
+                });
+            } else {
+                // fallback: grecaptcha belum ter-load
+                Swal.fire('Verifikasi tidak tersedia', 'reCAPTCHA belum ter-load. Silakan refresh halaman.', 'error');
+            }
+            }
+        });
+        });
+        </script>
+
 </body>
 
 </html>

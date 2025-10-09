@@ -11,6 +11,7 @@
 	<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 	<script src="https://unpkg.com/lucide@latest"></script>
+	 <script src="https://www.google.com/recaptcha/api.js?render=<?= getenv('RECAPTCHA_SITE_KEY') ?: RECAPTCHA_SITE_KEY ?>"></script>
 	<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.3/dist/purify.min.js"></script>
 	<script type="text/javascript" src="src/purify.js"></script>
 	<link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">

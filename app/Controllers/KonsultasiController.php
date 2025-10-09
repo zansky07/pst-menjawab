@@ -56,14 +56,65 @@ class KonsultasiController extends BaseController
             return redirect()->to('/consultation/reserve')->withInput();
         }
 
-        $recaptchaResponse = $this->request->getPost('g-recaptcha-response');
+        // ===============================
+        // 2. Verifikasi reCAPTCHA v3
+        // ===============================
+        $recaptchaToken = $this->request->getPost('recaptcha_token');
         $secretKey = getenv('RECAPTCHA_SECRET_KEY') ?: RECAPTCHA_SECRET_KEY;
 
-        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$recaptchaResponse}");
-        $responseKeys = json_decode($response, true);
+        if (empty($recaptchaToken) || empty($secretKey)) {
+            return redirect()->back()
+                ->with('error', 'Verifikasi reCAPTCHA gagal (token kosong atau secret tidak ditemukan).')
+                ->withInput();
+        }
 
-        if (!$responseKeys['success']) {
-            return redirect()->back()->with('error', 'Verifikasi CAPTCHA gagal!')->withInput();
+        // Kirim request ke Google untuk verifikasi
+        $verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+        $postData = http_build_query([
+            'secret' => $secretKey,
+            'response' => $recaptchaToken,
+            // 'remoteip' => $this->request->getIPAddress() // opsional
+        ]);
+
+        $options = [
+            'http' => [
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postData
+            ]
+        ];
+        $context = stream_context_create($options);
+        $verifyResponse = file_get_contents($verifyUrl, false, $context);
+
+        if ($verifyResponse === false) {
+            return redirect()->back()
+                ->with('error', 'Tidak dapat memverifikasi reCAPTCHA.')
+                ->withInput();
+        }
+
+        $responseData = json_decode($verifyResponse, true);
+
+        if (empty($responseData['success']) || !$responseData['success']) {
+            return redirect()->back()
+                ->with('error', 'Verifikasi reCAPTCHA gagal (success = false).')
+                ->withInput();
+        }
+
+        // Cek score & action
+        $score = isset($responseData['score']) ? (float)$responseData['score'] : 0;
+        $action = $responseData['action'] ?? '';
+        $threshold = 0.5;
+
+        if ($score < $threshold) {
+            return redirect()->back()
+                ->with('error', 'Aktivitas mencurigakan terdeteksi (skor reCAPTCHA terlalu rendah).')
+                ->withInput();
+        }
+
+        if ($action && $action !== 'reserve_submit') {
+            return redirect()->back()
+                ->with('error', 'Verifikasi reCAPTCHA tidak sesuai aksi yang diharapkan.')
+                ->withInput();
         }
 
 

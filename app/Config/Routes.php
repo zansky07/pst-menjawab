@@ -78,4 +78,6 @@ $routes->group('/admin/manage/keyword', function($routes) {
 
 // Endpoint JSON untuk chatbot
 $routes->get('api/keywords', 'KeywordManagementController::getJson');
+$routes->post('api/verify-recaptcha', 'KeywordManagementController::verifyRecaptcha');
+
 

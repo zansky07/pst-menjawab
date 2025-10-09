@@ -57,16 +57,16 @@ const handleUserQuery = (query) => {
 function formatMessage(text) {
   if (!text) return "";
 
-  // escape karakter HTML dasar
-  text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  // // escape karakter HTML dasar
+  // text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-  // lanjutkan formatting markdown/link dsb
-  text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
-  text = text.replace(/`([^`]+)`/g, "<code>$1</code>");
-  text = text.replace(
-    /(https?:\/\/[^\s]+)/g,
-    '<a href="$1" target="_blank" class="text-blue-600 underline">$1</a>'
-  );
+  // // lanjutkan formatting markdown/link dsb
+  // text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+  // text = text.replace(/`([^`]+)`/g, "<code>$1</code>");
+  // text = text.replace(
+  //   /(https?:\/\/[^\s]+)/g,
+  //   '<a href="$1" target="_blank" class="text-blue-600 underline">$1</a>'
+  // );
 
   let formattedText = text;
 
@@ -195,6 +195,34 @@ function Chatbot() {
     setLoading(true);
 
     try {
+
+      // Dapatkan token reCAPTCHA v3
+
+  
+      const token = await new Promise((resolve) => {
+        grecaptcha.ready(() => {
+          grecaptcha.execute("6LeUe-MrAAAAANzusGqZPlScoEhmEm7HVpYgK8_W", { action: "chat_message" }).then((t) => resolve(t));
+        });
+      });
+
+      // Kirim token ke server CodeIgniter untuk diverifikasi
+      const verifyResponse = await fetch("api/verify-recaptcha", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token }),
+      });
+
+      const verifyData = await verifyResponse.json();
+
+      if (!verifyData.success || verifyData.score < 0.6) {
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: "Maaf, terdeteksi aktivitas mencurigakan. Silakan coba lagi." },
+        ]);
+        setLoading(false);
+        return;
+      }
+
       // Cek dulu di training data
       const lowercaseInput = input.toLowerCase();
       let trainingDataResponse = null;

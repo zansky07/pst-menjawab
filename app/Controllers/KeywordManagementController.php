@@ -151,4 +151,19 @@ class KeywordManagementController extends BaseController
         $model = new KeywordModel();
         return $this->response->setJSON($model->getAll());
     }
+
+    // Verifikasi Captcha
+    public function verifyRecaptcha()
+    {
+        $request = service('request');
+        $token = $request->getJSON(true)['token'] ?? '';
+
+        $secretKey = getenv('RECAPTCHA_SECRET_KEY');
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+
+        $response = file_get_contents($url . '?secret=' . $secretKey . '&response=' . $token);
+        $result = json_decode($response, true);
+
+        return $this->response->setJSON($result);
+    }
 }
